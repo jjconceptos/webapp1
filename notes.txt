@@ -1,0 +1,271 @@
+Locations
+
+cd Projects\Software\publicWebApp
+
+\node_modules\@google-cloud\storage\build\src>code bucket.js
+
+were missing the display projects html
+router.replace(router.asPath); 
+Git
+
+git add .
+git commit -m "logo"
+git push -u origin main
+
+
+Hold on 
+
+
+
+
+
+const handleProjectClick = (project) => {
+    if (project) {
+      // If a project is provided, set the selected project and toggle the enlarged view
+      setSelectedProject(project);
+      setEnlargedView(!enlargedView);
+      setShowProjectForm(false); // Close the "Add project" form if it's open
+    } else {
+      // If no project is provided, toggle the "Add project" form
+      setShowProjectForm((prevShowProjectForm) => !prevShowProjectForm);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// pages/about.js
+import React, { useState } from 'react';
+import Layout from '/layouts/layout';
+
+const About = () => {
+  const [nodesMatrix, setNodesMatrix] = useState([
+    { id: 'Technology', x: 300, y: 150, radius: 40 },
+    { id: 'React', x: 150, y: 100, radius: 40 },
+    { id: 'Node.js', x: 300, y: 300, radius: 40 },
+    { id: 'Python', x: 450, y: 100, radius: 40 },
+    { id: 'MongoDB', x: 450, y: 200, radius: 40 },
+  ]);
+
+  const [lines, setLines] = useState([
+    { source: 'Technology', target: 'React' },
+    { source: 'Technology', target: 'Node.js' },
+    { source: 'Technology', target: 'Python' },
+    { source: 'Technology', target: 'MongoDB' },
+  ]);
+
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [linkingNode, setLinkingNode] = useState(null);
+  const [isDraggingClone, setDraggingClone] = useState(false);
+  const [clonePosition, setClonePosition] = useState({ x: 0, y: 0 });
+
+  const handleAddCircle = () => {
+    const newCircle = {
+      id: `NewCircle${nodesMatrix.length + 1}`,
+      x: 200,
+      y: 200,
+      radius: 40,
+    };
+    setNodesMatrix([...nodesMatrix, newCircle]);
+  };
+
+  const handleRadiusChange = (newRadius) => {
+    const updatedNodes = nodesMatrix.map((node) =>
+      node.id === selectedNode ? { ...node, radius: newRadius } : node
+    );
+    setNodesMatrix(updatedNodes);
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDraggingClone) {
+      console.log('Dragging Clone - Mouse Position:', { x: e.clientX, y: e.clientY });
+      setClonePosition({ x: e.clientX, y: e.clientY });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    // Remove the temporary line when the mouse leaves the SVG
+    if (linkingNode) {
+      setLinkingNode(null);
+    }
+  };
+
+  const handleMouseDown = (e, nodeId) => {
+    // Deselect a selected node by clicking elsewhere
+    if (!e.target.closest('circle')) {
+      setSelectedNode(null);
+    }
+
+    // Start linking nodes on mouse down
+    if (nodeId && !linkingNode) {
+      setLinkingNode(nodeId);
+    }
+  };
+
+  const handleCloneMouseUp = () => {
+    console.log('Clone Dropped at:', clonePosition);
+    // Reset dragging state and clone position
+    setDraggingClone(false);
+    setClonePosition({ x: 0, y: 0 });
+  };
+
+  const handleContextMenu = (e, nodeId) => {
+    e.preventDefault();
+    console.log('Context Menu:', nodeId);
+    setSelectedNode(nodeId);
+    const contextMenu = document.getElementById('contextMenu');
+    contextMenu.style.display = 'block';
+    contextMenu.style.top = `${e.clientY}px`;
+    contextMenu.style.left = `${e.clientX}px`;
+
+    // Adding an event listener to close the context menu on a click outside
+    document.addEventListener('click', handleOutsideClick);
+  };
+
+  const handleCloneContextMenu = (e) => {
+    e.preventDefault();
+    console.log(`Release Coordinates: (${e.clientX}, ${e.clientY})`);
+    // Other logic you want to perform on right-click release
+    // ...
+
+    // Make sure to call handleCloneMouseUp to reset the state
+    handleCloneMouseUp();
+  };
+
+  // Add this function to handle clicks outside the context menu
+  const handleOutsideClick = () => {
+    const contextMenu = document.getElementById('contextMenu');
+    contextMenu.style.display = 'none';
+    document.removeEventListener('click', handleOutsideClick);
+  };
+
+  const handleContextMenuItemClick = (action) => {
+    if (action === 'size') {
+      // Handle resizing logic
+      const newRadius = prompt('Enter new radius:');
+      if (newRadius !== null && !isNaN(newRadius)) {
+        handleRadiusChange(Number(newRadius));
+      }
+    } else if (action === 'move') {
+      // Handle moving logic
+      setDraggingClone(true);
+      setClonePosition({
+        x: nodesMatrix.find((node) => node.id === selectedNode)?.x || 0,
+        y: nodesMatrix.find((node) => node.id === selectedNode)?.y || 0,
+      });
+    } else if (action === 'link') {
+      // Handle linking logic
+      setLinkingNode(selectedNode);
+    }
+
+    // Hide the context menu
+    const contextMenu = document.getElementById('contextMenu');
+    contextMenu.style.display = 'none';
+  };
+
+  const Circle = ({ x, y, radius, selected, onContextMenu }) => (
+    <g>
+      <circle
+        cx={x}
+        cy={y}
+        r={radius}
+        stroke={selected ? 'blue' : 'black'}
+        strokeWidth="2"
+        fill="lightgreen"
+        cursor="grab"
+        onContextMenu={(e) => onContextMenu(e)}
+      />
+      {isDraggingClone && (
+        <circle
+          cx={clonePosition.x}
+          cy={clonePosition.y}
+          r={nodesMatrix.find((node) => node.id === selectedNode)?.radius}
+          fill="lightgreen"
+          opacity="0.5"
+          style={{ cursor: 'grabbing' }}
+          onMouseUp={handleCloneMouseUp}
+        />
+      )}
+    </g>
+  );
+
+  return (
+    <Layout>
+      <h1></h1>
+      <button onClick={handleAddCircle} style={{ position: 'absolute', top: '10px', right: '10px' }}>
+        Add Circle
+      </button>
+      <div
+        id="contextMenu"
+        style={{
+          display: 'none',
+          position: 'absolute',
+          background: 'white',
+          boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+          padding: '8px',
+          zIndex: '1000',
+        }}
+      >
+        <div onClick={() => handleContextMenuItemClick('size')}>Size</div>
+        <div onClick={() => handleContextMenuItemClick('move')}>Move</div>
+        <div onClick={() => handleContextMenuItemClick('link')}>Link</div>
+      </div>
+      <svg
+        height="100vh"
+        width="220vh"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={() => setDraggingClone(false)}
+        style={{ border: '1px solid black' }}
+      >
+        {lines.map((line, index) => (
+          <line
+            key={index}
+            x1={nodesMatrix.find((node) => node.id === line.source)?.x}
+            y1={nodesMatrix.find((node) => node.id === line.source)?.y}
+            x2={line.target.x || nodesMatrix.find((node) => node.id === line.target)?.x}
+            y2={line.target.y || nodesMatrix.find((node) => node.id === line.target)?.y}
+            stroke="black"
+            strokeWidth="2"
+          />
+        ))}
+        {nodesMatrix.map((node) => (
+          <Circle
+            key={node.id}
+            x={node.x}
+            y={node.y}
+            radius={node.radius}
+            selected={selectedNode === node.id}
+            onContextMenu={(e) => handleContextMenu(e, node.id)}
+          />
+        ))}
+      </svg>
+      {selectedNode && (
+        <div style={{ marginTop: '20px' }}>
+          <label>
+            Radius:
+            <input
+              type="number"
+              value={nodesMatrix.find((node) => node.id === selectedNode)?.radius}
+              onChange={(e) => handleRadiusChange(Number(e.target.value))}
+            />
+          </label>
+        </div>
+      )}
+    </Layout>
+  );
+};
+
+export default About;
+
