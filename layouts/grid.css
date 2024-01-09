@@ -21,8 +21,13 @@
   }
   
   .color-grid-item p {
+    position: absolute;
+    top: 50%; /* Adjust as needed to center the text */
+    left: 50%; /* Adjust as needed to center the text */
+    transform: translate(-50%, -50%);
     text-align: center;
-    margin-top: 10px;
+    margin: 0;
+    z-index: 1; /* Set a higher z-index value for the text */
   }
   
   .image-container {
