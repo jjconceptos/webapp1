@@ -3,17 +3,17 @@ import React from 'react';
 import { useEffect } from 'react';
 import Layout from '/layouts/layout';
 import { useAuth } from '/auth/authContext'; // Adjust the path accordingly
-import { createAndAnimateLogo } from '/public/jamiesLogo';
+
 
 const Home = () => {
   const { state } = useAuth();
 
   console.log('Clearance Level:', state.clearanceLevel); // Add this log to check the clearance level
   
-  // Call the function to create and animate the logo
+  /*
   useEffect(() => {
     createAndAnimateLogo();
-  }, []); // Ensure it runs only once on mount
+  }, []); */
 
   return (
     <Layout>
