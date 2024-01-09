@@ -344,6 +344,13 @@ const Home = () => {
     min-height: 55vh; /* Adjust the min-height as needed */
   }
 
+  /* Add this media query for responsive design */
+  @media (max-width: 600px) {
+    /* Adjust the styles for smaller screens */
+    .form {
+      padding: 20px; /* Adjust padding as needed */
+    }
+
   .background-container {
     position: absolute;
     top: 25px;
