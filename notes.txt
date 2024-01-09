@@ -9,7 +9,7 @@ router.replace(router.asPath);
 Git
 
 git add .
-git commit -m "logo"
+git commit -m "initial"
 git push -u origin main
 
 

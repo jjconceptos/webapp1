@@ -184,72 +184,69 @@ const Home = () => {
 
   const yourGridItems2 = [
     {
-      imagePath: '/lake.jpg',
+      imagePath: '/teak.jpeg',
       text: '1',
     },
     {
-      imagePath: '/image2.jpg',
+      imagePath: '/parota.jpeg',
       text: '2',
     },
     {
-      imagePath: '/image3.jpg',
+      imagePath: '/ipe.jpeg',
       text: '3',
     },
     {
-        imagePath: '/lake.jpg',
+        imagePath: '/tzalam.jpeg',
         text: '4',
       },
       {
-        imagePath: '/image2.jpg',
+        imagePath: '/cumaru.jpeg',
         text: '5',
       },
       {
-        imagePath: '/image3.jpg',
+        imagePath: '/mahogany.jpeg',
         text: '6',
       },
-      {
-        imagePath: '/lake.jpg',
-        text: '7',
-      },
-      {
-        imagePath: '/image2.jpg',
-        text: '8',
-      },
-      {
-        imagePath: '/image3.jpg',
-        text: '9',
-      },
+      
     
   ];
 
   const yourCarouselItems1 = [
     {
-        imagePath: '/lake.jpg',
+        imagePath: '/hamptons.jpeg',
         text: '1',
       },
       {
-        imagePath: '/image2.jpg',
+        imagePath: '/cannes1.jpeg',
         text: '2',
       },
       {
-        imagePath: '/image3.jpg',
+        imagePath: '/ibiza.jpeg',
         text: '3',
       },
   ];
 
   const yourCarouselItems2 = [
     {
-      imagePath: '/image1.jpg',
-      text: 'Iluminacion 1',
+      imagePath: '/ilum1.jpeg',
+      text: '1',
     },
     {
-      imagePath: '/image2.jpg',
-      text: 'Iluminacion 2',
+      imagePath: '/ilum2.jpeg',
+      text: '2',
     },
     {
-      imagePath: '/image3.jpg',
-      text: 'Iluminacion 3',
+      imagePath: '/ilum3.jpeg',
+      text: '3',
     },
+    {
+        imagePath: '/ilum4.jpeg',
+        text: '4',
+      },
+      {
+        imagePath: '/ilum5.jpeg',
+        text: '5',
+      },
     // Add more items as needed
   ];
 

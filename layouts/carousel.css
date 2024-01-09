@@ -1,7 +1,7 @@
 .carousel {
     position: absolute;
     width: 50%;
-    height: 100%;
+    
     overflow: hidden;
     top: 227vh;
     left: 45vh;
@@ -15,7 +15,7 @@
   
   .carousel-item {
     min-width: 100%;
-    border-radius: 10%;
+    border-radius: 0%;
     overflow: hidden; 
   }
   

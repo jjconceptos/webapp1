@@ -47,8 +47,12 @@
     border-radius: 10px; /* Adjust the border-radius as needed */
   }
   
-  .image-grid-item img {
-    width: 100%;
-    border-radius: 10%;
-    overflow: hidden;
+  .image-grid-item p {
+    position: absolute;
+    top: 50%; /* Adjust as needed to center the text */
+    left: 50%; /* Adjust as needed to center the text */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+    z-index: 1; /* Set a higher z-index value for the text */
   }
