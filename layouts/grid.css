@@ -1,0 +1,54 @@
+.grid-container {
+    position: absolute; /* or relative, adjust as needed */
+    top: 230vh;
+    left: 22.5vh;
+    width: 100%;
+    
+  }
+  
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    grid-gap: 20px;
+  }
+  
+  .color-grid-item {
+    position: relative;
+    overflow: hidden;
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border-radius: 10px; /* Adjust the border-radius as needed */
+  }
+  
+  .color-grid-item p {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .image-container {
+    position: absolute; /* or relative, adjust as needed */
+    top: 230vh;
+    left: 22.5vh;
+    width: 100%;
+    
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    grid-gap: 20px;
+  }
+
+  .image-grid-item {
+    position: relative;
+    overflow: hidden;
+    width: 125px; /* Adjust the width as needed */
+    height: 125px; /* Adjust the height as needed */
+    border-radius: 10px; /* Adjust the border-radius as needed */
+  }
+  
+  .image-grid-item img {
+    width: 100%;
+    border-radius: 10%;
+    overflow: hidden;
+  }

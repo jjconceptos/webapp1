@@ -1,0 +1,36 @@
+.carousel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    top: 227vh;
+    left: 45vh;
+  }
+  
+  .carousel-content {
+    display: flex;
+    
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-item {
+    min-width: 100%;
+    border-radius: 10%;
+    overflow: hidden; 
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  

@@ -25,9 +25,7 @@ const Layout = ({ children }) => {
         rel="stylesheet"
       />
 
-      {/* Sidebar */}
-      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-        <div className="sidebar-content" style={{ marginTop: '50px' }}>
+      
           <ul>
           <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/home/home">Home</Link>
@@ -56,20 +54,16 @@ const Layout = ({ children }) => {
               <Link href="/hub/hub">Hub</Link>
             </li>
           </ul>
-        </div>
-      </div>
+       
 {/* Main Content */}
-<div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-        <div className="toggle-sidebar" onClick={toggleSidebar}>
-          {/* Rice-like figure or small circle */}
-          <div className="rice-figure"></div>
-        </div>
+
+        
 
         {/* Content */}
         <div className={`content-container ${centeredContent ? 'centered' : ''}`}>
           {children}
         </div>
-      </div>
+     
 
       {/* Footer */}
       <footer>
@@ -86,34 +80,37 @@ const Layout = ({ children }) => {
           min-height: 100vh; /* Ensure the body takes at least the full viewport height */
         }
       
-        .sidebar {
-          width: 0;
-          height: 100vh;
-          background-color: #761a1a;
-          overflow-x: hidden;
-          transition: 0.5s;
-          position: fixed;
-          z-index: 2; /* Set z-index higher than the body */
+        ul {
+          list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2; // Ensure it appears above other elements
         }
-      
-        .sidebar.open {
-          width: 250px;
+
+        li {
+          margin: 10px;
         }
-      
-        .sidebar-content {
-          padding-top: 20px;
+
+        ul.nav-links-right {
+          list-style: none;
           display: flex;
-          flex-direction: column;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          top: 20px;
+          z-index: 2; // Ensure it appears above other elements
         }
-      
-        .sidebar ul {
-          list-style-type: none;
-          padding: 20px;
-        }
-      
-        .sidebar li {
-          margin-bottom: 10px;
-          color: #f2f2f2;
+
+        li.nav-links-right {
+          justify-content: flex-end;
+          right: 20px;
         }
       
         .main-content {
