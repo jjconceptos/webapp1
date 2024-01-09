@@ -50,6 +50,14 @@ const Home = () => {
   const handleAnswer = async (event) => {
     event.preventDefault();  // Prevent the default form behavior
   
+ // Check if the button clicked is "Atrás" or "Siguiente"
+ const buttonType = event.target.textContent.trim().toLowerCase();
+
+ if (buttonType === 'atrás') {
+   // Handle going back to the previous question
+   handleBack();
+ } else {
+
     // Move to the next question if it exists
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
@@ -77,6 +85,7 @@ const Home = () => {
         console.error('Error sending form data:', error);
       }
     }
+    }
   };
   
 
@@ -101,6 +110,13 @@ const Home = () => {
     } else {
       // Update other fields
       setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }
+  };
+
+  const handleBack = () => {
+    // Move to the previous question if it exists
+    if (currentQuestion > 0) {
+      setCurrentQuestion((prevQuestion) => prevQuestion - 1);
     }
   };
 
@@ -421,8 +437,28 @@ const Home = () => {
   }
 
   .question-wrapper {
-    margin-top: 10px; /* Adjust as needed */
+    margin-top: 10px; 
   }
+
+  
+  .button-container {
+    display: flex;
+     /* Adjust the margin as needed */
+  }
+
+  
+  .form-button.back {
+    margin-right: 10px; /* Add margin to separate the buttons */
+  }
+
+  /* Add any additional styling for your buttons */
+  .form-button {
+    /* Your existing button styles */
+    margin-top: 10px;
+    margin-bottom: 5px;
+    z-index: 1;
+  }
+  
 `}</style>
 
 
@@ -676,10 +712,14 @@ const Home = () => {
                     </label>
                   </>
                 )}
-                
-                <button onClick={handleAnswer}>
-                  {isLastQuestion ? 'Enviar' : 'Siguiente'}
-                </button>
+               <div className="button-container">
+            <button type="button" onClick={handleBack} className="form-button back">
+                Atrás
+            </button>
+            <button onClick={handleAnswer} className="form-button">
+                {isLastQuestion ? 'Enviar' : 'Siguiente'}
+            </button>
+            </div>
 
               </form>
             </>
