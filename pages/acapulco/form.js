@@ -28,7 +28,7 @@ const Home = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [formData, setFormData] = useState({
-    location: { address: '', street: '', zipCode: '' },
+    location: { address: '', street: '', zipCode: '', level: '', condominum: '' },
     size: '',
     rooms: '',
     people: '',
@@ -541,6 +541,24 @@ const Home = () => {
                         type="text"
                         name="location.zipCode"
                         value={formData.location.zipCode}
+                        onChange={handleChange}
+                      />
+                    </label>
+                    <label>
+                      Nivel de piso:
+                      <input
+                        type="text"
+                        name="location.level"
+                        value={formData.location.level}
+                        onChange={handleChange}
+                      />
+                    </label>
+                    <label>
+                      Residencial:
+                      <input
+                        type="text"
+                        name="location.condominum"
+                        value={formData.location.condominum}
                         onChange={handleChange}
                       />
                     </label>
