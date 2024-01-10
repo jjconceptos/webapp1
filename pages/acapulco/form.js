@@ -19,7 +19,7 @@ const Home = () => {
     'Bar?',
     'Oficina?',
     'Plantas y paisajismo, te interesan?',
-    'Algun capricho?',
+    'Toque personal',
     'Nos ayudas mucho si los planos, pero si no pásanos el contacto de tu administrador del espacio',
     'Para hacer el proyecto perfecto para ti, por favor dinos que presupuesto tienes en mente',
     'Por ultimo pásanos tu contacto',
