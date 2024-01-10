@@ -229,34 +229,40 @@ const Home = () => {
 
   const yourCarouselItems1 = [
     {
-        imagePath: '/hamptons.jpeg',
-        text: '1',
-      },
-      {
-        imagePath: '/hamptons1.jpeg',
-        text: '2',
-      },
-      {
-        imagePath: '/cannes1.jpeg',
-        text: '3',
-      },
-      {
-        imagePath: '/contemporary.jpeg',
-        text: '4',
-      },
+      imagePath: '/hamptons.jpeg',
+      text: ' 1',
       
-      {
-        imagePath: '/ibiza.jpeg',
-        text: '5',
-      },
-      {
-        imagePath: '/minimalist.jpeg',
-        text: '6',
-      },
-      {
-        imagePath: '/classic.jpeg',
-        text: '6',
-      },
+    },
+    {
+      imagePath: '/hamptons1.jpeg',
+      text: 'Your new text below the image for item 2',
+      
+    },
+    {
+      imagePath: '/cannes1.jpeg',
+      text: 'Your new text below the image for item 3',
+      
+    },
+    {
+      imagePath: '/contemporary.jpeg',
+      text: 'Your new text below the image for item 4',
+      
+    },
+    {
+      imagePath: '/ibiza.jpeg',
+      text: 'Your new text below the image for item 5',
+    
+    },
+    {
+      imagePath: '/minimalist.jpeg',
+      text: 'Your new text below the image for item 6',
+      
+    },
+    {
+      imagePath: '/classic.jpeg',
+      text: 'Your new text below the image for item 7',
+      
+    },
   ];
 
   const yourCarouselItems2 = [
@@ -319,35 +325,37 @@ const Home = () => {
   };
 
   const Carousel = ({ items }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-  
-    const handlePrev = () => {
-      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : items.length - 1));
-    };
-  
-    const handleNext = () => {
-      setCurrentIndex((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : 0));
-    };
-  
-    return (
-      <div className="carousel">
-        <div className="carousel-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          {items.map((item, index) => (
-            <div key={index} className="carousel-item">
-              <img src={item.imagePath} alt={`Image ${index + 1}`} />
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : items.length - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : 0));
+  };
+
+  return (
+    <div className="carousel">
+      <div className="carousel-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        {items.map((item, index) => (
+          <div key={index} className="carousel-item">
+            <img src={item.imagePath} alt={`Image ${index + 1}`} />
+            <div className="carousel-footer">
               <p>{item.text}</p>
             </div>
-          ))}
-        </div>
-        <button type="button" onClick={handlePrev} className="carousel-button prev">
-  &lt;
-</button>
-<button type="button" onClick={handleNext} className="carousel-button next">
-  &gt;
-</button>
+          </div>
+        ))}
       </div>
-    );
-  };
+      <button type="button" onClick={handlePrev} className="carousel-button prev">
+        &lt;
+      </button>
+      <button type="button" onClick={handleNext} className="carousel-button next">
+        &gt;
+      </button>
+    </div>
+  );
+};
 
   return (
     <Layout>
