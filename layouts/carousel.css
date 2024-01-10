@@ -17,12 +17,23 @@
     height: 300px; /* Adjust the height as needed */
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
   }
   
   .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+  
+  .carousel-text {
+    position: absolute;
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin: 0;
+    z-index: 2; /* Increase z-index value to ensure it's above other elements */
   }
   
   .carousel-button {

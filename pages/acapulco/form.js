@@ -173,7 +173,7 @@ const Home = () => {
       text: '3',
     },
     {
-      backgroundColor: '#F8C471', // Replace with your desired color code
+      backgroundColor: '#D4EFDF', // Replace with your desired color code
       text: '4',
     },
     {
@@ -185,7 +185,7 @@ const Home = () => {
       text: '6',
     },
     {
-      backgroundColor: '#F4F6F7', // Replace with your desired color code
+      backgroundColor: '#D4E6F1', // Replace with your desired color code
       text: '7',
     },
     {
@@ -233,12 +233,29 @@ const Home = () => {
         text: '1',
       },
       {
-        imagePath: '/cannes1.jpeg',
+        imagePath: '/hamptons1.jpeg',
         text: '2',
       },
       {
-        imagePath: '/ibiza.jpeg',
+        imagePath: '/cannes1.jpeg',
         text: '3',
+      },
+      {
+        imagePath: '/contemporary.jpeg',
+        text: '4',
+      },
+      
+      {
+        imagePath: '/ibiza.jpeg',
+        text: '5',
+      },
+      {
+        imagePath: '/minimalist.jpeg',
+        text: '6',
+      },
+      {
+        imagePath: '/classic.jpeg',
+        text: '6',
       },
   ];
 
