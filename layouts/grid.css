@@ -30,7 +30,6 @@
     margin: 0;
     z-index: 1;
   }
-  
   .image-container {
     position: absolute;
     top: 36%;
@@ -54,13 +53,22 @@
     margin-bottom: 10px;
   }
   
+  .image-grid-item img {
+    width: 90px; /* Make sure the image takes up 100% of the container */
+    height: 90px; /* Maintain a square aspect ratio */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 10px; /* Match the border-radius of the container */
+  }
+  
   .image-grid-item p {
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+   
     margin: 0;
     z-index: 1;
   }
+  
+  
   
