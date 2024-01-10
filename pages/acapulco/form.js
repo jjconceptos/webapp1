@@ -8,20 +8,20 @@ const Home = () => {
   const { state } = useAuth();
   const formRef = useRef(null);
   const [questions, setQuestions] = useState([
-    'En donde esta tu espacio?',
+    'En donde está tu espacio?',
     'Cual es el área de tu espacio?',
     'Cuantos cuartos?',
     'Cuanta gente recurre este espacio?',
-    'Que tono te gusta mas?',
-    'Que material te gusta mas?',
-    'De estos estilos, cual te gusta mas?',
-    'Que iluminacion te gusta mas?',
+    'Que tono te gusta más?',
+    'Que material te gusta más?',
+    'De estos estilos, cual te gusta más?',
+    'Que iluminacion te gusta más?',
     'Bar?',
     'Oficina?',
     'Plantas y paisajismo, te interesan?',
-    'Nos ayudas mucho si tienes el nivel de piso, pero si no pasanos el contacto de tu administrador del espacio',
+    'Nos ayudas mucho si tienes el nivel de piso, pero si no pásanos el contacto de tu administrador del espacio',
     'Para hacer el proyecto perfecto para ti, por favor dinos que presupuesto tienes en mente',
-    'Por ultimo pasanos tu contacto',
+    'Por ultimo pásanos tu contacto',
     
     
   ]);
@@ -345,22 +345,7 @@ const Home = () => {
   }
 
 
-  
-  .background-container {
-    position: absolute;
-    top: 25px;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    height: 100%;
-    margin: 0cm;
-    background-image: url('schematic.jpeg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    padding-bottom: 120px; /* Add padding-bottom to create space for the form */
-  }
-
+ 
   .header {
     position: absolute;
     top: 5px; /* Adjust the top value as needed */
@@ -372,14 +357,8 @@ const Home = () => {
     
   }
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 75vh; /* Change to auto */
-    padding: 50vh;
-  }
-
+  
+  
   label {
     margin: 10px 0;
     font-weight: bold;
@@ -404,7 +383,7 @@ const Home = () => {
 
   .non-question-section {
     text-align: center;
-    margin-top: 350px;
+    top: 250px;
     padding: 20vh;
   }
 
@@ -460,18 +439,40 @@ const Home = () => {
     margin-bottom: 5px;
     z-index: 1;
   }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 10px;
+    justify-content: flex-start; /* Align the form to the top */
+    height: 85vh; /* Adjust the height of the form */
+  }
+  
+  .form-container {
+    display: none; /* Hide the form-container by default */
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 60px;
+  }
+  
+  .show-container .form-container {
+    display: block; /* Display the form-container when the parent has the "show-container" class */
+  }
+
   
 `}</style>
 
 
-<div className="explanatory-text">
-        <p>
-          textotextotexto.
-        </p>
-        <p>
-          textotextomastexto.
-        </p>
-      </div>
+
       <div className="header">
     <a href="#contacto">Contacto</a>
     <span> | </span>
@@ -482,6 +483,7 @@ const Home = () => {
 
       <div className="background-container">
         <div className="non-question-section">
+        <div className={`non-question-section ${showQuestions ? 'show-container' : ''}`}>
           {!showQuestions && !formSubmitted && (
             <>
             
@@ -491,6 +493,8 @@ const Home = () => {
               <button onClick={startQuestions}>Comenzar</button>
             </>
           )}
+
+<div className="form-container">
 
           {!formSubmitted && showQuestions && currentQuestion < questions.length && (
             <>
@@ -722,7 +726,7 @@ const Home = () => {
                 {isLastQuestion ? 'Enviar' : 'Siguiente'}
             </button>
             </div>
-
+                        
               </form>
             </>
           )}
@@ -731,11 +735,13 @@ const Home = () => {
             <p style={{ textAlign: 'center', marginTop: '900px', padding: '50vh'}}>
               ¡Gracias por enviar la información! Nos pondremos en contacto contigo pronto.
             </p>
-          )}  
+          )}
+
+          </div>  
 
 
         </div>
-
+        </div>
        
       </div>
     </Layout>

@@ -1,63 +1,66 @@
 .grid-container {
-    position: absolute; /* or relative, adjust as needed */
-    top: 230vh;
-    left: 22.5vh;
-    width: 100%;
-    
+    position: absolute;
+    top: 36%;
+    left: 700px;
+    transform: translateX(-50%);
+    width: 80%;
   }
   
   .color-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px; /* Reduce the gap for a more compact layout */
   }
   
   .color-grid-item {
     position: relative;
     overflow: hidden;
-    width: 100px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-    border-radius: 10px; /* Adjust the border-radius as needed */
+    width: calc(33.3333% - 10px); /* Adjust the width as needed */
+    padding-bottom: calc(33.3333% - 10px); /* Maintain a square aspect ratio */
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
   
   .color-grid-item p {
     position: absolute;
-    top: 50%; /* Adjust as needed to center the text */
-    left: 50%; /* Adjust as needed to center the text */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     margin: 0;
-    z-index: 1; /* Set a higher z-index value for the text */
+    z-index: 1;
   }
   
   .image-container {
-    position: absolute; /* or relative, adjust as needed */
-    top: 230vh;
-    left: 22.5vh;
-    width: 100%;
-    
+    position: absolute;
+    top: 36%;
+    left: 700px;
+    transform: translateX(-50%);
+    width: 80%;
   }
-
+  
   .image-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px; /* Reduce the gap for a more compact layout */
   }
-
+  
   .image-grid-item {
     position: relative;
     overflow: hidden;
-    width: 125px; /* Adjust the width as needed */
-    height: 125px; /* Adjust the height as needed */
-    border-radius: 10px; /* Adjust the border-radius as needed */
+    width: calc(33.3333% - 10px); /* Adjust the width as needed */
+    padding-bottom: calc(33.3333% - 10px); /* Maintain a square aspect ratio */
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
   
   .image-grid-item p {
     position: absolute;
-    top: 50%; /* Adjust as needed to center the text */
-    left: 50%; /* Adjust as needed to center the text */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     margin: 0;
-    z-index: 1; /* Set a higher z-index value for the text */
+    z-index: 1;
   }
+  
