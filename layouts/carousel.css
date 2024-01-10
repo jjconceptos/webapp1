@@ -1,10 +1,9 @@
 .carousel {
     position: absolute;
+    top: 36%;
     width: 50%;
-    
     overflow: hidden;
-    top: 227vh;
-    left: 45vh;
+    left: 40vh;
   }
   
   .carousel-content {
@@ -15,8 +14,15 @@
   
   .carousel-item {
     min-width: 100%;
-    border-radius: 0%;
-    overflow: hidden; 
+    height: 300px; /* Adjust the height as needed */
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
   }
   
   .carousel-button {
