@@ -463,7 +463,8 @@ const Home = () => {
   
   .form-container {
     display: none; /* Hide the form-container by default */
-    border: 1px solid #ccc;
+    border: 5px solid #3366cc; /* Adjust border color and thickness */
+  
     padding: 20px;
     border-radius: 10px;
     margin: 20px auto;
