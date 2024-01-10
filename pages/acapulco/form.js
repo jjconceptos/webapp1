@@ -424,7 +424,7 @@ const Home = () => {
   
   .button-container {
     display: flex;
-     /* Adjust the margin as needed */
+    
   }
 
   
@@ -432,12 +432,24 @@ const Home = () => {
     margin-right: 10px; /* Add margin to separate the buttons */
   }
 
-  /* Add any additional styling for your buttons */
+ 
   .form-button {
     /* Your existing button styles */
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: -5px;
+    margin-bottom: 1px;
     z-index: 1;
+    border: none; /* Remove default border */
+    padding: 5px 20px; /* Adjust padding as needed */
+    border-radius: 15px; /* Set border-radius to half of the button's height */
+    background-color: #34495E; /* Set background color */
+    color: #f2f2f2; /* Set text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition for background color */
+  
+    /* Hover state */
+    &:hover {
+      background-color: #0056b3; /* Change background color on hover */
+    }
   }
 
   .form {
