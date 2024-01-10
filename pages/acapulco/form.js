@@ -19,8 +19,7 @@ const Home = () => {
     'Bar?',
     'Oficina?',
     'Plantas y paisajismo, te interesan?',
-    'Toque personal',
-    'Nos ayudas mucho si los planos, pero si no pásanos el contacto de tu administrador del espacio',
+    'Nos ayudas mucho si tienes los planos, pero si no pásanos el contacto de tu administrador del espacio',
     'Para hacer el proyecto perfecto para ti, por favor dinos que presupuesto tienes en mente',
     'Por ultimo pásanos tu contacto',
     
@@ -40,7 +39,6 @@ const Home = () => {
     bar: '',
     office: '',
     plants: '',
-    fancy: '',
     blueprints: '',
     budget: '',
     contact: { name: '', lastName: '', email: '', cellphone: '' },
@@ -336,7 +334,7 @@ const Home = () => {
     },
     {
       imagePath: '/ibiza.jpeg',
-      text: 'California',
+      text: 'Californiano',
     
     },
     {
@@ -799,18 +797,8 @@ const Home = () => {
                     />
                   </label>
                 )}
+                
                 {currentQuestion === 11 && (
-                  <label>
-                    
-                    <input
-                      type="text"
-                      name="fancy"
-                      value={formData.fancy}
-                      onChange={handleChange}
-                    />
-                  </label>
-                )}
-                {currentQuestion === 12 && (
                   <label>
                     Escribe el mail de tu administracion:
                     <input
@@ -821,7 +809,7 @@ const Home = () => {
                     />
                   </label>
                 )}
-                {currentQuestion === 13 && (
+                {currentQuestion === 12 && (
                   <label>
                     Presupuesto en MXN$:
                     <input
@@ -832,7 +820,7 @@ const Home = () => {
                     />
                   </label>
                 )}
-                {currentQuestion === 14 && (
+                {currentQuestion === 13 && (
                   <>
                     <label>
                       Nombre:
