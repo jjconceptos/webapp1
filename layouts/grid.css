@@ -1,14 +1,14 @@
 .grid-container {
     position: absolute;
-    top: 36%;
-    left: 700px;
+    top: 43%;
+    left: 650px;
     transform: translateX(-50%);
     width: 80%;
   }
   
   .color-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px; /* Reduce the gap for a more compact layout */
   }
   

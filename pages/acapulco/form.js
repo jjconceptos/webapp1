@@ -160,42 +160,130 @@ const Home = () => {
   };
 
   const yourGridItems1 = [
+
+
     {
-      backgroundColor: '#EBEDEF', // Replace with your desired color code
-      text: '1',
-    },
+        backgroundColor: '#2874A6', // Replace with your desired color code
+        text: '1',
+      },
+      {
+        backgroundColor: '#5499C7', // Replace with your desired color code
+        text: '2',
+      },
+      {
+        backgroundColor: '#7FB3D5', // Replace with your desired color code
+        text: '3',
+      },
+      {
+        backgroundColor: '#A9CCE3', // Replace with your desired color code
+        text: '4',
+      },
+      {
+        backgroundColor: '#D4E6F1', // Replace with your desired color code
+        text: '5',
+      },
     {
-      backgroundColor: '#D4E6F1', // Replace with your desired color code
-      text: '2',
-    },
-    {
-      backgroundColor: '#A9DFBF', // Replace with your desired color code
-      text: '3',
-    },
-    {
-      backgroundColor: '#F6DDCC', // Replace with your desired color code
-      text: '4',
-    },
-    {
-      backgroundColor: '#52BE80 ', // Replace with your desired color code
-      text: '5',
-    },
-    {
-      backgroundColor: '#CA6F1E', // Replace with your desired color code
+      backgroundColor: '#EAF2F8', // Replace with your desired color code
       text: '6',
-    },
+    },  
+    
     {
-      backgroundColor: '#85929E', // Replace with your desired color code
+      backgroundColor: '#BDC3C7', // Replace with your desired color code
       text: '7',
     },
     {
-      backgroundColor: '#2471A3', // Replace with your desired color code
+      backgroundColor: '#00ACC1', // Replace with your desired color code
       text: '8',
     },
     {
-      backgroundColor: '#aabbcc', // Replace with your desired color code
+      backgroundColor: '#95A5A6', // Replace with your desired color code
       text: '9',
     },
+    {
+      backgroundColor: '#00838F', // Replace with your desired color code
+      text: '10',
+    },
+    {
+      backgroundColor: '#5D6D7E', // Replace with your desired color code
+      text: '11',
+    },
+    {
+      backgroundColor: '#546E7A', // Replace with your desired color code
+      text: '12',
+    },
+    {
+      backgroundColor: '#EFEBE9', // Replace with your desired color code
+      text: '13',
+    },
+    {
+      backgroundColor: '#5D6D7E', // Replace with your desired color code
+      text: '14',
+    },
+    {
+      backgroundColor: '#F2F3F4', // Replace with your desired color code
+      text: '15',
+    },
+    {
+        backgroundColor: '#616161', // Replace with your desired color code
+        text: '16',
+      },
+      {
+        backgroundColor: '#dce4eb', // Replace with your desired color code
+        text: '17',
+      },
+      {
+        backgroundColor: '#c4d4e2', // Replace with your desired color code
+        text: '18',
+      },
+      {
+        backgroundColor: '#cfc092', // Replace with your desired color code
+        text: '19',
+      },
+      {
+        backgroundColor: '#c7bd9f', // Replace with your desired color code
+        text: '20',
+      },
+      {
+        backgroundColor: '#e3dfd0', // Replace with your desired color code
+        text: '21',
+      },
+      {
+        backgroundColor: '#a59667', // Replace with your desired color code
+        text: '22',
+      },
+      {
+        backgroundColor: '#e2dfd4', // Replace with your desired color code
+        text: '23',
+      },
+      {
+        backgroundColor: '#dddbdb', // Replace with your desired color code
+        text: '24',
+      },
+      {
+        backgroundColor: '#fce5cd', // Replace with your desired color code
+        text: '25',
+      },
+      {
+        backgroundColor: '#e5cfb8', // Replace with your desired color code
+        text: '26',
+      },
+      {
+        backgroundColor: '#f0decb', // Replace with your desired color code
+        text: '27',
+      },
+      {
+        backgroundColor: '#6d6257', // Replace with your desired color code
+        text: '28',
+      },
+      {
+        backgroundColor: '#f8eee4', // Replace with your desired color code
+        text: '29',
+      },
+      {
+        backgroundColor: '#bcb5a0', // Replace with your desired color code
+        text: '30',
+      },
+    
   ];
 
   const yourGridItems2 = [
