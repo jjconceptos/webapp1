@@ -551,7 +551,7 @@ const Home = () => {
     padding: 5px 20px; /* Adjust padding as needed */
     border-radius: 15px; /* Set border-radius to half of the button's height */
     background-color: #34495E; /* Set background color */
-    color: #f2f2f2; /* Set text color */
+    color: #EAECEE; /* Set text color */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Add a smooth transition for background color */
   
