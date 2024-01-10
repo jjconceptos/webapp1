@@ -457,6 +457,7 @@ const Home = () => {
     margin: 20px auto;
     width: 100%;
     max-width: 1200px;
+    height: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
