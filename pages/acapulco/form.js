@@ -19,7 +19,8 @@ const Home = () => {
     'Bar?',
     'Oficina?',
     'Plantas y paisajismo, te interesan?',
-    'Nos ayudas mucho si tienes el nivel de piso, pero si no pásanos el contacto de tu administrador del espacio',
+    'Algun capricho?',
+    'Nos ayudas mucho si los planos, pero si no pásanos el contacto de tu administrador del espacio',
     'Para hacer el proyecto perfecto para ti, por favor dinos que presupuesto tienes en mente',
     'Por ultimo pásanos tu contacto',
     
@@ -39,6 +40,7 @@ const Home = () => {
     bar: '',
     office: '',
     plants: '',
+    fancy: '',
     blueprints: '',
     budget: '',
     contact: { name: '', lastName: '', email: '', cellphone: '' },
@@ -316,39 +318,35 @@ const Home = () => {
   ];
 
   const yourCarouselItems1 = [
-    {
-      imagePath: '/hamptons.jpeg',
-      text: 'Hamptons 1',
-      
-    },
+    
     {
       imagePath: '/hamptons1.jpeg',
-      text: 'Hamptons 2',
+      text: 'Hamptons ',
       
     },
     {
       imagePath: '/cannes1.jpeg',
-      text: 'Contemporaneo 1',
+      text: 'Contemporaneo',
       
     },
     {
       imagePath: '/contemporary.jpeg',
-      text: 'Contemporaneo 2',
+      text: 'Moderno',
       
     },
     {
       imagePath: '/ibiza.jpeg',
-      text: 'Minimalista 1',
+      text: 'California',
     
     },
     {
       imagePath: '/minimalist.jpeg',
-      text: 'Minimalista 2',
+      text: 'Minimalista',
       
     },
     {
       imagePath: '/classic.jpeg',
-      text: 'Clasico 1',
+      text: 'Clasico',
       
     },
   ];
@@ -701,7 +699,7 @@ const Home = () => {
                 )}
                 {currentQuestion === 3 && (
                   <label>
-                    Numero de recurrentes:
+                    Numero de personas:
                     <input
                       type="text"
                       name="people"
@@ -715,7 +713,7 @@ const Home = () => {
                   
                   <label>
                   
-                      Escribe el numero de muestra que te gusta:
+                      Escribe los numeros de las 3 muestras que mas te gustan:
                       <input
                       type="text"
                       name="preferredTone"
@@ -803,6 +801,17 @@ const Home = () => {
                 )}
                 {currentQuestion === 11 && (
                   <label>
+                    
+                    <input
+                      type="text"
+                      name="fancy"
+                      value={formData.fancy}
+                      onChange={handleChange}
+                    />
+                  </label>
+                )}
+                {currentQuestion === 12 && (
+                  <label>
                     Escribe el mail de tu administracion:
                     <input
                       type="text"
@@ -812,7 +821,7 @@ const Home = () => {
                     />
                   </label>
                 )}
-                {currentQuestion === 12 && (
+                {currentQuestion === 13 && (
                   <label>
                     Presupuesto en MXN$:
                     <input
@@ -823,7 +832,7 @@ const Home = () => {
                     />
                   </label>
                 )}
-                {currentQuestion === 13 && (
+                {currentQuestion === 14 && (
                   <>
                     <label>
                       Nombre:
@@ -877,7 +886,7 @@ const Home = () => {
           )}
 
           {formSubmitted && (
-            <p style={{ textAlign: 'center', marginTop: '900px', padding: '50vh'}}>
+            <p style={{ textAlign: 'center', marginTop: '0px', padding: '50vh'}}>
               ¡Gracias por enviar la información! Nos pondremos en contacto contigo pronto.
             </p>
           )}
