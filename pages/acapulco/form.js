@@ -161,35 +161,35 @@ const Home = () => {
 
   const yourGridItems1 = [
     {
-      backgroundColor: '#F4F6F6', // Replace with your desired color code
+      backgroundColor: '#EBEDEF', // Replace with your desired color code
       text: '1',
     },
     {
-      backgroundColor: '#FFF3E0', // Replace with your desired color code
+      backgroundColor: '#D4E6F1', // Replace with your desired color code
       text: '2',
     },
     {
-      backgroundColor: '#FFE0B2', // Replace with your desired color code
+      backgroundColor: '#A9DFBF', // Replace with your desired color code
       text: '3',
     },
     {
-      backgroundColor: '#D4EFDF', // Replace with your desired color code
+      backgroundColor: '#F6DDCC', // Replace with your desired color code
       text: '4',
     },
     {
-      backgroundColor: '#F9E79F ', // Replace with your desired color code
+      backgroundColor: '#52BE80 ', // Replace with your desired color code
       text: '5',
     },
     {
-      backgroundColor: '#FCF3CF', // Replace with your desired color code
+      backgroundColor: '#CA6F1E', // Replace with your desired color code
       text: '6',
     },
     {
-      backgroundColor: '#D4E6F1', // Replace with your desired color code
+      backgroundColor: '#85929E', // Replace with your desired color code
       text: '7',
     },
     {
-      backgroundColor: '#D7CCC8', // Replace with your desired color code
+      backgroundColor: '#2471A3', // Replace with your desired color code
       text: '8',
     },
     {
@@ -230,37 +230,37 @@ const Home = () => {
   const yourCarouselItems1 = [
     {
       imagePath: '/hamptons.jpeg',
-      text: ' 1',
+      text: 'Hamptons 1',
       
     },
     {
       imagePath: '/hamptons1.jpeg',
-      text: 'Your new text below the image for item 2',
+      text: 'Hamptons 2',
       
     },
     {
       imagePath: '/cannes1.jpeg',
-      text: 'Your new text below the image for item 3',
+      text: 'Contemporaneo 1',
       
     },
     {
       imagePath: '/contemporary.jpeg',
-      text: 'Your new text below the image for item 4',
+      text: 'Contemporaneo 2',
       
     },
     {
       imagePath: '/ibiza.jpeg',
-      text: 'Your new text below the image for item 5',
+      text: 'Minimalista 1',
     
     },
     {
       imagePath: '/minimalist.jpeg',
-      text: 'Your new text below the image for item 6',
+      text: 'Minimalista 2',
       
     },
     {
       imagePath: '/classic.jpeg',
-      text: 'Your new text below the image for item 7',
+      text: 'Clasico 1',
       
     },
   ];
@@ -654,7 +654,7 @@ const Home = () => {
                   )}
                   {currentQuestion === 6 && (
                     <label>
-                      Escribe el numero de muestra que te gusta:
+                      Escribe el nombre del estilo que te gusta:
                       
                       <input
                         type="text"
