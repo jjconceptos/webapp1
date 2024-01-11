@@ -9,32 +9,42 @@ const About = () => {
   const yourCarouselItems1 = [
     
     {
-      imagePath: '/hamptons1.jpeg',
-      text: 'Hamptons ',
+      imagePath: '/1a.jpg',
+      text: 'kaki',
       
     },
     {
-      imagePath: '/cannes1.jpeg',
-      text: 'Contemporaneo',
+      imagePath: '/2a.jpg',
+      text: 'kaki',
       
     },
     {
-      imagePath: '/contemporary.jpeg',
-      text: 'Moderno',
+      imagePath: '/7a.jpg',
+      text: 'kaki',
       
     },
     {
-      imagePath: '/ibiza.jpeg',
-      text: 'Californiano',
+      imagePath: '/4.jpeg',
+      text: '',
     
     },
     {
-      imagePath: '/minimalist.jpeg',
-      text: 'Minimalista',
+      imagePath: '/5.jpeg',
+      text: '',
       
     },
     {
-      imagePath: '/classic.jpeg',
+      imagePath: '/6.jpeg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/7.jpeg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/8.jpeg',
       text: 'Clasico',
       
     },
@@ -115,12 +125,31 @@ const About = () => {
         }
 
         .services-text {
+          font-size: 26px;
           position: absolute;
-          top: 265vh;
+          top: 289vh;
           width: 50%;
           overflow: hidden;
-          left: 85.5vh;
+          left: 82.2vh;
           padding-bottom: 10vh;
+        }
+
+        .services-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 20px;
+          position: absolute;
+          top: 298vh;
+          width: 50%;
+          left: 46vh;
+          padding-bottom: 10vh;
+        }
+
+        .service-plan {
+          text-align: center;
+          padding: 20px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
         }
 
       `}</style>
@@ -161,6 +190,23 @@ const About = () => {
   Servicios
 </p>
 </div>
+
+<div className="services-container">
+        <div className="service-plan">
+          <p>Plan A</p>
+          <p>Text for Plan A</p>
+        </div>
+
+        <div className="service-plan">
+          <p>Plan B</p>
+          <p>Text for Plan B</p>
+        </div>
+
+        <div className="service-plan">
+          <p>Plan C</p>
+          <p>Text for Plan C</p>
+        </div>
+      </div>
     
 
     
