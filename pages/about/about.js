@@ -137,11 +137,11 @@ const About = () => {
         .services-container {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          grid-gap: 20px;
+          grid-gap: 320px;
           position: absolute;
           top: 298vh;
           width: 50%;
-          left: 46vh;
+          left: 28.7vh;
           padding-bottom: 10vh;
         }
 
