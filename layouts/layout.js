@@ -8,14 +8,7 @@ const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [centeredContent, setCenteredContent] = useState(false);
 
-  useEffect(() => {
-    console.log('isSidebarOpen:', isSidebarOpen);
-    setCenteredContent(!isSidebarOpen);
-  }, [isSidebarOpen]);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  
 
   return (
     <div>
@@ -36,15 +29,8 @@ const Layout = ({ children }) => {
             <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/projects/projects">Projects</Link>
             </li>
-            <li onClick={() => setIsSidebarOpen(false)}>
-              <Link href="/library/library">Library</Link>
-            </li>
-            <li onClick={() => setIsSidebarOpen(false)}>
-              <Link href="/register/registerForm">Register</Link>
-            </li>
-            <li onClick={() => setIsSidebarOpen(false)}>
-              <Link href="/login/login">Login</Link>
-            </li>
+            
+           
             {state.clearanceLevel <= 2 && state.clearanceLevel > 0 && (
               <li onClick={() => setIsSidebarOpen(false)}>
                 <Link href="/master/master">Master</Link>

@@ -12,7 +12,7 @@ const Home = () => {
     'Cual es el área de tu espacio?',
     'Cuantos cuartos?',
     'Cuanta gente recurre este espacio?',
-    'Que tono te gusta más?',
+    'Que tonos te gustan?',
     'Que material te gusta más?',
     'De estos estilos, cual te gusta más?',
     'Que iluminacion te gusta más?',
