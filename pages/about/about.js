@@ -8,23 +8,30 @@ const About = () => {
 
   const yourCarouselItems1 = [
     
-    {
-      imagePath: '/1a.jpg',
-      text: 'kaki',
-      
-    },
-    {
-      imagePath: '/2a.jpg',
-      text: 'kaki',
-      
-    },
+   
     {
       imagePath: '/7a.jpg',
-      text: 'kaki',
+      text: '',
       
     },
     {
-      imagePath: '/4.jpeg',
+      imagePath: '/12a.jpg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/13a.jpg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/14a.jpg',
+      text: '',
+      
+    },
+    
+    {
+      imagePath: '/16a.jpg',
       text: '',
     
     },
@@ -33,6 +40,75 @@ const About = () => {
       text: '',
       
     },
+    
+    {
+      imagePath: '/1a.jpg',
+      text: '',
+      
+    },
+    
+    {
+      imagePath: '/2a.jpg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/10a.jpg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/15.jpeg',
+      text: '',
+      
+    },
+    /*
+    {
+      imagePath: '/11.jpeg',
+      text: '',
+      
+    },
+    
+    {
+      imagePath: '/13.jpeg',
+      text: '',
+      
+    },
+    
+    
+    {
+      imagePath: '/18.jpeg',
+      text: 'Clasico',
+      
+    },
+    
+    {
+      imagePath: '/18.jpeg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/19.jpeg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/22.jpeg',
+      text: '',
+      
+    },
+    
+    {
+      imagePath: '/22a.jpg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/23.jpeg',
+      text: '',
+      
+    },
+    
     {
       imagePath: '/6.jpeg',
       text: '',
@@ -48,6 +124,18 @@ const About = () => {
       text: 'Clasico',
       
     },
+    {
+      imagePath: '/9.jpeg',
+      text: 'Clasico',
+      
+    },
+    
+    {
+      imagePath: '/21.jpeg',
+      text: '',
+      
+    },
+    */
   ];
 
   const Carousel = ({ items }) => {
@@ -178,7 +266,7 @@ const About = () => {
       GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
       Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
       </p>
-      <p style={{marginTop: '120px', textAlign: 'center'}}>Galeria</p>
+      <p style={{marginTop: '120px', textAlign: 'left'}}>Galeria</p>
       </div>
       <div>
       <label>    
