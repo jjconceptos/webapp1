@@ -245,7 +245,7 @@ const About = () => {
       `}</style>
       <div>
       <div className="big-title">
-        Welcome to Our About Page
+        Bienvenudo!
       </div>
 
       <div className="side-title">
