@@ -26,9 +26,10 @@ const Layout = ({ children }) => {
             <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/about/about">About</Link>
             </li>
-            <li onClick={() => setIsSidebarOpen(false)}>
+            {/* <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/projects/projects">Projects</Link>
-            </li>
+            </li> */}
+            
             
            
             {state.clearanceLevel <= 2 && state.clearanceLevel > 0 && (
