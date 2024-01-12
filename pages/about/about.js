@@ -225,11 +225,11 @@ const About = () => {
         .services-container {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          grid-gap: 320px;
+          grid-gap: 240px; /* Adjust the gap as needed */
           position: absolute;
           top: 298vh;
-          width: 50%;
-          left: 28.7vh;
+          width: 90%; /* Adjust the width as needed */
+          left: 5%; /* Adjust the left position as needed */
           padding-bottom: 10vh;
         }
 
@@ -238,6 +238,8 @@ const About = () => {
           padding: 20px;
           border: 1px solid #ddd;
           border-radius: 10px;
+          width: 100%; /* Adjust the width as needed */
+          text-align: left;
         }
 
       `}</style>
@@ -266,7 +268,7 @@ const About = () => {
       GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
       Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
       </p>
-      <p style={{marginTop: '120px', textAlign: 'left'}}>Galeria</p>
+      <p style={{marginTop: '120px', textAlign: 'left'}}>Vibe</p>
       </div>
       <div>
       <label>    
@@ -281,18 +283,26 @@ const About = () => {
 
 <div className="services-container">
         <div className="service-plan">
-          <p>Plan A</p>
-          <p>Text for Plan A</p>
+          <p style={{fontSize:'16px'}}>Plan A</p>
+          <p style={{fontSize:'13px'}}>Proyecto visual</p>
+          <p style={{fontSize:'10px'}}>- planos/vistas</p>
+          <p style={{fontSize:'10px'}}>- contenido conceptual</p>
+
+
         </div>
 
         <div className="service-plan">
           <p>Plan B</p>
-          <p>Text for Plan B</p>
+          <p style={{fontSize:'13px'}}>Proyecto visual</p>
+          <p style={{fontSize:'10px'}}>- planos/vistas</p>
+          <p style={{fontSize:'10px'}}>- contenido conceptual</p>
         </div>
 
         <div className="service-plan">
           <p>Plan C</p>
-          <p>Text for Plan C</p>
+          <p style={{fontSize:'13px'}}>Proyecto visual</p>
+          <p style={{fontSize:'10px'}}>- planos/vistas</p>
+          <p style={{fontSize:'10px'}}>- contenido conceptual</p>
         </div>
       </div>
     
