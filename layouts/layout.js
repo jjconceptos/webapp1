@@ -37,9 +37,9 @@ const Layout = ({ children }) => {
                 <Link href="/master/master">Master</Link>
               </li>
             )}
-            <li onClick={() => setIsSidebarOpen(false)}>
+            {/*<li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/hub/hub">Hub</Link>
-            </li>
+            </li>*/}
           </ul>
        
 {/* Main Content */}
@@ -61,6 +61,11 @@ const Layout = ({ children }) => {
       {/* Styles */}
       <style jsx global>{`
         body {
+          background-image: url('/rock.jpg'); // Adjust the path accordingly
+          background-size: cover;
+          background-repeat: repeat; // Choose the appropriate repeat style
+          background-attachment: fixed;
+          background-position: center;
           margin: 0;
           padding: 0;
           display: flex;

@@ -68,7 +68,7 @@ const About = () => {
       text: '',
       
     },
-    /*
+    
     {
       imagePath: '/11.jpeg',
       text: '',
@@ -141,7 +141,7 @@ const About = () => {
       text: '',
       
     },
-    */
+    
   ];
 
   const Carousel = ({ items }) => {
@@ -253,11 +253,11 @@ const About = () => {
       `}</style>
       <div>
       <div className="big-title">
-        Bienvenudo!
+        Nuestra vision
       </div>
 
       <div className="side-title" onClick={handleScrollClick}>
-        Descubre nuestra historia!
+        Conocenos!
       </div>
         </div>
       <div className="below-title-undertitle">
@@ -293,29 +293,44 @@ const About = () => {
         <div className="service-plan">
           <p style={{fontSize:'25px'}}>Plan A</p>
           <p style={{fontSize:'18px'}}>Proyecto visual</p>
-          <p style={{fontSize:'13px'}}>- planos/vistas</p>
-          <p style={{fontSize:'13px'}}>- contenido conceptual</p>
+          <p style={{fontSize:'13px'}}>- Planta de distribucion</p>
+          <p style={{fontSize:'13px'}}>- Imagenes de referencia</p>
+          <p style={{fontSize:'13px'}}>- Moodboard</p>
+          <p style={{fontSize:'13px'}}>- Planos ambientados y/o renders</p>
+          <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
+          <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
+          <p style={{fontSize:'13px'}}>- Precio</p>
+
+          
 
 
         </div>
 
         <div className="service-plan">
         <p style={{fontSize:'25px'}}>Plan B</p>
-          <p style={{fontSize:'18px'}}>Seleccion de interiores</p>
-          <p style={{fontSize:'13px'}}>- Instalacion de muebles de terceros</p>
-          <p style={{fontSize:'13px'}}>- contenido conceptual</p>
+          <p style={{fontSize:'18px'}}>Proyecto mobiliario</p>
+          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
+          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
+          <p style={{fontSize:'13px'}}>- Propuesta del mobiliario</p>
+          <p style={{fontSize:'13px'}}>- Mano de obra</p>
+          <p style={{fontSize:'13px'}}>- Flete</p>
+          <p style={{fontSize:'13px'}}>- Instalacion</p>
+          <p style={{fontSize:'13px'}}>- Supervision</p>
+          <p style={{fontSize:'13px'}}>- Entrega final al cliente</p>
         </div>
 
         <div className="service-plan">
         <p style={{fontSize:'25px'}}>Plan C</p>
           <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
-          <p style={{fontSize:'13px'}}>- Proyecto visual</p>
-          <p style={{fontSize:'13px'}}>- Manufactura de muebles </p>
-          <p style={{fontSize:'13px'}}>  a la medida </p>
+          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
+          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
+          <p style={{fontSize:'13px'}}>- Propuesta del mobiliario</p>
+          <p style={{fontSize:'13px'}}>- Propuesta de decoracion</p>
+          <p style={{fontSize:'13px'}}>- Mano de obra</p>
+          <p style={{fontSize:'13px'}}>- Flete</p>
           <p style={{fontSize:'13px'}}>- Instalacion</p>
           <p style={{fontSize:'13px'}}>- Supervision</p>
-          <p style={{fontSize:'13px'}}>- Flete</p>
-          <p style={{fontSize:'13px'}}>- Ambientacion</p>
+          <p style={{fontSize:'13px'}}>- Entrega final al cliente</p>
         </div>
       </div>
     
