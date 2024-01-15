@@ -4,7 +4,13 @@ import 'layouts/carouselAbout.css';
 
 const About = () => {
 
- 
+  const handleScrollClick = () => {
+    const scrollDistance = 500; // Adjust the scroll distance as needed
+    window.scrollTo({
+      top: window.pageYOffset + scrollDistance,
+      behavior: 'smooth',
+    });
+  };
 
   const yourCarouselItems1 = [
     
@@ -195,6 +201,8 @@ const About = () => {
           text-align: center;
           color: #666; /* Adjust text color as needed */
           margin-bottom: 10px; /* Add some space below the side title */
+          cursor: pointer;
+           z-index: 2;
         }
         .below-title-undertitle {
           font-size: 18px;
@@ -248,7 +256,7 @@ const About = () => {
         Bienvenudo!
       </div>
 
-      <div className="side-title">
+      <div className="side-title" onClick={handleScrollClick}>
         Descubre nuestra historia!
       </div>
         </div>
@@ -283,26 +291,31 @@ const About = () => {
 
 <div className="services-container">
         <div className="service-plan">
-          <p style={{fontSize:'16px'}}>Plan A</p>
-          <p style={{fontSize:'13px'}}>Proyecto visual</p>
-          <p style={{fontSize:'10px'}}>- planos/vistas</p>
-          <p style={{fontSize:'10px'}}>- contenido conceptual</p>
+          <p style={{fontSize:'25px'}}>Plan A</p>
+          <p style={{fontSize:'18px'}}>Proyecto visual</p>
+          <p style={{fontSize:'13px'}}>- planos/vistas</p>
+          <p style={{fontSize:'13px'}}>- contenido conceptual</p>
 
 
         </div>
 
         <div className="service-plan">
-          <p>Plan B</p>
-          <p style={{fontSize:'13px'}}>Proyecto visual</p>
-          <p style={{fontSize:'10px'}}>- planos/vistas</p>
-          <p style={{fontSize:'10px'}}>- contenido conceptual</p>
+        <p style={{fontSize:'25px'}}>Plan B</p>
+          <p style={{fontSize:'18px'}}>Seleccion de interiores</p>
+          <p style={{fontSize:'13px'}}>- Instalacion de muebles de terceros</p>
+          <p style={{fontSize:'13px'}}>- contenido conceptual</p>
         </div>
 
         <div className="service-plan">
-          <p>Plan C</p>
-          <p style={{fontSize:'13px'}}>Proyecto visual</p>
-          <p style={{fontSize:'10px'}}>- planos/vistas</p>
-          <p style={{fontSize:'10px'}}>- contenido conceptual</p>
+        <p style={{fontSize:'25px'}}>Plan C</p>
+          <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
+          <p style={{fontSize:'13px'}}>- Proyecto visual</p>
+          <p style={{fontSize:'13px'}}>- Manufactura de muebles </p>
+          <p style={{fontSize:'13px'}}>  a la medida </p>
+          <p style={{fontSize:'13px'}}>- Instalacion</p>
+          <p style={{fontSize:'13px'}}>- Supervision</p>
+          <p style={{fontSize:'13px'}}>- Flete</p>
+          <p style={{fontSize:'13px'}}>- Ambientacion</p>
         </div>
       </div>
     
