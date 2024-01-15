@@ -1,16 +1,151 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '/layouts/layout';
+import Tooltip from '/layouts/tooltip';
 import 'layouts/carouselAbout.css';
 
 const About = () => {
 
-  const handleScrollClick = () => {
-    const scrollDistance = 500; // Adjust the scroll distance as needed
-    window.scrollTo({
-      top: window.pageYOffset + scrollDistance,
-      behavior: 'smooth',
+  const [tooltipText, setTooltipText] = useState('');
+  const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
+  const [isTooltipVisible, setTooltipVisibility] = useState(false);
+
+  const handleTooltip = (text, event) => {
+    const yOffset = 1800; // Declare yOffset here
+    const xOffset = 110; // Declare xOffset here
+
+    setTooltipText(text);
+
+    setTooltipPosition({
+      top: event.clientY + yOffset,
+      left: event.clientX + xOffset,
     });
+
+    setTooltipVisibility(true);
   };
+
+  const handleTooltipClose = () => {
+    setTooltipVisibility(false);
+  };
+  
+  const plans = [
+    {
+      title: 'Plan A',
+      jsx: (
+        <>
+          <p style={{fontSize:'25px'}}>Plan A</p>
+          <p style={{fontSize:'18px'}}>Proyecto visual</p>
+          <p style={{fontSize:'13px'}}>- Planta de distribucion</p>
+          <p style={{fontSize:'13px'}}>- Imagenes de referencia</p>
+          <p style={{fontSize:'13px'}}>- Moodboard</p>
+          <p style={{fontSize:'13px'}}>- Planos ambientados y/o renders</p>
+          <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
+          <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
+          <p style={{fontSize:'13px'}}>- Precio</p>
+        </>
+      ),
+    },
+    {
+      title: 'Plan B',
+      jsx: (
+        <>
+          <p style={{fontSize:'25px'}}>Plan B</p>
+          <p style={{fontSize:'18px'}}>Proyecto mobiliario</p>
+          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
+          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
+          <p style={{fontSize:'13px'}}></p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('lo que incluye la propuesta de mobili', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Propuesta de mobiliario
+          </p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('lo que incluye mano de obra', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Mano de obra
+          </p>
+          <p style={{fontSize:'13px'}}>- Flete</p>
+          <p style={{fontSize:'13px'}}>- Instalacion</p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Supervision
+          </p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('lo que incluye la entrega final', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Entrega final al cliente
+          </p>
+          
+        </>
+      ),
+    },
+    {
+      title: 'Plan C',
+      jsx: (
+        <>
+          <p style={{fontSize:'25px'}}>Plan C</p>
+          <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
+          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
+          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('lo que incluye la propuesta de mobili', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Propuesta de mobiliario
+          </p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('-', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Propuesta de decoracion
+          </p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('lo que incluye mano de obra', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Mano de obra
+          </p>
+          <p style={{fontSize:'13px'}}>- Flete</p>
+          <p style={{fontSize:'13px'}}>- Instalacion</p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Supervision
+          </p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('lo que incluye la entrega final', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Entrega final al cliente
+          </p>
+          
+        </>
+      ),
+    },
+  ];
 
   const yourCarouselItems1 = [
     
@@ -63,6 +198,7 @@ const About = () => {
       text: '',
       
     },
+    /*
     {
       imagePath: '/15.jpeg',
       text: '',
@@ -141,6 +277,7 @@ const About = () => {
       text: '',
       
     },
+    */
     
   ];
 
@@ -238,7 +375,7 @@ const About = () => {
           top: 298vh;
           width: 90%; /* Adjust the width as needed */
           left: 5%; /* Adjust the left position as needed */
-          padding-bottom: 10vh;
+          padding-bottom: 20vh;
         }
 
         .service-plan {
@@ -256,7 +393,7 @@ const About = () => {
         Nuestra vision
       </div>
 
-      <div className="side-title" onClick={handleScrollClick}>
+      <div className="side-title" >
         Conocenos!
       </div>
         </div>
@@ -290,51 +427,19 @@ const About = () => {
 </div>
 
 <div className="services-container">
-        <div className="service-plan">
-          <p style={{fontSize:'25px'}}>Plan A</p>
-          <p style={{fontSize:'18px'}}>Proyecto visual</p>
-          <p style={{fontSize:'13px'}}>- Planta de distribucion</p>
-          <p style={{fontSize:'13px'}}>- Imagenes de referencia</p>
-          <p style={{fontSize:'13px'}}>- Moodboard</p>
-          <p style={{fontSize:'13px'}}>- Planos ambientados y/o renders</p>
-          <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
-          <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
-          <p style={{fontSize:'13px'}}>- Precio</p>
-
-          
-
-
-        </div>
-
-        <div className="service-plan">
-        <p style={{fontSize:'25px'}}>Plan B</p>
-          <p style={{fontSize:'18px'}}>Proyecto mobiliario</p>
-          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
-          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
-          <p style={{fontSize:'13px'}}>- Propuesta del mobiliario</p>
-          <p style={{fontSize:'13px'}}>- Mano de obra</p>
-          <p style={{fontSize:'13px'}}>- Flete</p>
-          <p style={{fontSize:'13px'}}>- Instalacion</p>
-          <p style={{fontSize:'13px'}}>- Supervision</p>
-          <p style={{fontSize:'13px'}}>- Entrega final al cliente</p>
-        </div>
-
-        <div className="service-plan">
-        <p style={{fontSize:'25px'}}>Plan C</p>
-          <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
-          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
-          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
-          <p style={{fontSize:'13px'}}>- Propuesta del mobiliario</p>
-          <p style={{fontSize:'13px'}}>- Propuesta de decoracion</p>
-          <p style={{fontSize:'13px'}}>- Mano de obra</p>
-          <p style={{fontSize:'13px'}}>- Flete</p>
-          <p style={{fontSize:'13px'}}>- Instalacion</p>
-          <p style={{fontSize:'13px'}}>- Supervision</p>
-          <p style={{fontSize:'13px'}}>- Entrega final al cliente</p>
-        </div>
+        {plans.map((plan, index) => (
+          <div key={index} className="service-plan">
+            {plan.jsx}
+          </div>
+        ))}
       </div>
-    
 
+      <div>
+        {isTooltipVisible && (
+          <Tooltip text={tooltipText} isVisible={isTooltipVisible} top={tooltipPosition.top} left={tooltipPosition.left} />
+          
+        )}
+      </div>
     
 
     </Layout>

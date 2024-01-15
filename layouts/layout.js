@@ -21,10 +21,13 @@ const Layout = ({ children }) => {
       
           <ul>
           <li onClick={() => setIsSidebarOpen(false)}>
-              <Link href="/home/home">Home</Link>
+              <Link href="/home/home">Inicio</Link>
             </li>
             <li onClick={() => setIsSidebarOpen(false)}>
-              <Link href="/about/about">About</Link>
+              <Link href="/about/about">Acerca</Link>
+            </li>
+            <li onClick={() => setIsSidebarOpen(false)}>
+              <Link href="/about/team">Equipo</Link>
             </li>
             {/* <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/projects/projects">Projects</Link>
@@ -52,16 +55,42 @@ const Layout = ({ children }) => {
         </div>
      
 
-      {/* Footer */}
+      
       <footer>
-        {/* Footer content */}
-        &copy; {new Date().getFullYear()} JRF. All rights reserved.
+        {/* */}
+        <div style={{ textAlign: 'center', bottom: '10px', fontSize: '10px'}}>
+          <div >Contact:</div>
+          <div>
+          Arquitecto Juan Pablo Gonzalez Andrade
+          + 52 55 2344 3501
+          </div>
+          <div >
+          Ing. Jaime Rodriguez Flores
+          + 52 55 1079 1185
+          </div>
+          <div >
+          3 Reyes 18 Colonia Navidad, Ciudad de Mexico
+          </div>
+          </div>
+          <div style={{ textAlign: 'right', marginTop: '-25px', fontSize: '10px'}}>
+            <div >
+          <a href="/register/registerForm.js">Register</a>
+          </div>
+          <div >
+            <a href="/login/login">Login</a>
+          </div>
+          </div>
+           
+        <div style={{ textAlign: 'left',  marginTop: '-20px', paddingLeft: '20px', fontSize: '14px'}}>
+          <p> &copy; {new Date().getFullYear()} JRF. All rights reserved.</p>
+        </div>
+        
       </footer>
 
       {/* Styles */}
       <style jsx global>{`
         body {
-          background-image: url('/rock.jpg'); // Adjust the path accordingly
+          background-image: url('/plastic.jpg'); // Adjust the path accordingly
           background-size: cover;
           background-repeat: repeat; // Choose the appropriate repeat style
           background-attachment: fixed;
@@ -148,17 +177,18 @@ const Layout = ({ children }) => {
           background-color: ${isSidebarOpen ? '#999' : '#000'}; /* Change the color when the sidebar is open */
         }
       
-        /* Custom styling for the footer */
+        /*  */
         footer {
           position: fixed;
-          bottom: 0;
+          bottom: 0px;
           left: 0;
           width: 100%;
-          background-color: transparent;
+          height: 13vh;
+          background-color: rgba(52, 73, 94);
           padding: 10px;
-          text-align: right;
+         
           color: black;
-          font-size: 14px;
+          font-size: 10px;
           opacity: 0.8;
           z-index: 2; /* Set z-index higher than the body */
         }
