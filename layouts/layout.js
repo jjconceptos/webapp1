@@ -82,6 +82,13 @@ const Layout = ({ children }) => {
             <a href="/login/login">Iniciar sesion</a>
           </div>
           </div>
+
+          <div style={{ marginLeft: '70%', marginTop: '-46px', fontSize: '10px'}}>
+          <div >Agenda una cita en linea:</div>
+            <div >
+         Escribe a: jjconceptos21@gmail.com
+          </div>
+          </div>
            
           <div style={{ textAlign: 'left', marginTop: '-5px', paddingLeft: '10px', fontSize: '14px' }}>
           <p>
