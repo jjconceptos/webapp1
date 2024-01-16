@@ -99,10 +99,10 @@ const Team = () => {
 
         .image-container {
             position: absolute;
-            top: 150vh; /* Adjust the top position as needed */
+            top: 140vh; /* Adjust the top position as needed */
             right: 5vh; /* Adjust the left position as needed */
             width: 30%; /* Adjust the width of the image container */
-            height: 30%; /* Adjust the height of the image container */
+            height: 50%; /* Adjust the height of the image container */
             background-image: url('/lake.jpg'); /* Provide the path to your image */
             background-size: cover; /* Adjust as needed */
             background-position: center; /* Adjust as needed */
@@ -111,11 +111,11 @@ const Team = () => {
         
           .second-image-container {
             position: absolute;
-            top: 250vh; /* Adjust the top position as needed */
+            top: 240vh; /* Adjust the top position as needed */
             left: 5vh; /* Adjust the right position as needed */
             width: 30%; /* Adjust the width of the image container */
-            height: 30%; /* Adjust the height of the image container */
-            background-image: url('/lake.jpg'); /* Provide the path to your second image */
+            height: 50%; /* Adjust the height of the image container */
+            background-image: url('/jamie.jpg'); /* Provide the path to your second image */
             background-size: cover; /* Adjust as needed */
             background-position: center; /* Adjust as needed */
             z-index: 1; /* Ensure the image is behind the text */
