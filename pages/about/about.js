@@ -156,7 +156,11 @@ const About = () => {
 
   const yourCarouselItems1 = [
     
-   
+    {
+      imagePath: '/63.jpeg',
+      text: '',
+      
+    },
     {
       imagePath: '/7a.jpg',
       text: '',
@@ -164,6 +168,11 @@ const About = () => {
     },
     {
       imagePath: '/12a.jpg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/64.jpeg',
       text: '',
       
     },
@@ -205,7 +214,7 @@ const About = () => {
       text: '',
       
     },
-    /*
+    
     {
       imagePath: '/15.jpeg',
       text: '',
@@ -213,77 +222,25 @@ const About = () => {
     },
     
     {
-      imagePath: '/11.jpeg',
+      imagePath: '/61.jpeg',
       text: '',
       
     },
     
     {
-      imagePath: '/13.jpeg',
+      imagePath: '/62.jpeg',
       text: '',
       
     },
     
-    
-    {
-      imagePath: '/18.jpeg',
-      text: 'Clasico',
-      
-    },
-    
-    {
-      imagePath: '/18.jpeg',
-      text: '',
-      
-    },
+    /*
     {
       imagePath: '/19.jpeg',
       text: '',
       
     },
-    {
-      imagePath: '/22.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/22a.jpg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/23.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/6.jpeg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/7.jpeg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/8.jpeg',
-      text: 'Clasico',
-      
-    },
-    {
-      imagePath: '/9.jpeg',
-      text: 'Clasico',
-      
-    },
-    
-    {
-      imagePath: '/21.jpeg',
-      text: '',
-      
-    },
+   
+  
     */
     
   ];
