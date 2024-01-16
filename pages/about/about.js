@@ -11,7 +11,7 @@ const About = () => {
 
   const handleTooltip = (sentences, event) => {
     const yOffset = 1800;
-    const xOffset = 70;
+    const xOffset = 20;
   
     setTooltipText(sentences);
     setTooltipPosition({
@@ -35,17 +35,10 @@ const About = () => {
           <p style={{fontSize:'13px'}}>- Planta de distribucion</p>
           <p style={{fontSize:'13px'}}>- Imagenes de referencia</p>
           <p style={{fontSize:'13px'}}>- Moodboard</p>
-          <p style={{fontSize:'13px'}}>- Planos ambientados y/o renders</p>
+          <p style={{fontSize:'13px'}}>- Renders</p>
           <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
           <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('precio uno', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Precio
-          </p>
+          <p style={{fontSize:'13px'}}>- Precio: 12,0000 MXN IVA incluido</p>
         </>
       ),
     },
@@ -55,25 +48,25 @@ const About = () => {
         <>
           <p style={{fontSize:'25px'}}>Plan B</p>
           <p style={{fontSize:'18px'}}>Proyecto mobiliario</p>
-          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
-          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Todo lo que incluye Plan A', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Proyecto visual
+          </p>
+         
           <p style={{fontSize:'13px'}}></p>
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la propuesta de mobili', e)}
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Seleccion de colores y texturas\n- Seleccion de mobiliario\n- Ambientacion\n- Iluminacion', e)}
             onMouseOut={handleTooltipClose}
           >
-            - Propuesta de mobiliario
+            - Decoracion de interiores
           </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye mano de obra', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Mano de obra
-          </p>
+          <p style={{fontSize:'13px'}}>- Mano de obra</p>
           <p style={{fontSize:'13px'}}>- Flete</p>
           <p style={{fontSize:'13px'}}>- Instalacion</p>
           <p
@@ -84,14 +77,7 @@ const About = () => {
           >
             - Supervision
           </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la entrega final', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Entrega final al cliente
-          </p>
+          <p style={{fontSize:'13px'}}>- Entrega final al cliente</p>
           
         </>
       ),
@@ -102,7 +88,14 @@ const About = () => {
         <>
           <p style={{fontSize:'25px'}}>Plan C</p>
           <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
-          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Todo lo que incluye Plan A\n- Se descuenta el precio del proyecto visual!', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Proyecto visual
+          </p>
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
@@ -114,21 +107,14 @@ const About = () => {
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('Incluye:\n- Diseno de espacios\n- Colocacion pisos\n- Paredes, tapices y pintura\n- Paredes tapices y pintura\n- Mobiliario a la medida', e)}
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Diseno de espacios\n- Colocacion pisos\n- Paredes, tapices y pintura\n- Mobiliario a la medida', e)}
             onMouseOut={handleTooltipClose}
           >
             - Diseno de interiores
           </p>
           
           
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('Incluye:\n- Cuadrilla de maestros\n- Electricistas', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Mano de obra
-          </p>
+          <p style={{fontSize:'13px'}}>- Mano de obra</p>
           <p style={{fontSize:'13px'}}>- Flete</p>
           <p style={{fontSize:'13px'}}>- Instalacion</p>
           <p
@@ -139,14 +125,7 @@ const About = () => {
           >
             - Supervision
           </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la entrega final', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Entrega final al cliente
-          </p>
+          <p style={{fontSize:'13px'}}>- Entrega final al cliente</p>
           
         </>
       ),

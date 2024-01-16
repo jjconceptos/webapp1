@@ -152,15 +152,18 @@ const Team = () => {
 
       <div className="second-below-title-text">
       <p style={{marginTop: '1800px'}}>
-      TEXTO JAMES, es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
+      Jaime Rodriguez Flores, graduado como ingeniero en mecatronica por el ITESM, es un gran apasionado del diseno industrial, la historia y el software.   
       </p>
       <p style={{marginTop: '30px'}}>
-      El estudio ofrece soluciones innovadoras, funcionales y atractivas de estética refinada basadas en conceptos bien definidos que se reflejan en productos y experiencias memorables.
-      A través de una metodología de trabajo de 360º que incorpora tres pilares esenciales: Arquitectura, Diseño Industrial y Branding.
+      Desde nino Jaime tuvo un fuerte contacto con el mundo de la construccion y el diseno. Acompanando a su padre a construcciones y crecer en una familia llena de disenadores y creativos
+      abrio una curiosidad por este mundo y el buen gusto en el.
+      Mas tarde se unio al taller de carpinteria de su padre, ayudandole a coordinar y supervisar proyectos de lujo para clientes en la Ciudad de Mexico y en la playa de Acapulco, 
+      En 2021 Jaime se une con Juan Pablo, para proponer un servicio de mobiliario a la medida que evoluciona poco a poco en un servicio integral donde Jaime aporta  
+      tres aspectos esenciales: branding, diseno y supervision.
       </p>
       <p style={{marginTop: '30px'}}>
-      GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
-      Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
+      Jaime toma inspiracion de estilos como la arquitectura Neocolonial Mexicana, el Brutalismo Sovietico, arquitectura Elizabetana y Barroco Frances pero siempre buscando la manera 
+      de imprimir la esencia de cada cliente. Valores que definen el trabajo de Jaime son calidad, puntualidad y atencion a detalle.
       </p>
      
       </div>
