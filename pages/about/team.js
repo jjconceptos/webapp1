@@ -157,7 +157,7 @@ const Team = () => {
       <p style={{marginTop: '30px'}}>
       Desde nino Jaime tuvo un fuerte contacto con el mundo de la construccion y el diseno. Acompanando a su padre a construcciones y crecer en una familia llena de disenadores y creativos
       abrio una curiosidad por este mundo y el buen gusto en el.
-      Mas tarde se unio al taller de carpinteria de su padre, ayudandole a coordinar y supervisar proyectos de lujo para clientes en la Ciudad de Mexico y en la playa de Acapulco, 
+      Mas tarde se unio al taller de carpinteria de su padre, ayudandole a coordinar y supervisar proyectos de lujo para clientes en la Ciudad de Mexico y en la playa de Acapulco. 
       En 2021 Jaime se une con Juan Pablo, para proponer un servicio de mobiliario a la medida que evoluciona poco a poco en un servicio integral donde Jaime aporta  
       tres aspectos esenciales: branding, diseno y supervision.
       </p>
