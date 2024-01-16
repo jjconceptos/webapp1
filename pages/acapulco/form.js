@@ -149,9 +149,8 @@ const Home = () => {
         const formHeight = formRef.current.offsetHeight;
         const windowHeight = window.innerHeight;
         
-        const scrollDistance = formPosition - windowHeight + formHeight + 10; // Adjust 20 for extra space
-        
-        window.scrollBy({
+        const scrollDistance = formPosition - windowHeight + formHeight + 350;          
+        window.scrollTo({
           top: scrollDistance,
           behavior: 'smooth',
         });
@@ -450,7 +449,7 @@ const Home = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 55vh; /* Adjust the min-height as needed */
+    height: 107vh;
   }
 
 
@@ -573,10 +572,10 @@ const Home = () => {
   .form-container {
     display: none; /* Hide the form-container by default */
     border: 5px solid #34495E; /* */
-    /* border-top: 10px solid #A9CCE3;*/
-    padding: 20px;
+    
+    padding-bottom: 20px;
     border-radius: 10px;
-    margin: 20px auto;
+    margin-bottom: 30px;
     width: 100%;
     max-width: 1200px;
     height: 80%;
@@ -584,7 +583,7 @@ const Home = () => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-bottom: 60px;
+    
   }
   
   .show-container .form-container {
@@ -596,13 +595,7 @@ const Home = () => {
 
 
 
-      <div className="header">
-    <a href="#contacto">Contacto</a>
-    <span> | </span>
-    <a href="#sitio-de-compradores">Sitio de compradores</a>
-    <span> | </span>
-    <a href="#solicitar-informacion">Solicitar información</a>
-  </div>
+      
 
       <div className="background-container">
         <div className="non-question-section">

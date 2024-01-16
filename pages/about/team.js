@@ -390,7 +390,7 @@ const About = () => {
       `}</style>
       <div>
       <div className="big-title">
-        Nuestra vision
+        Quienes somos?
       </div>
 
       <div className="side-title" >

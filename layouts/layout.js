@@ -58,7 +58,7 @@ const Layout = ({ children }) => {
       
       <footer>
         {/* */}
-        <div style={{ textAlign: 'center', bottom: '10px', fontSize: '10px'}}>
+        <div style={{ marginLeft: '25%', bottom: '10px', fontSize: '10px'}}>
           <div >Contact:</div>
           <div>
           Arquitecto Juan Pablo Gonzalez Andrade
@@ -81,7 +81,7 @@ const Layout = ({ children }) => {
           </div>
           </div>
            
-        <div style={{ textAlign: 'left',  marginTop: '-20px', paddingLeft: '20px', fontSize: '14px'}}>
+        <div style={{ textAlign: 'left',  marginTop: '-27px', paddingLeft: '20px', fontSize: '14px'}}>
           <p> &copy; {new Date().getFullYear()} JRF. All rights reserved.</p>
         </div>
         
@@ -149,6 +149,7 @@ const Layout = ({ children }) => {
           justify-content: center;
           align-items: center;
           width: 100%; /* Make sure it takes the full width */
+          
         }
       
         .toggle-sidebar {
@@ -183,10 +184,10 @@ const Layout = ({ children }) => {
           bottom: 0px;
           left: 0;
           width: 100%;
-          height: 13vh;
+          height: 11vh;
           background-color: rgba(52, 73, 94);
           padding: 10px;
-         
+          
           color: black;
           font-size: 10px;
           opacity: 0.8;
