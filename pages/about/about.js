@@ -377,7 +377,7 @@ const About = () => {
       GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
       Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
       </p>
-      <p style={{marginTop: '120px', textAlign: 'left'}}>Vibe</p>
+      <p style={{marginTop: '120px', textAlign: 'left'}}>Conceptos</p>
       </div>
       <div>
       <label>    
