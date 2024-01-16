@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Tooltip = ({ text, isVisible, top, left }) => {
-  console.log('Tooltip Rendered:', isVisible, top, left);
-
   const tooltipStyle = {
     display: isVisible ? 'block' : 'none',
     position: 'absolute',
@@ -15,7 +13,15 @@ const Tooltip = ({ text, isVisible, top, left }) => {
     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
   };
 
-  return <div style={tooltipStyle}>{text}</div>;
+  const lines = text.split('\n');
+
+  return (
+    <div style={tooltipStyle}>
+      {lines.map((line, index) => (
+        <p key={index}>{line}</p>
+      ))}
+    </div>
+  );
 };
 
 export default Tooltip;

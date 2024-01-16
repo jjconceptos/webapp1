@@ -9,17 +9,15 @@ const About = () => {
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
   const [isTooltipVisible, setTooltipVisibility] = useState(false);
 
-  const handleTooltip = (text, event) => {
-    const yOffset = 1800; // Declare yOffset here
-    const xOffset = 110; // Declare xOffset here
-
-    setTooltipText(text);
-
+  const handleTooltip = (sentences, event) => {
+    const yOffset = 1800;
+    const xOffset = 110;
+  
+    setTooltipText(sentences);
     setTooltipPosition({
       top: event.clientY + yOffset,
       left: event.clientX + xOffset,
     });
-
     setTooltipVisibility(true);
   };
 
@@ -81,7 +79,7 @@ const About = () => {
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado', e)}
+            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado\n- another sentence\n- yet another sentence', e)}
             onMouseOut={handleTooltipClose}
           >
             - Supervision
