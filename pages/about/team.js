@@ -52,6 +52,7 @@ const Team = () => {
           margin-top: 190vh; /* Add 30vh margin above the text */
           left: 11vh;
           width: 40%;
+          
         }
 
         .second-below-title-text {
@@ -96,6 +97,30 @@ const Team = () => {
           text-align: left;
         }
 
+        .image-container {
+            position: absolute;
+            top: 150vh; /* Adjust the top position as needed */
+            right: 5vh; /* Adjust the left position as needed */
+            width: 30%; /* Adjust the width of the image container */
+            height: 30%; /* Adjust the height of the image container */
+            background-image: url('/lake.jpg'); /* Provide the path to your image */
+            background-size: cover; /* Adjust as needed */
+            background-position: center; /* Adjust as needed */
+            z-index: 1; /* Ensure the image is behind the text */
+          }
+        
+          .second-image-container {
+            position: absolute;
+            top: 250vh; /* Adjust the top position as needed */
+            left: 5vh; /* Adjust the right position as needed */
+            width: 30%; /* Adjust the width of the image container */
+            height: 30%; /* Adjust the height of the image container */
+            background-image: url('/lake.jpg'); /* Provide the path to your second image */
+            background-size: cover; /* Adjust as needed */
+            background-position: center; /* Adjust as needed */
+            z-index: 1; /* Ensure the image is behind the text */
+          }
+
       `}</style>
       <div>
       <div className="big-title">
@@ -123,6 +148,8 @@ const Team = () => {
      
       </div>
 
+      <div className="image-container"></div>
+
       <div className="second-below-title-text">
       <p style={{marginTop: '1800px'}}>
       TEXTO JAMES, es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
@@ -137,6 +164,9 @@ const Team = () => {
       </p>
      
       </div>
+
+      <div className="second-image-container"></div>
+
       <div>
       
  
