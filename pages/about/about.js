@@ -11,7 +11,7 @@ const About = () => {
 
   const handleTooltip = (sentences, event) => {
     const yOffset = 1800;
-    const xOffset = 110;
+    const xOffset = 70;
   
     setTooltipText(sentences);
     setTooltipPosition({
@@ -79,7 +79,7 @@ const About = () => {
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado\n- another sentence\n- yet another sentence', e)}
+            onMouseOver={(e) => handleTooltip('Supervision a cargo de un arquitecto o ingeniero calificado', e)}
             onMouseOut={handleTooltipClose}
           >
             - Supervision
@@ -103,27 +103,28 @@ const About = () => {
           <p style={{fontSize:'25px'}}>Plan C</p>
           <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
           <p style={{fontSize:'13px'}}>- Presentacion completa</p>
-          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la propuesta de mobili', e)}
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Seleccion de colores y texturas\n- Seleccion de mobiliario\n- Ambientacion\n- Iluminacion', e)}
             onMouseOut={handleTooltipClose}
           >
-            - Propuesta de mobiliario
+            - Decoracion de interiores
           </p>
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('-', e)}
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Diseno de espacios\n- Colocacion pisos\n- Paredes, tapices y pintura\n- Paredes tapices y pintura\n- Mobiliario a la medida', e)}
             onMouseOut={handleTooltipClose}
           >
-            - Propuesta de decoracion
+            - Diseno de interiores
           </p>
+          
+          
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye mano de obra', e)}
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Cuadrilla de maestros\n- Electricistas', e)}
             onMouseOut={handleTooltipClose}
           >
             - Mano de obra
@@ -133,7 +134,7 @@ const About = () => {
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado', e)}
+            onMouseOver={(e) => handleTooltip('Supervision a cargo de un arquitecto o ingeniero calificado', e)}
             onMouseOut={handleTooltipClose}
           >
             - Supervision
