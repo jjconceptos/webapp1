@@ -135,12 +135,33 @@ const About = () => {
   const yourCarouselItems1 = [
     
     {
-      imagePath: '/63.jpeg',
+      imagePath: '/7a.jpg',
+      text: '',
+      
+    },
+ {
+      imagePath: '/90.jpeg',
       text: '',
       
     },
     {
-      imagePath: '/7a.jpg',
+      imagePath: '/91.jpeg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/63.jpeg',
+      text: '',
+      
+    },
+
+    {
+      imagePath: '/93.jpeg',
+      text: '',
+      
+    },
+    {
+      imagePath: '/92.jpeg',
       text: '',
       
     },
@@ -169,11 +190,6 @@ const About = () => {
       imagePath: '/16a.jpg',
       text: '',
     
-    },
-    {
-      imagePath: '/5.jpeg',
-      text: '',
-      
     },
     
     {
@@ -212,11 +228,7 @@ const About = () => {
     },
     
     /*
-    {
-      imagePath: '/19.jpeg',
-      text: '',
-      
-    },
+   
    
   
     */
