@@ -92,7 +92,7 @@ const Layout = ({ children }) => {
       {/* Styles */}
       <style jsx global>{`
         body {
-          background-image: url('/plastic.jpg'); // Adjust the path accordingly
+          background-image: url('/concrete.jpg'); // Adjust the path accordingly
           background-size: cover;
           background-repeat: repeat; // Choose the appropriate repeat style
           background-attachment: fixed;

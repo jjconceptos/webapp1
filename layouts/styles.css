@@ -16,7 +16,7 @@ body {
   justify-content: center; /* Center the content horizontally */
   align-items: center; /* Center the content vertically */
   height: 10vh; /* Make the container take up the full viewport height */
-  background-image: url('/plastic.jpg'); /*  */
+  background-image: url('/concrete.jpg'); /*  */
   /*background-color: #f2f2f2;*/ 
 }
 
