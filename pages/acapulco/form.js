@@ -571,7 +571,7 @@ const Home = () => {
   
   .form-container {
     display: none; /* Hide the form-container by default */
-    border: 5px solid #34495E; /* */
+    border: 5px solid #5D4037; /* */
     
     padding-bottom: 20px;
     border-radius: 10px;

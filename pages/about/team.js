@@ -110,7 +110,7 @@ const Team = () => {
       
       <div className="below-title-text">
       <p style={{marginTop: '200px'}}>
-      GONZÁLEZ, una firma multidisciplinaria Mexicana con una visión global, es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
+       TEXTO COCO es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
       </p>
       <p style={{marginTop: '30px'}}>
       El estudio ofrece soluciones innovadoras, funcionales y atractivas de estética refinada basadas en conceptos bien definidos que se reflejan en productos y experiencias memorables.
@@ -125,7 +125,7 @@ const Team = () => {
 
       <div className="second-below-title-text">
       <p style={{marginTop: '1800px'}}>
-      GONZÁLEZ, una firma multidisciplinaria Mexicana con una visión global, es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
+      TEXTO JAMES, es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
       </p>
       <p style={{marginTop: '30px'}}>
       El estudio ofrece soluciones innovadoras, funcionales y atractivas de estética refinada basadas en conceptos bien definidos que se reflejan en productos y experiencias memorables.

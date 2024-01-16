@@ -5,7 +5,7 @@ import { useAuth } from '/auth/authContext'; // Adjust the path accordingly
 
 const Home = () => {
   const { state } = useAuth();
-  const words = ['texto', 'texto', 'klibius']; // Add your words here
+  const words = ['J', 'J', 'CONCEPTOS']; // Add your words here
   const [visibleWords, setVisibleWords] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
