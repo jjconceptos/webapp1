@@ -1,151 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '/layouts/layout';
-import Tooltip from '/layouts/tooltip';
-import 'layouts/carouselAbout.css';
 
-const About = () => {
 
-  const [tooltipText, setTooltipText] = useState('');
-  const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
-  const [isTooltipVisible, setTooltipVisibility] = useState(false);
+const Team = () => {
 
-  const handleTooltip = (text, event) => {
-    const yOffset = 1800; // Declare yOffset here
-    const xOffset = 110; // Declare xOffset here
-
-    setTooltipText(text);
-
-    setTooltipPosition({
-      top: event.clientY + yOffset,
-      left: event.clientX + xOffset,
-    });
-
-    setTooltipVisibility(true);
-  };
-
-  const handleTooltipClose = () => {
-    setTooltipVisibility(false);
-  };
   
-  const plans = [
-    {
-      title: 'Plan A',
-      jsx: (
-        <>
-          <p style={{fontSize:'25px'}}>Plan A</p>
-          <p style={{fontSize:'18px'}}>Proyecto visual</p>
-          <p style={{fontSize:'13px'}}>- Planta de distribucion</p>
-          <p style={{fontSize:'13px'}}>- Imagenes de referencia</p>
-          <p style={{fontSize:'13px'}}>- Moodboard</p>
-          <p style={{fontSize:'13px'}}>- Planos ambientados y/o renders</p>
-          <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
-          <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
-          <p style={{fontSize:'13px'}}>- Precio</p>
-        </>
-      ),
-    },
-    {
-      title: 'Plan B',
-      jsx: (
-        <>
-          <p style={{fontSize:'25px'}}>Plan B</p>
-          <p style={{fontSize:'18px'}}>Proyecto mobiliario</p>
-          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
-          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
-          <p style={{fontSize:'13px'}}></p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la propuesta de mobili', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Propuesta de mobiliario
-          </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye mano de obra', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Mano de obra
-          </p>
-          <p style={{fontSize:'13px'}}>- Flete</p>
-          <p style={{fontSize:'13px'}}>- Instalacion</p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Supervision
-          </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la entrega final', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Entrega final al cliente
-          </p>
-          
-        </>
-      ),
-    },
-    {
-      title: 'Plan C',
-      jsx: (
-        <>
-          <p style={{fontSize:'25px'}}>Plan C</p>
-          <p style={{fontSize:'18px'}}>Ejecucion de proyecto</p>
-          <p style={{fontSize:'13px'}}>- Presentacion completa</p>
-          <p style={{fontSize:'13px'}}>- Visita al espacio</p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la propuesta de mobili', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Propuesta de mobiliario
-          </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('-', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Propuesta de decoracion
-          </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye mano de obra', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Mano de obra
-          </p>
-          <p style={{fontSize:'13px'}}>- Flete</p>
-          <p style={{fontSize:'13px'}}>- Instalacion</p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('- manejada por un arquitecto o ingeniero calificado', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Supervision
-          </p>
-          <p
-            style={{ fontSize: '13px' }}
-            className="tooltip"
-            onMouseOver={(e) => handleTooltip('lo que incluye la entrega final', e)}
-            onMouseOut={handleTooltipClose}
-          >
-            - Entrega final al cliente
-          </p>
-          
-        </>
-      ),
-    },
-  ];
 
   
 
@@ -188,10 +47,11 @@ const About = () => {
         .below-title-text {
           font-size: 18px;
           position: absolute;
-          text-align: left;
+          text-align: ;
           color: #333; /* Adjust text color as needed */
           margin-top: 190vh; /* Add 30vh margin above the text */
-          padding-left: 8vh;
+          left: 11vh;
+          width: 40%;
         }
 
         .services-text {
@@ -234,9 +94,7 @@ const About = () => {
         Conocenos!
       </div>
         </div>
-      <div className="below-title-undertitle">
-      SOBRE NOSOTROS
-      </div>
+      
       
       <div className="below-title-text">
       <p style={{marginTop: '200px'}}>
@@ -254,31 +112,14 @@ const About = () => {
       </div>
       <div>
       
-    </div>
-<div className="services-text">
-<p>
-  Servicios
-</p>
+ 
 </div>
 
-<div className="services-container">
-        {plans.map((plan, index) => (
-          <div key={index} className="service-plan">
-            {plan.jsx}
-          </div>
-        ))}
-      </div>
 
-      <div>
-        {isTooltipVisible && (
-          <Tooltip text={tooltipText} isVisible={isTooltipVisible} top={tooltipPosition.top} left={tooltipPosition.left} />
-          
-        )}
-      </div>
     
 
     </Layout>
   );
 };
 
-export default About;
+export default Team;

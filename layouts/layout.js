@@ -83,7 +83,7 @@ const Layout = ({ children }) => {
           </div>
           </div>
            
-        <div style={{ textAlign: 'left',  marginTop: '-27px', paddingLeft: '20px', fontSize: '14px'}}>
+        <div style={{ textAlign: 'left',  marginTop: '-5px', paddingLeft: '10px', fontSize: '14px'}}>
           <p> &copy; {new Date().getFullYear()} JRF. All rights reserved.</p>
         </div>
         

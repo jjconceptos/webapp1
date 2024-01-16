@@ -40,7 +40,14 @@ const About = () => {
           <p style={{fontSize:'13px'}}>- Planos ambientados y/o renders</p>
           <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
           <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
-          <p style={{fontSize:'13px'}}>- Precio</p>
+          <p
+            style={{ fontSize: '13px' }}
+            className="tooltip"
+            onMouseOver={(e) => handleTooltip('precio uno', e)}
+            onMouseOut={handleTooltipClose}
+          >
+            - Precio
+          </p>
         </>
       ),
     },
