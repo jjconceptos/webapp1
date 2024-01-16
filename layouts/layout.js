@@ -83,9 +83,13 @@ const Layout = ({ children }) => {
           </div>
           </div>
            
-        <div style={{ textAlign: 'left',  marginTop: '-5px', paddingLeft: '10px', fontSize: '14px'}}>
-          <p> &copy; {new Date().getFullYear()} JRF. All rights reserved.</p>
+          <div style={{ textAlign: 'left', marginTop: '-5px', paddingLeft: '10px', fontSize: '14px' }}>
+          <p>
+             
+            <a href="https://www.jrf.one" target="_blank" rel="noopener noreferrer">&copy; {new Date().getFullYear()} JRF. All rights reserved.</a>
+          </p>
         </div>
+
         
       </footer>
 
