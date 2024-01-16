@@ -16,7 +16,8 @@ body {
   justify-content: center; /* Center the content horizontally */
   align-items: center; /* Center the content vertically */
   height: 10vh; /* Make the container take up the full viewport height */
-  background-color: #f2f2f2; /* Add a background color as needed */
+  background-image: url('/plastic.jpg'); /*  */
+  /*background-color: #f2f2f2;*/ 
 }
 
 /* Define a CSS class for input fields */

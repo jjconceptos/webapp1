@@ -76,7 +76,7 @@ const Layout = ({ children }) => {
           <div style={{ marginLeft: '55%', marginTop: '-62px', fontSize: '10px'}}>
           <div >Cuenta:</div>
             <div >
-          <a href="/register/registerForm.js">Registrarse</a>
+          <a href="/register/registerForm">Registrarse</a>
           </div>
           <div >
             <a href="/login/login">Iniciar sesion</a>
