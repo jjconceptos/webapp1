@@ -47,12 +47,24 @@ const Team = () => {
         .below-title-text {
           font-size: 18px;
           position: absolute;
-          text-align: ;
+          text-align: left;
           color: #333; /* Adjust text color as needed */
           margin-top: 190vh; /* Add 30vh margin above the text */
           left: 11vh;
           width: 40%;
         }
+
+        .second-below-title-text {
+            font-size: 18px;
+            position: absolute;
+            text-align: right;
+            color: #333; /* Adjust text color as needed */
+            margin-top: 190vh; /* Add 30vh margin above the text */
+            right: 11vh;
+            width: 40%;
+            padding-bottom: 15vh;
+
+          }
 
         .services-text {
           font-size: 26px;
@@ -108,12 +120,27 @@ const Team = () => {
       GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
       Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
       </p>
-      <p style={{marginTop: '120px', textAlign: 'left'}}>Vibe</p>
+     
+      </div>
+
+      <div className="second-below-title-text">
+      <p style={{marginTop: '1800px'}}>
+      GONZÁLEZ, una firma multidisciplinaria Mexicana con una visión global, es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
+      </p>
+      <p style={{marginTop: '30px'}}>
+      El estudio ofrece soluciones innovadoras, funcionales y atractivas de estética refinada basadas en conceptos bien definidos que se reflejan en productos y experiencias memorables.
+      A través de una metodología de trabajo de 360º que incorpora tres pilares esenciales: Arquitectura, Diseño Industrial y Branding.
+      </p>
+      <p style={{marginTop: '30px'}}>
+      GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
+      Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
+      </p>
+     
       </div>
       <div>
       
  
-</div>
+      </div>
 
 
     
