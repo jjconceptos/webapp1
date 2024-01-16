@@ -59,7 +59,7 @@ const Layout = ({ children }) => {
       <footer>
         {/* */}
         <div style={{ marginLeft: '25%', bottom: '10px', fontSize: '10px'}}>
-          <div >Contact:</div>
+          <div >Contacto:</div>
           <div>
           Arquitecto Juan Pablo Gonzalez Andrade
           + 52 55 2344 3501
@@ -69,15 +69,17 @@ const Layout = ({ children }) => {
           + 52 55 1079 1185
           </div>
           <div >
-          3 Reyes 18 Colonia Navidad, Ciudad de Mexico
+          3 Reyes 18 Colonia Navidad, Ciudad de Mexico, 05219
           </div>
           </div>
-          <div style={{ textAlign: 'right', marginTop: '-25px', fontSize: '10px'}}>
+          
+          <div style={{ marginLeft: '55%', marginTop: '-62px', fontSize: '10px'}}>
+          <div >Cuenta:</div>
             <div >
-          <a href="/register/registerForm.js">Register</a>
+          <a href="/register/registerForm.js">Registrarse</a>
           </div>
           <div >
-            <a href="/login/login">Login</a>
+            <a href="/login/login">Iniciar sesion</a>
           </div>
           </div>
            

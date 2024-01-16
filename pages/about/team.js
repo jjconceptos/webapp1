@@ -147,172 +147,9 @@ const About = () => {
     },
   ];
 
-  const yourCarouselItems1 = [
-    
-   
-    {
-      imagePath: '/7a.jpg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/12a.jpg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/13a.jpg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/14a.jpg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/16a.jpg',
-      text: '',
-    
-    },
-    {
-      imagePath: '/5.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/1a.jpg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/2a.jpg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/10a.jpg',
-      text: '',
-      
-    },
-    /*
-    {
-      imagePath: '/15.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/11.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/13.jpeg',
-      text: '',
-      
-    },
-    
-    
-    {
-      imagePath: '/18.jpeg',
-      text: 'Clasico',
-      
-    },
-    
-    {
-      imagePath: '/18.jpeg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/19.jpeg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/22.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/22a.jpg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/23.jpeg',
-      text: '',
-      
-    },
-    
-    {
-      imagePath: '/6.jpeg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/7.jpeg',
-      text: '',
-      
-    },
-    {
-      imagePath: '/8.jpeg',
-      text: 'Clasico',
-      
-    },
-    {
-      imagePath: '/9.jpeg',
-      text: 'Clasico',
-      
-    },
-    
-    {
-      imagePath: '/21.jpeg',
-      text: '',
-      
-    },
-    */
-    
-  ];
+  
 
-  const Carousel = ({ items }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
   
-    const handlePrev = () => {
-      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : items.length - 1));
-    };
-  
-    const handleNext = () => {
-      setCurrentIndex((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : 0));
-    };
-  
-    return (
-      <div className="carousel">
-        <div className="carousel-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          {items.map((item, index) => (
-            <div key={index} className="carousel-item">
-              <img src={item.imagePath} alt={`Image ${index + 1}`} />
-              <div className="carousel-footer">
-                <p>{item.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <button type="button" onClick={handlePrev} className="carousel-button prev">
-          &lt;
-        </button>
-        <button type="button" onClick={handleNext} className="carousel-button next">
-          &gt;
-        </button>
-      </div>
-    );
-  };
 
   return (
     <Layout>
@@ -354,7 +191,7 @@ const About = () => {
           text-align: left;
           color: #333; /* Adjust text color as needed */
           margin-top: 190vh; /* Add 30vh margin above the text */
-          padding: 40vh;
+          padding-left: 8vh;
         }
 
         .services-text {
@@ -416,9 +253,7 @@ const About = () => {
       <p style={{marginTop: '120px', textAlign: 'left'}}>Vibe</p>
       </div>
       <div>
-      <label>    
-      <Carousel items={yourCarouselItems1} />
-    </label>
+      
     </div>
 <div className="services-text">
 <p>
