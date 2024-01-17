@@ -323,7 +323,7 @@ const About = () => {
         .services-text {
           font-size: 26px;
           position: absolute;
-          top: 289vh;
+          top: 282vh;
           width: 50%;
           overflow: hidden;
           left: 82.2vh;
@@ -333,7 +333,7 @@ const About = () => {
         .services-under-text{
           font-size: 12px;
           position: absolute;
-          top: 289vh;
+          top: 284vh;
           width: 50%;
           overflow: hidden;
           left: 10vh;
@@ -375,7 +375,7 @@ const About = () => {
       </div>
       
       <div className="below-title-text">
-      <p style={{marginTop: '300px'}}>
+      <p style={{marginTop: '150px'}}>
       JJ Conceptos, es un taller de remodelación e interiorismo basado en Mexico pero que busca siempre tomar en cuenta una visión internacional.  
       </p>
       <p style={{marginTop: '30px'}}>
