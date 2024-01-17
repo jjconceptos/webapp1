@@ -140,11 +140,11 @@ const Team = () => {
       de obras de gran y pequena escala y planos ejecutivos para la construcción de viviendas:
       </p>
       <p style={{marginTop: '30px'}}>
-      "Siempre me intereso el porque y el como se realizaban las edificaciones y construcciones que observaba, 
+      Siempre me intereso el porque y el como se realizaban las edificaciones y construcciones que observaba, 
       desde esos momentos surgió mi pasión por el arte del diseño y la arquitectura, con el paso del tiempo
       esa pasión fue incrementando hasta que se convirtió en una necesidad la cual necesitaba explotar al máximo, 
       por ello tome la decisión de estudiar la carrera de arquitectura, cada proyecto que he realizado y 
-      realizo hoy en día lo tomo como si fuera para mi, haciendo de cada proyecto una vivencia especial para el cliente."
+      realizo hoy en día lo tomo como si fuera para mi, haciendo de cada proyecto una vivencia especial para el cliente.
       </p>
       <p style={{marginTop: '30px'}}>
           
