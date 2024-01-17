@@ -321,6 +321,16 @@ const About = () => {
           padding-bottom: 10vh;
         }
 
+        .services-under-text{
+          font-size: 12px;
+          position: absolute;
+          top: 289vh;
+          width: 50%;
+          overflow: hidden;
+          left: 10vh;
+          padding-bottom: 10vh;
+        }
+
         .services-container {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -383,7 +393,11 @@ const About = () => {
   Servicios
 </p>
 </div>
-
+<div className="services-under-text">
+<p style={{marginTop: '30px',}}>
+  Por favor coloca el mouse encima del servicio que quieras conocer mas detalles
+</p>
+</div>
 <div className="services-container">
         {plans.map((plan, index) => (
           <div key={index} className="service-plan">
