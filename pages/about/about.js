@@ -389,14 +389,14 @@ const About = () => {
       Nuestro taller mezcla tradicion con innovacion, para presentar al cliente un producto estetico y practico. 
      
       </p>
-      <p style={{marginTop: '50px', textAlign: 'left'}}>Conceptos</p>
+      <p style={{marginTop: '80px', textAlign: 'left'}}>Conceptos</p>
       </div>
       <div>
-      <label>    
+      <label >    
       <Carousel items={yourCarouselItems1} />
     </label>
     </div>
-<div className="services-text">
+<div className="services-text" >
 <p>
   Servicios
 </p>
