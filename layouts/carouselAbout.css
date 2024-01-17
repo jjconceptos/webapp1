@@ -46,18 +46,24 @@
   text-align: center;
 }
 
-  .carousel-button {
-    position: absolute;
-    top: 42%;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
+.carousel-button {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 24px; /* Adjust the font size as needed */
+  background-color: #34495E; /* Adjust button background color as needed */
+  color: #EAECEE; /* Adjust button text color as needed */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Adjust border-radius as needed */
+  padding: 10px; /* Adjust padding as needed */
+}
   
   .prev {
-    left: 10px;
+    left: 20px;
   }
   
   .next {
-    right: 10px;
+    right: 20px;
   }
   
