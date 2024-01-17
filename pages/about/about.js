@@ -24,6 +24,15 @@ const About = () => {
   const handleTooltipClose = () => {
     setTooltipVisibility(false);
   };
+
+  const handleConocenosClick = () => {
+    // Specify the position you want to scroll to (adjust the value as needed)
+    const scrollPosition = 800; // Replace with your desired position
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: 'smooth', // Use smooth scrolling
+    });
+  };
   
   const plans = [
     {
@@ -290,7 +299,7 @@ const About = () => {
         .side-title {
           font-size: 18px;
           text-align: center;
-          color: #666; /* Adjust text color as needed */
+          color: #000; /* Adjust text color as needed */
           margin-bottom: 10px; /* Add some space below the side title */
           cursor: pointer;
            z-index: 2;
@@ -357,7 +366,7 @@ const About = () => {
         Nuestra vision
       </div>
 
-      <div className="side-title" >
+      <div className="side-title" onClick={handleConocenosClick}>
         Conocenos!
       </div>
         </div>
