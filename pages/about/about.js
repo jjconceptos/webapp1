@@ -356,7 +356,7 @@ const About = () => {
       </div>
       
       <div className="below-title-text">
-      <p style={{marginTop: '340px'}}>
+      <p style={{marginTop: '300px'}}>
       JJ Conceptos, es un taller de remodelación e interiorismo basado en Mexico pero que busca siempre tomar en cuenta una visión internacional.  
       </p>
       <p style={{marginTop: '30px'}}>
@@ -371,7 +371,7 @@ const About = () => {
       GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
       Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
       </p>
-      <p style={{marginTop: '120px', textAlign: 'left'}}>Conceptos</p>
+      <p style={{marginTop: '50px', textAlign: 'left'}}>Conceptos</p>
       </div>
       <div>
       <label>    
