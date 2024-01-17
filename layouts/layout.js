@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
           </div>
           </div>
           
-          <div style={{ marginLeft: '55%', marginTop: '-62px', fontSize: '10px'}}>
+          <div style={{ marginLeft: '55%', marginTop: '-60px', fontSize: '10px'}}>
           <div >Cuenta:</div>
             <div >
           <a href="/register/registerForm">Registrarse</a>
@@ -83,7 +83,7 @@ const Layout = ({ children }) => {
           </div>
           </div>
 
-          <div style={{ marginLeft: '70%', marginTop: '-46px', fontSize: '10px'}}>
+          <div style={{ marginLeft: '70%', marginTop: '-45px', fontSize: '10px'}}>
           <div >Agenda una cita en linea:</div>
             <div >
          Escribe a: jjconceptos21@gmail.com
@@ -173,23 +173,8 @@ const Layout = ({ children }) => {
           z-index: 3; /* Set a higher z-index than main-content */
         }
       
-        .rice-figure {
-          width: 20px;
-          height: 20px;
-          background-color: ${isSidebarOpen ? '#fff' : '#000'};
-          border-radius: 50%;
-          position: fixed;
-          top: 15px;
-          left: ${isSidebarOpen ? '265px' : '15px'}; /* Adjust the left position based on sidebar state */
-          cursor: pointer;
-          z-index: 4; /* Set a higher z-index than the toggle-sidebar */
-          transition: left 0.5s, background-color 0.5s; /* Add this line for smooth transition */
-        }
-      
-        .sidebar-open .rice-figure {
-          left: 265px; /* Adjust the left position when the sidebar is open */
-          background-color: ${isSidebarOpen ? '#999' : '#000'}; /* Change the color when the sidebar is open */
-        }
+        
+
       
         /*  */
         footer {

@@ -99,11 +99,11 @@ const Team = () => {
 
         .image-container {
             position: absolute;
-            top: 140vh; /* Adjust the top position as needed */
+            top: 130vh; /* Adjust the top position as needed */
             right: 5vh; /* Adjust the left position as needed */
             width: 30%; /* Adjust the width of the image container */
-            height: 50%; /* Adjust the height of the image container */
-            background-image: url('/lake.jpg'); /* Provide the path to your image */
+            height: 55%; /* Adjust the height of the image container */
+            background-image: url('/cop.jpeg'); /* Provide the path to your image */
             background-size: cover; /* Adjust as needed */
             background-position: center; /* Adjust as needed */
             z-index: 1; /* Ensure the image is behind the text */
@@ -135,15 +135,19 @@ const Team = () => {
       
       <div className="below-title-text">
       <p style={{marginTop: '200px'}}>
-       TEXTO COCO es el resultado de la experiencia del arquitecto Juan Pablo Gonzalez. 
+      Juan Pablo González Andrade, graduado de la Universidad Anáhuac Norte en la carrera de Arquitectura, ha desarrollado 
+      varios proyectos de remodelación e interiorismo, diseño de mobiliario para hoteles y centros comerciales, supervisión 
+      de obras de gran y pequena escala y planos ejecutivos para la construcción de viviendas:
       </p>
       <p style={{marginTop: '30px'}}>
-      El estudio ofrece soluciones innovadoras, funcionales y atractivas de estética refinada basadas en conceptos bien definidos que se reflejan en productos y experiencias memorables.
-      A través de una metodología de trabajo de 360º que incorpora tres pilares esenciales: Arquitectura, Diseño Industrial y Branding.
+      "Siempre me intereso el porque y el como se realizaban las edificaciones y construcciones que observaba, 
+      desde esos momentos surgió mi pasión por el arte del diseño y la arquitectura, con el paso del tiempo
+      esa pasión fue incrementando hasta que se convirtió en una necesidad la cual necesitaba explotar al máximo, 
+      por ello tome la decisión de estudiar la carrera de arquitectura, cada proyecto que he realizado y 
+      realizo hoy en día lo tomo como si fuera para mi, haciendo de cada proyecto una vivencia especial para el cliente."
       </p>
       <p style={{marginTop: '30px'}}>
-      GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
-      Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
+          
       </p>
      
       </div>
@@ -152,18 +156,17 @@ const Team = () => {
 
       <div className="second-below-title-text">
       <p style={{marginTop: '1800px'}}>
-      Jaime Rodriguez Flores, graduado como ingeniero en mecatronica por el ITESM, es un gran apasionado del diseno industrial, la historia y el software.   
+      Jaime Rodriguez Flores, egresado del ITESM como ingeniero en mecatronica, es un gran apasionado del diseno industrial, la historia y el software.   
       </p>
       <p style={{marginTop: '30px'}}>
       Desde nino Jaime tuvo un fuerte contacto con el mundo de la construccion y el diseno. Acompanando a su padre a construcciones y crecer en una familia llena de disenadores y creativos
       abrio una curiosidad por este mundo y el buen gusto en el.
       Mas tarde se unio al taller de carpinteria de su padre, ayudandole a coordinar y supervisar proyectos de lujo para clientes en la Ciudad de Mexico y en la playa de Acapulco. 
-      En 2021 Jaime se une con Juan Pablo, para proponer un servicio de mobiliario a la medida que evoluciona poco a poco en un servicio integral donde Jaime aporta  
-      tres aspectos esenciales: branding, diseno y supervision.
+      
       </p>
       <p style={{marginTop: '30px'}}>
-      Jaime toma inspiracion de estilos como la arquitectura Neocolonial Mexicana, el Brutalismo Sovietico, arquitectura Elizabetana y Barroco Frances pero siempre buscando la manera 
-      de imprimir la esencia de cada cliente. Valores que definen el trabajo de Jaime son calidad, puntualidad y atencion a detalle.
+      Jaime toma inspiracion de estilos como la arquitectura Neocolonial Mexicana, el Brutalismo Sovietico, arquitectura Elizabetana y Barroco Frances pero lo mas importante, 
+      plasmar la esencia de cada cliente. 
       </p>
      
       </div>
