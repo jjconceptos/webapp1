@@ -403,7 +403,7 @@ const About = () => {
 </div>
 <div className="services-under-text">
 <p style={{marginTop: '30px',}}>
-  Por favor coloca el mouse encima del servicio que quieras conocer mas a detalle
+  Por favor coloca el mouse encima del servicio que quieras conocer mas a detalle (no todos tienen detalle)
 </p>
 </div>
 <div className="services-container">
