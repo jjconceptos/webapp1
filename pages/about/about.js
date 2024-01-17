@@ -373,13 +373,12 @@ const About = () => {
      
       Con especialidad en mobiliario a la medida, JJ Conceptos nace como eso, un taller de muebles. En 2021 el arquitecto Juan Pablo Gonzalez y el 
       ingeniero Jaime Rodriguez, se unen con un objetivo:  Al paso del tiempo, y despues de trabajar con 
-      diversos clientes, el equipo se amplia y nuestros servicios tambien, para ofrecer soluciones de interiorismo integral.
-      senciales: Arquitectura, Diseño Industrial y Branding.
+      diversos clientes, el equipo se amplia y nuestros servicios tambien, para ofrecer soluciones de interiorismo integral que definimos con los sigientes tres pilares:
+      Arquitectura, Interiorismo y Branding.
       </p>
       <p style={{marginTop: '30px'}}>
       Nuestro taller mezcla tradicion con innovacion, para presentar al cliente un producto estetico y practico. 
-      GONZÁLEZ concibe una narrativa específica para cada cliente, permitiéndoles contar su propia historia.
-      Con una experiencia destacada en los campos de hospitalidad, venta al por menor, alimentos y bebidas, así como en exposiciones e instituciones culturales, los proyectos de GONZÁLEZ se definen por la convergencia entre tradición y vanguardia, combinando calidad, practicidad y sofisticación.
+     
       </p>
       <p style={{marginTop: '50px', textAlign: 'left'}}>Conceptos</p>
       </div>
@@ -395,7 +394,7 @@ const About = () => {
 </div>
 <div className="services-under-text">
 <p style={{marginTop: '30px',}}>
-  Por favor coloca el mouse encima del servicio que quieras conocer mas detalles
+  Por favor coloca el mouse encima del servicio que quieras conocer mas a detalle
 </p>
 </div>
 <div className="services-container">
