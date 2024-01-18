@@ -46,8 +46,6 @@ const About = () => {
           <p style={{fontSize:'13px'}}>- Moodboard</p>
           <p style={{fontSize:'13px'}}>- Renders</p>
           <p style={{fontSize:'13px'}}>- Seleccion de mobiliario e interiores</p>
-          <p style={{fontSize:'13px'}}>- Presentacion con plantas ambientadas</p>
-          <p style={{fontSize:'13px'}}>- Precio: 12,0000 MXN IVA incluido</p>
         </>
       ),
     },
@@ -116,13 +114,12 @@ const About = () => {
           <p
             style={{ fontSize: '13px' }}
             className="tooltip"
-            onMouseOver={(e) => handleTooltip('Incluye:\n- Diseno de espacios\n- Colocacion pisos\n- Paredes, tapices y pintura\n- Mobiliario a la medida', e)}
+            onMouseOver={(e) => handleTooltip('Incluye:\n- Diseno de espacios\n- Colocacion pisos\n- Paredes, tapices y pintura', e)}
             onMouseOut={handleTooltipClose}
           >
             - Diseno de interiores
           </p>
-          
-          
+          <p style={{fontSize:'13px'}}>- Mobiliario a la medida</p>
           <p style={{fontSize:'13px'}}>- Mano de obra</p>
           <p style={{fontSize:'13px'}}>- Flete</p>
           <p style={{fontSize:'13px'}}>- Instalacion</p>
@@ -142,6 +139,12 @@ const About = () => {
   ];
 
   const yourCarouselItems1 = [
+
+    {
+      imagePath: '/61.jpeg',
+      text: '',
+      
+    },
 
     {
       imagePath: '/7a.jpg',
@@ -224,17 +227,9 @@ const About = () => {
       
     },
     
-    {
-      imagePath: '/61.jpeg',
-      text: '',
-      
-    },
     
-    {
-      imagePath: '/62.jpeg',
-      text: '',
-      
-    },
+    
+    
     
     /*
    

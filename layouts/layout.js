@@ -29,9 +29,9 @@ const Layout = ({ children }) => {
             <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/about/team">Equipo</Link>
             </li>
-            {/* <li onClick={() => setIsSidebarOpen(false)}>
+           <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/projects/projects">Projects</Link>
-            </li> */}
+            </li> {/* */}
             
             
            
