@@ -10,7 +10,7 @@ const initStorage = () => {
   } else {
     // Use local JSON file for credentials in development
     return new Storage({
-      keyFilename: './ayfpublicwebapp-f41d482866a8.json',
+      keyFilename: './primeval-array-411517-a6421345dc48.json',
     });
   }
 };
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     const projectNamesArray = Array.isArray(projectNames) ? projectNames : projectNames.split(',');
 
     // Specify the Google Cloud Storage bucket and image filename for each project
-    const bucketName = 'ayf-publicwebapp';
+    const bucketName = 'jj-webapp1';
     const imageFileNames = projectNamesArray.map((projectName) => `${projectName}.jpg`);
     console.log('Searching for projects (getImage.js):', imageFileNames);
 

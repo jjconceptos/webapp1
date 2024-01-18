@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.0.1",
-    "@vercel/kv": "^0.2.2",
+    "@vercel/kv": "^0.2.4",
     "animejs": "^3.2.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.4.0",

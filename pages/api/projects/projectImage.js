@@ -25,7 +25,7 @@ const initStorage = () => {
   } else {
     // Use local JSON file for credentials in development
     return new Storage({
-      keyFilename: './primeval-array-411517-d84d530fb3a5.json',
+      keyFilename: './primeval-array-411517-a6421345dc48.json',
       
     });
   }
@@ -62,7 +62,7 @@ export default async function handler(req, res) {
       }
 
       // Specify the Google Cloud Storage bucket and destination filename
-      const bucketName = 'ayf-publicwebapp';
+      const bucketName = 'jj-webapp1';
       const timestamp = req.headers.timestamp;
       const projectName = req.headers['image-name'];
       const destFileName = `${projectName}.jpg`; // Assuming it's a JPEG image
