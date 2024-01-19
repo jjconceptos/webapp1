@@ -36,23 +36,19 @@ body {
   border-color: #007bff;
 }
 
-.projects-grid {
+.pro-grid {
+  position: relative;
+  top: 15%;
+  left: 35%; /* Adjust as needed to move it to the right */
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 20px; /* Gap between items */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.project-card {
+.pro-card {
   border: 1px solid #ddd;
   padding: 10px;
   /* Add any other styles you want for your project cards */
 }
 
-.no-projects-message.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
 

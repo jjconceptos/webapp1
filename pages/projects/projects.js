@@ -121,12 +121,31 @@ function Projects() {
 
   return (
     <Layout>
-    <CenteredContentWrapper>
-      <div>
-        <h1></h1>
+   <style jsx global>{`
+        .no-projects-centered {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .add-projects {
+          position: fixed;
+          top: 25%;
+          left: 10%;
+          transform: translate(-50%, -50%);
+        }
+      `}</style>
+      <div >
+      <div className="add-projects">
         {isButtonVisible && (
-          <button onClick={handleProjectAddClick}>Add project</button>
+          <button onClick={handleProjectAddClick}
+        >
+          Add project
+        </button>
+
         )}
+        </div>
         {showProjectForm && (
           <div>
             <h2></h2>
@@ -135,10 +154,11 @@ function Projects() {
         )}
 
         {/* Display the list of projects */}
-        <ul className="projects-grid">
+       {/* Display the list of projects */}
+<div className="pro-grid">
   {Array.isArray(projects) && projects.length > 0 ? (
     projects.map((project, index) => (
-      <li key={index} className={`project-card ${expandedProject === index ? 'expanded' : ''}`}>
+      <div key={index} className={`pro-card ${expandedProject === index ? 'expanded' : ''}`}>
         <h3 onClick={() => setExpandedProject(expandedProject === index ? null : index)}>
           {project.name}
         </h3>
@@ -147,27 +167,33 @@ function Projects() {
         </p>
         {/* If you have an imageUrl, you can display it here */}
         {project.imageUrl && (
-  <img
-    src={project.imageUrl}
-    alt={project.name}
-    className={`project-image ${expandedProject === index ? 'expanded' : ''}`}
-    onClick={() => handleProjectClick(project)}
-  />
-)}
+          <img
+            src={project.imageUrl}
+            alt={project.name}
+            className={`project-image ${expandedProject === index ? 'expanded' : ''}`}
+            onClick={() => handleProjectClick(project)}
+          />
+        )}
         {isButtonVisible && ( // Conditionally render the Delete Project button
           <DelProjectButton
             projectName={project.name}
             onDeleteProject={handleDeleteProject}
-            
           />
         )}
-      </li>
+      </div>
     ))
   ) : (
-    <p className={`no-projects-message ${Array.isArray(projects) && projects.length === 0 ? 'centered' : ''}`}>
-      No projects to display.</p>
+    <div className="no-projects-centered">
+      <p style={{
+        marginLeft: '10%', // Adjust as needed
+        zIndex: 1, // Use a numeric value
+      }} className={`${Array.isArray(projects) && projects.length === 0 ? '' : ''}`}>
+        No projects to display.
+      </p>
+    </div>
   )}
-</ul>
+</div>
+
 {enlargedView && selectedProject && (
 <div className="enlarged-project">
               <h2>{selectedProject.name}</h2>
@@ -182,7 +208,7 @@ function Projects() {
           )}
 
       </div>
-      </CenteredContentWrapper>
+
     </Layout>
   );
 }

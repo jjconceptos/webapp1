@@ -10,7 +10,7 @@ const initStorage = () => {
   } else {
     // Use local JSON file for credentials in development
     return new Storage({
-      keyFilename: './ayfpublicwebapp-f41d482866a8.json',
+      keyFilename: './primeval-array-411517-a6421345dc48.json',
     });
   }
 };
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     }
 
     // Specify the Google Cloud Storage bucket and image filename
-    const bucketName = 'ayf-publicwebapp';
+    const bucketName = 'jj-webapp1';
     const imageFileName = `${projectName}.jpg`; // Simplified to just projectName.jpg
 
     console.log('Deleting image from Google Cloud Storage:', imageFileName);

@@ -109,36 +109,51 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   
   return (
     <Layout>
+<style jsx global>{`
+ .input-container-add-project {
+  position: fixed;
+  top: 40%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background-image: url('/concrete.jpg'); /* Set your background image */
+  /*background-color: #f2f2f2;*/ 
+}
+
+/* Define a CSS class for input fields */
+.input-field-add-project {
+  width: 50%;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: border-color 0.3s;
+  margin: 0 auto;
+}
+
+/* Add a focus style */
+.input-field-add-project:focus {
+  border-color: #007bff;
+}
+
+`}</style>
+     <div className="input-container-add-project">
+  <div>
+    <h2></h2>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div>
-        <h2></h2>
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <div>
-            <input className="input-field" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
-          </div>
-          <div>
-            <textarea className="input-field" value={description} onChange={handleDescriptionChange} placeholder="Description" />
-          </div>
-          <div>
-            <input type="file" accept="image/*" onChange={handlePhotoChange} />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        <input className="input-field-add-project" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
       </div>
-      {/* Log the updated projects array here */}
       <div>
-        <h2></h2>
-        {/* 
-        <ul>
-          {Array.isArray(projects) &&
-            projects.map((project, index) => (
-              <li key={index}>
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-              </li>
-            ))}
-        </ul>
-        */}
+        <textarea className="input-field-add-project" value={description} onChange={handleDescriptionChange} placeholder="Description" />
       </div>
+      <div>
+        <input type="file" accept="image/*" onChange={handlePhotoChange} />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+      
     </Layout>
   );
 };

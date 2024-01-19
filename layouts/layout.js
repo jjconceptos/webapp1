@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
               <Link href="/about/team">Equipo</Link>
             </li>
            <li onClick={() => setIsSidebarOpen(false)}>
-              <Link href="/projects/projects">Projects</Link>
+              <Link href="/projects/projects">Proyectos</Link>
             </li> {/* */}
             
             
