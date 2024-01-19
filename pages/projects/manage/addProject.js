@@ -111,8 +111,8 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
     <Layout>
 <style jsx global>{`
  .input-container-add-project {
-  position: fixed;
-  top: 40%;
+  position: absolute;
+  top: 30%;
   left: 20%;
   transform: translate(-50%, -50%);
   background-image: url('/concrete.jpg'); /* Set your background image */

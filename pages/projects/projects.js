@@ -130,8 +130,8 @@ function Projects() {
         }
 
         .add-projects {
-          position: fixed;
-          top: 25%;
+          position: absolute;
+          top: 14%;
           left: 10%;
           transform: translate(-50%, -50%);
         }

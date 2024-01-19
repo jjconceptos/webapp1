@@ -37,12 +37,13 @@ body {
 }
 
 .pro-grid {
-  position: relative;
-  top: 15%;
-  left: 35%; /* Adjust as needed to move it to the right */
+  position: absolute;
+  top: 50%;
+  left: 0%; /* Adjust as needed to move it to the right */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  padding:15px;
 }
 
 .pro-card {
