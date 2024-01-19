@@ -6,7 +6,7 @@ const ProjectsLandingPage = () => {
   return (
     <Layout>
       <style jsx global>{`
-        .project-links {
+         .project-links {
             position: absolute;
             top: 20%;
             right: 5%; /* Adjust as needed to move it to the right */
@@ -20,10 +20,10 @@ const ProjectsLandingPage = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 200px; /* Adjust as needed */
-          height: 200px; /* Adjust as needed */
+          width: 100px; /* Adjust as needed */
+          height: 100px; /* Adjust as needed */
           background-color: #e0e0e0; /* Placeholder color */
-          border-radius: 0px; /* Adjust as needed */
+          border-radius: 10px; /* Adjust as needed */
           text-decoration: none;
           color: #333; /* Adjust text color */
           font-weight: bold;
@@ -37,12 +37,12 @@ const ProjectsLandingPage = () => {
       `}</style>
       
       <div className="project-links">
-        <a href="/projects/furniture/projects" className="project-link">
+        <a href="/projects/muebles/projects" className="project-link">
           <img src="/muebles-icon.png" alt="Muebles Icon" />
           Muebles
         </a>
 
-        <a href="/projects/interiors/projects" className="project-link">
+        <a href="/projects/interiorismo/projects" className="project-link">
           <img src="/interiorismo-icon.png" alt="Interiorismo Icon" />
           Interiorismo
         </a>
