@@ -15,16 +15,15 @@ export default async function handler(req, res) {
       // Retrieve the project names list from the key-value store
       const projectNames = await kv.get('projectnames:');
 
-      console.log("Received GET Request for project names");
-      console.log("Fetched Project Names List:", projectNames);
+console.log("Received GET Request for project names");
 
-      // Check if projectNames is not null and is an array
-      if (projectNames && Array.isArray(projectNames)) {
-        res.status(200).json(projectNames);
-      } else {
-        console.error('Invalid project names list');
-        res.status(500).json({ message: 'Invalid project names list' });
-      }
+if (projectNames) {
+  console.log("Fetched Project Names List:", projectNames);
+  res.status(200).json(projectNames);
+} else {
+  console.error('Error fetching project names from the key-value store');
+  res.status(500).json({ message: 'Error fetching project names' });
+}
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "An error occurred" });
