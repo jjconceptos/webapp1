@@ -32,6 +32,9 @@ const Layout = ({ children }) => {
            <li onClick={() => setIsSidebarOpen(false)}>
               <Link href="/projects/projectsLandingPage">Proyectos</Link>
             </li> {/* */}
+            <li onClick={() => setIsSidebarOpen(false)}>
+              <Link href="/products/productsLandingPage">Productos</Link>
+            </li> {/* */}
             
             
            
@@ -87,6 +90,13 @@ const Layout = ({ children }) => {
           <div >Agenda una cita en linea:</div>
             <div >
          Escribe a: jjconceptos21@gmail.com
+          </div>
+          </div>
+
+          <div style={{ position: 'fixed', marginLeft: '90%', marginTop: '-30px', fontSize: '10px'}}>
+          <div >Colaboraciones:</div>
+          <div >
+          <a href="/brands/brands">Marcas favoritas</a>
           </div>
           </div>
            

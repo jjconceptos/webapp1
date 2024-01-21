@@ -37,17 +37,17 @@ const ProjectsLandingPage = () => {
       `}</style>
       
       <div className="project-links">
-        <a href="/projects/furniture/projects" className="project-link">
+        <a href="/products/furniture/products" className="project-link">
           <img src="/muebles-icon.png" alt="Muebles Icon" />
           Muebles
         </a>
 
-        <a href="/projects/interiors/projects" className="project-link">
+        <a href="/products/decoration/products" className="project-link">
           <img src="/interiorismo-icon.png" alt="Interiorismo Icon" />
-          Interiorismo
+          Decoracion
         </a>
 
-        <a href="/projects/conceptos/projects" className="project-link">
+        <a href="/projects/concepts/products" className="project-link">
           <img src="/conceptos-icon.png" alt="Conceptos Icon" />
           Conceptos
         </a>
