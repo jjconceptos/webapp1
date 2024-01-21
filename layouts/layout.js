@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
             
             
            
-            {state.clearanceLevel <= 2 && state.clearanceLevel > 0 && (
+            {state.clearanceLevel <= 1 && state.clearanceLevel > 0 && (
               <li onClick={() => setIsSidebarOpen(false)}>
                 <Link href="/master/master">Master</Link>
               </li>

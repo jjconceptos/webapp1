@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         email,
         username,
         password,
-        clearanceLevel: "1",
+        clearanceLevel: "5",
       };
 
       // Store user data using SET command after converting to JSON
