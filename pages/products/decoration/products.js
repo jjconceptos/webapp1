@@ -5,7 +5,7 @@ import { fetchProjectsData } from '/utils/fetchProjects';
 import DelProjectButton from 'pages/projects/manage/delProject'; // Update the path to the DelProjectButton component
 import Layout from '/layouts/layout';
 import '/layouts/styles.css'; 
-import CenteredContentWrapper from '/layouts/centered';
+
 
 const projectsData = await fetchProjectsData();
 
@@ -212,5 +212,17 @@ function Projects() {
     </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  // Fetch projects data on the server side
+  const initialProjectsData = await fetchProjectsData();
+
+  return {
+    props: {
+      initialProjectsData,
+    },
+  };
+}
+
 
 export default Projects;
