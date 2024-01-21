@@ -1,59 +1,65 @@
-// ProjectsLandingPage.js
 import React from 'react';
+import Link from 'next/link';  // Import Link from next/link
 import Layout from '/layouts/layout';
 
-const ProjectsLandingPage = () => {
+const ProductsLandingPage = () => {
   return (
     <Layout>
       <style jsx global>{`
-         .project-links {
-            position: absolute;
-            top: 20%;
-            right: 5%; /* Adjust as needed to move it to the right */
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            padding:15px;
+        .project-links {
+          position: absolute;
+          top: 20%;
+          right: 5%;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+          padding: 15px;
         }
 
         .project-link {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 200px; /* Adjust as needed */
-          height: 200px; /* Adjust as needed */
-          background-color: #e0e0e0; /* Placeholder color */
-          border-radius: 10px; /* Adjust as needed */
+          width: 200px;
+          height: 200px;
+          background-color: #e0e0e0;
+          border-radius: 10px;
           text-decoration: none;
-          color: #333; /* Adjust text color */
+          color: #333;
           font-weight: bold;
         }
 
         .project-link img {
-          width: 60%; /* Adjust as needed */
-          height: 60%; /* Adjust as needed */
+          width: 60%;
+          height: 60%;
           object-fit: contain;
         }
       `}</style>
-      
+
       <div className="project-links">
-        <a href="/products/furniture/products" className="project-link">
-          <img src="/muebles-icon.png" alt="Muebles Icon" />
-          Muebles
-        </a>
+        <Link href="/products/furniture/products">  {/* Use Link instead of a */}
+          <a className="project-link">
+            <img src="/muebles-icon.png" alt="Muebles Icon" />
+            Muebles
+          </a>
+        </Link>
 
-        <a href="/products/decoration/products" className="project-link">
-          <img src="/interiorismo-icon.png" alt="Interiorismo Icon" />
-          Decoracion
-        </a>
+        <Link href="/products/interiors/products">  {/* Use Link instead of a */}
+          <a className="project-link">
+            <img src="/interiorismo-icon.png" alt="Interiorismo Icon" />
+            Interiorismo
+          </a>
+        </Link>
 
-        <a href="/projects/concepts/products" className="project-link">
-          <img src="/conceptos-icon.png" alt="Conceptos Icon" />
-          Conceptos
-        </a>
+        <Link href="/products/conceptos/products">  {/* Use Link instead of a */}
+          <a className="project-link">
+            <img src="/conceptos-icon.png" alt="Conceptos Icon" />
+            Conceptos
+          </a>
+        </Link>
       </div>
     </Layout>
   );
 };
 
-export default ProjectsLandingPage;
+export default ProductsLandingPage;
