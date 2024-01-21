@@ -37,7 +37,7 @@ const ProductsLandingPage = () => {
       `}</style>
 
       <div className="project-links">
-        <Link href="/products/furniture/products">  {/* Use Link instead of a */}
+        <Link href="/products/furniture/products">  
           <a className="project-link">
             <img src="/muebles-icon.png" alt="Muebles Icon" />
             Muebles
