@@ -1,42 +1,42 @@
 import React, { useState } from 'react';
 
-const DelProjectButton = ({ projectName, onDeleteProject }) => {
+const DelProductButton = ({ productName, onDeleteProduct }) => {
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
 
   const handleDelete = async () => {
-    if (window.confirm(`Are you sure you want to delete the project "${projectName}"?`)) {
+    if (window.confirm(`Are you sure you want to delete the project "${productName}"?`)) {
       setShowDeleteInput(true); // Show the delete input when the delete button is clicked
     }
   };
 
   const handleConfirmDelete = async () => {
     try {
-      if (deleteInput === projectName) {
+      if (deleteInput === productName) {
         // Send a request to delete the project text data
-        const responseText = await fetch('/api/projects/delText', {
+        const responseText = await fetch('/api/products/delText', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            projectName,
+            productName,
           }),
         });
   
         // Send a request to delete the project name
-        const responseNames = await fetch('/api/projects/delProjectNames', {
+        const responseNames = await fetch('/api/products/delProductNames', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            projectName,
+            productName,
           }),
         });
   
         // Send a request to delete the project image
-        const responseImage = await fetch('/api/projects/delImage', {
+        const responseImage = await fetch('/api/products/delImage', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const DelProjectButton = ({ projectName, onDeleteProject }) => {
   
         if (responseText.ok && responseNames.ok && responseImage.ok) {
           // Update the state to remove the deleted project
-          onDeleteProject(projectName);
+          onDeleteProduct(productName);
   
           // Clear the delete input and hide it
           setDeleteInput('');
@@ -70,12 +70,12 @@ const DelProjectButton = ({ projectName, onDeleteProject }) => {
 
   return (
     <div>
-      <button onClick={handleDelete}>Delete Project</button>
+      <button onClick={handleDelete}>Delete Product</button>
       {showDeleteInput && (
         <div>
           <input
             type="text"
-            placeholder={`Type "${projectName}" to confirm deletion`}
+            placeholder={`Type "${productName}" to confirm deletion`}
             value={deleteInput}
             onChange={(e) => setDeleteInput(e.target.value)}
           />
@@ -86,4 +86,4 @@ const DelProjectButton = ({ projectName, onDeleteProject }) => {
   );
 };
 
-export default DelProjectButton;
+export default DelProductButton;

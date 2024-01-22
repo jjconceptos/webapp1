@@ -51,7 +51,7 @@ const ProjectsLandingPage = () => {
       `}</style>
 
       <div className="project-links">
-        <Link href="/projects/furniture/projects">
+        <Link href="/products/furniture/products">
           <div className="project-link" style={{ backgroundImage: 'url(/furnitureIcon.png)' }}>
             <div className="project-link-text-container">
               <div className="project-link-text">Muebles</div>
@@ -59,7 +59,7 @@ const ProjectsLandingPage = () => {
           </div>
         </Link>
 
-        <Link href="/projects/interiors/projects">
+        <Link href="/products/decoration/products">
           <div className="project-link" style={{ backgroundImage: 'url(/interiorismo-icon.png)' }}>
             <div className="project-link-text-container">
               <div className="project-link-text">Decoracion</div>
@@ -67,7 +67,7 @@ const ProjectsLandingPage = () => {
           </div>
         </Link>
 
-        <Link href="/projects/conceptos/projects">
+        <Link href="/products/concepts/products">
           <div className="project-link" style={{ backgroundImage: 'url(/conceptos-icon.png)' }}>
             <div className="project-link-text-container">
               <div className="project-link-text">Conceptos</div>

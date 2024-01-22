@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '/layouts/layout';
 
 
-const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
+const ProductForm = ({ onSubmit, onProductAdded, products }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
@@ -38,7 +38,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   
     try {
       // Send the form data to the local image upload endpoint
-      const imageResponse = await fetch('/api/projects/projectImage', {
+      const imageResponse = await fetch('/api/products/productImage', {
         method: 'POST',
         body: formData,
         headers: {
@@ -59,7 +59,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
           timestamp,
         };
   
-        const textResponse = await fetch('/api/projects/projectText', {
+        const textResponse = await fetch('/api/products/productText', {
           method: 'POST',
           body: JSON.stringify({ textData }),
           headers: {
@@ -72,22 +72,22 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
           console.log('Text data submitted successfully');
   
           // Send the project name to the API immediately after adding it
-          const projectNamesResponse = await fetch('/api/projects/projectNames', {
+          const productNamesResponse = await fetch('/api/products/productNames', {
             method: 'POST',
-            body: JSON.stringify({ projectNames: [name] }), // Send just the project name as an array
+            body: JSON.stringify({ productNames: [name] }), // Send just the project name as an array
             headers: {
               'Content-Type': 'application/json',
             },
           });
   
-          if (projectNamesResponse.ok) {
+          if (productNamesResponse.ok) {
             console.log('Project name added to the list successfully');
           } else {
             console.error('Failed to add the project name to the list');
           }
   
           // Notify the parent component that a new project has been added
-          onProjectAdded(name);
+          onProductAdded(name);
   
           // Clear form fields
           setName('');
@@ -110,7 +110,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   return (
     <Layout>
 <style jsx global>{`
- .input-container-add-project {
+ .input-container-add-product {
   position: absolute;
   top: 30%;
   left: 20%;
@@ -120,7 +120,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
 }
 
 /* Define a CSS class for input fields */
-.input-field-add-project {
+.input-field-add-product {
   width: 50%;
   padding: 0.5rem;
   border: 2px solid #ccc;
@@ -131,20 +131,20 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
 }
 
 /* Add a focus style */
-.input-field-add-project:focus {
+.input-field-add-product:focus {
   border-color: #007bff;
 }
 
 `}</style>
-     <div className="input-container-add-project">
+     <div className="input-container-add-product">
   <div>
     <h2></h2>
     <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div>
-        <input className="input-field-add-project" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
+        <input className="input-field-add-product" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
       </div>
       <div>
-        <textarea className="input-field-add-project" value={description} onChange={handleDescriptionChange} placeholder="Description" />
+        <textarea className="input-field-add-product" value={description} onChange={handleDescriptionChange} placeholder="Description" />
       </div>
       <div>
         <input type="file" accept="image/*" onChange={handlePhotoChange} />
@@ -158,4 +158,4 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   );
 };
 
-export default ProjectForm;
+export default ProductForm;

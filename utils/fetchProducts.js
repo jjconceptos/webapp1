@@ -1,6 +1,3 @@
-
-
-
 export async function fetchProductsData() {
   try {
     // Define the base API URL
@@ -12,7 +9,7 @@ export async function fetchProductsData() {
 
     const productNamesResponse = await fetch(productNamesURL);
     if (!productNamesResponse.ok) {
-      throw new Error('Failed to fetch project names');
+      throw new Error('Failed to fetch product names');
     }
 
     const productNamesData = await productNamesResponse.json();

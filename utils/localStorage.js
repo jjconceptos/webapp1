@@ -1,6 +1,6 @@
 // Create a file called localStorage.js in your project directory
 
-// Function to get the projects from localStorage
+/*
 export function getProjects() {
     // Get projects from localStorage or return an empty array if there are none
     return JSON.parse(localStorage.getItem('projects')) || [];
@@ -34,4 +34,4 @@ export const deleteProject = (projectId) => {
   const updatedProjects = projects.filter((project) => project.id !== projectId);
   localStorage.setItem('projects', JSON.stringify(updatedProjects));
 };
-
+*/

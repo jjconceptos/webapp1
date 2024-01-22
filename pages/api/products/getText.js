@@ -7,13 +7,13 @@ export default async function handler(req, res) {
     try {
       const { productNames } = req.query;
 
-      console.log("Received GET Request for project text");
-      console.log("Received Project Names (getText.js):", productNames);
+      console.log("Received GET Request for product text");
+      console.log("Received Product Names (getText.js):", productNames);
 
       // Validate projectNames if needed
       if (!productNames || typeof productNames !== 'string') {
-        console.error('Project names string is required');
-        return res.status(400).json({ message: 'Project names string is required' });
+        console.error('Product names string is required');
+        return res.status(400).json({ message: 'Product names string is required' });
       }
 
       // Split the comma-separated project names
@@ -27,8 +27,8 @@ export default async function handler(req, res) {
      
 // Loop through the project names and retrieve text data for each
 for (const productName of productNamesArray) {
-  console.log("Retrieving text data for project (getText.js):", productName);
-  const productTextData = await kv.get(`project:${productName}`);
+  console.log("Retrieving text data for product (getText.js):", productName);
+  const productTextData = await kv.get(`product:${productName}`);
 
   if (productTextData !== null) {
     try {
@@ -45,7 +45,7 @@ for (const productName of productNamesArray) {
 
 
 
-      console.log("Fetched Projects Text Data:", productsTextData);
+      console.log("Fetched Products Text Data:", productsTextData);
 
       res.status(200).json(productsTextData);
     } catch (error) {
