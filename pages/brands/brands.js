@@ -5,7 +5,7 @@ import { fetchProjectsData } from '/utils/fetchProjects';
 import DelProjectButton from 'pages/projects/manage/delProject'; // Update the path to the DelProjectButton component
 import Layout from '/layouts/layout';
 import '/layouts/styles.css'; 
-import CenteredContentWrapper from '/layouts/centered';
+
 
 const projectsData = await fetchProjectsData();
 
@@ -121,7 +121,7 @@ function Projects() {
 
   return (
     <Layout>
-   <style jsx global>{`
+   <style global>{`
         .no-projects-centered {
           position: fixed;
           top: 50%;
@@ -135,6 +135,36 @@ function Projects() {
           left: 10%;
           transform: translate(-50%, -50%);
         }
+        .brands-grid {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          padding: 15px;
+          border-radius: 10px;
+        }
+      
+        .brand-item {
+          width: 100%; /* Take up the whole width of the container */
+          height: 80px; /* Set a fixed height for the circular container */
+          border-radius: 50%; /* Make it circular */
+          overflow: hidden;
+          cursor: pointer; /* Add pointer cursor for the clickable effect */
+          position: relative;
+        }
+      
+        .brand-item img {
+          width: 100%; /* Make the image fill the circular container */
+          height: 100%; /* Make sure the image fills the container */
+          object-fit: contain;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
       `}</style>
       <div >
       <div className="add-projects">
@@ -155,44 +185,31 @@ function Projects() {
 
         {/* Display the list of projects */}
        {/* Display the list of projects */}
-<div className="pro-grid">
-  {Array.isArray(projects) && projects.length > 0 ? (
-    projects.map((project, index) => (
-      <div key={index} className={`pro-card ${expandedProject === index ? 'expanded' : ''}`}>
-        <h3 onClick={() => setExpandedProject(expandedProject === index ? null : index)}>
-          {project.name}
-        </h3>
-        <p className={`project-description ${expandedProject === index ? 'expanded' : ''}`}>
-          {project.description}
-        </p>
-        {/* If you have an imageUrl, you can display it here */}
-        {project.imageUrl && (
-          <img
-            src={project.imageUrl}
-            alt={project.name}
-            className={`project-image ${expandedProject === index ? 'expanded' : ''}`}
-            onClick={() => handleProjectClick(project)}
-          />
-        )}
-        {isButtonVisible && ( // Conditionally render the Delete Project button
-          <DelProjectButton
-            projectName={project.name}
-            onDeleteProject={handleDeleteProject}
-          />
+       <div className="brands-grid">
+        {Array.isArray(projects) && projects.length > 0 ? (
+          projects.map((project, index) => (
+            <div key={index} className={`brand-item ${expandedProject === index ? 'expanded' : ''}`}>
+              {/* If you have an imageUrl, you can display it here */}
+              {project.imageUrl && (
+                <img
+                  src={project.imageUrl}
+                  alt={project.name}
+                  onClick={() => handleProjectClick(project)}
+                />
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="no-projects-centered">
+            <p style={{
+              marginLeft: '10%', // Adjust as needed
+              zIndex: 1, // Use a numeric value
+            }} className={`${Array.isArray(projects) && projects.length === 0 ? '' : ''}`}>
+              No projects to display.
+            </p>
+          </div>
         )}
       </div>
-    ))
-  ) : (
-    <div className="no-projects-centered">
-      <p style={{
-        marginLeft: '10%', // Adjust as needed
-        zIndex: 1, // Use a numeric value
-      }} className={`${Array.isArray(projects) && projects.length === 0 ? '' : ''}`}>
-        No projects to display.
-      </p>
-    </div>
-  )}
-</div>
 
 {enlargedView && selectedProject && (
 <div className="enlarged-project">

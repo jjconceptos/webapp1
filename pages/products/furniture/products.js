@@ -1,87 +1,87 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
-import ProjectForm from '/pages/projects/manage/addProject';
-import DelProjectButton from 'pages/projects/manage/delProject';
+import ProductForm from '/pages/products/manage/addProduct';
+import DelProductButton from 'pages/products/manage/delProduct';
 import Layout from '/layouts/layout';
-import { fetchProjectsData } from '/utils/fetchProjects';
+import { fetchProductsData } from '/utils/fetchProducts';
 import '/layouts/styles.css';
 
-function Projects() {
+function Products() {
   const { state } = useAuth();
-  const [showProjectForm, setShowProjectForm] = useState(false);
-  const [projects, setProjects] = useState([]);
-  const [expandedProject, setExpandedProject] = useState(null);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [showProductForm, setShowProductForm] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [expandedProduct, setExpandedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
 
   // Fetch projects when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const projectsData = await fetchProjectsData();
-        setProjects(
-          projectsData.map((project) => ({
-            ...project,
-            description: project.description.length > 8
-              ? project.description.slice(0, 8) + '...'
-              : project.description,
+        const productsData = await fetchProductsData();
+        setProducts(
+          productsData.map((product) => ({
+            ...product,
+            description: product.description.length > 8
+              ? product.description.slice(0, 8) + '...'
+              : product.description,
           }))
         );
       } catch (error) {
-        console.error('Error fetching projects:', error);
+        console.error('Error fetching products:', error);
       }
     };
 
     fetchData();
   }, []);
 
-  const handleProjectAddClick = () => {
-    setShowProjectForm(true);
+  const handleProductAddClick = () => {
+    setShowProductForm(true);
   };
 
-  const handleProjectClick = (project) => {
-    if (project) {
-      setSelectedProject(project);
+  const handleProductClick = (product) => {
+    if (product) {
+      setSelectedProduct(product);
       setEnlargedView(!enlargedView);
-      setShowProjectForm(false);
+      setShowProductForm(false);
     } else {
-      setShowProjectForm((prevShowProjectForm) => !prevShowProjectForm);
+      setShowProductForm((prevShowProductForm) => !prevShowProductForm);
     }
   };
 
-  const handleProjectAdded = async () => {
+  const handleProductAdded = async () => {
     try {
-      const updatedProjects = await fetchProjectsData();
-      setProjects(
-        updatedProjects.map((project) => ({
-          ...project,
-          description: project.description.length > 8
-            ? project.description.slice(0, 8) + '...'
-            : project.description,
+      const updatedProducts = await fetchProductsData();
+      setProducts(
+        updatedProducts.map((product) => ({
+          ...product,
+          description: product.description.length > 8
+            ? product.description.slice(0, 8) + '...'
+            : product.description,
         }))
       );
-      console.log('Updated projects:', updatedProjects);
+      console.log('Updated products:', updatedProducts);
     } catch (error) {
-      console.error('Error handling added project:', error);
+      console.error('Error handling added product:', error);
     }
   };
 
-  const handleProjectSubmit = async (project) => {
-    if (project.name && project.description) {
-      setShowProjectForm(false);
-      handleProjectAdded(project.name);
+  const handleProductSubmit = async (product) => {
+    if (product.name && product.description) {
+      setShowProductForm(false);
+      handleProductAdded(product.name);
     } else {
       console.log('Validation failed: Missing name or description');
     }
   };
 
-  const handleDeleteProject = async (projectName) => {
+  const handleDeleteProduct = async (productName) => {
     try {
-      const updatedProjects = projects.filter((project) => project.name !== projectName);
-      setProjects(updatedProjects);
+      const updatedProducts = projects.filter((product) => product.name !== productName);
+      setProducts(updatedProducts);
 
-      if (expandedProject === projectName) {
-        setExpandedProject(null);
+      if (expandedProduct === productName) {
+        setExpandedProduct(null);
       }
     } catch (error) {
       console.error(error);
@@ -93,14 +93,14 @@ function Projects() {
   return (
     <Layout>
       <style jsx global>{`
-        .no-projects-centered {
+        .no-products-centered {
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
 
-        .add-projects {
+        .add-products {
           position: absolute;
           top: 14%;
           left: 10%;
@@ -108,91 +108,91 @@ function Projects() {
         }
       `}</style>
       <div>
-        <div className="add-projects">
+        <div className="add-products">
           {isButtonVisible && (
-            <button onClick={handleProjectAddClick}>Add project</button>
+            <button onClick={handleProductAddClick}>Add product</button>
           )}
         </div>
-        {showProjectForm && (
+        {showProductForm && (
           <div>
             <h2></h2>
-            <ProjectForm
-              onSubmit={handleProjectSubmit}
-              projects={projects}
-              onProjectAdded={handleProjectAdded}
+            <ProductForm
+              onSubmit={handleProductSubmit}
+              products={products}
+              onProductAdded={handleProductAdded}
             />
           </div>
         )}
 
         <div className="pro-grid">
-          {Array.isArray(projects) && projects.length > 0 ? (
-            projects.map((project, index) => (
+          {Array.isArray(products) && products.length > 0 ? (
+            products.map((product, index) => (
               <div
                 key={index}
                 className={`pro-card ${
-                  expandedProject === index ? 'expanded' : ''
+                  expandedProduct === index ? 'expanded' : ''
                 }`}
               >
                 <h3
                   onClick={() =>
-                    setExpandedProject(
-                      expandedProject === index ? null : index
+                    setExpandedProduct(
+                      expandedProduct === index ? null : index
                     )
                   }
                 >
-                  {project.name}
+                  {product.name}
                 </h3>
                 <p
-                  className={`project-description ${
-                    expandedProject === index ? 'expanded' : ''
+                  className={`product-description ${
+                    expandedProduct === index ? 'expanded' : ''
                   }`}
                 >
-                  {project.description}
+                  {product.description}
                 </p>
-                {project.imageUrl && (
+                {product.imageUrl && (
                   <img
-                    src={project.imageUrl}
-                    alt={project.name}
-                    className={`project-image ${
-                      expandedProject === index ? 'expanded' : ''
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className={`product-image ${
+                      expandedProduct === index ? 'expanded' : ''
                     }`}
-                    onClick={() => handleProjectClick(project)}
+                    onClick={() => handleProductClick(product)}
                   />
                 )}
                 {isButtonVisible && (
-                  <DelProjectButton
-                    projectName={project.name}
-                    onDeleteProject={handleDeleteProject}
+                  <DelProductButton
+                    productName={product.name}
+                    onDeleteProduct={handleDeleteProduct}
                   />
                 )}
               </div>
             ))
           ) : (
-            <div className="no-projects-centered">
+            <div className="no-products-centered">
               <p
                 style={{
                   marginLeft: '10%',
                   zIndex: 1,
                 }}
-                className={`${Array.isArray(projects) &&
-                  projects.length === 0
+                className={`${Array.isArray(products) &&
+                  products.length === 0
                   ? ''
                   : ''}`}
               >
-                No projects to display.
+                No products to display.
               </p>
             </div>
           )}
         </div>
 
-        {enlargedView && selectedProject && (
-          <div className="enlarged-project">
-            <h2>{selectedProject.name}</h2>
-            <p>{selectedProject.description}</p>
+        {enlargedView && selectedProduct && (
+          <div className="enlarged-product">
+            <h2>{selectedProduct.name}</h2>
+            <p>{selectedProduct.description}</p>
             <img
-              src={selectedProject.imageUrl}
-              alt={selectedProject.name}
-              className="enlarged-project-image"
+              src={selectedProduct.imageUrl}
+              alt={selectedProduct.name}
+              className="enlarged-product-image"
             />
           </div>
         )}
@@ -201,4 +201,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default Products;
