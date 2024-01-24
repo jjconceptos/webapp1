@@ -66,7 +66,7 @@ const ProjectsLandingPage = () => {
             </div>
           </div>
         </Link>
-
+{/*
         <Link href="/projects/conceptos/projects">
           <div className="project-link" style={{ backgroundImage: 'url(/conceptos-icon.png)' }}>
             <div className="project-link-text-container">
@@ -74,6 +74,7 @@ const ProjectsLandingPage = () => {
             </div>
           </div>
         </Link>
+        */}
       </div>
     </Layout>
   );
