@@ -5,38 +5,38 @@ export default async function handler(req, res) {
 
   if (requestType === "GET") {
     try {
-      const { projectNames } = req.query;
+      const { furnitureProjectNames } = req.query;
 
-      console.log("Received GET Request for project text");
-      console.log("Received Project Names (getText.js):", projectNames);
+      console.log("Received GET Request for furniture project text");
+      console.log("Received Furniture Project Names (getText.js):", furnitureProjectNames);
 
       // Validate projectNames if needed
-      if (!projectNames || typeof projectNames !== 'string') {
+      if (!furnitureProjectNames || typeof furnitureProjectNames !== 'string') {
         console.error('Project names string is required');
         return res.status(400).json({ message: 'Project names string is required' });
       }
 
       // Split the comma-separated project names
-      const projectNamesArray = JSON.parse(projectNames);
+      const furnitureProjectNamesArray = JSON.parse(furnitureProjectNames);
       
 
 
       // Initialize an object to store project text data
-      const projectsTextData = {};
+      const furnitureProjectsTextData = {};
 
      
 // Loop through the project names and retrieve text data for each
-for (const projectName of projectNamesArray) {
-  console.log("Retrieving text data for project (getText.js):", projectName);
-  const projectTextData = await kv.get(`project:${projectName}`);
+for (const furnitureProjectName of furnitureProjectNamesArray) {
+  console.log("Retrieving text data for project (getText.js):", furnitureProjectName);
+  const furnitureProjectTextData = await kv.get(`furnitureproject:${furnitureProjectName}`);
 
-  if (projectTextData !== null) {
+  if (furnitureProjectTextData !== null) {
     try {
       // Attempt to parse the JSON data, but check if it's already an object
-      const parsedProjectTextData = typeof projectTextData === 'string' ? JSON.parse(projectTextData) : projectTextData;
-      projectsTextData[projectName] = parsedProjectTextData;
+      const parsedFurnitureProjectTextData = typeof furnitureProjectTextData === 'string' ? JSON.parse(furnitureProjectTextData) : furnitureProjectTextData;
+      furnitureProjectsTextData[furnitureProjectName] = parsedFurnitureProjectTextData;
     } catch (parseError) {
-      console.error('Error parsing JSON for project:', projectName);
+      console.error('Error parsing JSON for project:', furnitureProjectName);
       console.error(parseError);
       // Handle the error, e.g., by skipping this project or setting a default value.
     }
@@ -45,9 +45,9 @@ for (const projectName of projectNamesArray) {
 
 
 
-      console.log("Fetched Projects Text Data:", projectsTextData);
+      console.log("Fetched Projects Text Data:", furnitureProjectsTextData);
 
-      res.status(200).json(projectsTextData);
+      res.status(200).json(furnitureProjectsTextData);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "An error occurred" });

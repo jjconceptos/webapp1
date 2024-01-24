@@ -3,38 +3,39 @@ import { kv } from "@vercel/kv";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { projectNames } = req.body;
+      const { furnitureProjectNames } = req.body;
+      console.log('Received request body:', req.body);
 
-      if (!projectNames || !Array.isArray(projectNames)) {
-        console.error('Invalid project names list');
+      if (!furnitureProjectNames || !Array.isArray(furnitureProjectNames)) {
+       
         return res.status(400).json({ message: 'Invalid project names list' });
       }
 
       // Retrieve the existing project names from the key-value store
-      let existingProjectNames = await kv.get('projectnames:');
-      if (!existingProjectNames) {
-        existingProjectNames = [];
+      let existingFurnitureProjectNames = await kv.get('furnitureprojectnames:');
+      if (!existingFurnitureProjectNames) {
+        existingFurnitureProjectNames = [];
       }
 
       // Filter out null values and invalid entries
-      const validProjectNames = projectNames
+      const validFurnitureProjectNames = furnitureProjectNames
         .filter(project => typeof project === "string" && project.trim().length > 0)
         .map(project => project.trim());
 
-      if (validProjectNames.length === 0) {
+      if (validFurnitureProjectNames.length === 0) {
         console.error('No valid project names found');
         return res.status(400).json({ message: 'No valid project names found' });
       }
 
       // Append the new project names to the existing list
-      const updatedProjectNames = [...existingProjectNames, ...validProjectNames];
+      const updatedFurnitureProjectNames = [...existingFurnitureProjectNames, ...validFurnitureProjectNames];
 
-      console.log('Received project names list (projectNames.js): ', validProjectNames);
+      console.log('Received project names list (furnitureProjectNames.js): ', validFurnitureProjectNames);
 
       // Store the updated project names list
-      await kv.set('projectnames:', updatedProjectNames);
+      await kv.set('furnitureprojectnames:', updatedFurnitureProjectNames);
 
-      console.log('Project names list updated successfully');
+      console.log('Furniture project names list updated successfully');
 
       res.status(200).json({ message: "Project names list updated successfully" });
     } catch (error) {

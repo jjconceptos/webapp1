@@ -4,33 +4,33 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       // Get the project name to delete from the request body
-      const { projectName } = req.body;
+      const { furnitureProjectName } = req.body;
 
-      if (!projectName) {
+      if (!furnitureProjectName) {
         res.status(400).json({ message: "Invalid request: Provide a project name to delete" });
         return;
       }
 
       // Define the key for the project names list in your Redis database
-      const projectNamesKey = "projectnames:";
+      const furnitureProjectNamesKey = "furnitureprojectnames:";
 
       // Get the current list of project names from Redis
-      let projectNames = await kv.get(projectNamesKey);
+      let furnitureProjectNames = await kv.get(furnitureProjectNamesKey);
 
-      if (!projectNames) {
-        projectNames = [];
+      if (!furnitureProjectNames) {
+        furnitureProjectNames = [];
       }
 
       // Remove the specified project name from the list
-      projectNames = projectNames.filter(name => name !== projectName);
+      furnitureProjectNames = furnitureProjectNames.filter(name => name !== furnitureProjectName);
 
       // Store the updated list back in Redis
-      await kv.set(projectNamesKey, projectNames);
+      await kv.set(furnitureProjectNamesKey, furnitureProjectNames);
 
       // Log that the project name was deleted successfully
-      console.log('Project name deleted successfully:', projectName);
+      console.log('Furniture project name deleted successfully:', furnitureProjectName);
 
-      res.status(200).json({ message: "Project name deleted successfully" });
+      res.status(200).json({ message: "Furniture project name deleted successfully" });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "An error occurred" });

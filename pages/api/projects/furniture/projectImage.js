@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    console.log('Received a POST request to /api/projects/projectImage');
+    console.log('Received a POST request to /api/projects/furniture/projectImage');
     console.log('Request body:', req.body);
 
     // Use the "upload" Multer middleware to handle file uploads
@@ -64,8 +64,8 @@ export default async function handler(req, res) {
       // Specify the Google Cloud Storage bucket and destination filename
       const bucketName = 'jj-webapp1';
       const timestamp = req.headers.timestamp;
-      const projectName = req.headers['image-name'];
-      const destFileName = `${projectName}.jpg`; // Assuming it's a JPEG image
+      const furnitureProjectName = req.headers['image-name'];
+      const destFileName = `${furnitureProjectName}.jpg`; // Assuming it's a JPEG image
       console.log('Uploading photo to Google Cloud Storage:', destFileName);
 
       // Initialize Google Cloud Storage based on the environment

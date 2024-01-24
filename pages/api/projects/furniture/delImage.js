@@ -27,17 +27,17 @@ export default async function handler(req, res) {
     console.log('Request body:', req.body);
 
     // Extract project name from the request
-    const projectName = req.body.projectName;
+    const furnitureProjectName = req.body.furnitureProjectName;
 
     // Check if project name is missing
-    if (!projectName) {
-      console.log('Validation failed: Missing project name');
+    if (!furnitureProjectName) {
+      console.log('Validation failed: Missing furniture project name');
       return res.status(400).json({ error: 'Project name is required' });
     }
 
     // Specify the Google Cloud Storage bucket and image filename
     const bucketName = 'jj-webapp1';
-    const imageFileName = `${projectName}.jpg`; // Simplified to just projectName.jpg
+    const imageFileName = `${furnitureProjectName}.jpg`; 
 
     console.log('Deleting image from Google Cloud Storage:', imageFileName);
 

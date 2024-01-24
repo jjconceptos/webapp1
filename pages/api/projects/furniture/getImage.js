@@ -24,17 +24,17 @@ export default async function handler(req, res) {
     }
 
     // Extract the project names from the query parameters
-    const { projectNames } = req.query;
+    const { furnitureProjectNames } = req.query;
 
     // Log the received project names
-    console.log('Received request for project names list (getImage.js):', projectNames);
+    console.log('Received request for project names list (getImage.js):', furnitureProjectNames);
 
     // Split the comma-separated project names into an array
-    const projectNamesArray = Array.isArray(projectNames) ? projectNames : projectNames.split(',');
+    const furnitureProjectNamesArray = Array.isArray(furnitureProjectNames) ? furnitureProjectNames : furnitureProjectNames.split(',');
 
     // Specify the Google Cloud Storage bucket and image filename for each project
     const bucketName = 'jj-webapp1';
-    const imageFileNames = projectNamesArray.map((projectName) => `${projectName}.jpg`);
+    const imageFileNames = furnitureProjectNamesArray.map((furnitureProjectName) => `${furnitureProjectName}.jpg`);
     console.log('Searching for projects (getImage.js):', imageFileNames);
 
     // Initialize the Google Cloud Storage client based on the environment

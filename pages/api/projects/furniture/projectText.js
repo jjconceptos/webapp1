@@ -18,17 +18,17 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: 'Name must contain only letters' });
       }
 
-      const projectTextData = {
+      const furnitureProjectTextData = {
         name,
         description,
         timestamp,
       };
 
-      // Store project text data using SET command after converting to JSON
+      // Store product text data using SET command after converting to JSON
       // Assuming you use a unique key for each project
-      await kv.set(`project:${name}`, JSON.stringify(projectTextData));
+      await kv.set(`furnitureproject:${name}`, JSON.stringify(furnitureProjectTextData));
 
-      res.status(200).json({ message: "Project text data uploaded successfully" });
+      res.status(200).json({ message: "Furniture project text data uploaded successfully" });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "An error occurred" });

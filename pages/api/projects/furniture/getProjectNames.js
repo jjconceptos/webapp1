@@ -13,13 +13,13 @@ export default async function handler(req, res) {
       res.setHeader('Access-Control-Allow-Methods', 'GET');
 
       // Retrieve the project names list from the key-value store
-      const projectNames = await kv.get('projectnames:');
+      const furnitureProjectNames = await kv.get('furnitureprojectnames:');
 
-console.log("Received GET Request for project names");
+console.log("Received GET Request for furniture project names");
 
-if (projectNames) {
-  console.log("Fetched Project Names List:", projectNames);
-  res.status(200).json(projectNames);
+if (furnitureProjectNames) {
+  console.log("Fetched Furniture Project Names List:", furnitureProjectNames);
+  res.status(200).json(furnitureProjectNames);
 } else {
   console.error('Error fetching project names from the key-value store');
   res.status(500).json({ message: 'Error fetching project names' });
