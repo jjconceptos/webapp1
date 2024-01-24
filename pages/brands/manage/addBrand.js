@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '/layouts/layout';
 
 
-const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
+const BrandForm = ({ onSubmit, onBrandAdded, brands }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
@@ -38,18 +38,18 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   
     try {
       // Send the form data to the local image upload endpoint
-      const imageResponse = await fetch('/api/projects/projectImage', {
+      const imageResponse = await fetch('/api/brands/brandImage', {
         method: 'POST',
         body: formData,
         headers: {
-          // Include the project name in the image headers
+          // Include the brand name in the image headers
           'image-name': name,
           'timestamp': timestamp,
         },
       });
   
       if (imageResponse.ok) {
-        // Project image data submission successful
+        // Brand image data submission successful
         console.log('Image data submitted successfully');
   
         // Now, send the text data
@@ -59,7 +59,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
           timestamp,
         };
   
-        const textResponse = await fetch('/api/projects/projectText', {
+        const textResponse = await fetch('/api/brands/brandText', {
           method: 'POST',
           body: JSON.stringify({ textData }),
           headers: {
@@ -71,23 +71,23 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
           // Text data submission successful
           console.log('Text data submitted successfully');
   
-          // Send the project name to the API immediately after adding it
-          const projectNamesResponse = await fetch('/api/projects/projectNames', {
+          // Send the brandname to the API immediately after adding it
+          const brandNamesResponse = await fetch('/api/brands/brandNames', {
             method: 'POST',
-            body: JSON.stringify({ projectNames: [name] }), // Send just the project name as an array
+            body: JSON.stringify({ brandNames: [name] }), // Send just the brand name as an array
             headers: {
               'Content-Type': 'application/json',
             },
           });
   
-          if (projectNamesResponse.ok) {
-            console.log('Project name added to the list successfully');
+          if (brandNamesResponse.ok) {
+            console.log('Brand name added to the list successfully');
           } else {
-            console.error('Failed to add the project name to the list');
+            console.error('Failed to add the brand name to the list');
           }
   
-          // Notify the parent component that a new project has been added
-          onProjectAdded(name);
+          // Notify the parent component that a new brand has been added
+          onBrandAdded(name);
   
           // Clear form fields
           setName('');
@@ -98,7 +98,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
           console.error('Text data submission failed');
         }
       } else {
-        // Project image data submission failed
+        // Brand image data submission failed
         console.error('Image data submission failed');
       }
     } catch (error) {
@@ -110,7 +110,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   return (
     <Layout>
 <style jsx global>{`
- .input-container-add-project {
+ .input-container-add-brand {
   position: absolute;
   top: 30%;
   left: 20%;
@@ -120,7 +120,7 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
 }
 
 /* Define a CSS class for input fields */
-.input-field-add-project {
+.input-field-add-brand {
   width: 50%;
   padding: 0.5rem;
   border: 2px solid #ccc;
@@ -131,20 +131,20 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
 }
 
 /* Add a focus style */
-.input-field-add-project:focus {
+.input-field-add-brand:focus {
   border-color: #007bff;
 }
 
 `}</style>
-     <div className="input-container-add-project">
+     <div className="input-container-add-brand">
   <div>
     <h2></h2>
     <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div>
-        <input className="input-field-add-project" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
+        <input className="input-field-add-brand" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
       </div>
       <div>
-        <textarea className="input-field-add-project" value={description} onChange={handleDescriptionChange} placeholder="Description" />
+        <textarea className="input-field-add-brand" value={description} onChange={handleDescriptionChange} placeholder="Description" />
       </div>
       <div>
         <input type="file" accept="image/*" onChange={handlePhotoChange} />
@@ -158,4 +158,4 @@ const ProjectForm = ({ onSubmit, onProjectAdded, projects }) => {
   );
 };
 
-export default ProjectForm;
+export default BrandForm;

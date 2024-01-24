@@ -1,112 +1,112 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
-import ProjectForm from '/pages/projects/manage/addProject';
-import { fetchProjectsData } from '/utils/fetchProjects';
-import DelProjectButton from 'pages/projects/manage/delProject'; // Update the path to the DelProjectButton component
+import BrandForm from '/pages/brands/manage/addBrand';
+import { fetchBrandsData } from '/utils/fetchBrands';
+import DelBrandButton from 'pages/brands/manage/delBrand';  
 import Layout from '/layouts/layout';
 import '/layouts/styles.css'; 
 
 
-const projectsData = await fetchProjectsData();
+const brandsData = await fetchBrandsData();
 
 
 
-function Projects() {
+function Brands() {
   
   const { state } = useAuth();
-  const [showProjectForm, setShowProjectForm] = useState(false);
-  const [projects, setProjects] = useState([]); // State to hold fetched projects
-  const [expandedProject, setExpandedProject] = useState(null);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [showBrandForm, setShowBrandForm] = useState(false);
+  const [brands, setBrands] = useState([]); // State to hold fetched brands
+  const [expandedBrand, setExpandedBrand] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
 
 
 
-  // Define a function to fetch projects
-  const fetchProjects = async () => {
+  // Define a function to fetch brands
+  const fetchBrands = async () => {
     
     try {
       
-      // Pass the project names to fetchProjectsData
+      // Pass the brand names to fetchBrandsData
       
-      // Log the URL from the first project (assuming there is at least one project)
-      console.log('Projects received in fetchProjects function (projects.js):', projectsData);
+      // Log the URL from the first brand (assuming there is at least one brand)
+      console.log('Brands received in fetchBrands function (brands.js):', brandsData);
         
       // Modify the descriptions to limit to 25 characters
-      const modifiedProjects = projectsData.map((project) => ({
-        ...project,
-        description: project.description.length > 8
-          ? project.description.slice(0, 8) + '...'
-          : project.description,
+      const modifiedBrands = brandsData.map((brand) => ({
+        ...brand,
+        description: brand.description.length > 8
+          ? brand.description.slice(0, 8) + '...'
+          : brand.description,
       }));
 
-      // Set the modified projects data in your state
-      setProjects(modifiedProjects);
+      // Set the modified brands data in your state
+      setBrands(modifiedBrands);
     } catch (error) {
-      console.error('Error fetching projects (projects.js):', error);
+      console.error('Error fetching brands (brands.js):', error);
     }
   };
 
   useEffect(() => {
-    // Fetch projects when the component mounts
-    fetchProjects();
+    // Fetch brands when the component mounts
+    fetchBrands();
   }, []);
 
-  const handleProjectAddClick = () => {
-    setShowProjectForm(true);
+  const handleBrandAddClick = () => {
+    setShowBrandForm(true);
   };
 
-  const handleProjectClick = (project) => {
-    if (project) {
-      // If a project is provided, set the selected project and toggle the enlarged view
-      setSelectedProject(project);
+  const handleBrandClick = (brand) => {
+    if (brand) {
+      // If a brandis provided, set the selected brand and toggle the enlarged view
+      setSelectedBrand(brand);
       setEnlargedView(!enlargedView);
-      setShowProjectForm(false); // Close the "Add project" form if it's open
+      setShowBrandForm(false); // Close the "Add brand" form if it's open
     } else {
-      // If no project is provided, toggle the "Add project" form
-      setShowProjectForm((prevShowProjectForm) => !prevShowProjectForm);
+      // If no brand is provided, toggle the "Add brand" form
+      setShowBrandForm((prevShowBrandForm) => !prevShowBrandForm);
     }
   };
   
 
-  const handleProjectAdded = async () => {
+  const handleBrandAdded = async () => {
     try {
-      // Use fetchProjectsData to get the updated project list
-      const updatedProjects = await fetchProjectsData();
+      // Use fetchBrandsData to get the updated brand list
+      const updatedBrands = await fetchBrandsData();
       
-      // Update the projects state with the updated project list
-      setProjects(updatedProjects);
+      // Update the brands state with the updated brand list
+      setBrands(updatedBrands);
       
-      console.log('Updated projects:', updatedProjects);
+      console.log('Updated brands:', updatedBrands);
     } catch (error) {
-      console.error('Error handling added project:', error);
+      console.error('Error handling added brand:', error);
     }
   };
 
 
 
-  const handleProjectSubmit = async (project) => {
-    // Validate and add the new project to the list
-    if (project.name && project.description) {
+  const handleBrandSubmit = async (brand) => {
+    // Validate and add the new brand to the list
+    if (brand.name && brand.description) {
      
-      setShowProjectForm(false);
+      setShowBrandForm(false);
 
-      // Notify the parent component that a new project has been added
-      handleProjectAdded(project.name);
+      // Notify the parent component that a new brand has been added
+      handleBrandAdded(brand.name);
     } else {
       console.log('Validation failed: Missing name or description');
     }
   };
 
-  const handleDeleteProject = async (projectName) => {
+  const handleDeleteBrand = async (brandName) => {
     try {
-      // Remove the deleted project from the state
-      const updatedProjects = projects.filter((project) => project.name !== projectName);
-      setProjects(updatedProjects);
+      // Remove the deleted brandfrom the state
+      const updatedBrands = brands.filter((brand) => brand.name !== brandName);
+      setBrands(updatedBrands);
   
-      // Clear the expanded project view if it's the deleted one
-      if (expandedProject === projectName) {
-        setExpandedProject(null);
+      // Clear the expanded brand view if it's the deleted one
+      if (expandedBrand === brandName) {
+        setExpandedBrand(null);
       }
   
       // Use the router to trigger a page refresh
@@ -122,14 +122,14 @@ function Projects() {
   return (
     <Layout>
    <style global>{`
-        .no-projects-centered {
+        .no-brands-centered {
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
 
-        .add-projects {
+        .add-brands {
           position: absolute;
           top: 14%;
           left: 10%;
@@ -167,59 +167,59 @@ function Projects() {
 
       `}</style>
       <div >
-      <div className="add-projects">
+      <div className="add-brands">
         {isButtonVisible && (
-          <button onClick={handleProjectAddClick}
+          <button onClick={handleBrandAddClick}
         >
-          Add project
+          Add brand
         </button>
 
         )}
         </div>
-        {showProjectForm && (
+        {showBrandForm && (
           <div>
             <h2></h2>
-            <ProjectForm onSubmit={handleProjectSubmit} projects={projects} onProjectAdded={handleProjectAdded} />
+            <BrandForm onSubmit={handleBrandSubmit} brands={brands} onBrandAdded={handleBrandAdded} />
           </div>
         )}
 
-        {/* Display the list of projects */}
-       {/* Display the list of projects */}
+       
+       {/* Display the list of brands */}
        <div className="brands-grid">
-        {Array.isArray(projects) && projects.length > 0 ? (
-          projects.map((project, index) => (
-            <div key={index} className={`brand-item ${expandedProject === index ? 'expanded' : ''}`}>
+        {Array.isArray(brands) && brands.length > 0 ? (
+          brands.map((brand, index) => (
+            <div key={index} className={`brand-item ${expandedBrand === index ? 'expanded' : ''}`}>
               {/* If you have an imageUrl, you can display it here */}
-              {project.imageUrl && (
+              {brand.imageUrl && (
                 <img
-                  src={project.imageUrl}
-                  alt={project.name}
-                  onClick={() => handleProjectClick(project)}
+                  src={brand.imageUrl}
+                  alt={brand.name}
+                  onClick={() => handleBrandClick(brand)}
                 />
               )}
             </div>
           ))
         ) : (
-          <div className="no-projects-centered">
+          <div className="no-brands-centered">
             <p style={{
               marginLeft: '10%', // Adjust as needed
               zIndex: 1, // Use a numeric value
-            }} className={`${Array.isArray(projects) && projects.length === 0 ? '' : ''}`}>
-              No projects to display.
+            }} className={`${Array.isArray(brands) && brands.length === 0 ? '' : ''}`}>
+              No brands to display.
             </p>
           </div>
         )}
       </div>
 
-{enlargedView && selectedProject && (
-<div className="enlarged-project">
-              <h2>{selectedProject.name}</h2>
-              <p>{selectedProject.description}</p>
-              {/* Add any other project details you want to display */}
+{enlargedView && selectedBrand && (
+<div className="enlarged-brand">
+              <h2>{selectedBrand.name}</h2>
+              <p>{selectedBrand.description}</p>
+              {/* Add any other brand details you want to display */}
               <img
-                src={selectedProject.imageUrl}
-                alt={selectedProject.name}
-                className="enlarged-project-image"
+                src={selectedBrand.imageUrl}
+                alt={selectedBrand.name}
+                className="enlarged-brand-image"
               />
             </div>
           )}
@@ -230,4 +230,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default Brands;
