@@ -6,7 +6,7 @@ import Layout from '/layouts/layout';
 import { fetchInteriorsProjectsData } from '/utils/fetchInteriorsProjects';
 import '/layouts/styles.css';
 
-function interiorsProjects() {
+function InteriorsProjects() {
   const { state } = useAuth();
   const [showInteriorsProjectForm, setShowInteriorsProjectForm] = useState(false);
   const [interiorsProjects, setInteriorsProjects] = useState([]);
@@ -201,4 +201,4 @@ function interiorsProjects() {
   );
 }
 
-export default interiorsProjects;
+export default InteriorsProjects;

@@ -6,7 +6,7 @@ import Layout from '/layouts/layout';
 import { fetchFurnitureProjectsData } from '/utils/fetchFurnitureProjects';
 import '/layouts/styles.css';
 
-function furnitureProjects() {
+function FurnitureProjects() {
   const { state } = useAuth();
   const [showFurnitureProjectForm, setShowFurnitureProjectForm] = useState(false);
   const [furnitureProjects, setFurnitureProjects] = useState([]);
@@ -201,4 +201,4 @@ function furnitureProjects() {
   );
 }
 
-export default furnitureProjects;
+export default FurnitureProjects;

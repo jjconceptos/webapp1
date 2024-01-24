@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '/layouts/layout';
 
 
-const interiorsProjectForm = ({ onSubmit, onInteriorsProjectAdded, interiorsProjects }) => {
+const InteriorsProjectForm = ({ onSubmit, onInteriorsProjectAdded, interiorsProjects }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
@@ -158,4 +158,4 @@ const interiorsProjectForm = ({ onSubmit, onInteriorsProjectAdded, interiorsProj
   );
 };
 
-export default interiorsProjectForm;
+export default InteriorsProjectForm;
