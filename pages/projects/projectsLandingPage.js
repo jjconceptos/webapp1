@@ -60,7 +60,7 @@ const ProjectsLandingPage = () => {
         </Link>
 
         <Link href="/projects/interiors/projects">
-          <div className="project-link" style={{ backgroundImage: 'url(/interiorismo-icon.png)' }}>
+          <div className="project-link" style={{ backgroundImage: 'url(/interiorsIcon.jpg)' }}>
             <div className="project-link-text-container">
               <div className="project-link-text">Interiorismo</div>
             </div>
