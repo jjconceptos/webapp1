@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '/layouts/layout';
 
 
-const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts }) => {
+const furnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProjects }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
@@ -38,7 +38,7 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   
     try {
       // Send the form data to the local image upload endpoint
-      const imageResponse = await fetch('/api/products/furniture/productImage', {
+      const imageResponse = await fetch('/api/projects/furniture/projectImage', {
         method: 'POST',
         body: formData,
         headers: {
@@ -59,7 +59,7 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           timestamp,
         };
   
-        const textResponse = await fetch('/api/products/furniture/productText', {
+        const textResponse = await fetch('/api/projects/furniture/projectText', {
           method: 'POST',
           body: JSON.stringify({ textData }),
           headers: {
@@ -72,22 +72,22 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           console.log('Text data submitted successfully');
   
           // Send the project name to the API immediately after adding it
-          const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
+          const furnitureProjectNamesResponse = await fetch('/api/projects/furniture/projectNames', {
             method: 'POST',
-            body: JSON.stringify({ furnitureProductNames: [name] }), // Send just the project name as an array
+            body: JSON.stringify({ furnitureProjectNames: [name] }), // Send just the project name as an array
             headers: {
               'Content-Type': 'application/json',
             },
           });
   
-          if (furnitureProductNamesResponse.ok) {
+          if (furnitureProjectNamesResponse.ok) {
             console.log('Project name added to the list successfully');
           } else {
             console.error('Failed to add the project name to the list');
           }
   
           // Notify the parent component that a new project has been added
-          onFurnitureProductAdded(name);
+          onFurnitureProjectAdded(name);
   
           // Clear form fields
           setName('');
@@ -110,7 +110,7 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   return (
     <Layout>
 <style jsx global>{`
- .input-container-add-product {
+ .input-container-add-project {
   position: absolute;
   top: 30%;
   left: 20%;
@@ -120,7 +120,7 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
 }
 
 /* Define a CSS class for input fields */
-.input-field-add-product {
+.input-field-add-project {
   width: 50%;
   padding: 0.5rem;
   border: 2px solid #ccc;
@@ -131,20 +131,20 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
 }
 
 /* Add a focus style */
-.input-field-add-product:focus {
+.input-field-add-project:focus {
   border-color: #007bff;
 }
 
 `}</style>
-     <div className="input-container-add-product">
+     <div className="input-container-add-project">
   <div>
     <h2></h2>
     <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div>
-        <input className="input-field-add-product" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
+        <input className="input-field-add-project" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
       </div>
       <div>
-        <textarea className="input-field-add-product" value={description} onChange={handleDescriptionChange} placeholder="Description" />
+        <textarea className="input-field-add-project" value={description} onChange={handleDescriptionChange} placeholder="Description" />
       </div>
       <div>
         <input type="file" accept="image/*" onChange={handlePhotoChange} />
@@ -158,4 +158,4 @@ const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   );
 };
 
-export default furnitureProductForm;
+export default furnitureProjectForm;

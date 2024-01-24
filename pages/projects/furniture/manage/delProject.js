@@ -1,48 +1,48 @@
 import React, { useState } from 'react';
 
-const DelProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) => {
+const DelProjectButton = ({ furnitureProjectName, onDeleteFurnitureProject }) => {
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
 
   const handleDelete = async () => {
-    if (window.confirm(`Are you sure you want to delete the project "${furnitureProductName}"?`)) {
+    if (window.confirm(`Are you sure you want to delete the project "${furnitureProjectName}"?`)) {
       setShowDeleteInput(true); // Show the delete input when the delete button is clicked
     }
   };
 
   const handleConfirmDelete = async () => {
     try {
-      if (deleteInput === furnitureProductName) {
+      if (deleteInput === furnitureProjectName) {
         // Send a request to delete the project text data
-        const responseText = await fetch('/api/products/furniture/delText', {
+        const responseText = await fetch('/api/projects/furniture/delText', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            furnitureProductName,
+            furnitureProjectName,
           }),
         });
   
         // Send a request to delete the project name
-        const responseNames = await fetch('/api/products/furniture/delProductNames', {
+        const responseNames = await fetch('/api/projects/furniture/delProjectNames', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            furnitureProductName,
+            furnitureProjectName,
           }),
         });
   
         // Send a request to delete the project image
-        const responseImage = await fetch('/api/products/furniture/delImage', {
+        const responseImage = await fetch('/api/projects/furniture/delImage', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            furnitureProductName,
+            furnitureProjectName,
           }),
         });
         console.log(responseText);
@@ -51,7 +51,7 @@ const DelProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) =>
   
         if (responseText.ok && responseNames.ok && responseImage.ok) {
           // Update the state to remove the deleted project
-          onDeleteFurnitureProduct(furnitureProductName);
+          onDeleteFurnitureProject(furnitureProjectName);
   
           // Clear the delete input and hide it
           setDeleteInput('');
@@ -70,12 +70,12 @@ const DelProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) =>
 
   return (
     <div>
-      <button onClick={handleDelete}>Delete Product</button>
+      <button onClick={handleDelete}>Delete Project</button>
       {showDeleteInput && (
         <div>
           <input
             type="text"
-            placeholder={`Type "${furnitureProductName}" to confirm deletion`}
+            placeholder={`Type "${furnitureProjectName}" to confirm deletion`}
             value={deleteInput}
             onChange={(e) => setDeleteInput(e.target.value)}
           />
@@ -86,4 +86,4 @@ const DelProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) =>
   );
 };
 
-export default DelProductButton;
+export default DelProjectButton;
