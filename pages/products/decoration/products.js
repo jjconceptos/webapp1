@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
-import ProductForm from '/pages/products/manage/addProduct';
-import DelProductButton from 'pages/products/manage/delProduct';
+import ProductForm from '/pages/products/decoration/manage/addProduct';
+import DelProductButton from 'pages/products/decoration/manage/delProduct';
 import Layout from '/layouts/layout';
-import { fetchProductsData } from '/utils/fetchProducts';
+import { fetchDecorationProductsData } from '/utils/fetchDecorationProducts';
 import '/layouts/styles.css';
 
-function Products() {
+function decorationProducts() {
   const { state } = useAuth();
-  const [showProductForm, setShowProductForm] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [expandedProduct, setExpandedProduct] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showDecorationProductForm, setShowDecorationProductForm] = useState(false);
+  const [decorationProducts, setDecorationProducts] = useState([]);
+  const [expandedDecorationProduct, setExpandedDecorationProduct] = useState(null);
+  const [selectedDecorationProduct, setSelectedDecorationProduct] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
 
-  // Fetch projects when the component mounts
+  // Fetch products when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await fetchProductsData();
-        setProducts(
-          productsData.map((product) => ({
-            ...product,
-            description: product.description.length > 8
-              ? product.description.slice(0, 8) + '...'
-              : product.description,
+        const decorationProductsData = await fetchDecorationProductsData();
+        setDecorationProducts(
+          decorationProductsData.map((decorationProduct) => ({
+            ...decorationProduct,
+            description: decorationProduct.description.length > 8
+              ? decorationProduct.description.slice(0, 8) + '...'
+              : decorationProduct.description,
           }))
         );
       } catch (error) {
@@ -35,53 +35,53 @@ function Products() {
     fetchData();
   }, []);
 
-  const handleProductAddClick = () => {
-    setShowProductForm(true);
+  const handleDecorationProductAddClick = () => {
+    setShowDecorationProductForm(true);
   };
 
-  const handleProductClick = (product) => {
-    if (product) {
-      setSelectedProduct(product);
+  const handleDecorationProductClick = (decorationProduct) => {
+    if (decorationProduct) {
+      setSelectedDecorationProduct(decorationProduct);
       setEnlargedView(!enlargedView);
-      setShowProductForm(false);
+      setShowDecorationProductForm(false);
     } else {
-      setShowProductForm((prevShowProductForm) => !prevShowProductForm);
+      setShowDecorationProductForm((prevShowDecorationProductForm) => !prevShowDecorationProductForm);
     }
   };
 
-  const handleProductAdded = async () => {
+  const handleDecorationProductAdded = async () => {
     try {
-      const updatedProducts = await fetchProductsData();
-      setProducts(
-        updatedProducts.map((product) => ({
-          ...product,
-          description: product.description.length > 8
-            ? product.description.slice(0, 8) + '...'
-            : product.description,
+      const updatedDecorationProducts = await fetchDecorationProductsData();
+      setDecorationProducts(
+        updatedDecorationProducts.map((decorationProduct) => ({
+          ...decorationProduct,
+          description: decorationProduct.description.length > 8
+            ? decorationProduct.description.slice(0, 8) + '...'
+            : decorationProduct.description,
         }))
       );
-      console.log('Updated products:', updatedProducts);
+      console.log('Updated products:', updatedDecorationProducts);
     } catch (error) {
       console.error('Error handling added product:', error);
     }
   };
 
-  const handleProductSubmit = async (product) => {
-    if (product.name && product.description) {
-      setShowProductForm(false);
-      handleProductAdded(product.name);
+  const handleDecorationProductSubmit = async (decorationProduct) => {
+    if (decorationProduct.name && decorationProduct.description) {
+      setShowDecorationProductForm(false);
+      handleProductAdded(decorationProduct.name);
     } else {
       console.log('Validation failed: Missing name or description');
     }
   };
 
-  const handleDeleteProduct = async (productName) => {
+  const handleDeleteDecorationProduct = async (decorationProductName) => {
     try {
-      const updatedProducts = projects.filter((product) => product.name !== productName);
-      setProducts(updatedProducts);
+      const updatedDecorationProducts = decorationProducts.filter((decorationProduct) => decorationProduct.name !== decorationProductName);
+      setDecorationProducts(updatedDecorationProducts);
 
-      if (expandedProduct === productName) {
-        setExpandedProduct(null);
+      if (expandedDecorationProduct === decorationProductName) {
+        setExpandedDecorationProduct(null);
       }
     } catch (error) {
       console.error(error);
@@ -110,59 +110,59 @@ function Products() {
       <div>
         <div className="add-products">
           {isButtonVisible && (
-            <button onClick={handleProductAddClick}>Add product</button>
+            <button onClick={handleDecorationProductAddClick}>Add product</button>
           )}
         </div>
-        {showProductForm && (
+        {showDecorationProductForm && (
           <div>
             <h2></h2>
             <ProductForm
-              onSubmit={handleProductSubmit}
-              products={products}
-              onProductAdded={handleProductAdded}
+              onSubmit={handleDecorationProductSubmit}
+              decorationProducts={decorationProducts}
+              onDecorationProductAdded={handleDecorationProductAdded}
             />
           </div>
         )}
 
         <div className="pro-grid">
-          {Array.isArray(products) && products.length > 0 ? (
-            products.map((product, index) => (
+          {Array.isArray(decorationProducts) && decorationProducts.length > 0 ? (
+            decorationProducts.map((decorationProduct, index) => (
               <div
                 key={index}
                 className={`pro-card ${
-                  expandedProduct === index ? 'expanded' : ''
+                  expandedDecorationProduct === index ? 'expanded' : ''
                 }`}
               >
                 <h3
                   onClick={() =>
-                    setExpandedProduct(
-                      expandedProduct === index ? null : index
+                    setExpandedDecorationProduct(
+                      expandedDecorationProduct === index ? null : index
                     )
                   }
                 >
-                  {product.name}
+                  {decorationProduct.name}
                 </h3>
                 <p
                   className={`product-description ${
-                    expandedProduct === index ? 'expanded' : ''
+                    expandedDecorationProduct === index ? 'expanded' : ''
                   }`}
                 >
-                  {product.description}
+                  {decorationProduct.description}
                 </p>
-                {product.imageUrl && (
+                {decorationProduct.imageUrl && (
                   <img
-                    src={product.imageUrl}
-                    alt={product.name}
+                    src={decorationProduct.imageUrl}
+                    alt={decorationProduct.name}
                     className={`product-image ${
-                      expandedProduct === index ? 'expanded' : ''
+                      expandedDecorationProduct === index ? 'expanded' : ''
                     }`}
-                    onClick={() => handleProductClick(product)}
+                    onClick={() => handleDecorationProductClick(decorationProduct)}
                   />
                 )}
                 {isButtonVisible && (
                   <DelProductButton
-                    productName={product.name}
-                    onDeleteProduct={handleDeleteProduct}
+                  decorationProductName={decorationProduct.name}
+                    onDeleteDecorationProduct={handleDeleteDecorationProduct}
                   />
                 )}
               </div>
@@ -174,8 +174,8 @@ function Products() {
                   marginLeft: '10%',
                   zIndex: 1,
                 }}
-                className={`${Array.isArray(products) &&
-                  products.length === 0
+                className={`${Array.isArray(decorationProducts) &&
+                  decorationProducts.length === 0
                   ? ''
                   : ''}`}
               >
@@ -185,13 +185,13 @@ function Products() {
           )}
         </div>
 
-        {enlargedView && selectedProduct && (
+        {enlargedView && selectedDecorationProduct && (
           <div className="enlarged-product">
-            <h2>{selectedProduct.name}</h2>
-            <p>{selectedProduct.description}</p>
+            <h2>{selectedDecorationProduct.name}</h2>
+            <p>{selectedDecorationProduct.description}</p>
             <img
-              src={selectedProduct.imageUrl}
-              alt={selectedProduct.name}
+              src={selectedDecorationProduct.imageUrl}
+              alt={selectedDecorationProduct.name}
               className="enlarged-product-image"
             />
           </div>
@@ -201,4 +201,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default decorationProducts;

@@ -3,40 +3,39 @@ import { kv } from "@vercel/kv";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { productNames } = req.body;
+      const { furnitureProductNames } = req.body;
       console.log('Received request body:', req.body);
-     
-      if (!productNames || !Array.isArray(productNames)) {
-        console.error('Invalid project names list');
+
+      if (!furnitureProductNames || !Array.isArray(furnitureProductNames)) {
+       
         return res.status(400).json({ message: 'Invalid project names list' });
       }
 
       // Retrieve the existing project names from the key-value store
-      let existingProductNames = await kv.get('productnames:');
-
-      if (!existingProductNames) {
-        existingProductNames = [];
+      let existingFurnitureProductNames = await kv.get('furnitureproductnames:');
+      if (!existingFurnitureProductNames) {
+        existingFurnitureProductNames = [];
       }
 
       // Filter out null values and invalid entries
-      const validProductNames = productNames
+      const validFurnitureProductNames = furnitureProductNames
         .filter(product => typeof product === "string" && product.trim().length > 0)
         .map(product => product.trim());
 
-      if (validProductNames.length === 0) {
+      if (validFurnitureProductNames.length === 0) {
         console.error('No valid product names found');
         return res.status(400).json({ message: 'No valid product names found' });
       }
 
       // Append the new project names to the existing list
-      const updatedProductNames = [...existingProductNames, ...validProductNames];
+      const updatedFurnitureProductNames = [...existingFurnitureProductNames, ...validFurnitureProductNames];
 
-      console.log('Received project names list (productNames.js): ', validProductNames);
+      console.log('Received project names list (furnitureProductNames.js): ', validFurnitureProductNames);
 
       // Store the updated project names list
-      await kv.set('productnames:', updatedProductNames);
+      await kv.set('furnitureproductnames:', updatedFurnitureProductNames);
 
-      console.log('Product names list updated successfully');
+      console.log('Furniture product names list updated successfully');
 
       res.status(200).json({ message: "Product names list updated successfully" });
     } catch (error) {

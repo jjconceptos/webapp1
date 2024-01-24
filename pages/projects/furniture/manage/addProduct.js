@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '/layouts/layout';
 
 
-const ProductForm = ({ onSubmit, onProductAdded, products }) => {
+const furnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
@@ -38,7 +38,7 @@ const ProductForm = ({ onSubmit, onProductAdded, products }) => {
   
     try {
       // Send the form data to the local image upload endpoint
-      const imageResponse = await fetch('/api/products/productImage', {
+      const imageResponse = await fetch('/api/products/furniture/productImage', {
         method: 'POST',
         body: formData,
         headers: {
@@ -59,7 +59,7 @@ const ProductForm = ({ onSubmit, onProductAdded, products }) => {
           timestamp,
         };
   
-        const textResponse = await fetch('/api/products/productText', {
+        const textResponse = await fetch('/api/products/furniture/productText', {
           method: 'POST',
           body: JSON.stringify({ textData }),
           headers: {
@@ -72,22 +72,22 @@ const ProductForm = ({ onSubmit, onProductAdded, products }) => {
           console.log('Text data submitted successfully');
   
           // Send the project name to the API immediately after adding it
-          const productNamesResponse = await fetch('/api/products/productNames', {
+          const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
             method: 'POST',
-            body: JSON.stringify({ productNames: [name] }), // Send just the project name as an array
+            body: JSON.stringify({ furnitureProductNames: [name] }), // Send just the project name as an array
             headers: {
               'Content-Type': 'application/json',
             },
           });
   
-          if (productNamesResponse.ok) {
+          if (furnitureProductNamesResponse.ok) {
             console.log('Project name added to the list successfully');
           } else {
             console.error('Failed to add the project name to the list');
           }
   
           // Notify the parent component that a new project has been added
-          onProductAdded(name);
+          onFurnitureProductAdded(name);
   
           // Clear form fields
           setName('');
@@ -158,4 +158,4 @@ const ProductForm = ({ onSubmit, onProductAdded, products }) => {
   );
 };
 
-export default ProductForm;
+export default furnitureProductForm;

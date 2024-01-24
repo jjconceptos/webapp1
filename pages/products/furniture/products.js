@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
-import ProductForm from '/pages/products/manage/addProduct';
-import DelProductButton from 'pages/products/manage/delProduct';
+import ProductForm from '/pages/products/furniture/manage/addProduct';
+import DelProductButton from 'pages/products/furniture/manage/delProduct';
 import Layout from '/layouts/layout';
-import { fetchProductsData } from '/utils/fetchProducts';
+import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
 import '/layouts/styles.css';
 
-function Products() {
+function furnitureProducts() {
   const { state } = useAuth();
-  const [showProductForm, setShowProductForm] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [expandedProduct, setExpandedProduct] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showFurnitureProductForm, setShowFurnitureProductForm] = useState(false);
+  const [furnitureProducts, setFurnitureProducts] = useState([]);
+  const [expandedFurnitureProduct, setExpandedFurnitureProduct] = useState(null);
+  const [selectedFurnitureProduct, setSelectedFurnitureProduct] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
 
-  // Fetch projects when the component mounts
+  // Fetch products when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await fetchProductsData();
-        setProducts(
-          productsData.map((product) => ({
-            ...product,
-            description: product.description.length > 8
-              ? product.description.slice(0, 8) + '...'
-              : product.description,
+        const furnitureProductsData = await fetchFurnitureProductsData();
+        setFurnitureProducts(
+          furnitureProductsData.map((furnitureProduct) => ({
+            ...furnitureProduct,
+            description: furnitureProduct.description.length > 8
+              ? furnitureProduct.description.slice(0, 8) + '...'
+              : furnitureProduct.description,
           }))
         );
       } catch (error) {
@@ -35,53 +35,53 @@ function Products() {
     fetchData();
   }, []);
 
-  const handleProductAddClick = () => {
-    setShowProductForm(true);
+  const handleFurnitureProductAddClick = () => {
+    setShowFurnitureProductForm(true);
   };
 
-  const handleProductClick = (product) => {
-    if (product) {
-      setSelectedProduct(product);
+  const handleFurnitureProductClick = (furnitureProduct) => {
+    if (furnitureProduct) {
+      setSelectedFurnitureProduct(furnitureProduct);
       setEnlargedView(!enlargedView);
-      setShowProductForm(false);
+      setShowFurnitureProductForm(false);
     } else {
-      setShowProductForm((prevShowProductForm) => !prevShowProductForm);
+      setShowFurnitureProductForm((prevShowFurnitureProductForm) => !prevShowFurnitureProductForm);
     }
   };
 
-  const handleProductAdded = async () => {
+  const handleFurnitureProductAdded = async () => {
     try {
-      const updatedProducts = await fetchProductsData();
-      setProducts(
-        updatedProducts.map((product) => ({
-          ...product,
-          description: product.description.length > 8
-            ? product.description.slice(0, 8) + '...'
-            : product.description,
+      const updatedFurnitureProducts = await fetchFurnitureProductsData();
+      setFurnitureProducts(
+        updatedFurnitureProducts.map((furnitureProduct) => ({
+          ...furnitureProduct,
+          description: furnitureProduct.description.length > 8
+            ? furnitureProduct.description.slice(0, 8) + '...'
+            : furnitureProduct.description,
         }))
       );
-      console.log('Updated products:', updatedProducts);
+      console.log('Updated products:', updatedFurnitureProducts);
     } catch (error) {
       console.error('Error handling added product:', error);
     }
   };
 
-  const handleProductSubmit = async (product) => {
-    if (product.name && product.description) {
-      setShowProductForm(false);
-      handleProductAdded(product.name);
+  const handleFurnitureProductSubmit = async (furnitureProduct) => {
+    if (furnitureProduct.name && furnitureProduct.description) {
+      setShowFurnitureProductForm(false);
+      handleProductAdded(furnitureProduct.name);
     } else {
       console.log('Validation failed: Missing name or description');
     }
   };
 
-  const handleDeleteProduct = async (productName) => {
+  const handleDeleteFurnitureProduct = async (furnitureProductName) => {
     try {
-      const updatedProducts = projects.filter((product) => product.name !== productName);
-      setProducts(updatedProducts);
+      const updatedFurnitureProducts = furnitureProducts.filter((furnitureProduct) => furnitureProduct.name !== furnitureProductName);
+      setFurnitureProducts(updatedFurnitureProducts);
 
-      if (expandedProduct === productName) {
-        setExpandedProduct(null);
+      if (expandedFurnitureProduct === furnitureProductName) {
+        setExpandedFurnitureProduct(null);
       }
     } catch (error) {
       console.error(error);
@@ -110,59 +110,59 @@ function Products() {
       <div>
         <div className="add-products">
           {isButtonVisible && (
-            <button onClick={handleProductAddClick}>Add product</button>
+            <button onClick={handleFurnitureProductAddClick}>Add product</button>
           )}
         </div>
-        {showProductForm && (
+        {showFurnitureProductForm && (
           <div>
             <h2></h2>
             <ProductForm
-              onSubmit={handleProductSubmit}
-              products={products}
-              onProductAdded={handleProductAdded}
+              onSubmit={handleFurnitureProductSubmit}
+              furnitureProducts={furnitureProducts}
+              onFurnitureProductAdded={handleFurnitureProductAdded}
             />
           </div>
         )}
 
         <div className="pro-grid">
-          {Array.isArray(products) && products.length > 0 ? (
-            products.map((product, index) => (
+          {Array.isArray(furnitureProducts) && furnitureProducts.length > 0 ? (
+            furnitureProducts.map((furnitureProduct, index) => (
               <div
                 key={index}
                 className={`pro-card ${
-                  expandedProduct === index ? 'expanded' : ''
+                  expandedFurnitureProduct === index ? 'expanded' : ''
                 }`}
               >
                 <h3
                   onClick={() =>
-                    setExpandedProduct(
-                      expandedProduct === index ? null : index
+                    setExpandedFurnitureProduct(
+                      expandedFurnitureProduct === index ? null : index
                     )
                   }
                 >
-                  {product.name}
+                  {furnitureProduct.name}
                 </h3>
                 <p
                   className={`product-description ${
-                    expandedProduct === index ? 'expanded' : ''
+                    expandedFurnitureProduct === index ? 'expanded' : ''
                   }`}
                 >
-                  {product.description}
+                  {furnitureProduct.description}
                 </p>
-                {product.imageUrl && (
+                {furnitureProduct.imageUrl && (
                   <img
-                    src={product.imageUrl}
-                    alt={product.name}
+                    src={furnitureProduct.imageUrl}
+                    alt={furnitureProduct.name}
                     className={`product-image ${
-                      expandedProduct === index ? 'expanded' : ''
+                      expandedFurnitureProduct === index ? 'expanded' : ''
                     }`}
-                    onClick={() => handleProductClick(product)}
+                    onClick={() => handleFurnitureProductClick(furnitureProduct)}
                   />
                 )}
                 {isButtonVisible && (
                   <DelProductButton
-                    productName={product.name}
-                    onDeleteProduct={handleDeleteProduct}
+                    furnitureProductName={furnitureProduct.name}
+                    onDeleteFurnitureProduct={handleDeleteFurnitureProduct}
                   />
                 )}
               </div>
@@ -174,8 +174,8 @@ function Products() {
                   marginLeft: '10%',
                   zIndex: 1,
                 }}
-                className={`${Array.isArray(products) &&
-                  products.length === 0
+                className={`${Array.isArray(furnitureProducts) &&
+                  furnitureProducts.length === 0
                   ? ''
                   : ''}`}
               >
@@ -185,13 +185,13 @@ function Products() {
           )}
         </div>
 
-        {enlargedView && selectedProduct && (
+        {enlargedView && selectedFurnitureProduct && (
           <div className="enlarged-product">
-            <h2>{selectedProduct.name}</h2>
-            <p>{selectedProduct.description}</p>
+            <h2>{selectedFurnitureProduct.name}</h2>
+            <p>{selectedFurnitureProduct.description}</p>
             <img
-              src={selectedProduct.imageUrl}
-              alt={selectedProduct.name}
+              src={selectedFurnitureProduct.imageUrl}
+              alt={selectedFurnitureProduct.name}
               className="enlarged-product-image"
             />
           </div>
@@ -201,4 +201,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default furnitureProducts;

@@ -1,87 +1,87 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
-import ProjectForm from '/pages/projects/manage/addProject';
-import DelProjectButton from 'pages/projects/manage/delProject';
+import ProductForm from '/pages/products/furniture/manage/addProduct';
+import DelProductButton from 'pages/products/furniture/manage/delProduct';
 import Layout from '/layouts/layout';
-import { fetchProjectsData } from '/utils/fetchProjects';
+import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
 import '/layouts/styles.css';
 
-function Projects() {
+function furnitureProducts() {
   const { state } = useAuth();
-  const [showProjectForm, setShowProjectForm] = useState(false);
-  const [projects, setProjects] = useState([]);
-  const [expandedProject, setExpandedProject] = useState(null);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [showFurnitureProductForm, setShowFurnitureProductForm] = useState(false);
+  const [furnitureProducts, setFurnitureProducts] = useState([]);
+  const [expandedFurnitureProduct, setExpandedFurnitureProduct] = useState(null);
+  const [selectedFurnitureProduct, setSelectedFurnitureProduct] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
 
-  // Fetch projects when the component mounts
+  // Fetch products when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const projectsData = await fetchProjectsData();
-        setProjects(
-          projectsData.map((project) => ({
-            ...project,
-            description: project.description.length > 8
-              ? project.description.slice(0, 8) + '...'
-              : project.description,
+        const furnitureProductsData = await fetchFurnitureProductsData();
+        setFurnitureProducts(
+          furnitureProductsData.map((furnitureProduct) => ({
+            ...furnitureProduct,
+            description: furnitureProduct.description.length > 8
+              ? furnitureProduct.description.slice(0, 8) + '...'
+              : furnitureProduct.description,
           }))
         );
       } catch (error) {
-        console.error('Error fetching projects:', error);
+        console.error('Error fetching products:', error);
       }
     };
 
     fetchData();
   }, []);
 
-  const handleProjectAddClick = () => {
-    setShowProjectForm(true);
+  const handleFurnitureProductAddClick = () => {
+    setShowFurnitureProductForm(true);
   };
 
-  const handleProjectClick = (project) => {
-    if (project) {
-      setSelectedProject(project);
+  const handleFurnitureProductClick = (furnitureProduct) => {
+    if (furnitureProduct) {
+      setSelectedFurnitureProduct(furnitureProduct);
       setEnlargedView(!enlargedView);
-      setShowProjectForm(false);
+      setShowFurnitureProductForm(false);
     } else {
-      setShowProjectForm((prevShowProjectForm) => !prevShowProjectForm);
+      setShowFurnitureProductForm((prevShowFurnitureProductForm) => !prevShowFurnitureProductForm);
     }
   };
 
-  const handleProjectAdded = async () => {
+  const handleFurnitureProductAdded = async () => {
     try {
-      const updatedProjects = await fetchProjectsData();
-      setProjects(
-        updatedProjects.map((project) => ({
-          ...project,
-          description: project.description.length > 8
-            ? project.description.slice(0, 8) + '...'
-            : project.description,
+      const updatedFurnitureProducts = await fetchFurnitureProductsData();
+      setFurnitureProducts(
+        updatedFurnitureProducts.map((furnitureProduct) => ({
+          ...furnitureProduct,
+          description: furnitureProduct.description.length > 8
+            ? furnitureProduct.description.slice(0, 8) + '...'
+            : furnitureProduct.description,
         }))
       );
-      console.log('Updated projects:', updatedProjects);
+      console.log('Updated products:', updatedFurnitureProducts);
     } catch (error) {
-      console.error('Error handling added project:', error);
+      console.error('Error handling added product:', error);
     }
   };
 
-  const handleProjectSubmit = async (project) => {
-    if (project.name && project.description) {
-      setShowProjectForm(false);
-      handleProjectAdded(project.name);
+  const handleFurnitureProductSubmit = async (furnitureProduct) => {
+    if (furnitureProduct.name && furnitureProduct.description) {
+      setShowFurnitureProductForm(false);
+      handleProductAdded(furnitureProduct.name);
     } else {
       console.log('Validation failed: Missing name or description');
     }
   };
 
-  const handleDeleteProject = async (projectName) => {
+  const handleDeleteFurnitureProduct = async (furnitureProductName) => {
     try {
-      const updatedProjects = projects.filter((project) => project.name !== projectName);
-      setProjects(updatedProjects);
+      const updatedFurnitureProducts = furnitureProducts.filter((furnitureProduct) => furnitureProduct.name !== furnitureProductName);
+      setFurnitureProducts(updatedFurnitureProducts);
 
-      if (expandedProject === projectName) {
-        setExpandedProject(null);
+      if (expandedFurnitureProduct === furnitureProductName) {
+        setExpandedFurnitureProduct(null);
       }
     } catch (error) {
       console.error(error);
@@ -93,14 +93,14 @@ function Projects() {
   return (
     <Layout>
       <style jsx global>{`
-        .no-projects-centered {
+        .no-products-centered {
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
 
-        .add-projects {
+        .add-products {
           position: absolute;
           top: 14%;
           left: 10%;
@@ -108,91 +108,91 @@ function Projects() {
         }
       `}</style>
       <div>
-        <div className="add-projects">
+        <div className="add-products">
           {isButtonVisible && (
-            <button onClick={handleProjectAddClick}>Add project</button>
+            <button onClick={handleFurnitureProductAddClick}>Add product</button>
           )}
         </div>
-        {showProjectForm && (
+        {showFurnitureProductForm && (
           <div>
             <h2></h2>
-            <ProjectForm
-              onSubmit={handleProjectSubmit}
-              projects={projects}
-              onProjectAdded={handleProjectAdded}
+            <ProductForm
+              onSubmit={handleFurnitureProductSubmit}
+              furnitureProducts={furnitureProducts}
+              onFurnitureProductAdded={handleFurnitureProductAdded}
             />
           </div>
         )}
 
         <div className="pro-grid">
-          {Array.isArray(projects) && projects.length > 0 ? (
-            projects.map((project, index) => (
+          {Array.isArray(furnitureProducts) && furnitureProducts.length > 0 ? (
+            furnitureProducts.map((furnitureProduct, index) => (
               <div
                 key={index}
                 className={`pro-card ${
-                  expandedProject === index ? 'expanded' : ''
+                  expandedFurnitureProduct === index ? 'expanded' : ''
                 }`}
               >
                 <h3
                   onClick={() =>
-                    setExpandedProject(
-                      expandedProject === index ? null : index
+                    setExpandedFurnitureProduct(
+                      expandedFurnitureProduct === index ? null : index
                     )
                   }
                 >
-                  {project.name}
+                  {furnitureProduct.name}
                 </h3>
                 <p
-                  className={`project-description ${
-                    expandedProject === index ? 'expanded' : ''
+                  className={`product-description ${
+                    expandedFurnitureProduct === index ? 'expanded' : ''
                   }`}
                 >
-                  {project.description}
+                  {furnitureProduct.description}
                 </p>
-                {project.imageUrl && (
+                {furnitureProduct.imageUrl && (
                   <img
-                    src={project.imageUrl}
-                    alt={project.name}
-                    className={`project-image ${
-                      expandedProject === index ? 'expanded' : ''
+                    src={furnitureProduct.imageUrl}
+                    alt={furnitureProduct.name}
+                    className={`product-image ${
+                      expandedFurnitureProduct === index ? 'expanded' : ''
                     }`}
-                    onClick={() => handleProjectClick(project)}
+                    onClick={() => handleFurnitureProductClick(furnitureProduct)}
                   />
                 )}
                 {isButtonVisible && (
-                  <DelProjectButton
-                    projectName={project.name}
-                    onDeleteProject={handleDeleteProject}
+                  <DelProductButton
+                    furnitureProductName={furnitureProduct.name}
+                    onDeleteFurnitureProduct={handleDeleteFurnitureProduct}
                   />
                 )}
               </div>
             ))
           ) : (
-            <div className="no-projects-centered">
+            <div className="no-products-centered">
               <p
                 style={{
                   marginLeft: '10%',
                   zIndex: 1,
                 }}
-                className={`${Array.isArray(projects) &&
-                  projects.length === 0
+                className={`${Array.isArray(furnitureProducts) &&
+                  furnitureProducts.length === 0
                   ? ''
                   : ''}`}
               >
-                No projects to display.
+                No products to display.
               </p>
             </div>
           )}
         </div>
 
-        {enlargedView && selectedProject && (
-          <div className="enlarged-project">
-            <h2>{selectedProject.name}</h2>
-            <p>{selectedProject.description}</p>
+        {enlargedView && selectedFurnitureProduct && (
+          <div className="enlarged-product">
+            <h2>{selectedFurnitureProduct.name}</h2>
+            <p>{selectedFurnitureProduct.description}</p>
             <img
-              src={selectedProject.imageUrl}
-              alt={selectedProject.name}
-              className="enlarged-project-image"
+              src={selectedFurnitureProduct.imageUrl}
+              alt={selectedFurnitureProduct.name}
+              className="enlarged-product-image"
             />
           </div>
         )}
@@ -201,4 +201,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default furnitureProducts;
