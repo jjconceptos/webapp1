@@ -172,11 +172,7 @@ const About = () => {
       text: '',
       
     },
-    {
-      imagePath: '/92.jpeg',
-      text: '',
-      
-    },
+    
     {
       imagePath: '/12a.jpg',
       text: '',
