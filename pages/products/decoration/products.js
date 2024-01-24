@@ -6,7 +6,7 @@ import Layout from '/layouts/layout';
 import { fetchDecorationProductsData } from '/utils/fetchDecorationProducts';
 import '/layouts/styles.css';
 
-function decorationProducts() {
+function DecorationProducts() {
   const { state } = useAuth();
   const [showDecorationProductForm, setShowDecorationProductForm] = useState(false);
   const [decorationProducts, setDecorationProducts] = useState([]);
@@ -201,4 +201,4 @@ function decorationProducts() {
   );
 }
 
-export default decorationProducts;
+export default DecorationProducts;

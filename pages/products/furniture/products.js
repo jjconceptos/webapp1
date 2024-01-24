@@ -6,7 +6,7 @@ import Layout from '/layouts/layout';
 import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
 import '/layouts/styles.css';
 
-function furnitureProducts() {
+function FurnitureProducts() {
   const { state } = useAuth();
   const [showFurnitureProductForm, setShowFurnitureProductForm] = useState(false);
   const [furnitureProducts, setFurnitureProducts] = useState([]);
@@ -201,4 +201,4 @@ function furnitureProducts() {
   );
 }
 
-export default furnitureProducts;
+export default FurnitureProducts;
