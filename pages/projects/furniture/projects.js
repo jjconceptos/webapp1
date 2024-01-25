@@ -92,7 +92,7 @@ function FurnitureProjects() {
 
   return (
     <Layout>
-      <style jsx global>{`
+      <style jsx>{`
         .no-projects-centered {
           position: fixed;
           top: 50%;
@@ -127,18 +127,22 @@ function FurnitureProjects() {
           overflow: hidden;
         }
 
-        /* New class for the enlarged project details */
         .enlarged-project {
           width: 100%;
           height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start; /* Align to the left */
+          justify-content: center;
         }
-
+        
         .enlarged-project-img {
-          width: auto;
+          width: 80%; /* Adjust the width as needed */
+          max-width: 100%;
           height: auto;
-          max-width: 100%; /* Adjust as needed */
-          max-height: 100%; /* Adjust as needed */
+          max-height: 80vh; /* Adjust the height as needed */
           object-fit: contain;
+          margin-left: 10%; /* Adjust the left margin as needed */
         }
 
         .close-button {
