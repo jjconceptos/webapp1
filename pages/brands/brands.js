@@ -122,109 +122,100 @@ function Brands() {
   return (
     <Layout>
    <style jsx>{`
-        .no-brands-centered {
+         .no-brands-centered {
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
-
+      
         .add-brands {
           position: absolute;
           top: 14%;
           left: 10%;
           transform: translate(-50%, -50%);
         }
+      
         .brands-grid {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
-          padding: 15px;
-          border-radius: 10px;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 50px;
+          padding: 20px;
+          margin-top: 100px; /* Adjust as needed */
+          position: absolute;
+          left: 25%; /* Center with equal margin on both sides */
+          right: 25%;
         }
-        
+      
         .brand-item {
-          /* Remove position: absolute; */
           width: 100%;
-          height: 80px;
-          border-radius: 50%;
+          height: 150px; /* Adjust the height as needed */
+          border-radius: 10px; /* Adjust the radius for rounded corners */
           overflow: hidden;
           cursor: pointer;
-          /* Remove transform and left/top */
+          position: relative;
+          
         }
       
         .brand-item img {
-          width: 100%; /* Make the image fill the circular container */
-          height: 100%; /* Make sure the image fills the container */
-          object-fit: contain;
-          position: absolute;
-          top: 0;
-          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
-
       `}</style>
-      <div >
-      <div className="add-brands">
-        {isButtonVisible && (
-          <button onClick={handleBrandAddClick}
-        >
-          Add brand
-        </button>
-
-        )}
+      <div>
+        <div className="add-brands">
+          {isButtonVisible && (
+            <button onClick={handleBrandAddClick}>
+              Add brand
+            </button>
+          )}
         </div>
         {showBrandForm && (
           <div>
-            
             <BrandForm onSubmit={handleBrandSubmit} brands={brands} onBrandAdded={handleBrandAdded} />
           </div>
         )}
-
-       
-       {/* Display the list of brands */}
-       <div className="brands-grid">
-        {Array.isArray(brands) && brands.length > 0 ? (
-          brands.map((brand, index) => (
-            <div key={index} className={`brand-item ${expandedBrand === index ? 'expanded' : ''}`}>
-              {/* If you have an imageUrl, you can display it here */}
-              {brand.imageUrl && (
-                <img
-                  src={brand.imageUrl}
-                  alt={brand.name}
-                  onClick={() => handleBrandClick(brand)}
-                />
-              )}
-            </div>
-          ))
-        ) : (
-          <div className="no-brands-centered">
-            <p style={{
-              marginLeft: '10%', // Adjust as needed
-              zIndex: 1, // Use a numeric value
-            }} className={`${Array.isArray(brands) && brands.length === 0 ? '' : ''}`}>
-              No brands to display.
-            </p>
-          </div>
-        )}
-      </div>
-
-{enlargedView && selectedBrand && (
-<div className="enlarged-brand">
-              <h2>{selectedBrand.name}</h2>
-              <p>{selectedBrand.description}</p>
-              {/* Add any other brand details you want to display */}
-              <img
-                src={selectedBrand.imageUrl}
-                alt={selectedBrand.name}
-                className="enlarged-brand-image"
-              />
+      
+        {/* Display the list of brands */}
+        <div className="brands-grid">
+          {Array.isArray(brands) && brands.length > 0 ? (
+            brands.map((brand, index) => (
+              <div key={index} className={`brand-item ${expandedBrand === index ? 'expanded' : ''}`}>
+                {/* If you have an imageUrl, you can display it here */}
+                {brand.imageUrl && (
+                  <img
+                    src={brand.imageUrl}
+                    alt={brand.name}
+                    onClick={() => handleBrandClick(brand)}
+                  />
+                )}
+              </div>
+            ))
+          ) : (
+            <div className="no-brands-centered">
+              <p style={{
+                marginLeft: '10%', // Adjust as needed
+                zIndex: 1, // Use a numeric value
+              }} className={`${Array.isArray(brands) && brands.length === 0 ? '' : ''}`}>
+                No brands to display.
+              </p>
             </div>
           )}
-
+        </div>
+      
+        {enlargedView && selectedBrand && (
+          <div className="enlarged-brand">
+            <h2>{selectedBrand.name}</h2>
+            <p>{selectedBrand.description}</p>
+            {/* Add any other brand details you want to display */}
+            <img
+              src={selectedBrand.imageUrl}
+              alt={selectedBrand.name}
+              className="enlarged-brand-image"
+            />
+          </div>
+        )}
       </div>
 
     </Layout>
