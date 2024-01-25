@@ -121,7 +121,7 @@ function Brands() {
 
   return (
     <Layout>
-   <style global>{`
+   <style jsx>{`
         .no-brands-centered {
           position: fixed;
           top: 50%;
@@ -146,14 +146,15 @@ function Brands() {
           padding: 15px;
           border-radius: 10px;
         }
-      
+        
         .brand-item {
-          width: 100%; /* Take up the whole width of the container */
-          height: 80px; /* Set a fixed height for the circular container */
-          border-radius: 50%; /* Make it circular */
+          /* Remove position: absolute; */
+          width: 100%;
+          height: 80px;
+          border-radius: 50%;
           overflow: hidden;
-          cursor: pointer; /* Add pointer cursor for the clickable effect */
-          position: relative;
+          cursor: pointer;
+          /* Remove transform and left/top */
         }
       
         .brand-item img {
@@ -178,7 +179,7 @@ function Brands() {
         </div>
         {showBrandForm && (
           <div>
-            <h2></h2>
+            
             <BrandForm onSubmit={handleBrandSubmit} brands={brands} onBrandAdded={handleBrandAdded} />
           </div>
         )}

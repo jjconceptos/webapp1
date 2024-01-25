@@ -115,8 +115,8 @@ const BrandForm = ({ onSubmit, onBrandAdded, brands }) => {
   top: 30%;
   left: 20%;
   transform: translate(-50%, -50%);
-  background-image: url('/concrete.jpg'); /* Set your background image */
-  /*background-color: #f2f2f2;*/ 
+  /*background-image: url('/concrete.jpg');*/  
+  background-color: #f3f0e9;
 }
 
 /* Define a CSS class for input fields */
