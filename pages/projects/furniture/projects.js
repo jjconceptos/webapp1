@@ -13,27 +13,41 @@ function FurnitureProjects() {
   const [expandedFurnitureProject, setExpandedFurnitureProject] = useState(null);
   const [selectedFurnitureProject, setSelectedFurnitureProject] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
+  const [fullDescriptions, setFullDescriptions] = useState({});
 
   // Fetch projects when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
         const furnitureProjectsData = await fetchFurnitureProjectsData();
-        setFurnitureProjects(
-          furnitureProjectsData.map((furnitureProject) => ({
-            ...furnitureProject,
-            description: furnitureProject.description.length > 8
-              ? furnitureProject.description.slice(0, 8) + '...'
+        const updatedFurnitureProjects = furnitureProjectsData.map((furnitureProject) => ({
+          ...furnitureProject,
+          // Limit the description only if the project is not expanded
+          description:
+            expandedFurnitureProject === null
+              ? furnitureProject.description.length > 8
+                ? furnitureProject.description.slice(0, 8) + '...'
+                : furnitureProject.description
               : furnitureProject.description,
-          }))
+        }));
+        setFurnitureProjects(updatedFurnitureProjects);
+
+        // Store the full descriptions separately
+        const fullDescs = furnitureProjectsData.reduce(
+          (acc, furnitureProject) => ({
+            ...acc,
+            [furnitureProject.name]: furnitureProject.description,
+          }),
+          {}
         );
+        setFullDescriptions(fullDescs);
       } catch (error) {
         console.error('Error fetching projects:', error);
       }
     };
-
+  
     fetchData();
-  }, []);
+  }, [expandedFurnitureProject]);
 
   const handleFurnitureProjectAddClick = () => {
     setShowFurnitureProjectForm(true);
@@ -263,24 +277,25 @@ function FurnitureProjects() {
         </div>
 
         {enlargedView && selectedFurnitureProject && (
-  <div className="enlarged-view">
-    <div className="enlarged-container">
-      <div className="enlarged-project">
-        <button className="close-button" onClick={() => setEnlargedView(false)}>X</button>
-        <img
-          className="enlarged-project-img"
-          src={selectedFurnitureProject.imageUrl}
-          alt={selectedFurnitureProject.name}
-        />
-
-      </div>
-    </div>
-    <div className="project-info">
-          <h2 className="enlarged-project-name">{selectedFurnitureProject.name}</h2>
-          <p className="enlarged-project-description">{selectedFurnitureProject.description}</p>
-        </div>
-  </div>
-)}
+          <div className="enlarged-view">
+            <div className="enlarged-container">
+              <div className="enlarged-project">
+                <button className="close-button" onClick={() => setEnlargedView(false)}>X</button>
+                <img
+                  className="enlarged-project-img"
+                  src={selectedFurnitureProject.imageUrl}
+                  alt={selectedFurnitureProject.name}
+                />
+              </div>
+            </div>
+            <div className="project-info">
+              <h2 className="enlarged-project-name">{selectedFurnitureProject.name}</h2>
+              <p className="enlarged-project-description">
+                {fullDescriptions[selectedFurnitureProject.name] || selectedFurnitureProject.description}
+              </p>
+            </div>
+          </div>
+        )}
 
       </div>
     </Layout>
