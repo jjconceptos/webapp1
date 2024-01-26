@@ -113,7 +113,7 @@ function FurnitureProjects() {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(0, 0, 0, 0.8); /* Adjust transparency as needed */
+          background-color: rgba(0, 0, 0, 0.94); /* Adjust transparency as needed */
           display: flex;
           z-index: 100; /* Higher z-index than other elements */
         }
@@ -156,12 +156,14 @@ function FurnitureProjects() {
           font-size: 3vw; /* Adjust font size as needed */
           margin-left: 20%; /* Adjust margin-left as needed */
           margin-top: 5%; /* Adjust margin-top as needed */
+          color: #f3f0e9;
         }
       
         .enlarged-project-description {
           font-size: 2vw; /* Adjust font size as needed */
           margin-left: 20%; /* Adjust margin-left as needed */
           margin-top: 2%; /* Adjust margin-top as needed */
+          color: #f3f0e9;
         }
           
         .close-button {
