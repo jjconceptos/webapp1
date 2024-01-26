@@ -115,12 +115,10 @@ function FurnitureProjects() {
           height: 100%;
           background-color: rgba(0, 0, 0, 0.8); /* Adjust transparency as needed */
           display: flex;
-          justify-content: center;
-          align-items: center;
           z-index: 100; /* Higher z-index than other elements */
         }
 
-        /* New class for the container within the enlarged view */
+        
         .enlarged-container {
           max-width: 80%; /* Adjust as needed */
           max-height: 80vh; /* Adjust as needed */
@@ -137,14 +135,35 @@ function FurnitureProjects() {
         }
         
         .enlarged-project-img {
-          width: 80%; /* Adjust the width as needed */
+          width: 80%; 
           max-width: 100%;
           height: auto;
-          max-height: 80vh; /* Adjust the height as needed */
+          max-height: 80vh; 
           object-fit: contain;
-          margin-left: 10%; /* Adjust the left margin as needed */
+          margin-left: 15%;
+          margin-top: 10%;
         }
 
+        .project-name {
+         
+        }
+      
+        .project-description {
+         
+        }
+
+        .enlarged-project-name {
+          font-size: 3vw; /* Adjust font size as needed */
+          margin-left: 20%; /* Adjust margin-left as needed */
+          margin-top: 5%; /* Adjust margin-top as needed */
+        }
+      
+        .enlarged-project-description {
+          font-size: 2vw; /* Adjust font size as needed */
+          margin-left: 20%; /* Adjust margin-left as needed */
+          margin-top: 2%; /* Adjust margin-top as needed */
+        }
+          
         .close-button {
           position: absolute;
           top: 10px;
@@ -246,15 +265,18 @@ function FurnitureProjects() {
     <div className="enlarged-container">
       <div className="enlarged-project">
         <button className="close-button" onClick={() => setEnlargedView(false)}>X</button>
-        <h2>{selectedFurnitureProject.name}</h2>
-        <p>{selectedFurnitureProject.description}</p>
         <img
           className="enlarged-project-img"
           src={selectedFurnitureProject.imageUrl}
           alt={selectedFurnitureProject.name}
         />
+
       </div>
     </div>
+    <div className="project-info">
+          <h2 className="enlarged-project-name">{selectedFurnitureProject.name}</h2>
+          <p className="enlarged-project-description">{selectedFurnitureProject.description}</p>
+        </div>
   </div>
 )}
 
