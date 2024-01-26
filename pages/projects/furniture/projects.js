@@ -174,10 +174,13 @@ function FurnitureProjects() {
         }
       
         .enlarged-project-description {
-          font-size: 2vw; /* Adjust font size as needed */
-          margin-left: 20%; /* Adjust margin-left as needed */
-          margin-top: 2%; /* Adjust margin-top as needed */
+          font-size: 2vw;
+          margin-left: 20%;
+          margin-top: 2%;
           color: #f3f0e9;
+          white-space: pre-line; /* Preserve newlines and spaces */
+          overflow-wrap: break-word; /* Wrap long words */
+          max-width: 60%; /* Adjust as needed */
         }
           
         .close-button {
