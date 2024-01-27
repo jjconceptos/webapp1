@@ -63,8 +63,7 @@ const Layout = ({ children }) => {
   {/* Contacto */}
   <div className="footer-section">
     <div>Contacto:</div>
-    <div>Arquitecto Juan Pablo Gonzalez Andrade + 52 55 2344 3501</div>
-    <div>Ing. Jaime Rodriguez Flores + 52 55 1079 1185</div>
+    
     <div>3 Reyes 18 Colonia Navidad, Ciudad de Mexico, 05219</div>
   </div>
 
@@ -174,7 +173,7 @@ const Layout = ({ children }) => {
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 12vh;
+          height: 10vh;
           background-color: rgba(52, 73, 94);
           padding: 10px;
           color: black;
@@ -196,7 +195,7 @@ const Layout = ({ children }) => {
       
         .footer-copyright {
           font-size: 1vw; /* Adjusted for responsiveness */
-          margin-top: 4%;
+          margin-top: 1%;
           margin-right: 1%;
         }
         
@@ -230,7 +229,7 @@ const Layout = ({ children }) => {
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 12vh;
+            height: 8vh;
             background-color: rgba(52, 73, 94);
             padding: 10px;
             color: black;
@@ -244,15 +243,15 @@ const Layout = ({ children }) => {
           }
         
           .footer-section {
-            font-size: 0.6vw; /* Adjusted for responsiveness */
+            font-size: 1.5vw; /* Adjusted for responsiveness */
             margin-right: 20px; /* Add some space between sections */
             display: flex;
             flex-direction: column; /* Arrange items in a column inside each section */
           }
         
           .footer-copyright {
-            font-size: 5vw; /* Adjusted for responsiveness */
-            margin-top: 4%;
+            font-size: 2vw; /* Adjusted for responsiveness */
+            margin-top: 2%;
             margin-right: 1%;
           }
         }
