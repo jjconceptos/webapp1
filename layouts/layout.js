@@ -126,15 +126,16 @@ const Layout = ({ children }) => {
       
         ul {
           list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2; // Ensure it appears above other elements
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap; /* Ensure flex items wrap on smaller screens */
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          z-index: 2; // Ensure it appears above other elements
         }
 
         li {
@@ -183,10 +184,6 @@ const Layout = ({ children }) => {
           z-index: 3; /* Set a higher z-index than main-content */
         }
       
-        
-
-      
-        /*  */
         footer {
           position: fixed;
           bottom: 0px;
@@ -206,6 +203,42 @@ const Layout = ({ children }) => {
           justify-content: center;
           align-items: center;
         }
+
+        @media only screen and (max-width: 600px) {
+          ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            align-items: center; /* Center the items */
+            position: static; /* Remove absolute positioning */
+          }
+
+          footer {
+            padding: 5px; /* Adjusted padding for smaller screens */
+            font-size: 8px; /* Adjusted font size for smaller screens */
+          }
+        }
+
+        /* Media query for screens between 601px and 768px */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  ul {
+    /* Add specific styles for this screen size */
+  }
+
+  footer {
+    /* Add specific styles for this screen size */
+  }
+}
+
+/* Media query for screens between 769px and 1024px */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  ul {
+    /* Add specific styles for this screen size */
+  }
+
+  footer {
+    /* Add specific styles for this screen size */
+  }
+}
+
       `}</style>
     </div>
   );
