@@ -5,7 +5,7 @@ import 'layouts/styles.css';
 
 const Layout = ({ children }) => {
   const { state } = useAuth();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
   const [centeredContent, setCenteredContent] = useState(false);
 
   
@@ -20,30 +20,30 @@ const Layout = ({ children }) => {
 
       
           <ul>
-          <li onClick={() => setIsSidebarOpen(false)}>
+          <li >
               <Link href="/home/home">Inicio</Link>
             </li>
-            <li onClick={() => setIsSidebarOpen(false)}>
+            <li >
               <Link href="/about/about">Acerca</Link>
             </li>
-            <li onClick={() => setIsSidebarOpen(false)}>
+            <li >
               <Link href="/about/team">Equipo</Link>
             </li>
-           <li onClick={() => setIsSidebarOpen(false)}>
+           <li >
               <Link href="/projects/projectsLandingPage">Proyectos</Link>
             </li> {/* */}
-            <li onClick={() => setIsSidebarOpen(false)}>
+            <li >
               <Link href="/products/productsLandingPage">Productos</Link>
             </li> {/* */}
             
             
            
             {state.clearanceLevel <= 1 && state.clearanceLevel > 0 && (
-              <li onClick={() => setIsSidebarOpen(false)}>
+              <li >
                 <Link href="/master/master">Master</Link>
               </li>
             )}
-            {/*<li onClick={() => setIsSidebarOpen(false)}>
+            {/*<li >
               <Link href="/hub/hub">Hub</Link>
             </li>*/}
           </ul>
@@ -161,7 +161,7 @@ const Layout = ({ children }) => {
           display: flex;
           flex-direction: column;
           transition: margin-left 0.5s; /* Add this line for smooth transition */
-          margin-left: ${isSidebarOpen ? '250px' : '0'}; /* Adjust the margin based on sidebar state */
+          
           z-index: 1; /* Set z-index lower than the sidebar */
           width: 100%; /* Make sure it takes the full width */
         }
