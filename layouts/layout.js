@@ -251,7 +251,7 @@ const Layout = ({ children }) => {
           }
         
           .footer-copyright {
-            font-size: 1vw; /* Adjusted for responsiveness */
+            font-size: 5vw; /* Adjusted for responsiveness */
             margin-top: 4%;
             margin-right: 1%;
           }
