@@ -59,56 +59,41 @@ const Layout = ({ children }) => {
      
 
       
-      <footer>
-        {/* */}
-        <div style={{ marginLeft: '25%', bottom: '10px', fontSize: '10px'}}>
-          <div >Contacto:</div>
-          <div>
-          Arquitecto Juan Pablo Gonzalez Andrade
-          + 52 55 2344 3501
-          </div>
-          <div >
-          Ing. Jaime Rodriguez Flores
-          + 52 55 1079 1185
-          </div>
-          <div >
-          3 Reyes 18 Colonia Navidad, Ciudad de Mexico, 05219
-          </div>
-          </div>
-          
-          <div style={{ marginLeft: '55%', marginTop: '-60px', fontSize: '10px'}}>
-          <div >Cuenta:</div>
-            <div >
-          <a href="/register/registerForm">Registrarse</a>
-          </div>
-          <div >
-            <a href="/login/login">Iniciar sesion</a>
-          </div>
-          </div>
+        <footer>
+  {/* Contacto */}
+  <div className="footer-section">
+    <div>Contacto:</div>
+    <div>Arquitecto Juan Pablo Gonzalez Andrade + 52 55 2344 3501</div>
+    <div>Ing. Jaime Rodriguez Flores + 52 55 1079 1185</div>
+    <div>3 Reyes 18 Colonia Navidad, Ciudad de Mexico, 05219</div>
+  </div>
 
-          <div style={{ marginLeft: '70%', marginTop: '-45px', fontSize: '10px'}}>
-          <div >Agenda una cita en linea:</div>
-            <div >
-         Escribe a: jjconceptos21@gmail.com
-          </div>
-          </div>
+  {/* Cuenta */}
+  <div className="footer-section">
+    <div>Cuenta:</div>
+    <div><a href="/register/registerForm">Registrarse</a></div>
+    <div><a href="/login/login">Iniciar sesion</a></div>
+  </div>
 
-          <div style={{ position: 'fixed', marginLeft: '90%', marginTop: '-30px', fontSize: '10px'}}>
-          <div >Colaboraciones:</div>
-          <div >
-          <a href="/brands/brands">Marcas favoritas</a>
-          </div>
-          </div>
-           
-          <div style={{ textAlign: 'left', marginTop: '10px', paddingLeft: '10px', fontSize: '14px' }}>
-          <p>
-             
-            <a href="https://www.jrf.one" target="_blank" rel="noopener noreferrer">&copy; {new Date().getFullYear()} JRF. All rights reserved.</a>
-          </p>
-        </div>
+  {/* Agenda una cita en linea */}
+  <div className="footer-section">
+    <div>Agenda una cita en linea:</div>
+    <div>Escribe a: jjconceptos21@gmail.com</div>
+  </div>
 
-        
-      </footer>
+  {/* Colaboraciones */}
+  <div className="footer-section">
+    <div>Colaboraciones:</div>
+    <div><a href="/brands/brands">Marcas favoritas</a></div>
+  </div>
+
+  {/* Copyright */}
+  <div className="footer-copyright">
+    <p>
+      <a href="https://www.jrf.one" target="_blank" rel="noopener noreferrer">&copy; {new Date().getFullYear()} JRF. All rights reserved.</a>
+    </p>
+  </div>
+</footer>
 
       {/* Styles */}
       <style jsx global>{`
@@ -186,19 +171,35 @@ const Layout = ({ children }) => {
       
         footer {
           position: fixed;
-          bottom: 0px;
+          bottom: 0;
           left: 0;
           width: 100%;
-          height: 11vh;
+          height: 12vh;
           background-color: rgba(52, 73, 94);
           padding: 10px;
-          
           color: black;
-          font-size: 10px;
+          font-size: 1vw; /* Adjusted for responsiveness */
           opacity: 0.8;
-          z-index: 2; /* Set z-index higher than the body */
+          z-index: 2;
+          display: flex;
+          flex-direction: row; /* Arrange items in a row */
+          align-items: center; /* Align items vertically in the middle */
+          justify-content: space-between; /* Add space between items */
         }
-
+      
+        .footer-section {
+          font-size: 0.8vw; /* Adjusted for responsiveness */
+          margin-right: 20px; /* Add some space between sections */
+          display: flex;
+          flex-direction: column; /* Arrange items in a column inside each section */
+        }
+      
+        .footer-copyright {
+          font-size: 1vw; /* Adjusted for responsiveness */
+          margin-top: 4%;
+          margin-right: 1%;
+        }
+        
         .content-container.centered {
           justify-content: center;
           align-items: center;
@@ -206,14 +207,37 @@ const Layout = ({ children }) => {
 
         @media only screen and (max-width: 600px) {
           ul {
-            flex-direction: column; /* Stack navigation items vertically */
-            align-items: center; /* Center the items */
-            position: static; /* Remove absolute positioning */
+           
+            display: flex;
+            
+            flex-wrap: wrap; /* Ensure flex items wrap on smaller screens */
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            position: static;
+            margin-top: 10px;
+            margin-left: 5px;
+            z-index: 2; // Ensure it appears above other elements
+            font-size: 12px;
           }
-
+        
+          ul li {
+            margin: 5px; /* Adjusted margin for more compact spacing */
+          }
+        
           footer {
-            padding: 5px; /* Adjusted padding for smaller screens */
-            font-size: 8px; /* Adjusted font size for smaller screens */
+            position: fixed;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 11vh;
+            background-color: rgba(52, 73, 94);
+            padding: 10px;
+            
+            color: black;
+            font-size: 5px;
+            opacity: 0.8;
+            z-index: 2; /* Set z-index higher than the body */
           }
         }
 
