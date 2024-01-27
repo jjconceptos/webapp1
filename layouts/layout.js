@@ -227,17 +227,33 @@ const Layout = ({ children }) => {
         
           footer {
             position: fixed;
-            bottom: 0px;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 11vh;
+            height: 12vh;
             background-color: rgba(52, 73, 94);
             padding: 10px;
-            
             color: black;
-            font-size: 5px;
+            font-size: 1vw; /* Adjusted for responsiveness */
             opacity: 0.8;
-            z-index: 2; /* Set z-index higher than the body */
+            z-index: 2;
+            display: flex;
+            flex-direction: row; /* Arrange items in a row */
+            align-items: center; /* Align items vertically in the middle */
+            justify-content: space-between; /* Add space between items */
+          }
+        
+          .footer-section {
+            font-size: 0.6vw; /* Adjusted for responsiveness */
+            margin-right: 20px; /* Add some space between sections */
+            display: flex;
+            flex-direction: column; /* Arrange items in a column inside each section */
+          }
+        
+          .footer-copyright {
+            font-size: 1vw; /* Adjusted for responsiveness */
+            margin-top: 4%;
+            margin-right: 1%;
           }
         }
 
