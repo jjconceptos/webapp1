@@ -351,6 +351,75 @@ const About = () => {
           text-align: left;
         }
 
+        @media only screen and (max-width: 600px) {
+          .big-title {
+            font-size: 32px; /* Adjust font size for mobile screens */
+            margin-bottom: 10px; /* Adjust margin for smaller screens */
+          }
+        
+          .side-title {
+            font-size: 16px; /* Adjust font size for mobile screens */
+            margin-bottom: 5px; /* Adjust margin for smaller screens */
+          }
+        
+          .below-title-undertitle {
+            font-size: 16px; /* Adjust font size for mobile screens */
+            margin-top: 15vh; /* Adjust margin for smaller screens */
+          }
+        
+          .below-title-text {
+            font-size: 16px; /* Adjust font size for mobile screens */
+            margin-top: 22vh; /* Adjust margin for smaller screens */
+            padding: 10vh; /* Adjust padding for smaller screens */
+          }
+        
+          .services-text {
+            font-size: 20px; /* Adjust font size for mobile screens */
+            position: relative; /* Change position to relative */
+            top: 0; /* Reset top property */
+            left: 0; /* Reset left property */
+            margin-top: 15vh; /* Adjust margin for smaller screens */
+            padding-bottom: 5vh; /* Adjust padding for smaller screens */
+          }
+        
+          .services-under-text {
+            font-size: 10px; /* Adjust font size for mobile screens */
+            position: relative; /* Change position to relative */
+            top: 0; /* Reset top property */
+            left: 0; /* Reset left property */
+            margin-top: 17vh; /* Adjust margin for smaller screens */
+            padding-bottom: 5vh; /* Adjust padding for smaller screens */
+          }
+        
+          .services-container {
+            grid-template-columns: repeat(1, 1fr); /* Adjust column layout for smaller screens */
+            grid-gap: 20px; /* Adjust gap for smaller screens */
+            margin-top: 20vh; /* Adjust margin for smaller screens */
+            padding-bottom: 10vh; /* Adjust padding for smaller screens */
+          }
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 768px) {
+          ul {
+            /* Add specific styles for this screen size */
+          }
+        
+          footer {
+            /* Add specific styles for this screen size */
+          }
+        }
+
+        
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  ul {
+    /* Add specific styles for this screen size */
+  }
+
+  footer {
+    /* Add specific styles for this screen size */
+  }
+}
+
       `}</style>
       <div>
       <div className="big-title">

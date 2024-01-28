@@ -256,7 +256,7 @@ const Layout = ({ children }) => {
           }
         }
 
-        /* Media query for screens between 601px and 768px */
+       
 @media only screen and (min-width: 601px) and (max-width: 768px) {
   ul {
     /* Add specific styles for this screen size */
@@ -267,7 +267,7 @@ const Layout = ({ children }) => {
   }
 }
 
-/* Media query for screens between 769px and 1024px */
+
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   ul {
     /* Add specific styles for this screen size */
