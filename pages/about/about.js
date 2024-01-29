@@ -347,7 +347,7 @@ const About = () => {
       .conceptos-text {
         
         text-align: center;
-        margin-top: -40vh; /* Adjust margin above the text */
+        margin-top: -35vh; /* Adjust margin above the text */
         
       }
       
