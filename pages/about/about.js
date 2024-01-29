@@ -271,25 +271,12 @@ const About = () => {
         height: auto;
       }
       
-      .page-container {
+      .about-container {
         width: 80%;
         margin: 0 auto;
         margin-top: 5vh;
       }
       
-      .header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: #fff; /* Adjust the background color as needed */
-        z-index: 1000;
-        padding: 10px 0;
-      }
-      
-      .header-buttons {
-        display: flex;
-        justify-content: space-around;
-      }
       
       .section {
        
@@ -502,7 +489,7 @@ const About = () => {
 }
 
       `}</style>
-      <div className="page-container">
+      <div className="about-container">
   <div className="section">
     <div className="big-title">
       Nuestra vision
