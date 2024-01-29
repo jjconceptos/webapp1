@@ -10,7 +10,7 @@ const About = () => {
   const [isTooltipVisible, setTooltipVisibility] = useState(false);
 
   const handleTooltip = (sentences, event) => {
-    const yOffset = 1800;
+    const yOffset = 1260;
     const xOffset = 20;
   
     setTooltipText(sentences);
@@ -27,7 +27,7 @@ const About = () => {
 
   const handleConocenosClick = () => {
     // Specify the position you want to scroll to (adjust the value as needed)
-    const scrollPosition = 800; // Replace with your desired position
+    const scrollPosition = 750; // Replace with your desired position
     window.scrollTo({
       top: scrollPosition,
       behavior: 'smooth', // Use smooth scrolling
@@ -224,15 +224,6 @@ const About = () => {
     },
     
     
-    
-    
-    
-    /*
-   
-   
-  
-    */
-    
   ];
 
   const Carousel = ({ items }) => {
@@ -283,7 +274,7 @@ const About = () => {
       .page-container {
         width: 80%;
         margin: 0 auto;
-        margin-top: 25vh;
+        margin-top: 5vh;
       }
       
       .header {
@@ -302,8 +293,19 @@ const About = () => {
       
       .section {
        
-        margin-top: 30vh; /* Adjust margin below the header */
+        margin-top: 45vh; /* Adjust margin below the header */
       }
+
+      .about-us-section {
+       
+        margin-top: 45vh; /* Adjust margin below the header */
+      }
+
+      .services-section {
+       
+        margin-top: 35vh; /* Adjust margin below the header */
+      }
+      
       
       .big-title {
         font-size: 48px;
@@ -337,11 +339,10 @@ const About = () => {
       }
 
       .conceptos-text {
-        font-size: 18px;
-        text-align: left;
-        color: #333;
-        margin-top: -10vh; /* Adjust margin above the text */
-        padding: 20px;
+        
+        text-align: center;
+        margin-top: -40vh; /* Adjust margin above the text */
+        
       }
       
       .tooltip-container {
@@ -482,7 +483,7 @@ const About = () => {
     </div>
   </div>
 
-  <div className="section">
+  <div className="about-us-section">
     <div className="below-title-undertitle">
       SOBRE NOSOTROS
     </div>
@@ -503,7 +504,7 @@ const About = () => {
   </div>
 
 
-  <div className="section">
+  <div style={{marginTop: '35vh'}}>
     <div className="services-text">
       <p>
         Servicios

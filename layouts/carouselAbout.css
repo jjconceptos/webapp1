@@ -67,3 +67,80 @@
     right: 20px;
   }
   
+
+  @media only screen and (max-width: 600px) {
+
+    .carousel {
+      position: absolute;
+      top: 580vh;
+      width: 70%;
+      overflow: hidden;
+      left: 10vh;
+      padding-bottom: 10vh;
+    }
+    
+    .carousel-content {
+      display: flex;
+      
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .carousel-item {
+      min-width: 100%;
+      height: 320px; 
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: auto; 
+    }
+    
+  
+  
+    .carousel-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8vh;
+    background-color: rgba(52, 73, 94); /* Adjust background color as needed */
+    color: #EAECEE; /* Adjust text color as needed */
+    text-align: center;
+    padding: 10px; /* Adjust padding as needed */
+  }
+  
+  .carousel-footer p {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px; /* Adjust the font size as needed */
+    background-color: #34495E; /* Adjust button background color as needed */
+    color: #EAECEE; /* Adjust button text color as needed */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Adjust border-radius as needed */
+    padding: 10px; /* Adjust padding as needed */
+  }
+    
+  }
+  
+  
+  
+
+  @media only screen and (min-width: 601px) and (max-width: 768px) {
+   
+  }
+
+  
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
