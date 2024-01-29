@@ -270,134 +270,184 @@ const About = () => {
 
   return (
     <Layout>
-      <style jsx global>{`
-        body {
-          margin: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          height: 100vh;
-        }
+      <style jsx>{`
+       body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .page-container {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 25vh;
+      }
+      
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #fff; /* Adjust the background color as needed */
+        z-index: 1000;
+        padding: 10px 0;
+      }
+      
+      .header-buttons {
+        display: flex;
+        justify-content: space-around;
+      }
+      
+      .section {
+       
+        margin-top: 30vh; /* Adjust margin below the header */
+      }
+      
+      .big-title {
+        font-size: 48px;
+        text-align: center;
+        color: #000;
+        margin-bottom: 20px;
+      }
+      
+      .side-title {
+        font-size: 18px;
+        text-align: center;
+        color: #000;
+        margin-bottom: 10px;
+        cursor: pointer;
+        z-index: 2;
+      }
+      
+      .below-title-undertitle {
+        font-size: 18px;
+        text-align: center;
+        color: #333;
+        margin-top: 20px; /* Adjust margin above the text */
+      }
+      
+      .below-title-text {
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        margin-top: 30px; /* Adjust margin above the text */
+        padding: 20px;
+      }
 
-        .big-title {
-          font-size: 48px;
-          text-align: center;
-          color: #000; /* Adjust text color as needed */
-          margin-bottom: 20px; /* Add some space below the big title */
-        }
+      .conceptos-text {
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        margin-top: -10vh; /* Adjust margin above the text */
+        padding: 20px;
+      }
+      
+      .tooltip-container {
+        position: absolute;
+        top: 0; // Adjust as needed
+        left: 0; // Adjust as needed
+        z-index: 100; // Ensure the tooltip is above other elements
+      }
 
-        .side-title {
-          font-size: 18px;
-          text-align: center;
-          color: #000; /* Adjust text color as needed */
-          margin-bottom: 10px; /* Add some space below the side title */
-          cursor: pointer;
-           z-index: 2;
-        }
-        .below-title-undertitle {
-          font-size: 18px;
-          position: absolute;
-          text-align: center;
-          color: #333; /* Adjust text color as needed */
-          margin-top: 130vh; /* Add 30vh margin above the text */
-        }
-        .below-title-text {
-          font-size: 18px;
-          position: absolute;
-          text-align: left;
-          color: #333; /* Adjust text color as needed */
-          margin-top: 190vh; /* Add 30vh margin above the text */
-          padding: 40vh;
-        }
-
-        .services-text {
-          font-size: 26px;
-          position: absolute;
-          top: 282vh;
-          width: 50%;
-          overflow: hidden;
-          left: 82.2vh;
-          padding-bottom: 10vh;
-        }
-
-        .services-under-text{
-          font-size: 12px;
-          position: absolute;
-          top: 284vh;
-          width: 50%;
-          overflow: hidden;
-          left: 10vh;
-          padding-bottom: 10vh;
-        }
-
-        .services-container {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-gap: 240px; /* Adjust the gap as needed */
-          position: absolute;
-          top: 298vh;
-          width: 90%; /* Adjust the width as needed */
-          left: 5%; /* Adjust the left position as needed */
-          padding-bottom: 20vh;
-        }
-
-        .service-plan {
-          text-align: center;
-          padding: 20px;
-          border: 1px solid #ddd;
-          border-radius: 10px;
-          width: 100%; /* Adjust the width as needed */
-          text-align: left;
-        }
+      .carousel-container {
+        margin-top: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .services-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 40px;
+        margin-top: 30px; /* Adjusted margin */
+        text-align: center;
+      }
+      
+      .service-plan {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 100%;
+        text-align: left;
+      }
+      
+      .services-text {
+        font-size: 26px;
+        margin-top: 20px; /* Adjusted margin */
+        text-align: center;
+      }
+      
+      .services-under-text {
+        font-size: 12px;
+        margin-top: 20px; /* Adjusted margin */
+        text-align: center;
+      }
+      
+      
+      
+      
 
         @media only screen and (max-width: 600px) {
+          body {
+            height: 300vh; /* Increase overall height for more space */
+          }
+        
+          .section {
+            margin-bottom: 20vh; /* Increase margin between sections for smaller screens */
+          }
+        
           .big-title {
-            font-size: 32px; /* Adjust font size for mobile screens */
-            margin-bottom: 10px; /* Adjust margin for smaller screens */
+            font-size: 32px;
+            margin-bottom: 20px;
           }
         
           .side-title {
-            font-size: 16px; /* Adjust font size for mobile screens */
-            margin-bottom: 5px; /* Adjust margin for smaller screens */
+            font-size: 16px;
+            margin-bottom: 15px;
           }
         
           .below-title-undertitle {
-            font-size: 16px; /* Adjust font size for mobile screens */
-            margin-top: 15vh; /* Adjust margin for smaller screens */
+            font-size: 16px;
+            margin-top: 30vh;
           }
         
           .below-title-text {
-            font-size: 16px; /* Adjust font size for mobile screens */
-            margin-top: 22vh; /* Adjust margin for smaller screens */
-            padding: 10vh; /* Adjust padding for smaller screens */
+            font-size: 16px;
+            margin-top: 35vh;
+            padding: 10vh 5vw;
           }
         
-          .services-text {
-            font-size: 20px; /* Adjust font size for mobile screens */
-            position: relative; /* Change position to relative */
-            top: 0; /* Reset top property */
-            left: 0; /* Reset left property */
-            margin-top: 15vh; /* Adjust margin for smaller screens */
-            padding-bottom: 5vh; /* Adjust padding for smaller screens */
+          .services-text,
+          .services-under-text {
+            font-size: 20px;
+            position: relative;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 40vh;
+            padding-bottom: 10vh;
           }
         
           .services-under-text {
-            font-size: 10px; /* Adjust font size for mobile screens */
-            position: relative; /* Change position to relative */
-            top: 0; /* Reset top property */
-            left: 0; /* Reset left property */
-            margin-top: 17vh; /* Adjust margin for smaller screens */
-            padding-bottom: 5vh; /* Adjust padding for smaller screens */
+            font-size: 12px;
+            margin-top: 42vh;
+            padding-bottom: 10vh;
           }
         
           .services-container {
-            grid-template-columns: repeat(1, 1fr); /* Adjust column layout for smaller screens */
-            grid-gap: 20px; /* Adjust gap for smaller screens */
-            margin-top: 20vh; /* Adjust margin for smaller screens */
-            padding-bottom: 10vh; /* Adjust padding for smaller screens */
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 20px;
+            margin-top: 55vh;
+            padding-bottom: 30vh;
           }
         }
+        
+        
+        
 
         @media only screen and (min-width: 601px) and (max-width: 768px) {
           ul {
@@ -421,65 +471,80 @@ const About = () => {
 }
 
       `}</style>
-      <div>
-      <div className="big-title">
-        Nuestra vision
-      </div>
-
-      <div className="side-title" onClick={handleConocenosClick}>
-        Conocenos!
-      </div>
-        </div>
-      <div className="below-title-undertitle">
-      SOBRE NOSOTROS
-      </div>
-      
-      <div className="below-title-text">
-      <p style={{marginTop: '150px'}}>
-      JJ Conceptos, es un taller de remodelación e interiorismo basado en Mexico pero que busca siempre tomar en cuenta una visión internacional.  
-      </p>
-      <p style={{marginTop: '30px'}}>
-     
-      Con especialidad en mobiliario a la medida, JJ Conceptos nace como eso, un taller de muebles. En 2021 el arquitecto Juan Pablo Gonzalez y el 
-      ingeniero Jaime Rodriguez, se unen con un objetivo:  Al paso del tiempo, y despues de trabajar con 
-      diversos clientes, el equipo se amplia y nuestros servicios tambien, para ofrecer soluciones de interiorismo integral que definimos con los sigientes tres pilares:
-      Arquitectura, Interiorismo y Branding.
-      </p>
-      <p style={{marginTop: '30px'}}>
-      Nuestro taller mezcla tradicion con innovacion, para presentar al cliente un producto estetico y practico. 
-     
-      </p>
-      <p style={{marginTop: '80px', textAlign: 'left'}}>Conceptos</p>
-      </div>
-      <div>
-      <label >    
-      <Carousel items={yourCarouselItems1} />
-    </label>
+      <div className="page-container">
+  <div className="section">
+    <div className="big-title">
+      Nuestra vision
     </div>
-<div className="services-text" >
-<p>
-  Servicios
-</p>
-</div>
-<div className="services-under-text">
-<p style={{marginTop: '30px',}}>
-  Por favor coloca el mouse encima del servicio que quieras conocer mas a detalle (no todos tienen detalle)
-</p>
-</div>
-<div className="services-container">
-        {plans.map((plan, index) => (
-          <div key={index} className="service-plan">
-            {plan.jsx}
-          </div>
-        ))}
-      </div>
 
-      <div>
-        {isTooltipVisible && (
-          <Tooltip text={tooltipText} isVisible={isTooltipVisible} top={tooltipPosition.top} left={tooltipPosition.left} />
-          
-        )}
-      </div>
+    <div className="side-title" onClick={handleConocenosClick}>
+      Conocenos!
+    </div>
+  </div>
+
+  <div className="section">
+    <div className="below-title-undertitle">
+      SOBRE NOSOTROS
+    </div>
+
+    <div className="below-title-text">
+      <p>
+        JJ Conceptos, es un taller de remodelación e interiorismo basado en Mexico pero que busca siempre tomar en cuenta una visión internacional.
+      </p>
+      <p>
+        Con especialidad en mobiliario a la medida, JJ Conceptos nace como eso, un taller de muebles. En 2021 el arquitecto Juan Pablo Gonzalez y el
+        ingeniero Jaime Rodriguez, se unen con un objetivo: Al paso del tiempo, y después de trabajar con diversos clientes, el equipo se amplía y nuestros servicios también, para ofrecer soluciones de interiorismo integral que definimos con los siguientes tres pilares: Arquitectura, Interiorismo y Branding.
+      </p>
+      <p>
+        Nuestro taller mezcla tradición con innovación, para presentar al cliente un producto estético y práctico.
+      </p>
+      
+    </div>
+  </div>
+
+
+  <div className="section">
+    <div className="services-text">
+      <p>
+        Servicios
+      </p>
+    </div>
+
+    <div className="services-under-text">
+      <p>
+        Por favor coloca el mouse encima del servicio que quieras conocer más a detalle (no todos tienen detalle)
+      </p>
+    </div>
+
+    <div className="services-container">
+      {plans.map((plan, index) => (
+        <div key={index} className="service-plan">
+          {plan.jsx}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div className="section">
+    {isTooltipVisible && (
+      <Tooltip text={tooltipText} isVisible={isTooltipVisible} top={tooltipPosition.top} left={tooltipPosition.left} />
+    )}
+  </div>
+
+
+  <div >
+  <div className="conceptos-text">
+    <p>Conceptos</p>
+  </div>
+  <label>
+    <Carousel items={yourCarouselItems1} />
+  </label>
+</div>
+
+
+
+</div>
+
     
 
     </Layout>

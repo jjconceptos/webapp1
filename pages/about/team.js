@@ -7,7 +7,7 @@ const Team = () => {
   
     const handleConocenosClick = () => {
         // Specify the position you want to scroll to (adjust the value as needed)
-        const scrollPosition = 800; // Replace with your desired position
+        const scrollPosition = 680; // Replace with your desired position
         window.scrollTo({
           top: scrollPosition,
           behavior: 'smooth', // Use smooth scrolling
