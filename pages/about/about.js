@@ -301,6 +301,12 @@ const About = () => {
         margin-top: 45vh; /* Adjust margin below the header */
       }
 
+      .services-part {
+            
+        margin-top: 35vh; 
+       
+      }
+
       .services-section {
        
         margin-top: 35vh; /* Adjust margin below the header */
@@ -393,12 +399,25 @@ const About = () => {
       
 
         @media only screen and (max-width: 600px) {
+
           body {
             height: 300vh; /* Increase overall height for more space */
           }
         
+          
           .section {
-            margin-bottom: 20vh; /* Increase margin between sections for smaller screens */
+          
+            margin-top: 20vh; /* Adjust margin below the header */
+          }
+
+          .about-us-section {
+          
+            margin-top: 40vh; /* Adjust margin below the header */
+          }
+
+          .services-section {
+          
+            margin-top: 35vh; /* Adjust margin below the header */
           }
         
           .big-title {
@@ -418,31 +437,42 @@ const About = () => {
         
           .below-title-text {
             font-size: 16px;
-            margin-top: 35vh;
+            margin-top: 5vh;
             padding: 10vh 5vw;
           }
+
+          .services-part {
+            
+            margin-top: 5vh; 
+           
+          }
         
-          .services-text,
+          .services-text {
+            font-size: 16px;
+            margin-top: 1vh; /* Adjusted margin */
+            text-align: center;
+          }
+          
           .services-under-text {
             font-size: 20px;
             position: relative;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            margin-top: 40vh;
+            margin-top: 1vh;
             padding-bottom: 10vh;
           }
         
           .services-under-text {
             font-size: 12px;
-            margin-top: 42vh;
+            margin-top: 7vh;
             padding-bottom: 10vh;
           }
         
           .services-container {
             grid-template-columns: repeat(1, 1fr);
             grid-gap: 20px;
-            margin-top: 55vh;
+            margin-top: 10vh;
             padding-bottom: 30vh;
           }
         }
@@ -504,10 +534,10 @@ const About = () => {
   </div>
 
 
-  <div style={{marginTop: '35vh'}}>
+  <div className="services-part">
     <div className="services-text">
       <p>
-        Servicios
+        SERVICIOS
       </p>
     </div>
 
