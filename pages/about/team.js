@@ -64,68 +64,40 @@ const Team = () => {
           text-align: right;
           color: #333;
           margin-top: 0vh;
-          right: 11vh;
+          right: 5vh;
           width: 40%;
           
         }
 
-        .services-text {
-          font-size: 26px;
-          position: absolute;
-          top: 289vh;
-          width: 50%;
-          overflow: hidden;
-          left: 82.2vh;
-          padding-bottom: 10vh;
-        }
-
-        .services-container {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-gap: 240px;
-          position: absolute;
-          top: 298vh;
-          width: 90%;
-          left: 5%;
-          padding-bottom: 20vh;
-        }
-
-        .service-plan {
-          text-align: center;
-          padding: 20px;
-          border: 1px solid #ddd;
-          border-radius: 10px;
-          width: 100%;
-          text-align: left;
-        }
-
         .image-container {
           position: absolute;
-          top: 130vh;
+          top: 110vh;
           right: 5vh;
-          width: 30%;
-          height: 55%;
+          width: 40%;
+          height: 25%;
           background-image: url('/cop.jpeg');
           background-size: cover;
           background-position: center;
+          border-radius: 100%;
           z-index: 1;
         }
 
         .second-image-container {
           position: absolute;
-          top: 240vh;
+          top: 170vh;
           left: 5vh;
-          width: 30%;
-          height: 50%;
+          width: 40%;
+          height: 25%;
           background-image: url('/jamie.jpg');
           background-size: cover;
           background-position: center;
+          border-radius: 100%;
           z-index: 1;
         }
 
         .paragraph-jp-one {
           margin-top: 25vh;
-          text-align: left;
+         
         }
 
         .paragraph-jp-two {
@@ -144,8 +116,70 @@ const Team = () => {
           margin-top: 5vh;
           margin-bottom: 15vh;
         }
+
         @media only screen and (max-width: 600px) {
-          /* Add specific styles for smaller screens if needed */
+          body {
+            height: 300vh; /* Increase overall height for more space */
+          }
+        
+          
+          .section {
+          
+            margin-top: 20vh; /* Adjust margin below the header */
+          }
+
+          
+        
+          .big-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+          }
+        
+          .side-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+          }
+        
+          .below-title-undertitle {
+            font-size: 16px;
+            margin-top: 30vh;
+          }
+        
+          .below-title-text {
+            font-size: 16px;
+            margin-top: 5vh;
+            padding: 10vh 5vw;
+          }
+
+          .paragraph-jp-one {
+            font-size: 9px;
+            margin-top: 25vh;
+            t
+          }
+  
+          .paragraph-jp-two {
+            font-size: 9px;
+            margin-top: 10vh;
+            display: none;
+          }
+  
+          .paragraph-j-one {
+            font-size: 9px;
+            margin-top: 5vh;
+          }
+  
+          .paragraph-j-two {
+            font-size: 9px;
+            margin-top: 5vh;
+          }
+  
+          .paragraph-j-three {
+            font-size: 9px;
+            margin-top: 5vh;
+            margin-bottom: 15vh;
+          }
+
+          
         }
         
         @media only screen and (min-width: 601px) and (max-width: 768px) {
@@ -170,7 +204,7 @@ const Team = () => {
         <p className="paragraph-jp-one">
           Juan Pablo González Andrade, graduado de la Universidad Anáhuac Norte en la carrera de Arquitectura, ha desarrollado 
           varios proyectos de remodelación e interiorismo, diseño de mobiliario para hoteles y centros comerciales, supervisión 
-          de obras de gran y pequena escala y planos ejecutivos para la construcción de viviendas:
+          de obras de gran y pequena escala y planos ejecutivos para la construcción de viviendas.
         </p>
         <p className="paragraph-jp-two">
           Siempre me intereso el porque y el como se realizaban las edificaciones y construcciones que observaba, 
