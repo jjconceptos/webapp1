@@ -151,6 +151,11 @@ const Team = () => {
             z-index: 1;
           }
           
+          .team-container {
+          width: 80%;
+        margin: 0 auto;
+        margin-top: 5vh;
+        }
         
           .big-title {
             font-size: 32px;

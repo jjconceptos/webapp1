@@ -394,7 +394,7 @@ const About = () => {
           
           .section {
           
-            margin-top: 20vh; /* Adjust margin below the header */
+            margin-top: 45vh; /* Adjust margin below the header */
           }
 
           .about-us-section {
