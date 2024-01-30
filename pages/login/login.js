@@ -97,7 +97,7 @@ const Login = () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 25.2vh;
+  margin-left: 26vh;
   height: 100vh;
 }
 
