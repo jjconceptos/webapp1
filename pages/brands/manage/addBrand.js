@@ -115,7 +115,7 @@ const BrandForm = ({ onSubmit, onBrandAdded, brands }) => {
   top: 30%;
   left: 20%;
   transform: translate(-50%, -50%);
-  /*background-image: url('/concrete.jpg');*/  
+  /*background-image: url('/concrete.jpg');*/  /* Set your background image */
   background-color: #f3f0e9;
 }
 
@@ -133,6 +133,45 @@ const BrandForm = ({ onSubmit, onBrandAdded, brands }) => {
 /* Add a focus style */
 .input-field-add-brand:focus {
   border-color: #007bff;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .input-container-add-brand {
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    /*background-image: url('/concrete.jpg');*/  /* Set your background image */
+    background-color: #f3f0e9;
+  }
+  
+  /* Define a CSS class for input fields */
+  .input-field-add-brand {
+    width: 50%;
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 0.25rem;
+    outline: none;
+    transition: border-color 0.3s;
+    margin: 0 auto;
+  }
+  
+  /* Add a focus style */
+  .input-field-add-brand:focus {
+    border-color: #007bff;
+  }  
+  
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  
 }
 
 `}</style>

@@ -109,7 +109,7 @@ const DecorationProductForm = ({ onSubmit, onDecorationProductAdded, decorationP
   
   return (
     <Layout>
-<style jsx global>{`
+<style jsx >{`
  .input-container-add-product {
   position: absolute;
   top: 30%;

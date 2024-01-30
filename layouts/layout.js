@@ -147,8 +147,8 @@ const Layout = ({ children }) => {
           flex-direction: column;
           transition: margin-left 0.5s; /* Add this line for smooth transition */
           
-          z-index: 1; /* Set z-index lower than the sidebar */
-          width: 100%; /* Make sure it takes the full width */
+          z-index: 1; 
+          width: 100%; 
         }
       
         .content-container {
