@@ -95,11 +95,7 @@ function RegisterForm() {
 
 @media only screen and (max-width: 600px) {
 
-  body {
-    font-family: 'Poppins', serif; 
-    color: #141111;
-    background-color: #f3f0e9; /* Adjust the color as needed */
-}
+ 
 
 
 .input-container {

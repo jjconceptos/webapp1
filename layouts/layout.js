@@ -160,13 +160,7 @@ const Layout = ({ children }) => {
           
         }
       
-        .toggle-sidebar {
-          position: fixed;
-          top: 10px;
-          left: 10px;
-          cursor: pointer;
-          z-index: 3; /* Set a higher z-index than main-content */
-        }
+        
       
         footer {
           position: fixed;
