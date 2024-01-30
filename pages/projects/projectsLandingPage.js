@@ -48,6 +48,67 @@ const ProjectsLandingPage = () => {
           color: #333;
           font-weight: bold;
         }
+
+        @media only screen and (max-width: 600px) {
+          
+          .project-links {
+            position: absolute;
+            top: 40%; /* Center vertically */
+            left: 41.7%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Centering trick */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding: 15px;
+          }
+  
+          .project-link {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border-radius: 100%;
+            background-size: cover;
+            overflow: hidden;
+            cursor: pointer; /* Add pointer cursor for the clickable effect */
+          }
+  
+          .project-link img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            
+          }
+  
+          .project-link-text-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px; /* Adjust as needed for spacing between icon and text */
+            background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background for better readability */
+          }
+  
+          .project-link-text {
+            color: #333;
+            font-weight: bold;
+            font-size: 9px;
+          }
+  
+
+        }
+
+       
+        @media only screen and (min-width: 601px) and (max-width: 768px) {
+          
+        }
+
+
+        @media only screen and (min-width: 769px) and (max-width: 1024px) {
+          
+        }
+
       `}</style>
 
       <div className="project-links">

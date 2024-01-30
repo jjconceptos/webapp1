@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '/layouts/layout';
 
-const ProjectsLandingPage = () => {
+const ProductsLandingPage = () => {
   return (
     <Layout>
       <style jsx global>{`
-        .project-links {
+        .product-links {
           position: absolute;
           top: 20%;
           right: 5%;
@@ -16,7 +16,7 @@ const ProjectsLandingPage = () => {
           padding: 15px;
         }
 
-        .project-link {
+        .product-link {
           position: relative;
           width: 200px;
           height: 200px;
@@ -27,14 +27,14 @@ const ProjectsLandingPage = () => {
           cursor: pointer; /* Add pointer cursor for the clickable effect */
         }
 
-        .project-link img {
+        .product-link img {
           width: 100%;
           height: auto;
           object-fit: contain;
           border-radius: 10px;
         }
 
-        .project-link-text-container {
+        .product-link-text-container {
           position: absolute;
           bottom: 0;
           left: 0;
@@ -44,25 +44,86 @@ const ProjectsLandingPage = () => {
           background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background for better readability */
         }
 
-        .project-link-text {
+        .product-link-text {
           color: #333;
           font-weight: bold;
         }
+
+        @media only screen and (max-width: 600px) {
+          
+          .product-links {
+            position: absolute;
+            top: 40%; /* Center vertically */
+            left: 41.7%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Centering trick */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding: 15px;
+          }
+  
+          .product-link {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border-radius: 100%;
+            background-size: cover;
+            overflow: hidden;
+            cursor: pointer; /* Add pointer cursor for the clickable effect */
+          }
+  
+          .product-link img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            
+          }
+  
+          .product-link-text-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px; /* Adjust as needed for spacing between icon and text */
+            background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background for better readability */
+          }
+  
+          .product-link-text {
+            color: #333;
+            font-weight: bold;
+            font-size: 9px;
+          }
+  
+
+        }
+
+       
+        @media only screen and (min-width: 601px) and (max-width: 768px) {
+          
+        }
+
+
+        @media only screen and (min-width: 769px) and (max-width: 1024px) {
+          
+        }
+
       `}</style>
 
-      <div className="project-links">
+      <div className="product-links">
         <Link href="/products/furniture/products">
-          <div className="project-link" style={{ backgroundImage: 'url(/furnitureIcon.png)' }}>
-            <div className="project-link-text-container">
-              <div className="project-link-text">Muebles</div>
+          <div className="product-link" style={{ backgroundImage: 'url(/furnitureIcon.png)' }}>
+            <div className="product-link-text-container">
+              <div className="product-link-text">Muebles</div>
             </div>
           </div>
         </Link>
 
         <Link href="/products/decoration/products">
-          <div className="project-link" style={{ backgroundImage: 'url(/decorationIcon.jpg)' }}>
-            <div className="project-link-text-container">
-              <div className="project-link-text">Decoracion</div>
+          <div className="product-link" style={{ backgroundImage: 'url(/decorationIcon.jpg)' }}>
+            <div className="product-link-text-container">
+              <div className="product-link-text">Decoracion</div>
             </div>
           </div>
         </Link>
@@ -81,5 +142,5 @@ const ProjectsLandingPage = () => {
 };
 
 
-export default ProjectsLandingPage;
+export default ProductsLandingPage;
 
