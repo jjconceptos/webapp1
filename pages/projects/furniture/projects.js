@@ -4,7 +4,7 @@ import ProjectForm from '/pages/projects/furniture/manage/addProject';
 import DelProjectButton from 'pages/projects/furniture/manage/delProject';
 import Layout from '/layouts/layout';
 import { fetchFurnitureProjectsData } from '/utils/fetchFurnitureProjects';
-import '/layouts/styles.css';
+
 
 function FurnitureProjects() {
   const { state } = useAuth();
@@ -107,6 +107,7 @@ function FurnitureProjects() {
   return (
     <Layout>
       <style jsx>{`
+
         .no-projects-centered {
           position: fixed;
           top: 50%;
@@ -119,6 +120,22 @@ function FurnitureProjects() {
           top: 14%;
           left: 10%;
           transform: translate(-50%, -50%);
+        }
+
+        .pro-grid {
+          position: absolute;
+          top: 50%;
+          left: 0%; /* Adjust as needed to move it to the right */
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          padding:15px;
+          border-radius: 10px;
+        }
+        
+        .pro-card {
+          border: 1px solid #ddd;
+          padding: 10px;
         }
 
         .enlarged-view {
@@ -212,9 +229,24 @@ function FurnitureProjects() {
           .add-projects {
             position: absolute;
             top: 14%;
-            left: 10%;
+            left: 20%;
             transform: translate(-50%, -50%);
-            z-index: 2; /* Ensure it appears above other elements */
+          }
+  
+          .pro-grid {
+            position: absolute;
+            top: 50%;
+            left: 0%; /* Adjust as needed to move it to the right */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding:15px;
+            border-radius: 10px;
+          }
+          
+          .pro-card {
+            border: 1px solid #ddd;
+            padding: 10px;
           }
   
           .enlarged-view {
@@ -295,8 +327,6 @@ function FurnitureProjects() {
           .close-button:hover {
             color: lightgray; /* Adjust hover color as needed */
           }
-          
-        }
 
        
         @media only screen and (min-width: 601px) and (max-width: 768px) {
