@@ -139,7 +139,7 @@ const Team = () => {
   
           .second-image-container {
             position: absolute;
-            top: 160vh;
+            top: 148vh;
             left: 5vh;
             width: 40%;
             height: 25%;
@@ -172,10 +172,28 @@ const Team = () => {
             margin-top: 30vh;
           }
         
+          
+
           .below-title-text {
-            font-size: 16px;
-            margin-top: 5vh;
-            padding: 10vh 5vw;
+            font-size: 18px;
+           
+            text-align: left;
+            width: 40%;
+            color: #333;
+            margin-top: 35vh;
+            left: 11vh;
+            padding-bottom: 15vh;
+          }
+  
+          .second-below-title-text {
+            font-size: 18px;
+            position: absolute;
+            text-align: right;
+            color: #333;
+            margin-top: 0vh;
+            right: 5vh;
+            width: 40%;
+            
           }
 
           .paragraph-jp-one {
