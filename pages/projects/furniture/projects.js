@@ -211,9 +211,10 @@ function FurnitureProjects() {
   
           .add-projects {
             position: absolute;
-            top: 16%;
-            left: 25%;
+            top: 14%;
+            left: 10%;
             transform: translate(-50%, -50%);
+            z-index: 2; /* Ensure it appears above other elements */
           }
   
           .enlarged-view {
@@ -309,11 +310,15 @@ function FurnitureProjects() {
         
       `}</style>
       <div>
+       
         <div className="add-projects">
-          {isButtonVisible && (
-            <button onClick={handleFurnitureProjectAddClick}>Add project</button>
-          )}
-        </div>
+  {isButtonVisible && (
+    <button onClick={handleFurnitureProjectAddClick}>Add project</button>
+  )}
+</div>
+
+
+
         {showFurnitureProjectForm && (
           <div>
             
