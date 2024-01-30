@@ -3,7 +3,7 @@
 import React from 'react';
 import Layout from '/layouts/layout';
 import '/layouts/styles.css'; 
-import CenteredContentWrapper from '/layouts/centered';
+
 
 const Hub = () => {
   const socialNetworks = [
@@ -44,7 +44,7 @@ const Hub = () => {
 
   return (
     <Layout>
-      <CenteredContentWrapper>
+      
     <div className="hub-container" style={containerStyles}>
       <h1 style={titleStyles}></h1>
       <div style={socialIconContainerStyles}>
@@ -59,7 +59,7 @@ const Hub = () => {
         ))}
       </div>
     </div>
-    </CenteredContentWrapper>
+   
     </Layout>
   );
 };
