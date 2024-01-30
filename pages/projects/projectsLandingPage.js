@@ -54,7 +54,7 @@ const ProjectsLandingPage = () => {
           .project-links {
             position: absolute;
             top: 40%; /* Center vertically */
-            left: 41.7%; /* Center horizontally */
+            left: 36%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Centering trick */
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -64,8 +64,8 @@ const ProjectsLandingPage = () => {
   
           .project-link {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 130px;
+            height: 130px;
             background-color: #e0e0e0;
             border-radius: 100%;
             background-size: cover;
