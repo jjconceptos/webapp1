@@ -171,7 +171,7 @@ const Layout = ({ children }) => {
         footer {
           position: fixed;
           bottom: 0;
-          
+          margin-top: 85vh;
           width: 100%;
           height: 10vh;
           background-color: rgba(52, 73, 94);

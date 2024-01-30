@@ -53,7 +53,7 @@ const Team = () => {
           text-align: left;
           width: 40%;
           color: #333;
-          margin-top: 55vh;
+          margin-top: 35vh;
           left: 11vh;
           padding-bottom: 15vh;
         }
@@ -71,32 +71,33 @@ const Team = () => {
 
         .image-container {
           position: absolute;
-          top: 110vh;
+          top: 160vh;
           right: 5vh;
           width: 40%;
-          height: 25%;
+          height: 75%;
           background-image: url('/cop.jpeg');
           background-size: cover;
           background-position: center;
-          border-radius: 100%;
+          
           z-index: 1;
         }
 
         .second-image-container {
           position: absolute;
-          top: 170vh;
+          top: 250vh;
           left: 5vh;
           width: 40%;
-          height: 25%;
+          height: 75%;
           background-image: url('/jamie.jpg');
           background-size: cover;
           background-position: center;
-          border-radius: 100%;
+          margin-bottom: 85vh;
+          
           z-index: 1;
         }
 
         .paragraph-jp-one {
-          margin-top: 25vh;
+          margin-top: 85vh;
          
         }
 
@@ -123,11 +124,32 @@ const Team = () => {
           }
         
           
-          .section {
-          
-            margin-top: 20vh; /* Adjust margin below the header */
+          .image-container {
+            position: absolute;
+            top: 110vh;
+            right: 5vh;
+            width: 40%;
+            height: 25%;
+            background-image: url('/cop.jpeg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 100%;
+            z-index: 1;
           }
-
+  
+          .second-image-container {
+            position: absolute;
+            top: 160vh;
+            left: 5vh;
+            width: 40%;
+            height: 25%;
+            background-image: url('/jamie.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 100%;
+            margin-bottom: 555px;
+            z-index: 1;
+          }
           
         
           .big-title {
@@ -166,17 +188,20 @@ const Team = () => {
           .paragraph-j-one {
             font-size: 9px;
             margin-top: 5vh;
+            margin-bottom: 15vh;
           }
   
           .paragraph-j-two {
             font-size: 9px;
             margin-top: 5vh;
+            display: none;
           }
   
           .paragraph-j-three {
             font-size: 9px;
             margin-top: 5vh;
             margin-bottom: 15vh;
+            display: none;
           }
 
           
