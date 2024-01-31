@@ -262,13 +262,7 @@ function Brands() {
             z-index: 100;
           }
           
-          .enlarged-brand-img {
-            width: 70%;
-            max-width: 100vh;
-            height: auto;
-            max-height: 70vh;
-            object-fit: contain;
-          }
+        
           
           .enlarged-brand {
             display: flex;
@@ -276,6 +270,15 @@ function Brands() {
             align-items: center;
             justify-content: center;
             text-align: center; /* Center text within the container */
+          }
+
+          .enlarged-brand-img {
+            width: 70%;
+            max-width: 100vh;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            margin: auto; /* Center the image horizontally */
           }
           
           .enlarged-brand-name {
@@ -289,7 +292,7 @@ function Brands() {
             color: #f3f0e9;
             white-space: pre-line;
             overflow-wrap: break-word;
-            max-width: 75%;
+            max-width: 100%;
           }
             
           .close-button {
