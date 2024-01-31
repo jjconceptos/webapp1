@@ -106,6 +106,8 @@ function Brands() {
 
   const isButtonVisible = state.clearanceLevel == 1 || state.clearanceLevel == 2;
 
+  
+
   return (
     <Layout>
       <style jsx >{`
@@ -192,7 +194,7 @@ function Brands() {
           color: #f3f0e9;
           white-space: pre-line; /* Preserve newlines and spaces */
           overflow-wrap: break-word; /* Wrap long words */
-          max-width: 65%; /* Adjust as needed */
+          max-width: 75%; /* Adjust as needed */
         }
           
         .close-button {
@@ -252,55 +254,42 @@ function Brands() {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.94); /* Adjust transparency as needed */
-            display: flex;
-            z-index: 100; /* Higher z-index than other elements */
-          }
-  
-          
-          .enlarged-container {
-            max-width: 80%; /* Adjust as needed */
-            max-height: 80vh; /* Adjust as needed */
-            overflow: hidden;
-          }
-  
-          .enlarged-brand {
-            width: 100%;
-            height: 100%;
+            background-color: rgba(0, 0, 0, 0.94);
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Align to the left */
+            align-items: center;
             justify-content: center;
+            z-index: 100;
           }
           
           .enlarged-brand-img {
-            width: 80%; 
-            max-width: 100%;
+            width: 70%;
+            max-width: 100vh;
             height: auto;
-            max-height: 80vh; 
+            max-height: 70vh;
             object-fit: contain;
-            margin-left: 15%;
-            margin-top: 10%;
-            
           }
-  
-         
-  
+          
+          .enlarged-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center; /* Center text within the container */
+          }
+          
           .enlarged-brand-name {
-            font-size: 3vw; /* Adjust font size as needed */
-            margin-left: 20%; /* Adjust margin-left as needed */
-            margin-top: 5%; /* Adjust margin-top as needed */
+            font-size: 3vw;
             color: #f3f0e9;
+            margin-top: 10vh;
           }
-        
+          
           .enlarged-brand-description {
             font-size: 2vw;
-            margin-left: 20%;
-            margin-top: 2%;
             color: #f3f0e9;
-            white-space: pre-line; /* Preserve newlines and spaces */
-            overflow-wrap: break-word; /* Wrap long words */
-            max-width: 60%; /* Adjust as needed */
+            white-space: pre-line;
+            overflow-wrap: break-word;
+            max-width: 75%;
           }
             
           .close-button {
