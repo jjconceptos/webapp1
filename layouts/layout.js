@@ -62,14 +62,13 @@ const Layout = ({ children }) => {
         <footer>
   {/* Contacto */}
   <div className="footer-section">
-    <div>Contacto:</div>
+   
     
     <div>3 Reyes 18 Colonia Navidad, Ciudad de Mexico, 05219</div>
   </div>
 
   {/* Cuenta */}
   <div className="footer-section">
-    <div>Cuenta:</div>
     <div><a href="/register/registerForm">Registrarse</a></div>
     <div><a href="/login/login">Iniciar sesion</a></div>
   </div>
@@ -82,7 +81,7 @@ const Layout = ({ children }) => {
 
   {/* Colaboraciones */}
   <div className="footer-section">
-    <div>Colaboraciones:</div>
+    
     <div><a href="/brands/brands">Marcas favoritas</a></div>
   </div>
 
@@ -167,7 +166,7 @@ const Layout = ({ children }) => {
           bottom: 0;
           margin-top: 85vh;
           width: 100%;
-          height: 10vh;
+          height: 8vh;
           background-color: rgba(52, 73, 94);
           padding: 10px;
           color: black;

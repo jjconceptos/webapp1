@@ -125,7 +125,7 @@ function Brands() {
 
         .pro-grid {
           position: absolute;
-          top: 50%;
+          top: 40%;
           left: 0%; /* Adjust as needed to move it to the right */
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -176,13 +176,7 @@ function Brands() {
           margin-top: 10%;
         }
 
-        .brand-name {
-         
-        }
-      
-        .brand-description {
-         
-        }
+        
 
         .enlarged-brand-name {
           font-size: 3vw; /* Adjust font size as needed */
@@ -198,7 +192,7 @@ function Brands() {
           color: #f3f0e9;
           white-space: pre-line; /* Preserve newlines and spaces */
           overflow-wrap: break-word; /* Wrap long words */
-          max-width: 60%; /* Adjust as needed */
+          max-width: 65%; /* Adjust as needed */
         }
           
         .close-button {
@@ -236,18 +230,20 @@ function Brands() {
   
           .pro-grid {
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 0%; /* Adjust as needed to move it to the right */
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             padding:15px;
-            border-radius: 10px;
+            
+            
           }
           
           .pro-card {
             border: 1px solid #ddd;
             padding: 10px;
+            
           }
   
           .enlarged-view {
@@ -285,6 +281,7 @@ function Brands() {
             object-fit: contain;
             margin-left: 15%;
             margin-top: 10%;
+            
           }
   
          
