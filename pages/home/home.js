@@ -5,36 +5,56 @@ import { useAuth } from '/auth/authContext'; // Adjust the path accordingly
 
 const Home = () => {
   const { state } = useAuth();
-  const words = ['J', 'J', 'ESTUDIO']; // Add your words here
+  const words = ['J', 'J', 'ESTUDIO'];
+  const establishedText = ['Est.', ' 20', '21'];
   const [visibleWords, setVisibleWords] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleEstablishedText, setVisibleEstablishedText] = useState([]);
+  const [currentIndexWords, setCurrentIndexWords] = useState(0);
+  const [currentIndexEstablished, setCurrentIndexEstablished] = useState(0);
 
   console.log('Clearance Level:', state.clearanceLevel); // Add this log to check the clearance level
 
   useEffect(() => {
     const typeWords = () => {
-      if (currentIndex < words.length) {
-        const currentWord = words[currentIndex];
+      if (currentIndexWords < words.length) {
+        const currentWord = words[currentIndexWords];
 
         if (currentWord !== undefined) {
           setVisibleWords((prevVisibleWords) => [...prevVisibleWords, currentWord]);
         }
 
-        setCurrentIndex((prevIndex) => prevIndex + 1);
+        setCurrentIndexWords((prevIndex) => prevIndex + 1);
       }
     };
 
-    const animationInterval = setInterval(typeWords, 830); // Adjust the delay between words as needed (in milliseconds)
+    const typeEstablishedText = () => {
+      if (currentIndexEstablished < establishedText.length) {
+        const currentChar = establishedText[currentIndexEstablished];
 
-    // Clear the interval when all words are displayed
+        if (currentChar !== undefined) {
+          setVisibleEstablishedText((prevVisibleEstablishedText) => [...prevVisibleEstablishedText, currentChar]);
+        }
+
+        setCurrentIndexEstablished((prevIndex) => prevIndex + 1);
+      }
+    };
+
+    const animationInterval = setInterval(() => {
+      typeWords();
+      if (currentIndexWords >= words.length) {
+        typeEstablishedText();
+      }
+    }, 730); // Adjust the delay between words as needed (in milliseconds)
+
+    // Clear the interval when all words and established text are displayed
     return () => clearInterval(animationInterval);
-  }, [currentIndex, words]);
+  }, [currentIndexWords, currentIndexEstablished, words, establishedText]);
 
   return (
     <Layout>
       {/* Add the background image styling */}
       <style jsx global>{`
-        body {
+         body {
           background-image: url('');
           background-size: cover;
           background-repeat: no-repeat;
@@ -45,118 +65,45 @@ const Home = () => {
           font-family: '', ; /* Add your preferred font-family */
         }
 
-        .type-in-text {
+        .type-in-container {
+          
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           height: 70vh; /* Center vertically within the viewport */
-       
-          padding-left: 16vh;
         }
 
-        .type-in-text h1 {
-          text-align: center; /* Center the text */
-          color: #141111; /* Text color */
-          font-size: 32px;
-          white-space: nowrap; /* Prevent wrapping to the next line */
+        .type-in-text {
+          position: fixed; /* Fixed position to stay in place */
+          top: 50%; /* Adjust top position */
+          left: 50%; /* Adjust left position */
+          transform: translate(-50%, -50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 6vw; /* Adjust the font size for mobile responsiveness */
+          padding-left: 3vw; /* Adjust the padding for mobile responsiveness */
         }
 
-         @media only screen and (max-width: 600px) {
-          ul {
-           
-            display: flex;
-            
-            flex-wrap: wrap; /* Ensure flex items wrap on smaller screens */
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            position: static;
-            margin-top: 10px;
-            margin-left: 5px;
-            z-index: 2; // Ensure it appears above other elements
-            font-size: 12px;
-          }
-        
-          ul li {
-            margin: 5px; /* Adjusted margin for more compact spacing */
-          }
-        
-          footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 8vh;
-            background-color: rgba(52, 73, 94);
-            padding: 10px;
-            color: black;
-            font-size: 1vw; /* Adjusted for responsiveness */
-            opacity: 0.8;
-            z-index: 2;
-            display: flex;
-            flex-direction: row; /* Arrange items in a row */
-            align-items: center; /* Align items vertically in the middle */
-            justify-content: space-between; /* Add space between items */
-          }
-        
-          .footer-section {
-            font-size: 1.5vw; /* Adjusted for responsiveness */
-            margin-right: 20px; /* Add some space between sections */
-            display: flex;
-            flex-direction: column; /* Arrange items in a column inside each section */
-          }
-        
-          .footer-copyright {
-            font-size: 2vw; /* Adjusted for responsiveness */
-            margin-top: 2%;
-            margin-right: 1%;
-          }
+        .established-text {
+          position: fixed; /* Fixed position to stay in place */
+          top: 60%; /* Adjust top position */
+          left: 50%; /* Adjust left position */
+          transform: translate(-50%, -50%);
+          font-size: 3vw; /* Adjust the font size for mobile responsiveness */
+          text-align: center; /* Center the text horizontally */
         }
-
-        @media only screen and (max-width: 600px) {
-          .type-in-text {
-            position: fixed; /* Fix the position */
-            width: 100%; /* Take the full width of the viewport */
-            top: 50%; /* Center vertically at 50% from the top */
-            transform: translateY(-50%); /* Adjust for vertical centering */
-            text-align: center; /* Center the text horizontally within the container */
-          }
-        
-          .type-in-text h1 {
-            font-size: 28px;
-            white-space: nowrap;
-            position: relative; /* Change position to relative */
-            left: 0%; /* Move the text 50% to the right */
-            transform: translateX(-50%); /* Adjust for horizontal centering */
-          }
-        
-        }
-
-        @media only screen and (min-width: 601px) and (max-width: 768px) {
-          ul {
-            /* Add specific styles for this screen size */
-          }
-        
-          footer {
-            /* Add specific styles for this screen size */
-          }
-        }
-
-        
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  ul {
-    /* Add specific styles for this screen size */
-  }
-
-  footer {
-    /* Add specific styles for this screen size */
-  }
-}
       `}</style>
 
       {/* Content above the image */}
-      <div className="type-in-text">
-        <h1>{visibleWords.join(' ')}</h1>
+      <div className="type-in-container">
+        <div className="type-in-text">
+          <h1>{visibleWords.join(' ')}</h1>
+        </div>
+        {currentIndexWords >= words.length && (
+          <p className="established-text">{visibleEstablishedText.join('')}</p>
+        )}
       </div>
     </Layout>
   );
