@@ -194,7 +194,7 @@ function Brands() {
           color: #f3f0e9;
           white-space: pre-line; /* Preserve newlines and spaces */
           overflow-wrap: break-word; /* Wrap long words */
-          max-width: 75%; /* Adjust as needed */
+          max-width: 100%; /* Adjust as needed */
         }
           
         .close-button {
