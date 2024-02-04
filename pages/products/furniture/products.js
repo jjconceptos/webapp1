@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
+import BuyButton from 'layouts/buyButton.js';
 import ProductForm from '/pages/products/furniture/manage/addProduct';
 import DelProductButton from 'pages/products/furniture/manage/delProduct';
 import Layout from '/layouts/layout';
@@ -102,7 +103,11 @@ function FurnitureProducts() {
     }
   };
 
+  
+
   const isButtonVisible = state.clearanceLevel == 1 || state.clearanceLevel == 2;
+
+  
 
   return (
     <Layout>
@@ -352,6 +357,8 @@ function FurnitureProducts() {
          </div>
        )}
 
+       
+
        <div className="pro-grid">
          {Array.isArray(furnitureProducts) && furnitureProducts.length > 0 ? (
            furnitureProducts.map((furnitureProduct, index) => (
@@ -386,7 +393,12 @@ function FurnitureProducts() {
                    }`}
                    onClick={() => handleFurnitureProductClick(furnitureProduct)}
                  />
+
                )}
+
+            {/* Include the BuyButton component here */}
+            <BuyButton productId={furnitureProduct.productId} price={furnitureProduct.price} />
+
                {isButtonVisible && (
                  <DelProductButton
                    furnitureProductName={furnitureProduct.name}

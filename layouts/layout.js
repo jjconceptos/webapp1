@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useAuth } from '/auth/authContext';
 import 'layouts/styles.css';
 
+
 const Layout = ({ children }) => {
   const { state } = useAuth();
   const [centeredContent, setCenteredContent] = useState(false);
@@ -41,8 +42,8 @@ const Layout = ({ children }) => {
     <div><a href="/login/login">Iniciar sesion</a></div>
   </div>
   <div className="footer-section">
-    <div>Agenda una cita en linea:</div>
-  </div>
+  <a href="/forms/schedule">Agenda una cita</a>
+</div>
   <div className="footer-section">
     <div><a href="/brands/brands">Marcas favoritas</a></div>
   </div>
@@ -61,7 +62,9 @@ const Layout = ({ children }) => {
           margin: 0;
           padding: 0;
           display: flex;
-          min-height: 100vh;
+          min-height: 80vh;
+          max-height: 102vh;
+          margin-bottom: 100vh;
         }
 
         ul {

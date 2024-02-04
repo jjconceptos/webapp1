@@ -5,6 +5,7 @@ import Layout from '/layouts/layout';
 const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [price, setPrice] = useState(''); 
   const [photo, setPhoto] = useState(null);
 
   const handleNameChange = (e) => {
@@ -13,6 +14,10 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
   };
 
   const handlePhotoChange = (e) => {
@@ -24,7 +29,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate fields if needed
-    if (name === '' || description === '' || !photo) {
+    if (name === '' || description === '' || price === '' || !photo) {
       console.error('All fields are required');
       return;
     }
@@ -34,6 +39,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
+    formData.append('price', price);
     formData.append('photo', photo);
   
     try {
@@ -56,6 +62,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
         const textData = {
           name,
           description,
+          price,
           timestamp,
         };
   
@@ -185,6 +192,9 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       <div>
         <textarea className="input-field-add-product" value={description} onChange={handleDescriptionChange} placeholder="Description" />
       </div>
+      <div>
+            <input className="input-field-add-product" type="text" value={price} onChange={handlePriceChange} placeholder="Price" />
+          </div>
       <div>
         <input type="file" accept="image/*" onChange={handlePhotoChange} />
       </div>

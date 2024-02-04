@@ -15,113 +15,16 @@ const Team = () => {
   return (
     <Layout>
       <style jsx>{`
-        body {
-          margin: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          height: auto;
-        }
-
-        .team-container {
-          width: 80%;
-        margin: 0 auto;
-        margin-top: 5vh;
-        }
-
-        .big-title {
-          font-size: 48px;
-          text-align: center;
-          color: #000;
-          margin-bottom: 20px;
-          margin-top: 45vh; 
-        }
-
-        .side-title {
-          font-size: 18px;
-          text-align: center;
-          color: #000;
-          margin-bottom: 10px;
-          cursor: pointer;
-          z-index: 2;
-        }
-
-        .below-title-text {
-          font-size: 18px;
-         
-          text-align: left;
-          width: 40%;
-          color: #333;
-          margin-top: 35vh;
-          left: 11vh;
-          padding-bottom: 15vh;
-        }
-
-        .second-below-title-text {
-          font-size: 18px;
-          position: absolute;
-          text-align: right;
-          color: #333;
-          margin-top: 0vh;
-          right: 5vh;
-          width: 40%;
-          
-        }
-
-        .image-container {
-          position: absolute;
-          top: 160vh;
-          right: 5vh;
-          width: 40%;
-          height: 75%;
-          background-image: url('/cop.jpeg');
-          background-size: cover;
-          background-position: center;
-          
-          z-index: 1;
-        }
-
-        .second-image-container {
-          position: absolute;
-          top: 250vh;
-          left: 5vh;
-          width: 40%;
-          height: 75%;
-          background-image: url('/jamie.jpg');
-          background-size: cover;
-          background-position: center;
-          margin-bottom: 85vh;
-          
-          z-index: 1;
-        }
-
-        .paragraph-jp-one {
-          margin-top: 85vh;
-         
-        }
-
-        .paragraph-jp-two {
-          margin-top: 10vh;
-        }
-
-        .paragraph-j-one {
-          margin-top: 5vh;
-        }
-
-        .paragraph-j-two {
-          margin-top: 5vh;
-        }
-
-        .paragraph-j-three {
-          margin-top: 5vh;
-          margin-bottom: 15vh;
-        }
-
-        @media only screen and (max-width: 600px) {
-          body {
-            height: 300vh; /* Increase overall height for more space */
-          }
+       
+       body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
+      }
+      
         
           
           .image-container {
@@ -151,21 +54,37 @@ const Team = () => {
             z-index: 1;
           }
           
-          .team-container {
-          width: 80%;
-        margin: 0 auto;
-        margin-top: 5vh;
+        .team-container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            padding-top: 10vh;
+        }
+
+        .quienes-section {
+          position: relative;
+          margin-top: 40vh;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          margin-bottom: 10vh; /* Adjusted margin for better separation from the next section */
         }
         
-          .big-title {
-            font-size: 32px;
-            margin-bottom: 20px;
-          }
+        .big-title {
+          font-size: 8vw;
+          text-align: center;
+          color: #000;
+          margin-bottom: 2vh;
+        }
         
-          .side-title {
-            font-size: 16px;
-            margin-bottom: 15px;
-          }
+        .sub-title {
+          font-size: 4vw;
+          text-align: center;
+          color: #000;
+          cursor: pointer;
+          z-index: 2;
+        }
         
           .below-title-undertitle {
             font-size: 16px;
@@ -174,7 +93,7 @@ const Team = () => {
         
           
 
-          .below-title-text {
+          .jp-text {
             font-size: 18px;
            
             text-align: left;
@@ -185,7 +104,7 @@ const Team = () => {
             padding-bottom: 15vh;
           }
   
-          .second-below-title-text {
+          .j-text {
             font-size: 18px;
             position: absolute;
             text-align: right;
@@ -228,27 +147,23 @@ const Team = () => {
           }
 
           
-        }
         
-        @media only screen and (min-width: 601px) and (max-width: 768px) {
-          /* Add specific styles for this screen size */
-        }
-
-        @media only screen and (min-width: 769px) and (max-width: 1024px) {
-          /* Add specific styles for this screen size */
-        }
+        
+       
       `}</style>
 
 <div className="team-container">
+      <div className="quienes-section">
       <div className="big-title">
         Quienes somos?
       </div>
 
-      <div className="side-title" onClick={handleConocenosClick}>
+      <div className="sub-title" onClick={handleConocenosClick}>
         Conocenos!
       </div>
-
-      <div className="below-title-text">
+      </div>
+      <div className="jp-container">
+      <div className="jp-text">
         <p className="paragraph-jp-one">
           Juan Pablo González Andrade, graduado de la Universidad Anáhuac Norte en la carrera de Arquitectura, ha desarrollado 
           varios proyectos de remodelación e interiorismo, diseño de mobiliario para hoteles y centros comerciales, supervisión 
@@ -262,10 +177,12 @@ const Team = () => {
           realizo hoy en día lo tomo como si fuera para mi, haciendo de cada proyecto una vivencia especial para el cliente.
         </p>
       </div>
-
+      
       <div className="image-container"></div>
+      </div>
 
-      <div className="second-below-title-text">
+      <div className="j-container">
+      <div className="j-text">
         <p className="paragraph-j-one">
           Jaime Rodriguez Flores, egresado del ITESM como ingeniero en mecatronica, es un gran apasionado del diseno industrial, la historia y el software.   
         </p>
@@ -279,8 +196,8 @@ const Team = () => {
           plasmar la esencia de cada cliente. 
         </p>
       </div>
-
       <div className="second-image-container"></div>
+    </div>
     </div>
     </Layout>
   );
