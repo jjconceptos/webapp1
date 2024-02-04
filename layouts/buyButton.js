@@ -1,25 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import Layout from '/layouts/layout';
 import { useAuth } from '/auth/authContext';
 import { loadStripe } from '@stripe/stripe-js';
+import Layout from '/layouts/layout';
+import { fetchFurnitureProductsData } from 'utils/fetchFurnitureProducts.js';
 
 const stripePromise = loadStripe('your_stripe_publishable_key');
 
-const BuyButton = ({ productId, price }) => {
+const BuyButton = ({ productName }) => { // Change the prop to productName
   const { user } = useAuth();
   const [stripe, setStripe] = useState(null);
+  const [price, setPrice] = useState(null);
 
   useEffect(() => {
-    if (user) {
-      setStripe(stripePromise);
-    }
-  }, [user]);
+    const fetchData = async () => {
+      try {
+        const furnitureProducts = await fetchFurnitureProductsData();
+        const selectedProduct = furnitureProducts.find((product) => product.name === productName);
+
+        if (selectedProduct) {
+          setPrice(selectedProduct.price);
+        }
+
+        if (user) {
+          setStripe(stripePromise);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [productName, user]);
 
   const handlePayment = async () => {
     try {
       const stripe = await stripePromise;
       const { error } = await stripe.redirectToCheckout({
-        lineItems: [{ price: productId, quantity: 1 }],
+        lineItems: [{ price: productName, quantity: 1 }],
         mode: 'payment',
         successUrl: 'https://yourwebsite.com/success',
         cancelUrl: 'https://yourwebsite.com/cancel',
@@ -36,7 +53,7 @@ const BuyButton = ({ productId, price }) => {
   return (
     <Layout>
       <button onClick={handlePayment}>
-        Buy Now - ${price}
+        Buy Now - {price ? `$${price}` : 'Loading...'}
       </button>
     </Layout>
   );
