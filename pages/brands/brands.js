@@ -111,244 +111,145 @@ function Brands() {
   return (
     <Layout>
       <style jsx >{`
+
+       body {
+          
+          margin: 0;
+          padding: 0;
+          display: flex;
+          min-height: 80vh;
+          max-height: 102vh;
+          margin-bottom: 100vh;
+        }
+        
         .no-brands-centered {
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
-
-        .add-brands {
-          position: absolute;
-          top: 14%;
-          left: 10%;
-          transform: translate(-50%, -50%);
-        }
-
-        .pro-grid {
-          position: absolute;
-          top: 40%;
-          left: 0%; /* Adjust as needed to move it to the right */
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
-          padding:15px;
-          border-radius: 10px;
+        
+        .add-brands-section {
+          position: relative;
+          top: 30vh;
+          left: 10vw;
+          
+          
         }
         
-        .pro-card {
-          border: 1px solid #ddd;
-          padding: 10px;
+        .products-section {
+          margin-top: 55vh;
+         
         }
-
+       
+        .products-grid {
+          position: relative;
+          
+          left: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+          gap: 2vw;
+          padding: 1.5vh;
+         
+        }
+        
+        .products-card {
+          border: 1px solid #ddd;
+          padding: 1vw;
+        }
+        
         .enlarged-view {
           position: fixed;
           top: 0;
           left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.94); /* Adjust transparency as needed */
-          display: flex;
-          z-index: 100; /* Higher z-index than other elements */
-        }
-
-        
-        .enlarged-container {
-          max-width: 80%; /* Adjust as needed */
-          max-height: 80vh; /* Adjust as needed */
-          overflow: hidden;
-        }
-
-        .enlarged-brand {
-          width: 100%;
-          height: 100%;
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.94);
           display: flex;
           flex-direction: column;
-          align-items: flex-start; /* Align to the left */
+          align-items: center;
           justify-content: center;
+          z-index: 100;
+        }
+        
+        .enlarged-brand {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
         
         .enlarged-brand-img {
-          width: 80%; 
-          max-width: 100%;
+          width: 70vw;
+          max-width: 100vw;
           height: auto;
-          max-height: 80vh; 
+          max-height: 70vh;
           object-fit: contain;
-          margin-left: 15%;
-          margin-top: 10%;
+          margin: auto;
         }
-
         
-
         .enlarged-brand-name {
-          font-size: 3vw; /* Adjust font size as needed */
-          margin-left: 20%; /* Adjust margin-left as needed */
-          margin-top: 5%; /* Adjust margin-top as needed */
+          font-size: 3vw;
           color: #f3f0e9;
+          margin-top: 10vh;
         }
-      
+        
         .enlarged-brand-description {
           font-size: 2vw;
-          margin-left: 20%;
-          margin-top: 2%;
           color: #f3f0e9;
-          white-space: pre-line; /* Preserve newlines and spaces */
-          overflow-wrap: break-word; /* Wrap long words */
-          max-width: 100%; /* Adjust as needed */
+          white-space: pre-line;
+          overflow-wrap: break-word;
+          max-width: 100%;
         }
-          
+        
         .close-button {
           position: absolute;
-          top: 10px;
-          right: 10px;
+          top: 1vh;
+          right: 1vw;
           background: none;
           border: none;
-          font-size: 24px;
+          font-size: 2.4vw;
           cursor: pointer;
-          color: white; /* Adjust as needed */
+          color: white;
           outline: none;
           transition: color 0.3s ease;
         }
         
         .close-button:hover {
-          color: lightgray; /* Adjust hover color as needed */
+          color: lightgray;
         }
 
-        @media only screen and (max-width: 600px) {
-
-          .no-brands-centered {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-  
-          .add-brands {
-            position: absolute;
-            top: 14%;
-            left: 20%;
-            transform: translate(-50%, -50%);
-          }
-  
-          .pro-grid {
-            position: absolute;
-            top: 40%;
-            left: 0%; /* Adjust as needed to move it to the right */
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding:15px;
-            
-            
-          }
-          
-          .pro-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            
-          }
-  
-          .enlarged-view {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.94);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-          }
-          
         
-          
-          .enlarged-brand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center; /* Center text within the container */
-          }
-
-          .enlarged-brand-img {
-            width: 70%;
-            max-width: 100vh;
-            height: auto;
-            max-height: 70vh;
-            object-fit: contain;
-            margin: auto; /* Center the image horizontally */
-          }
-          
-          .enlarged-brand-name {
-            font-size: 3vw;
-            color: #f3f0e9;
-            margin-top: 10vh;
-          }
-          
-          .enlarged-brand-description {
-            font-size: 2vw;
-            color: #f3f0e9;
-            white-space: pre-line;
-            overflow-wrap: break-word;
-            max-width: 100%;
-          }
-            
-          .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white; /* Adjust as needed */
-            outline: none;
-            transition: color 0.3s ease;
-          }
-          
-          .close-button:hover {
-            color: lightgray; /* Adjust hover color as needed */
-          }
 
        
-        @media only screen and (min-width: 601px) and (max-width: 768px) {
-          
-        }
-
-
-        @media only screen and (min-width: 769px) and (max-width: 1024px) {
-          
-        }
+       
       `}</style>
-      <div>
-       
-       <div className="add-brands">
- {isButtonVisible && (
-   <button onClick={handleBrandAddClick}>Add brand</button>
- )}
-</div>
-
-
-
-       {showBrandForm && (
-         <div>
-           
-           <BrandForm
-             onSubmit={handleBrandSubmit}
-             brands={brands}
-             onBrandAdded={handleBrandAdded}
-           />
-         </div>
-       )}
-
-       <div className="pro-grid">
+      <div className="brands-container">
+      <div className="add-brands-section">
+       <div>
+      {isButtonVisible && (
+        <button onClick={handleBrandAddClick}>Add brand</button>
+      )}
+      </div>
+            {showBrandForm && (
+              <div>
+                
+                <BrandForm
+                  onSubmit={handleBrandSubmit}
+                  brands={brands}
+                  onBrandAdded={handleBrandAdded}
+                />
+              </div>
+            )}
+      </div>
+      <div className="products-section">
+       <div className="products-grid">
          {Array.isArray(brands) && brands.length > 0 ? (
            brands.map((brand, index) => (
              <div
                key={index}
-               className={`pro-card ${
+               className={`products-card ${
                  expandedBrand === index ? 'expanded' : ''
                }`}
              >
@@ -385,7 +286,9 @@ function Brands() {
                  />
                )}
              </div>
+             
            ))
+           
          ) : (
            <div className="no-brands-centered">
              <p
@@ -424,7 +327,7 @@ function Brands() {
            </div>
          </div>
        )}
-
+     </div>
      </div>
     </Layout>
   );
