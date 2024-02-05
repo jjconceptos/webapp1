@@ -138,7 +138,7 @@ function Brands() {
         }
         
         .products-section {
-          margin-top: 55vh;
+          margin-top: 35vh;
          
         }
        
