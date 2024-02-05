@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
 import BuyButton from 'layouts/buyButton.js';
-import ProductForm from '/pages/products/furniture/manage/addProduct';
+import FurnitureProductForm from '/pages/products/furniture/manage/addProduct';
 import DelProductButton from 'pages/products/furniture/manage/delProduct';
 import Layout from '/layouts/layout';
 import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
@@ -111,260 +111,146 @@ function FurnitureProducts() {
 
   return (
     <Layout>
-      <style jsx >{`
-        .no-products-centered {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
+       <style jsx >{`
 
-        .add-products {
-          position: absolute;
-          top: 14%;
-          left: 10%;
-          transform: translate(-50%, -50%);
-        }
-
-        .pro-grid {
-          position: absolute;
-          top: 50%;
-          left: 0%; /* Adjust as needed to move it to the right */
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
-          padding:15px;
-          border-radius: 10px;
-        }
-        
-        .pro-card {
-          border: 1px solid #ddd;
-          padding: 10px;
-        }
-
-        .enlarged-view {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.94); /* Adjust transparency as needed */
-          display: flex;
-          z-index: 100; /* Higher z-index than other elements */
-        }
-
-        
-        .enlarged-container {
-          max-width: 80%; /* Adjust as needed */
-          max-height: 80vh; /* Adjust as needed */
-          overflow: hidden;
-        }
-
-        .enlarged-product {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start; /* Align to the left */
-          justify-content: center;
-        }
-        
-        .enlarged-product-img {
-          width: 80%; 
-          max-width: 100%;
-          height: auto;
-          max-height: 80vh; 
-          object-fit: contain;
-          margin-left: 15%;
-          margin-top: 10%;
-        }
-
-        .product-name {
-         
-        }
-      
-        .product-description {
-         
-        }
-
-        .enlarged-product-name {
-          font-size: 3vw; /* Adjust font size as needed */
-          margin-left: 20%; /* Adjust margin-left as needed */
-          margin-top: 5%; /* Adjust margin-top as needed */
-          color: #f3f0e9;
-        }
-      
-        .enlarged-product-description {
-          font-size: 2vw;
-          margin-left: 20%;
-          margin-top: 2%;
-          color: #f3f0e9;
-          white-space: pre-line; /* Preserve newlines and spaces */
-          overflow-wrap: break-word; /* Wrap long words */
-          max-width: 60%; /* Adjust as needed */
-        }
-          
-        .close-button {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          background: none;
-          border: none;
-          font-size: 24px;
-          cursor: pointer;
-          color: white; /* Adjust as needed */
-          outline: none;
-          transition: color 0.3s ease;
-        }
-        
-        .close-button:hover {
-          color: lightgray; /* Adjust hover color as needed */
-        }
-
-        @media only screen and (max-width: 600px) {
-
-          .no-products-centered {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
+body {
+   
+   margin: 0;
+   padding: 0;
+   display: flex;
+   min-height: 80vh;
+   max-height: 102vh;
+   margin-bottom: 100vh;
+ }
+ 
+ .no-products-centered {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ }
+ 
+ .add-products-section {
+   position: relative;
+   top: 30vh;
+   left: 10vw;
+   
+   
+ }
+ 
+ .products-section {
+   margin-top: 35vh;
   
-          .add-products {
-            position: absolute;
-            top: 14%;
-            left: 20%;
-            transform: translate(-50%, -50%);
-          }
+ }
+
+ .products-grid {
+   position: relative;
+   
+   left: 0;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+   gap: 2vw;
+   padding: 1.5vh;
   
-          .pro-grid {
-            position: absolute;
-            top: 50%;
-            left: 0%; /* Adjust as needed to move it to the right */
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding:15px;
-            border-radius: 10px;
-          }
-          
-          .pro-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-          }
-  
-          .enlarged-view {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.94); /* Adjust transparency as needed */
-            display: flex;
-            z-index: 100; /* Higher z-index than other elements */
-          }
-  
-          
-          .enlarged-container {
-            max-width: 80%; /* Adjust as needed */
-            max-height: 80vh; /* Adjust as needed */
-            overflow: hidden;
-          }
-  
-          .enlarged-product {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Align to the left */
-            justify-content: center;
-          }
-          
-          .enlarged-product-img {
-            width: 80%; 
-            max-width: 100%;
-            height: auto;
-            max-height: 80vh; 
-            object-fit: contain;
-            margin-left: 15%;
-            margin-top: 10%;
-          }
-  
-         
-  
-          .enlarged-product-name {
-            font-size: 3vw; /* Adjust font size as needed */
-            margin-left: 20%; /* Adjust margin-left as needed */
-            margin-top: 5%; /* Adjust margin-top as needed */
-            color: #f3f0e9;
-          }
-        
-          .enlarged-product-description {
-            font-size: 2vw;
-            margin-left: 20%;
-            margin-top: 2%;
-            color: #f3f0e9;
-            white-space: pre-line; /* Preserve newlines and spaces */
-            overflow-wrap: break-word; /* Wrap long words */
-            max-width: 60%; /* Adjust as needed */
-          }
-            
-          .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white; /* Adjust as needed */
-            outline: none;
-            transition: color 0.3s ease;
-          }
-          
-          .close-button:hover {
-            color: lightgray; /* Adjust hover color as needed */
-          }
+ }
+ 
+ .products-card {
+   border: 1px solid #ddd;
+   padding: 1vw;
+ }
+ 
+ .enlarged-view {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.94);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   z-index: 100;
+ }
+ 
+ .enlarged-product {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+ }
+ 
+ .enlarged-product-img {
+   width: 70vw;
+   max-width: 100vw;
+   height: auto;
+   max-height: 70vh;
+   object-fit: contain;
+   margin: auto;
+ }
+ 
+ .enlarged-product-name {
+   font-size: 3vw;
+   color: #f3f0e9;
+   margin-top: 10vh;
+ }
+ 
+ .enlarged-product-description {
+   font-size: 2vw;
+   color: #f3f0e9;
+   white-space: pre-line;
+   overflow-wrap: break-word;
+   max-width: 100%;
+ }
+ 
+ .close-button {
+   position: absolute;
+   top: 1vh;
+   right: 1vw;
+   background: none;
+   border: none;
+   font-size: 2.4vw;
+   cursor: pointer;
+   color: white;
+   outline: none;
+   transition: color 0.3s ease;
+ }
+ 
+ .close-button:hover {
+   color: lightgray;
+ }
 
-       
-        @media only screen and (min-width: 601px) and (max-width: 768px) {
-          
-        }
-
-
-        @media only screen and (min-width: 769px) and (max-width: 1024px) {
-          
-        }
-      `}</style>
-      <div>
-       
-       <div className="add-products">
- {isButtonVisible && (
-   <button onClick={handleFurnitureProductAddClick}>Add product</button>
- )}
-</div>
+ 
 
 
 
-       {showFurnitureProductForm && (
-         <div>
-           
-           <ProductForm
-             onSubmit={handleFurnitureProductSubmit}
-             furnitureProducts={furnitureProducts}
-             onFurnitureProductAdded={handleFurnitureProductAdded}
-           />
-         </div>
-       )}
-
-       
-
-       <div className="pro-grid">
+`}</style>
+     <div className="products-container">
+      <div className="add-products-section">
+       <div>
+      {isButtonVisible && (
+        <button onClick={handleFurnitureProductAddClick}>Add product</button>
+      )}
+      </div>
+            {showFurnitureProductForm && (
+              <div>
+                
+                <FurnitureProductForm
+                  onSubmit={handleFurnitureProductSubmit}
+                  furnitureProducts={furnitureProducts}
+                  onFurnitureProductAdded={handleFurnitureProductAdded}
+                />
+              </div>
+            )}
+      </div>
+      <div className="products-section">
+       <div className="products-grid">
          {Array.isArray(furnitureProducts) && furnitureProducts.length > 0 ? (
            furnitureProducts.map((furnitureProduct, index) => (
              <div
                key={index}
-               className={`pro-card ${
+               className={`products-card ${
                  expandedFurnitureProduct === index ? 'expanded' : ''
                }`}
              >
@@ -393,12 +279,7 @@ function FurnitureProducts() {
                    }`}
                    onClick={() => handleFurnitureProductClick(furnitureProduct)}
                  />
-
                )}
-
-            {/* Include the BuyButton component here */}
-            <BuyButton productId={furnitureProduct.productId} price={furnitureProduct.price} />
-
                {isButtonVisible && (
                  <DelProductButton
                    furnitureProductName={furnitureProduct.name}
@@ -406,7 +287,9 @@ function FurnitureProducts() {
                  />
                )}
              </div>
+             
            ))
+           
          ) : (
            <div className="no-products-centered">
              <p
@@ -415,7 +298,7 @@ function FurnitureProducts() {
                  zIndex: 1,
                }}
                className={`${Array.isArray(furnitureProducts) &&
-                 furnitureProducts.length === 0
+                furnitureProducts.length === 0
                  ? ''
                  : ''}`}
              >
@@ -445,7 +328,7 @@ function FurnitureProducts() {
            </div>
          </div>
        )}
-
+     </div>
      </div>
     </Layout>
   );
