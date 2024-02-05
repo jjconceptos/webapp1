@@ -201,7 +201,7 @@ body {
    color: #f3f0e9;
    white-space: pre-line;
    overflow-wrap: break-word;
-   max-width: 100%;
+   max-width: 50%;
  }
  
  .close-button {
@@ -280,6 +280,8 @@ body {
                    onClick={() => handleFurnitureProductClick(furnitureProduct)}
                  />
                )}
+               {/* Include the BuyButton component here */}
+               <BuyButton productId={furnitureProduct.productId} price={furnitureProduct.price} />
                {isButtonVisible && (
                  <DelProductButton
                    furnitureProductName={furnitureProduct.name}

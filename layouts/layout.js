@@ -23,9 +23,6 @@ const Layout = ({ children }) => {
         <li><Link href="/projects/projectsLandingPage">Proyectos</Link></li>
         <li><Link href="/products/productsLandingPage">Productos</Link></li>
 
-        {state.clearanceLevel <= 1 && state.clearanceLevel > 0 && (
-          <li><Link href="/master/master">Master</Link></li>
-        )}
       </ul>
 
       {/* Main Content */}
@@ -40,17 +37,24 @@ const Layout = ({ children }) => {
   <div className="footer-section">
     <div><a href="/register/registerForm">Registrarse</a></div>
     <div><a href="/login/login">Iniciar sesion</a></div>
+    <div>
+  {state.clearanceLevel <= 1 && state.clearanceLevel > 0 && (
+          <a href="/master/master">Master</a>
+        )}
+  </div>
   </div>
   <div className="footer-section">
   <a href="/forms/schedule">Agenda una cita</a>
 </div>
   <div className="footer-section">
-    <div><a href="/brands/brands">Marcas favoritas</a></div>
+    <a href="/brands/brands">Marcas favoritas</a>
   </div>
   <div className="footer-section">
     <a href="https://www.jrf.one" target="_blank" rel="noopener noreferrer">&copy; {new Date().getFullYear()} JRF. All rights reserved.</a>
   </div>
+  
 </footer>
+
 
       {/* Styles */}
       <style jsx global>{`
@@ -68,52 +72,27 @@ const Layout = ({ children }) => {
         }
 
         ul {
-          list-style: none;
+          
           display: flex;
-          justify-content: center; /* Center the items horizontally */
-          flex-wrap: wrap;
-          align-items: center;
-          margin: 0;
-          padding: 0;
           position: absolute;
-          top: 20px;
+          top: 5%;
           left: 50%; /* Center the list horizontally */
           transform: translateX(-50%); /* Adjust to center the list */
           z-index: 2;
           display: grid; /* Use CSS Grid */
           grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
-          gap: 2.5vw;
+          gap: 5.5vw;
         }
         
         li {
-          margin: 10px;
-          text-align: center; /* Center the text within each list item */
+          
+          
           font-size: 2.5vw; /* Adjust font size as needed for responsiveness */
         }
         
-        ul.nav-links-right {
-          list-style: none;
-          display: flex;
-          align-items: center;
-          margin: 0;
-          padding: 0;
-          position: absolute;
-          top: 20px;
-          right: 20px; /* Align the list to the right */
-          z-index: 2;
-        }
-        
-        li.nav-links-right {
-          justify-content: flex-end;
-        }
+       
 
-        .main-content {
-          display: flex;
-          flex-direction: column;
-          transition: margin-left 0.5s;
-          z-index: 1;
-          width: 100%;
-        }
+        
 
         .content-container {
           flex: 1;
