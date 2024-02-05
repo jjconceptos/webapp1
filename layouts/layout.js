@@ -59,10 +59,7 @@ const Layout = ({ children }) => {
       {/* Styles */}
       <style jsx global>{`
         body {
-          background-size: cover;
-          background-repeat: repeat;
-          background-attachment: fixed;
-          background-position: center;
+          
           margin: 0;
           padding: 0;
           display: flex;
@@ -85,22 +82,10 @@ const Layout = ({ children }) => {
         }
         
         li {
-          
-          
           font-size: 2.5vw; /* Adjust font size as needed for responsiveness */
         }
         
        
-
-        
-
-        .content-container {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-        }
 
         footer {
           position: fixed;
@@ -129,11 +114,60 @@ const Layout = ({ children }) => {
         }
         
 
+        @media screen and (min-width: 800px) and (min-height: 600px) {
+          body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 80vh;
+            max-height: 102vh;
+            margin-bottom: 100vh;
+          }
+  
+          ul {
+            display: flex;
+            position: absolute;
+            top: 5%;
+            left: 50%; /* Center the list horizontally */
+            transform: translateX(-50%); /* Adjust to center the list */
+            z-index: 2;
+            display: grid; /* Use CSS Grid */
+            grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+            gap: 5.5vw;
+          }
+          
+          li {
+            font-size: 1.5vw; /* Adjust font size as needed for responsiveness */
+          }
+        
+          footer {
+            position: fixed;
+            bottom: 0;
+            margin-top: 5vh;
+            width: 100%;
+            background-color: rgba(52, 73, 94);
+            padding: 10px;
+            color: white;
+            opacity: 0.8;
+            z-index: 2;
+            display: grid; /* Use CSS Grid */
+            grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+            align-items: center;
+            
+            gap: 10px; /* Add some space between columns */
+          }
+          
+          .footer-section {
+            font-size: .9vw; /* Adjust font size as needed */
+            max-width: 150px; /* Set a max-width for responsiveness */
+            display: flex;
+            flex-direction: column; /* Arrange items vertically within each column */
+            align-items: center;
+            margin: 0 auto;
+          }
 
-        .content-container.centered {
-          justify-content: center;
-          align-items: center;
         }
+        
       `}</style>
     </div>
   );

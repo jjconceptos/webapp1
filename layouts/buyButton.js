@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
 import { loadStripe } from '@stripe/stripe-js';
-import Layout from '/layouts/layout';
+
 import { fetchFurnitureProductsData } from 'utils/fetchFurnitureProducts.js';
 
 const stripePromise = loadStripe('your_stripe_publishable_key');
@@ -51,11 +51,11 @@ const BuyButton = ({ productName }) => { // Change the prop to productName
   };
 
   return (
-    <Layout>
+    
       <button onClick={handlePayment}>
         Buy Now - {price ? `$${price}` : 'Loading...'}
       </button>
-    </Layout>
+    
   );
 };
 

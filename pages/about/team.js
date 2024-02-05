@@ -86,12 +86,6 @@ const Team = () => {
           z-index: 2;
         }
         
-          .below-title-undertitle {
-            font-size: 16px;
-            margin-top: 30vh;
-          }
-        
-          
 
           .jp-text {
             font-size: 18px;
@@ -147,7 +141,135 @@ const Team = () => {
           }
 
           
+          @media screen and (min-width: 800px) and (min-height: 600px) {
+      
+            body {
+              margin: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              height: auto;
+            }
+            
+              
+                
+                .image-container {
+                  position: absolute;
+                  top: 110vh;
+                  right: 5vh;
+                  width: 40%;
+                  height: 75%;
+                  background-image: url('/cop.jpeg');
+                  background-size: cover;
+                  background-position: center;
+                  border-radius: 0%;
+                  z-index: 1;
+                }
         
+                .second-image-container {
+                  position: absolute;
+                  top: 148vh;
+                  left: 5vh;
+                  width: 40%;
+                  height: 75%;
+                  background-image: url('/jamie.jpg');
+                  background-size: cover;
+                  background-position: center;
+                  border-radius: 0%;
+                  margin-bottom: 555px;
+                  z-index: 1;
+                }
+                
+              .team-container {
+                  width: 80%;
+                  margin: 0 auto;
+                  display: flex;
+                  flex-direction: column;
+                  padding-top: 10vh;
+              }
+      
+              .quienes-section {
+                position: relative;
+                margin-top: 40vh;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                margin-bottom: 10vh; /* Adjusted margin for better separation from the next section */
+              }
+              
+              .big-title {
+                font-size: 5vw;
+                text-align: center;
+                color: #000;
+                margin-bottom: 2vh;
+              }
+              
+              .sub-title {
+                font-size: 3vw;
+                text-align: center;
+                color: #000;
+                cursor: pointer;
+                z-index: 2;
+              }
+              
+      
+                .jp-text {
+                  font-size: 18px;
+                 
+                  text-align: left;
+                  width: 40%;
+                  color: #333;
+                  margin-top: 35vh;
+                  left: 11vh;
+                  padding-bottom: 15vh;
+                }
+        
+                
+                .paragraph-jp-one {
+                  font-size: 9px;
+                  margin-top: 25vh;
+                  t
+                }
+        
+                .paragraph-jp-two {
+                  font-size: 9px;
+                  margin-top: 10vh;
+                  display: none;
+                }
+
+                .j-text {
+                  font-size: 18px;
+                  position: absolute;
+                  text-align: right;
+                  color: #333;
+                  margin-top: 0vh;
+                  right: 5vh;
+                  width: 40%;
+                  
+                }
+      
+        
+                .paragraph-j-one {
+                  font-size: 9px;
+                  margin-top: 14vh;
+                  margin-bottom: 15vh;
+                }
+        
+                .paragraph-j-two {
+                  font-size: 9px;
+                  margin-top: 5vh;
+                  display: none;
+                }
+        
+                .paragraph-j-three {
+                  font-size: 9px;
+                  margin-top: 5vh;
+                  margin-bottom: 15vh;
+                  display: none;
+                }
+      
+          }
         
        
       `}</style>

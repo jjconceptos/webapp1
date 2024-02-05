@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <Layout>
       {/* Add the background image styling */}
-      <style jsx global>{`
+      <style jsx>{`
          body {
           background-image: url('');
           background-size: cover;
@@ -94,6 +94,50 @@ const Home = () => {
           font-size: 3vw; /* Adjust the font size for mobile responsiveness */
           text-align: center; /* Center the text horizontally */
         }
+
+        @media screen and (min-width: 800px) and (min-height: 600px) {
+          body {
+            background-image: url('');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: '', ; /* Add your preferred font-family */
+          }
+  
+          .type-in-container {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Center vertically within the viewport */
+          }
+  
+          .type-in-text {
+            position: fixed; /* Fixed position to stay in place */
+            top: 50%; /* Adjust top position */
+            left: 50%; /* Adjust left position */
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4vw; /* Adjust the font size for mobile responsiveness */
+            padding-left: 3vw; /* Adjust the padding for mobile responsiveness */
+          }
+  
+          .established-text {
+            position: fixed; /* Fixed position to stay in place */
+            top: 60%; /* Adjust top position */
+            left: 50%; /* Adjust left position */
+            transform: translate(-50%, -50%);
+            font-size: 2vw; /* Adjust the font size for mobile responsiveness */
+            text-align: center; /* Center the text horizontally */
+          }
+        }
+
       `}</style>
 
       {/* Content above the image */}

@@ -231,8 +231,96 @@ const About = () => {
       width: 100%;
       text-align: left;
     }
+    
+    @media screen and (min-width: 800px) and (min-height: 600px) {
+      
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         
+        height: auto;
+      }
+      
+      .about-container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10vh;
+      
+      }
+      
+      .vision-section {
+        position: relative;
+        margin-top: 40vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        margin-bottom: 10vh; /* Adjusted margin for better separation from the next section */
+      }
+      
+      .big-title {
+        font-size: 5vw;
+        text-align: center;
+        color: #000;
+        margin-bottom: 2vh;
+      }
+      
+      .sub-title {
+        font-size: 3vw;
+        text-align: center;
+        color: #000;
+        cursor: pointer;
+        z-index: 2;
+      }
+  
+      .nosotros-section {
+        position: relative;
+        margin-top: 40vh; /* Adjusted margin for better responsiveness */
+      }  
+      
+      .main-text {
+        font-size: 2vw; /* Adjusted font size */
+        text-align: left;
+        color: #333;
+        margin-top: 2vh; /* Adjusted margin */
+        padding: 2vw; /* Adjusted padding */
+      }
+      
+      
+      .tooltip-container {
+        position: absolute;
+        top: 0; /* Adjust as needed */
+        left: 0; /* Adjust as needed */
+        z-index: 100; /* Ensure the tooltip is above other elements */
+      }
+     
+      
+      .services-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        grid-gap: 2vw; /* Adjusted grid gap */
+        margin-top: 2vh; /* Adjusted margin */
+        text-align: center;
+      }
+      
+      .services-section {
+        margin-top: 10vh; /* Adjusted margin for better responsiveness */
+      }
+  
+      .service-plan {
+        text-align: center;
+        padding: 2vw; /* Adjusted padding */
+        border: 1px solid #ddd;
+        border-radius: 1vw; /* Adjusted border radius */
+        width: 100%;
+        text-align: left;
+      }
 
+    }
 
       `}</style>
       <div className="about-container">
