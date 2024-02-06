@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const FurnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProjects, onCloseForm}) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+  
   const [photo, setPhoto] = useState(null);
   
 
@@ -16,9 +16,7 @@ const FurnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProj
     setDescription(e.target.value);
   };
 
-  const handlePriceChange = (e) => {
-    setPrice(e.target.value);
-  };
+  
 
   const handlePhotoChange = (e) => {
     setPhoto(e.target.files[0]);
@@ -41,7 +39,7 @@ const FurnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProj
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
-    formData.append('price', price);
+    
     formData.append('photo', photo);
 
     try {
@@ -64,7 +62,7 @@ const FurnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProj
         const textData = {
           name,
           description,
-          price,
+          
           timestamp,
         };
 
@@ -178,10 +176,7 @@ const FurnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProj
         <div>
           <textarea className="input-field-add-project" value={description} onChange={handleDescriptionChange} placeholder="Description" />
         </div>
-        <div>
-          <input className="input-field-add-project" type="text" value={price} onChange={handlePriceChange} placeholder="Price" />
-        </div>
-        <div>
+         <div>
           <input type="file" accept="image/*" onChange={handlePhotoChange} />
         </div>
         <button type="submit">Submit</button>
