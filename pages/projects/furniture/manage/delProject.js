@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DelProjectButton = ({ furnitureProjectName, onDeleteFurnitureProject }) => {
+const DelFurnitureProjectButton = ({ furnitureProjectName, onDeleteFurnitureProject }) => {
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
 
@@ -86,4 +86,4 @@ const DelProjectButton = ({ furnitureProjectName, onDeleteFurnitureProject }) =>
   );
 };
 
-export default DelProjectButton;
+export default DelFurnitureProjectButton;
