@@ -115,6 +115,20 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   return (
     <div>
       <style jsx>{`
+
+        .form-container {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          padding: 2vw;
+          border: 0.2vw solid #ccc;
+          border-radius: 0.5vw;
+          box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.1);
+          z-index: 1000; /* Ensure the form is above other content */
+        }
+
         .input-field-add-product {
           width: 50%;
           padding: 0.5vw;
@@ -129,7 +143,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           border-color: #007bff;
         }
       `}</style>
-
+    <div className="form-container">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
           <input className="input-field-add-product" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
@@ -145,6 +159,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
         </div>
         <button type="submit">Submit</button>
       </form>
+      </div>
     </div>
   );
 };
