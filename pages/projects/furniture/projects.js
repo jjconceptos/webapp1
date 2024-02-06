@@ -392,7 +392,7 @@ function FurnitureProjects() {
                )}
                {isButtonVisible && (
                  <DelFurnitureProjectButton
-                  FurnitureProjectName={furnitureProject.name}
+                  furnitureProjectName={furnitureProject.name}
                   onDeleteFurnitureProject={handleDeleteFurnitureProject}
                  />
                )}
