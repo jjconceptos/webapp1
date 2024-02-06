@@ -54,6 +54,11 @@ function FurnitureProducts() {
     setShowFurnitureProductForm(true);
   };
 
+  const handleCloseForm = () => {
+    setShowFurnitureProductForm(false);
+  };
+  
+
   const handleFurnitureProductClick = (furnitureProduct) => {
     if (furnitureProduct) {
       setSelectedFurnitureProduct(furnitureProduct);
@@ -345,6 +350,7 @@ function FurnitureProducts() {
                   onSubmit={handleFurnitureProductSubmit}
                   furnitureProducts={furnitureProducts}
                   onFurnitureProductAdded={handleFurnitureProductAdded}
+                  onCloseForm={handleCloseForm} 
                 />
               </div>
             )}

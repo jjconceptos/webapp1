@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 
-const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts }) => {
+const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts, onCloseForm}) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [photo, setPhoto] = useState(null);
+  
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -24,6 +25,8 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   };
 
   const timestamp = Date.now();
+
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -112,6 +115,8 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     }
   };
 
+  
+
   return (
     <div>
       <style jsx>{`
@@ -121,7 +126,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background-color: white;
+          background-color: #C18B8C;
           padding: 2vw;
           border: 0.2vw solid #ccc;
           border-radius: 0.5vw;
@@ -142,8 +147,28 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
         .input-field-add-product:focus {
           border-color: #007bff;
         }
+
+        .close-button {
+          position: absolute;
+          top: 1vw;
+          right: 1vw;
+          background: none;
+          border: none;
+          font-size: 2vw;
+          cursor: pointer;
+          color: #333;
+          outline: none;
+          transition: color 0.3s ease;
+        }
+  
+        .close-button:hover {
+          color: #555;
+        }
+
       `}</style>
     <div className="form-container">
+    <button className="close-button" onClick={onCloseForm}>X</button>
+
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
           <input className="input-field-add-product" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
