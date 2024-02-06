@@ -132,6 +132,8 @@ const FurnitureProjectForm = ({ onSubmit, onFurnitureProjectAdded, furnitureProj
           border-radius: 0.5vw;
           box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.1);
           z-index: 1000; /* Ensure the form is above other content */
+          width: 70%; /* Change this value to your desired width */
+          height: 30%;
         }
 
         .input-field-add-project {
