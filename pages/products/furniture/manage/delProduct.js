@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DelProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) => {
+const DelFurnitureProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) => {
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
 
@@ -86,4 +86,4 @@ const DelProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) =>
   );
 };
 
-export default DelProductButton;
+export default DelFurnitureProductButton;

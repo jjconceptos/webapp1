@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
 import BuyButton from 'layouts/buyButton.js';
 import FurnitureProductForm from '/pages/products/furniture/manage/addProduct';
-import DelProductButton from 'pages/products/furniture/manage/delProduct';
+import DelFurnitureProductButton from 'pages/products/furniture/manage/delProduct';
 import Layout from '/layouts/layout';
 import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
 
@@ -16,39 +16,39 @@ function FurnitureProducts() {
   const [enlargedView, setEnlargedView] = useState(false);
   const [fullDescriptions, setFullDescriptions] = useState({});
 
-  // Fetch products when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const furnitureProductsData = await fetchFurnitureProductsData();
-        const updatedFurnitureProducts = furnitureProductsData.map((furnitureProduct) => ({
-          ...furnitureProduct,
-          // Limit the description only if the product is not expanded
-          description:
-            expandedFurnitureProduct === null
-              ? furnitureProduct.description.length > 8
-                ? furnitureProduct.description.slice(0, 8) + '...'
-                : furnitureProduct.description
-              : furnitureProduct.description,
-        }));
-        setFurnitureProducts(updatedFurnitureProducts);
+ // Fetch products when the component mounts
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const furnitureProductsData = await fetchFurnitureProductsData();
+      const updatedFurnitureProducts = furnitureProductsData.map((furnitureProduct) => ({
+        ...furnitureProduct,
+        // Limit the description only if the product is not expanded
+        description:
+          expandedFurnitureProduct === null
+            ? furnitureProduct.description.length > 8
+              ? furnitureProduct.description.slice(0, 8) + '...'
+              : furnitureProduct.description
+            : furnitureProduct.description,
+      }));
+      setFurnitureProducts(updatedFurnitureProducts);
 
-        // Store the full descriptions separately
-        const fullDescs = furnitureProductsData.reduce(
-          (acc, furnitureProduct) => ({
-            ...acc,
-            [furnitureProduct.name]: furnitureProduct.description,
-          }),
-          {}
-        );
-        setFullDescriptions(fullDescs);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-  
-    fetchData();
-  }, [expandedFurnitureProduct]);
+      // Store the full descriptions separately
+      const fullDescs = furnitureProductsData.reduce(
+        (acc, furnitureProduct) => ({
+          ...acc,
+          [furnitureProduct.name]: furnitureProduct.description,
+        }),
+        {}
+      );
+      setFullDescriptions(fullDescs);
+    } catch (error) {
+      console.error('Error fetching furnitureProducts:', error);
+    }
+  };
+
+  fetchData();
+}, [expandedFurnitureProduct]);
 
   const handleFurnitureProductAddClick = () => {
     setShowFurnitureProductForm(true);
@@ -75,16 +75,16 @@ function FurnitureProducts() {
             : furnitureProduct.description,
         }))
       );
-      console.log('Updated products:', updatedFurnitureProducts);
+      console.log('Updated furnitureProducts:', updatedFurnitureProducts);
     } catch (error) {
-      console.error('Error handling added product:', error);
+      console.error('Error handling added furnitureProduct:', error);
     }
   };
 
   const handleFurnitureProductSubmit = async (furnitureProduct) => {
     if (furnitureProduct.name && furnitureProduct.description) {
       setShowFurnitureProductForm(false);
-      handleProductAdded(furnitureProduct.name);
+      handleFurnitureProductAdded(furnitureProduct.name);
     } else {
       console.log('Validation failed: Missing name or description');
     }
@@ -103,130 +103,235 @@ function FurnitureProducts() {
     }
   };
 
-  
-
   const isButtonVisible = state.clearanceLevel == 1 || state.clearanceLevel == 2;
 
   
 
   return (
     <Layout>
-       <style jsx >{`
+      <style jsx >{`
 
-body {
-   
-   margin: 0;
-   padding: 0;
-   display: flex;
-   min-height: 80vh;
-   max-height: 102vh;
-   margin-bottom: 100vh;
- }
- 
- .no-products-centered {
-   position: fixed;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
- }
- 
- .add-products-section {
-   position: relative;
-   top: 30vh;
-   left: 10vw;
-   
-   
- }
- 
- .products-section {
-   margin-top: 35vh;
+       body {
+          
+          margin: 0;
+          padding: 0;
+          display: flex;
+          min-height: 80vh;
+          max-height: 102vh;
+          margin-bottom: 100vh;
+        }
+        
+        .no-products-centered {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        
+        .add-products-section {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 30vh; /* Adjust the margin-top as needed */
+        }
+        
+        .products-section {
+          margin-top: 35vh;
+        }
+       
+        .products-grid {
+          position: relative;
+          
+          left: 0;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2vw;
+          padding: 1.5vh;
+         
+        }
+        
+        .products-card {
+          border: 1px solid #ddd;
+          padding: 1vw;
+        }
+        
+        .enlarged-view {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.94);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 100;
+        }
+        
+        .enlarged-product {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+        
+        .enlarged-product-img {
+          width: 70vw;
+          max-width: 100vw;
+          height: auto;
+          max-height: 70vh;
+          object-fit: contain;
+          margin: auto;
+        }
+        
+        .enlarged-product-name {
+          font-size: 3vw;
+          color: #f3f0e9;
+          margin-top: 10vh;
+        }
+        
+        .enlarged-product-description {
+          font-size: 2vw;
+          color: #f3f0e9;
+          white-space: pre-line;
+          overflow-wrap: break-word;
+          max-width: 100%;
+        }
+        
+        .close-button {
+          position: absolute;
+          top: 1vh;
+          right: 1vw;
+          background: none;
+          border: none;
+          font-size: 2.4vw;
+          cursor: pointer;
+          color: white;
+          outline: none;
+          transition: color 0.3s ease;
+        }
+        
+        .close-button:hover {
+          color: lightgray;
+        }
+
+        @media screen and (min-width: 800px) and (min-height: 600px) {
   
- }
-
- .products-grid {
-   position: relative;
-   
-   left: 0;
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-   gap: 2vw;
-   padding: 1.5vh;
-  
- }
- 
- .products-card {
-   border: 1px solid #ddd;
-   padding: 1vw;
- }
- 
- .enlarged-view {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: rgba(0, 0, 0, 0.94);
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   z-index: 100;
- }
- 
- .enlarged-product {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   text-align: center;
- }
- 
- .enlarged-product-img {
-   width: 70vw;
-   max-width: 100vw;
-   height: auto;
-   max-height: 70vh;
-   object-fit: contain;
-   margin: auto;
- }
- 
- .enlarged-product-name {
-   font-size: 3vw;
-   color: #f3f0e9;
-   margin-top: 10vh;
- }
- 
- .enlarged-product-description {
-   font-size: 2vw;
-   color: #f3f0e9;
-   white-space: pre-line;
-   overflow-wrap: break-word;
-   max-width: 50%;
- }
- 
- .close-button {
-   position: absolute;
-   top: 1vh;
-   right: 1vw;
-   background: none;
-   border: none;
-   font-size: 2.4vw;
-   cursor: pointer;
-   color: white;
-   outline: none;
-   transition: color 0.3s ease;
- }
- 
- .close-button:hover {
-   color: lightgray;
- }
-
- 
-
-
-
-`}</style>
-     <div className="products-container">
+          body {
+          
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 80vh;
+            max-height: 102vh;
+            margin-bottom: 100vh;
+          }
+          
+          .no-products-centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          
+          .add-products-section {
+            position: relative;
+            top: 30vh;
+            left: 10vw;
+            
+            
+          }
+          
+          .products-section {
+            margin-top: 35vh;
+           
+          }
+         
+          .products-grid {
+            position: relative;
+            
+            left: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2vw;
+            padding: 1.5vh;
+           
+          }
+          
+          .products-card {
+            border: 1px solid #ddd;
+            padding: 1vw;
+          }
+          
+          .enlarged-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.94);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+          }
+          
+          .enlarged-product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
+          
+          .enlarged-product-img {
+            width: 70vw;
+            max-width: 100vw;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            margin: auto;
+          }
+          
+          .enlarged-product-name {
+            font-size: 3vw;
+            color: #f3f0e9;
+            margin-top: 10vh;
+          }
+          
+          .enlarged-product-description {
+            font-size: 2vw;
+            color: #f3f0e9;
+            white-space: pre-line;
+            overflow-wrap: break-word;
+            max-width: 100%;
+          }
+          
+          .close-button {
+            position: absolute;
+            top: 1vh;
+            right: 1vw;
+            background: none;
+            border: none;
+            font-size: 2.4vw;
+            cursor: pointer;
+            color: white;
+            outline: none;
+            transition: color 0.3s ease;
+          }
+          
+          .close-button:hover {
+            color: lightgray;
+          } 
+        
+        }
+       
+      `}</style>
+      <div className="products-container">
       <div className="add-products-section">
        <div>
       {isButtonVisible && (
@@ -280,12 +385,10 @@ body {
                    onClick={() => handleFurnitureProductClick(furnitureProduct)}
                  />
                )}
-               {/* Include the BuyButton component here */}
-               <BuyButton productId={furnitureProduct.productId} price={furnitureProduct.price} />
                {isButtonVisible && (
-                 <DelProductButton
-                   furnitureProductName={furnitureProduct.name}
-                   onDeleteFurnitureProduct={handleDeleteFurnitureProduct}
+                 <DelFurnitureProductButton
+                  FurnitureProductName={furnitureProduct.name}
+                  onDeleteFurnitureProduct={handleDeleteFurnitureProduct}
                  />
                )}
              </div>

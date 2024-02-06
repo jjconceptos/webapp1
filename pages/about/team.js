@@ -177,7 +177,7 @@ const Team = () => {
                   background-size: cover;
                   background-position: center;
                   border-radius: 0%;
-                  margin-bottom: 555px;
+                  margin-bottom: 110vh;
                   z-index: 1;
                 }
                 
@@ -243,16 +243,17 @@ const Team = () => {
                   position: absolute;
                   text-align: right;
                   color: #333;
-                  margin-top: 0vh;
+                  margin-top: 60vh;
                   right: 5vh;
                   width: 40%;
+                  margin-bottom: 110vh;
                   
                 }
       
         
                 .paragraph-j-one {
                   font-size: 9px;
-                  margin-top: 14vh;
+                  margin-top: 5vh;
                   margin-bottom: 15vh;
                 }
         

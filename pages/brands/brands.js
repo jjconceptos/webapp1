@@ -131,29 +131,28 @@ function Brands() {
         
         .add-brands-section {
           position: relative;
-          top: 30vh;
-          left: 10vw;
-          
-          
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 30vh; /* Adjust the margin-top as needed */
         }
         
-        .products-section {
+        .brands-section {
           margin-top: 35vh;
-         
         }
        
-        .products-grid {
+        .brands-grid {
           position: relative;
           
           left: 0;
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+          grid-template-columns: repeat(2, 1fr);
           gap: 2vw;
           padding: 1.5vh;
          
         }
         
-        .products-card {
+        .brands-card {
           border: 1px solid #ddd;
           padding: 1vw;
         }
@@ -220,6 +219,117 @@ function Brands() {
           color: lightgray;
         }
 
+        @media screen and (min-width: 800px) and (min-height: 600px) {
+  
+          body {
+          
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 80vh;
+            max-height: 102vh;
+            margin-bottom: 100vh;
+          }
+          
+          .no-brands-centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          
+          .add-brands-section {
+            position: relative;
+            top: 30vh;
+            left: 10vw;
+            
+            
+          }
+          
+          .brands-section {
+            margin-top: 35vh;
+           
+          }
+         
+          .brands-grid {
+            position: relative;
+            
+            left: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2vw;
+            padding: 1.5vh;
+           
+          }
+          
+          .brands-card {
+            border: 1px solid #ddd;
+            padding: 1vw;
+          }
+          
+          .enlarged-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.94);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+          }
+          
+          .enlarged-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
+          
+          .enlarged-brand-img {
+            width: 70vw;
+            max-width: 100vw;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            margin: auto;
+          }
+          
+          .enlarged-brand-name {
+            font-size: 3vw;
+            color: #f3f0e9;
+            margin-top: 10vh;
+          }
+          
+          .enlarged-brand-description {
+            font-size: 2vw;
+            color: #f3f0e9;
+            white-space: pre-line;
+            overflow-wrap: break-word;
+            max-width: 100%;
+          }
+          
+          .close-button {
+            position: absolute;
+            top: 1vh;
+            right: 1vw;
+            background: none;
+            border: none;
+            font-size: 2.4vw;
+            cursor: pointer;
+            color: white;
+            outline: none;
+            transition: color 0.3s ease;
+          }
+          
+          .close-button:hover {
+            color: lightgray;
+          } 
+        
+        }
        
       `}</style>
       <div className="brands-container">
@@ -240,13 +350,13 @@ function Brands() {
               </div>
             )}
       </div>
-      <div className="products-section">
-       <div className="products-grid">
+      <div className="brands-section">
+       <div className="brands-grid">
          {Array.isArray(brands) && brands.length > 0 ? (
            brands.map((brand, index) => (
              <div
                key={index}
-               className={`products-card ${
+               className={`brands-card ${
                  expandedBrand === index ? 'expanded' : ''
                }`}
              >
