@@ -11,22 +11,26 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: 'Name and description are required' });
       }
 
-      // Use a regular expression to check if name contains only letters
-      const nameRegex = /^[A-Za-z]+$/;
+      // Use a regular expression to check if name contains only letters, hyphens, and spaces
+      
+      const nameRegex = /^[A-Za-zñÑ -]+$/;
       if (!name.match(nameRegex)) {
-        console.error('Name must contain only letters');
-        return res.status(400).json({ message: 'Name must contain only letters' });
+        console.error('Name must contain only letters, hyphens, and spaces');
+        return res.status(400).json({ message: 'Name must contain only letters, hyphens, and spaces' });
       }
 
+      // Replace spaces with hyphens in the name
+      const formattedName = name.replace(/\s+/g, '-');
+
       const furnitureProjectTextData = {
-        name,
+        name: formattedName, // Use the formatted name
         description,
         timestamp,
       };
 
       // Store product text data using SET command after converting to JSON
       // Assuming you use a unique key for each project
-      await kv.set(`furnitureproject:${name}`, JSON.stringify(furnitureProjectTextData));
+      await kv.set(`furnitureproject:${formattedName}`, JSON.stringify(furnitureProjectTextData));
 
       res.status(200).json({ message: "Furniture project text data uploaded successfully" });
     } catch (error) {
@@ -37,4 +41,3 @@ export default async function handler(req, res) {
     res.status(405).json({ message: "Method not allowed" });
   }
 }
-
