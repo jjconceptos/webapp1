@@ -14,14 +14,17 @@ export default async function handler(req, res) {
       }
 
       // Use a regular expression to check if name contains only letters
-      const nameRegex = /^[A-Za-z]+$/;
+      const nameRegex = /^[A-Za-zñÑ -]+$/;
       if (!name.match(nameRegex)) {
         console.error('Name must contain only letters');
         return res.status(400).json({ message: 'Name must contain only letters' });
       }
 
+      // Replace spaces with hyphens in the name
+      const formattedName = name.replace(/\s+/g, '-');
+
       const furnitureProductTextData = {
-        name,
+        name: formattedName,
         description,
         price, // Include the price in the stored data
         timestamp,
@@ -30,7 +33,7 @@ export default async function handler(req, res) {
 
       // Store product text data using SET command after converting to JSON
       // Assuming you use a unique key for each project
-      await kv.set(`furnitureproduct:${name}`, JSON.stringify(furnitureProductTextData));
+      await kv.set(`furnitureproduct:${formattedName}`, JSON.stringify(furnitureProductTextData));
 
       res.status(200).json({ message: "Furniture product text data uploaded successfully" });
     } catch (error) {
