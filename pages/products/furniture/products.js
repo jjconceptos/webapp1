@@ -23,6 +23,7 @@ function FurnitureProducts() {
       const furnitureProductsData = await fetchFurnitureProductsData();
       const updatedFurnitureProducts = furnitureProductsData.map((furnitureProduct) => ({
         ...furnitureProduct,
+        name: furnitureProduct.name.replace(/-/g, ' '), // Transform hyphens to spaces
         // Limit the description only if the product is not expanded
         description:
           expandedFurnitureProduct === null
@@ -34,14 +35,16 @@ function FurnitureProducts() {
       setFurnitureProducts(updatedFurnitureProducts);
 
       // Store the full descriptions separately
+      // Store the full descriptions separately
       const fullDescs = furnitureProductsData.reduce(
         (acc, furnitureProduct) => ({
           ...acc,
-          [furnitureProduct.name]: furnitureProduct.description,
+          [furnitureProduct.name.replace(/-/g, ' ')]: furnitureProduct.description,
         }),
         {}
       );
       setFullDescriptions(fullDescs);
+
     } catch (error) {
       console.error('Error fetching furnitureProducts:', error);
     }
