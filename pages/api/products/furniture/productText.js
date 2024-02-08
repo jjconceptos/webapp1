@@ -3,9 +3,7 @@ import { kv } from "@vercel/kv";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      
-      const { name, description, price, timestamp } = req.body.textData || {};
-
+      const { name, description, price } = req.body.textData || {};
 
       // Validate fields if needed
       if (!name || !description || !price) {
@@ -21,7 +19,10 @@ export default async function handler(req, res) {
       }
 
       // Replace spaces with hyphens in the name
-      const formattedName = name.replace(/\s+/g, '-');
+      const formattedName = name.trim().replace(/\s+/g, '-');
+
+      // Generate timestamp (first 6 digits)
+      const timestamp = Date.now().toString().slice(2, 9);
 
       const furnitureProductTextData = {
         name: formattedName,
@@ -30,10 +31,9 @@ export default async function handler(req, res) {
         timestamp,
       };
 
-
       // Store product text data using SET command after converting to JSON
-      // Assuming you use a unique key for each project
-      await kv.set(`furnitureproduct:${formattedName}`, JSON.stringify(furnitureProductTextData));
+      // Assuming you use the same key format as productNames.js
+      await kv.set(`furnitureproduct:${formattedName}-${timestamp}`, JSON.stringify(furnitureProductTextData));
 
       res.status(200).json({ message: "Furniture product text data uploaded successfully" });
     } catch (error) {
@@ -44,4 +44,5 @@ export default async function handler(req, res) {
     res.status(405).json({ message: "Method not allowed" });
   }
 }
+
 

@@ -1,10 +1,15 @@
+
+
+
 import React, { useState } from 'react';
 
-const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts, onCloseForm }) => {
+
+const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts, onCloseForm}) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [photos, setPhotos] = useState([]);
+  const [photo, setPhoto] = useState(null);
+  
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -19,34 +24,28 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   };
 
   const handlePhotoChange = (e) => {
-    const newPhotos = Array.from(e.target.files);
-    if (photos.length + newPhotos.length <= 3) {
-      setPhotos(prevPhotos => [...prevPhotos, ...newPhotos]);
-    } else {
-      console.log('Cannot select more than 3 photos');
-      // Optionally, you can provide feedback to the user that they cannot select more than 5 photos
-    }
+    setPhoto(e.target.files[0]);
   };
 
   const timestamp = Date.now();
 
+ 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate fields if needed
-    if (name === '' || description === '' || photos.length === 0) {
+    if (name === '' || description === '' || !photo) {
       console.error('All fields are required');
       return;
     }
-    console.log('Photo files:', photos); // Log the photo files being sent
+    console.log('Photo file:', photo); // Log the photo file being sent
 
     // Create a FormData object to send the form data as a multipart request
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
     formData.append('price', price);
-    photos.forEach((photo, index) => {
-      formData.append(`photo${index}`, photo);
-    });
+    formData.append('photo', photo);
 
     try {
       // Send the form data to the local image upload endpoint
@@ -61,7 +60,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       });
 
       if (imageResponse.ok) {
-        // product image data submission successful
+        // productimage data submission successful
         console.log('Image data submitted successfully');
 
         // Now, send the text data
@@ -84,7 +83,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           // Text data submission successful
           console.log('Text data submitted successfully');
 
-          // Send the product name to the API immediately after adding it
+          // Send the productname to the API immediately after adding it
           const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
             method: 'POST',
             body: JSON.stringify({ furnitureProductNames: [name] }), // Send just the product name as an array
@@ -105,7 +104,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           // Clear form fields
           setName('');
           setDescription('');
-          setPhotos([]);
+          setPhoto(null);
         } else {
           // Text data submission failed
           console.error('Text data submission failed');
@@ -119,9 +118,12 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     }
   };
 
+  
+
   return (
     <div>
       <style jsx>{`
+
         .form-container {
           position: fixed;
           top: 50%;
@@ -133,6 +135,8 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           border-radius: 0.5vw;
           box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.1);
           z-index: 1000; /* Ensure the form is above other content */
+          width: 70%; /* Change this value to your desired width */
+          height: 30%;
         }
 
         .input-field-add-product {
@@ -161,53 +165,30 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           outline: none;
           transition: color 0.3s ease;
         }
-
+  
         .close-button:hover {
           color: #555;
         }
 
-        .selected-photos {
-          margin-top: 1vw;
-        }
-
-        .add-more-button {
-          background-color: #007bff;
-          color: white;
-          border: none;
-          border-radius: 0.25vw;
-          padding: 0.5vw;
-          cursor: pointer;
-          margin-top: 1vw;
-        }
       `}</style>
-      <div className="form-container">
-        <button className="close-button" onClick={onCloseForm}>X</button>
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <div>
-            <input className="input-field-add-product" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
-          </div>
-          <div>
-            <textarea className="input-field-add-product" value={description} onChange={handleDescriptionChange} placeholder="Description" />
-          </div>
-          <div>
+    <div className="form-container">
+    <button className="close-button" onClick={onCloseForm}>X</button>
+
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div>
+          <input className="input-field-add-product" type="text" value={name} onChange={handleNameChange} placeholder="Name" />
+        </div>
+        <div>
+          <textarea className="input-field-add-product" value={description} onChange={handleDescriptionChange} placeholder="Description" />
+        </div>
+        <div>
             <input className="input-field-add-product" type="text" value={price} onChange={handlePriceChange} placeholder="Price" />
           </div>
-          <div>
-            <input id="file-input" type="file" accept="image/*" onChange={handlePhotoChange} style={{ display: 'none' }} />
-            {photos.length === 0 &&
-              <label htmlFor="file-input" className="add-more-button">Choose File</label>
-            }
-            {photos.length > 0 &&
-              <button type="button" className="add-more-button" onClick={() => document.getElementById("file-input").click()}>+ Add More Files</button>
-            }
-          </div>
-          <div className="selected-photos">
-            {photos.map((photo, index) => (
-              <div key={index}>{photo.name}</div>
-            ))}
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+         <div>
+          <input type="file" accept="image/*" onChange={handlePhotoChange} />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
       </div>
     </div>
   );
