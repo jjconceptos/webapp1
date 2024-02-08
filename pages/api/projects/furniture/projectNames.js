@@ -7,9 +7,11 @@ export default async function handler(req, res) {
       console.log('Received request body:', req.body);
 
       if (!furnitureProjectNames || !Array.isArray(furnitureProjectNames)) {
-       
         return res.status(400).json({ message: 'Invalid project names list' });
       }
+
+      // Replace spaces with hyphens in the project names
+      const formattedProjectNames = furnitureProjectNames.map(projectName => projectName.trim().replace(/\s+/g, '-'));
 
       // Retrieve the existing project names from the key-value store
       let existingFurnitureProjectNames = await kv.get('furnitureprojectnames:');
@@ -18,9 +20,8 @@ export default async function handler(req, res) {
       }
 
       // Filter out null values and invalid entries
-      const validFurnitureProjectNames = furnitureProjectNames
-        .filter(project => typeof project === "string" && project.trim().length > 0)
-        .map(project => project.trim());
+      const validFurnitureProjectNames = formattedProjectNames
+        .filter(project => typeof project === "string" && project.trim().length > 0);
 
       if (validFurnitureProjectNames.length === 0) {
         console.error('No valid project names found');
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
       // Append the new project names to the existing list
       const updatedFurnitureProjectNames = [...existingFurnitureProjectNames, ...validFurnitureProjectNames];
 
-      console.log('Received project names list (furnitureProjectNames.js): ', validFurnitureProjectNames);
+      console.log('Received project names list (projectNames.js): ', validFurnitureProjectNames);
 
       // Store the updated project names list
       await kv.set('furnitureprojectnames:', updatedFurnitureProjectNames);

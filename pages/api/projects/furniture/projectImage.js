@@ -26,7 +26,6 @@ const initStorage = () => {
     // Use local JSON file for credentials in development
     return new Storage({
       keyFilename: './primeval-array-411517-a6421345dc48.json',
-      
     });
   }
 };
@@ -61,10 +60,13 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Photo is required' });
       }
 
+      // Transform the project name to replace spaces with hyphens and handle special characters
+      let furnitureProjectName = req.headers['image-name'];
+      furnitureProjectName = furnitureProjectName.trim().replace(/\s+/g, '-'); // Replace spaces with hyphens
+      furnitureProjectName = encodeURIComponent(furnitureProjectName); // Encode special characters
+      
       // Specify the Google Cloud Storage bucket and destination filename
       const bucketName = 'jj-webapp1';
-      const timestamp = req.headers.timestamp;
-      const furnitureProjectName = req.headers['image-name'];
       const destFileName = `${furnitureProjectName}.jpg`; // Assuming it's a JPEG image
       console.log('Uploading photo to Google Cloud Storage:', destFileName);
 

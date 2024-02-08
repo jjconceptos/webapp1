@@ -13,6 +13,7 @@ export default async function handler(req, res) {
 
       // Use a regular expression to check if name contains only letters, hyphens, and spaces
       
+      
       const nameRegex = /^[A-Za-zñÑ -]+$/;
       if (!name.match(nameRegex)) {
         console.error('Name must contain only letters, hyphens, and spaces');

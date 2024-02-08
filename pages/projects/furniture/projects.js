@@ -22,6 +22,7 @@ function FurnitureProjects() {
       const furnitureProjectsData = await fetchFurnitureProjectsData();
       const updatedFurnitureProjects = furnitureProjectsData.map((furnitureProject) => ({
         ...furnitureProject,
+        name: furnitureProject.name.replace(/-/g, ' '),
         // Limit the description only if the project is not expanded
         description:
           expandedFurnitureProject === null
@@ -32,17 +33,19 @@ function FurnitureProjects() {
       }));
       setFurnitureProjects(updatedFurnitureProjects);
 
-      // Store the full descriptions separately
-      const fullDescs = furnitureProjectsData.reduce(
+      
+       // Store the full descriptions separately
+       const fullDescs = furnitureProjectsData.reduce(
         (acc, furnitureProject) => ({
           ...acc,
-          [furnitureProject.name]: furnitureProject.description,
+          [furnitureProject.name.replace(/-/g, ' ')]: furnitureProject.description,
         }),
         {}
       );
       setFullDescriptions(fullDescs);
+
     } catch (error) {
-      console.error('Error fetching furnitureProjects:', error);
+      console.error('Error fetching furnitureProducts:', error);
     }
   };
 

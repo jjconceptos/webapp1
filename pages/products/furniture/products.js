@@ -34,7 +34,7 @@ function FurnitureProducts() {
       }));
       setFurnitureProducts(updatedFurnitureProducts);
 
-      // Store the full descriptions separately
+      
       // Store the full descriptions separately
       const fullDescs = furnitureProductsData.reduce(
         (acc, furnitureProduct) => ({
