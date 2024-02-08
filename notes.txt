@@ -9,7 +9,7 @@ router.replace(router.asPath);
 Git
 
 git add .
-git commit -m "initial"
+git commit -m "multiple images"
 git push -u origin main
 
 

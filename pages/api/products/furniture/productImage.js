@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     console.log('Request body:', req.body);
 
     // Use the "upload" Multer middleware to handle file uploads
-    upload.single('photo')(req, res, async function (err) {
+    upload.array('photos', 3)(req, res, async function (err) {
       if (err) {
         // Handle any Multer errors here
         console.error('Multer error:', err);
@@ -51,40 +51,42 @@ export default async function handler(req, res) {
       }
 
       // Log the received request and file details
-      console.log('Received a file upload request:');
-      console.log('Uploaded file:', req.file); // Log the uploaded file details
+      console.log('Received file upload request:');
+      console.log('Uploaded files:', req.files); // Log the uploaded files details
 
-      // Validate that a file was uploaded
-      if (!req.file) {
-        console.log('Validation failed: Missing photo');
-        return res.status(400).json({ error: 'Photo is required' });
+      // Validate that files were uploaded
+      if (!req.files || req.files.length === 0) {
+        console.log('Validation failed: No photos uploaded');
+        return res.status(400).json({ error: 'Photos are required' });
       }
 
-      // Transform the product name to replace spaces with hyphens and handle special characters
-      let furnitureProductName = req.headers['image-name'];
-      furnitureProductName = furnitureProductName.trim().replace(/\s+/g, '-'); // Replace spaces with hyphens
-      furnitureProductName = encodeURIComponent(furnitureProductName); // Encode special characters
-      
-      // Specify the Google Cloud Storage bucket and destination filename
-      const bucketName = 'jj-webapp1';
-      const destFileName = `${furnitureProductName}.jpg`; // Assuming it's a JPEG image
-      console.log('Uploading photo to Google Cloud Storage:', destFileName);
+      // Process each uploaded file
+      for (const file of req.files) {
+        // Transform the product name to replace spaces with hyphens and handle special characters
+        let furnitureProductName = req.headers['image-name'];
+        furnitureProductName = furnitureProductName.trim().replace(/\s+/g, '-'); // Replace spaces with hyphens
+        furnitureProductName = encodeURIComponent(furnitureProductName); // Encode special characters
 
-      // Initialize Google Cloud Storage based on the environment
-      const dynamicStorage = initStorage();
+        // Specify the Google Cloud Storage bucket and destination filename
+        const bucketName = 'jj-webapp1';
+        const destFileName = `${furnitureProductName}-${Date.now()}-${file.originalname}`; // Append timestamp to filename
+        console.log('Uploading photo to Google Cloud Storage:', destFileName);
 
-      // Upload the file to Google Cloud Storage using the dynamic storage instance
-      const bucket = dynamicStorage.bucket(bucketName);
-      const file = bucket.file(destFileName);
-      const fileBuffer = req.file.buffer;
+        // Initialize Google Cloud Storage based on the environment
+        const dynamicStorage = initStorage();
 
-      await file.save(fileBuffer, {
-        metadata: {
-          contentType: req.file.mimetype,
-        },
-      });
+        // Upload the file to Google Cloud Storage using the dynamic storage instance
+        const bucket = dynamicStorage.bucket(bucketName);
+        const gcsFile = bucket.file(destFileName);
 
-      console.log('Image data processing completed');
+        await gcsFile.save(file.buffer, {
+          metadata: {
+            contentType: file.mimetype,
+          },
+        });
+
+        console.log('Image data processing completed for:', destFileName);
+      }
 
       // Respond with a success message
       res.status(200).json('File upload complete');
