@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       const formattedName = name.trim().replace(/\s+/g, '-');
 
       // Generate timestamp (first 6 digits)
-      const timestamp = Date.now().toString().slice(2, 9);
+      const timestamp = Date.now().toString().slice(2, 8);
 
       const furnitureProductTextData = {
         name: formattedName,

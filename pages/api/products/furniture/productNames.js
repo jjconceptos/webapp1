@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
       // Replace spaces with hyphens in the product names and generate unique names
       const formattedProductNames = furnitureProductNames.map(productName => {
-        const timestamp = Date.now().toString().slice(2, 9); // Get the first 4 digits of the timestamp
+        const timestamp = Date.now().toString().slice(2, 8); // Get the first 4 digits of the timestamp
         const formattedProductName = productName.trim().replace(/\s+/g, '-');
         return `${formattedProductName}-${timestamp}`;
       });

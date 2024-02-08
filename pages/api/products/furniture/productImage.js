@@ -61,10 +61,13 @@ export default async function handler(req, res) {
       }
 
       // Extract product name and timestamp
-      const productName = req.headers['image-name'];
-      const timestamp = Date.now().toString().slice(2, 9); // Get first 4 digits of timestamp
+      let productName = req.headers['image-name'];
+      const timestamp = Date.now().toString().slice(2, 8); // Get first 4 digits of timestamp
 
-      // Construct destination filename with product name and timestamp
+      // Replace spaces with hyphens in the product name
+      productName = productName.trim().replace(/\s+/g, '-');
+
+      // Construct destination filename with modified product name and timestamp
       const destFileName = `${productName}-${timestamp}.jpg`; // Assuming it's a JPEG image
       console.log('Uploading photo to Google Cloud Storage:', destFileName);
 
