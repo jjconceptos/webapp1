@@ -3,12 +3,12 @@ import { kv } from "@vercel/kv";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { name, description, price } = req.body.textData || {};
+      const { name, description, price, image } = req.body.textData || {};
 
       // Validate fields if needed
-      if (!name || !description || !price) {
-        console.error('Name, description, and price are required');
-        return res.status(400).json({ message: 'Name, description, and price are required' });
+      if (!name || !description || !price || !image) {
+        console.error('Name, description, price, and image are required');
+        return res.status(400).json({ message: 'Name, description, price, and image are required' });
       }
 
       // Use a regular expression to check if name contains only letters
@@ -29,6 +29,7 @@ export default async function handler(req, res) {
         description,
         price, // Include the price in the stored data
         timestamp,
+        image: `${formattedName}-${timestamp}00`, // Include the formatted image name
       };
 
       // Store product text data using SET command after converting to JSON

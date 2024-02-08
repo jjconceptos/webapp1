@@ -27,8 +27,8 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     setPhoto(e.target.files[0]);
   };
 
-  const timestamp = Date.now();
-
+  
+  const timestamp = Date.now().toString().slice(2, 8);
  
 
   const handleSubmit = async (e) => {
@@ -39,14 +39,14 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       return;
     }
     console.log('Photo file:', photo); // Log the photo file being sent
-
+  
     // Create a FormData object to send the form data as a multipart request
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
     formData.append('price', price);
     formData.append('photo', photo);
-
+  
     try {
       // Send the form data to the local image upload endpoint
       const imageResponse = await fetch('/api/products/furniture/productImage', {
@@ -54,23 +54,23 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
         body: formData,
         headers: {
           // Include the product name in the image headers
-          'image-name': name,
-          'timestamp': timestamp,
+          'image-name': `${name}-${timestamp}00`,
         },
       });
-
+  
       if (imageResponse.ok) {
         // productimage data submission successful
         console.log('Image data submitted successfully');
-
+  
         // Now, send the text data
         const textData = {
           name,
           description,
           price,
           timestamp,
+          image: `${name}-${timestamp}00`, // Include the formatted image name
         };
-
+  
         const textResponse = await fetch('/api/products/furniture/productText', {
           method: 'POST',
           body: JSON.stringify({ textData }),
@@ -78,11 +78,11 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
             'Content-Type': 'application/json',
           },
         });
-
+  
         if (textResponse.ok) {
           // Text data submission successful
           console.log('Text data submitted successfully');
-
+  
           // Send the productname to the API immediately after adding it
           const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
             method: 'POST',
@@ -91,16 +91,16 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
               'Content-Type': 'application/json',
             },
           });
-
+  
           if (furnitureProductNamesResponse.ok) {
             console.log('Product name added to the list successfully');
           } else {
             console.error('Failed to add the product name to the list');
           }
-
+  
           // Notify the parent component that a new product has been added
           onFurnitureProductAdded(name);
-
+  
           // Clear form fields
           setName('');
           setDescription('');

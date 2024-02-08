@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       productName = productName.trim().replace(/\s+/g, '-');
 
       // Construct destination filename with modified product name and timestamp
-      const destFileName = `${productName}-${timestamp}.jpg`; // Assuming it's a JPEG image
+      const destFileName = `${productName}.jpg`; // Assuming it's a JPEG image
       console.log('Uploading photo to Google Cloud Storage:', destFileName);
 
       // Initialize Google Cloud Storage based on the environment
