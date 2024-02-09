@@ -100,8 +100,9 @@ const Layout = ({ children }) => {
           display: grid; /* Use CSS Grid */
           grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
           align-items: center;
-          
+          display: none;
           gap: 10px; /* Add some space between columns */
+          
         }
         
         .footer-section {
@@ -153,7 +154,7 @@ const Layout = ({ children }) => {
             display: grid; /* Use CSS Grid */
             grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
             align-items: center;
-            
+            display: none;
             gap: 10px; /* Add some space between columns */
           }
           
@@ -165,6 +166,7 @@ const Layout = ({ children }) => {
             align-items: center;
             margin: 0 auto;
           }
+
 
         }
         
