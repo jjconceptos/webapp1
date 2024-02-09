@@ -41,7 +41,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     console.log('Photo file:', photo); // Log the photo file being sent
 
     // Concatenate the timestamp to the name
-    const nameWithTimestamp = `${name}-${timestamp}00`;
+    const nameWithTimestamp = `${name}-${timestamp}`;
 
   
     // Create a FormData object to send the form data as a multipart request
@@ -72,7 +72,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           description,
           price,
           timestamp,
-          image: `${name}-${timestamp}00`, // Include the formatted image name
+          image: `${name}-${timestamp}`, // Include the formatted image name
         };
   
         const textResponse = await fetch('/api/products/furniture/productText', {

@@ -28,6 +28,7 @@ export default async function handler(req, res) {
         description,
         price, // Include the price in the stored data
         timestamp,
+        image: [`${formattedName}-00`],
       };
 
 
