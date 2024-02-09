@@ -28,7 +28,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   };
 
   
-  const timestamp = Date.now().toString().slice(2, 8);
+  const timestamp = Date.now().toString().slice(2, 11);
  
 
   const handleSubmit = async (e) => {
@@ -39,10 +39,14 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       return;
     }
     console.log('Photo file:', photo); // Log the photo file being sent
+
+    // Concatenate the timestamp to the name
+    const nameWithTimestamp = `${name}-${timestamp}00`;
+
   
     // Create a FormData object to send the form data as a multipart request
     const formData = new FormData();
-    formData.append('name', name);
+    formData.append('name', nameWithTimestamp); 
     formData.append('description', description);
     formData.append('price', price);
     formData.append('photo', photo);
@@ -54,7 +58,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
         body: formData,
         headers: {
           // Include the product name in the image headers
-          'image-name': `${name}-${timestamp}00`,
+          'image-name': nameWithTimestamp,
         },
       });
   
@@ -64,7 +68,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   
         // Now, send the text data
         const textData = {
-          name,
+          name: nameWithTimestamp,
           description,
           price,
           timestamp,
@@ -83,14 +87,15 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           // Text data submission successful
           console.log('Text data submitted successfully');
   
-          // Send the productname to the API immediately after adding it
-          const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
-            method: 'POST',
-            body: JSON.stringify({ furnitureProductNames: [name] }), // Send just the product name as an array
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
+         
+         // Send the product name to the API immediately after adding it
+        const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
+          method: 'POST',
+          body: JSON.stringify({ furnitureProductNames: [nameWithTimestamp] }), // Send name with timestamp
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
   
           if (furnitureProductNamesResponse.ok) {
             console.log('Product name added to the list successfully');
