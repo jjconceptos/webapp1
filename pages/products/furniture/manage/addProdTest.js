@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts, onCloseForm }) => {
+
+const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProducts, onCloseForm}) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [photo, setPhoto] = useState(null);
   const [photos, setPhotos] = useState([]);
 
-  useEffect(() => {
-    // Update the 'photo' state when 'photos' array changes
-    if (photos.length > 0) {
-      setPhoto(photos[0]);
-    }
-  }, [photos]);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -31,7 +26,11 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     const newPhotos = Array.from(files);
     setPhotos(prevPhotos => [...prevPhotos, ...newPhotos]);
   };
+  
+  
+  
 
+  
   const timestamp = Date.now().toString().slice(2, 11);
  
 
@@ -42,7 +41,6 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       console.error('All fields are required');
       return;
     }
-    
     console.log('Photo file:', photo); // Log the photo file being sent
 
     // Log the photos array to ensure it contains the selected photos

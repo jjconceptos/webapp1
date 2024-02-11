@@ -98,9 +98,9 @@ const Layout = ({ children }) => {
           opacity: 0.8;
           z-index: 2;
           display: grid; /* Use CSS Grid */
-          grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+          grid-template-columns: repeat(5, 1fr); 
           align-items: center;
-          display: none;
+          /* display: none;*/
           gap: 10px; /* Add some space between columns */
           
         }
@@ -133,7 +133,7 @@ const Layout = ({ children }) => {
             transform: translateX(-50%); /* Adjust to center the list */
             z-index: 2;
             display: grid; /* Use CSS Grid */
-            grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+            grid-template-columns: repeat(5, 1fr);
             gap: 5.5vw;
           }
           
@@ -152,9 +152,9 @@ const Layout = ({ children }) => {
             opacity: 0.8;
             z-index: 2;
             display: grid; /* Use CSS Grid */
-            grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+            grid-template-columns: repeat(5, 1fr); 
             align-items: center;
-            display: none;
+            /* display: none;*/
             gap: 10px; /* Add some space between columns */
           }
           
