@@ -41,9 +41,10 @@ export default async function handler(req, res) {
 
     console.log('Received a POST request to /api/products/furniture/productImage');
     console.log('Request body:', req.body);
+    console.log('Request files:', req.files);
 
     // Use the "upload" Multer middleware to handle file uploads
-    upload.single('photo')(req, res, async function (err) {
+    upload.array('photos', 3)(req, res, async function (err) {
       if (err) {
         // Handle any Multer errors here
         console.error('Multer error:', err);
@@ -51,45 +52,52 @@ export default async function handler(req, res) {
       }
 
       // Log the received request and file details
-      console.log('Received a file upload request:');
-      console.log('Uploaded file:', req.file); // Log the uploaded file details
+      console.log('Received file upload request:');
+      console.log('Uploaded files:', req.files); // Log the uploaded files array
 
-      // Validate that a file was uploaded
-      if (!req.file) {
-        console.log('Validation failed: Missing photo');
-        return res.status(400).json({ error: 'Photo is required' });
+      // Validate that files were uploaded
+      if (!req.files || req.files.length === 0) {
+        console.log('Validation failed: Missing photos');
+        return res.status(400).json({ error: 'Photos are required' });
       }
 
       // Extract product name and timestamp
       let productName = req.headers['image-name'];
-      const timestamp = Date.now().toString().slice(2, 8); // Get first 4 digits of timestamp
 
       // Replace spaces with hyphens in the product name
       productName = productName.trim().replace(/\s+/g, '-');
 
-      // Construct destination filename with modified product name and timestamp
-      const destFileName = `${productName}.jpg`; // Assuming it's a JPEG image
-      console.log('Uploading photo to Google Cloud Storage:', destFileName);
-
       // Initialize Google Cloud Storage based on the environment
       const dynamicStorage = initStorage();
 
-      // Upload the file to Google Cloud Storage using the dynamic storage instance
+      // Upload each file to Google Cloud Storage using the dynamic storage instance
       const bucketName = 'jj-webapp1';
       const bucket = dynamicStorage.bucket(bucketName);
-      const file = bucket.file(destFileName);
-      const fileBuffer = req.file.buffer;
 
-      await file.save(fileBuffer, {
-        metadata: {
-          contentType: req.file.mimetype,
-        },
+      // Save each file individually
+      const uploadPromises = req.files.map(async (file, index) => {
+        // Construct destination filename with modified product name, index, and timestamp
+        const destFileName = `${productName}-${index + 1}.jpg`; // Assuming it's a JPEG image
+        console.log('Uploading photo to Google Cloud Storage:', destFileName);
+
+        // Save the file to Google Cloud Storage
+        const fileBuffer = file.buffer;
+        const newFile = bucket.file(destFileName);
+
+        await newFile.save(fileBuffer, {
+          metadata: {
+            contentType: file.mimetype,
+          },
+        });
+
+        console.log('Image data processing completed for', destFileName);
       });
 
-      console.log('Image data processing completed');
+      // Wait for all uploads to complete
+      await Promise.all(uploadPromises);
 
       // Respond with a success message
-      res.status(200).json('File upload complete');
+      res.status(200).json('File uploads complete');
     });
   } catch (error) {
     console.error('Error:', error);

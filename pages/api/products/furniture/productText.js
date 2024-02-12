@@ -3,14 +3,12 @@ import { kv } from "@vercel/kv";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      
-      const { name, description, price, timestamp } = req.body.textData || {};
-
+      const { name, description, price, timestamp, images } = req.body.textData || {};
 
       // Validate fields if needed
-      if (!name || !description || !price) {
-        console.error('Name, description, and price are required');
-        return res.status(400).json({ message: 'Name, description, and price are required' });
+      if (!name || !description || !price || !images) {
+        console.error('Name, description, price, and images are required');
+        return res.status(400).json({ message: 'Name, description, price, and images are required' });
       }
 
       // Use a regular expression to check if name contains only letters
@@ -23,14 +21,21 @@ export default async function handler(req, res) {
       // Replace spaces with hyphens in the name
       const formattedName = name.replace(/\s+/g, '-');
 
+      console.log("Images length: ", images.length);
+
+      // Construct the array of image names
+      const imageNames = [];
+      for (let i = 0; i < 3; i++) {
+        imageNames.push(`${formattedName}-${i + 1}`);
+      }
+
       const furnitureProductTextData = {
         name: formattedName,
         description,
         price, // Include the price in the stored data
         timestamp,
-        image: [`${formattedName}-00`],
+        images: imageNames, // Use the constructed array of image names
       };
-
 
       // Store product text data using SET command after converting to JSON
       // Assuming you use a unique key for each project
@@ -45,4 +50,3 @@ export default async function handler(req, res) {
     res.status(405).json({ message: "Method not allowed" });
   }
 }
-

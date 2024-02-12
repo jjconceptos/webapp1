@@ -32,39 +32,45 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     setPhotos(prevPhotos => [...prevPhotos, ...newPhotos]);
   };
 
-  const timestamp = Date.now().toString().slice(2, 11);
+  
  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validate fields if needed
+    
     if (name === '' || description === '' || photos.length === 0) {
       console.error('All fields are required');
       return;
     }
-    
-    console.log('Photo file:', photo); // Log the photo file being sent
 
-    // Log the photos array to ensure it contains the selected photos
-    console.log('Selected photos:', photos);
-
-    // Set the 'photo' state to the first selected photo
-    setPhoto(photos[0]);
-
-    // Log the 'photo' state to check if it's correctly set
-    console.log('Photo state:', photo);
-
-
-    // Concatenate the timestamp to the name
-    const nameWithTimestamp = `${name}-${timestamp}`;
-
+    // Log the length of the images array before submission
+    console.log('Length of images array:', photos.length);
   
-    // Create a FormData object to send the form data as a multipart request
+    //console.log('Selected photos:', photos);
+    console.log('Form data before submission:', {
+      name,
+      description,
+      price,
+      photos,
+    });
+  
+    const timestamp = Date.now().toString().slice(2, 11);
+    const nameWithTimestamp = `${name}-${timestamp}`;
+  
     const formData = new FormData();
     formData.append('name', nameWithTimestamp); 
     formData.append('description', description);
     formData.append('price', price);
-    formData.append('photo', photo);
+  
+    // Append each selected photo to the FormData object
+    photos.forEach((photo) => {
+      //console.log(`Appending photo ${index + 1}:`, photo);
+      
+
+      formData.append(`photos`, photo);
+    });
+
+    console.log('formData:', formData);
   
     try {
       // Send the form data to the local image upload endpoint
@@ -72,7 +78,6 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
         method: 'POST',
         body: formData,
         headers: {
-          // Include the product name in the image headers
           'image-name': nameWithTimestamp,
         },
       });
@@ -87,8 +92,10 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           description,
           price,
           timestamp,
-          image: `${name}-${timestamp}`, // Include the formatted image name
+          images: `${name}-${timestamp}`, // Include the formatted image name
         };
+
+        console.log('Text data: ', textData);
   
         const textResponse = await fetch('/api/products/furniture/productText', {
           method: 'POST',
