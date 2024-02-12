@@ -43,6 +43,9 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       return;
     }
 
+    const timestamp = Date.now().toString().slice(2, 11);
+    const nameWithTimestamp = `${name}-${timestamp}`;
+
     // Log the length of the images array before submission
     console.log('Length of images array:', photos.length);
   
@@ -51,11 +54,12 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
       name,
       description,
       price,
+      timestamp,
+      images: `${name}-${timestamp}`,
       photos,
     });
   
-    const timestamp = Date.now().toString().slice(2, 11);
-    const nameWithTimestamp = `${name}-${timestamp}`;
+    
   
     const formData = new FormData();
     formData.append('name', nameWithTimestamp); 
@@ -92,7 +96,8 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           description,
           price,
           timestamp,
-          images: `${name}-${timestamp}`, // Include the formatted image name
+          images: `${name}-${timestamp}`,
+          photos, // Include the formatted image name
         };
 
         console.log('Text data: ', textData);

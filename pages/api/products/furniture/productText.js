@@ -3,7 +3,7 @@ import { kv } from "@vercel/kv";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { name, description, price, timestamp, images } = req.body.textData || {};
+      const { name, description, price, timestamp, images, photos } = req.body.textData || {};
 
       // Validate fields if needed
       if (!name || !description || !price || !images) {
@@ -21,11 +21,11 @@ export default async function handler(req, res) {
       // Replace spaces with hyphens in the name
       const formattedName = name.replace(/\s+/g, '-');
 
-      console.log("Images length: ", images.length);
+      console.log("Images array length: ", photos.length);
 
       // Construct the array of image names
       const imageNames = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < photos.length; i++) {
         imageNames.push(`${formattedName}-${i + 1}`);
       }
 
@@ -35,6 +35,7 @@ export default async function handler(req, res) {
         price, // Include the price in the stored data
         timestamp,
         images: imageNames, // Use the constructed array of image names
+        imagesLength: photos.length,
       };
 
       // Store product text data using SET command after converting to JSON

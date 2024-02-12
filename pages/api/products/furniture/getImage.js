@@ -32,43 +32,56 @@ export default async function handler(req, res) {
     // Split the comma-separated project names into an array
     const furnitureProductNamesArray = Array.isArray(furnitureProductNames) ? furnitureProductNames : furnitureProductNames.split(',');
 
-    // Specify the Google Cloud Storage bucket and image filename for each project
+    // Specify the Google Cloud Storage bucket
     const bucketName = 'jj-webapp1';
-    const imageFileNames = furnitureProductNamesArray.map((furnitureProductName) => `${furnitureProductName}.jpg`);
-    console.log('Searching for projects (getImage.js):', imageFileNames);
 
     // Initialize the Google Cloud Storage client based on the environment
     const storage = initStorage();
 
-    // Create an array of references to the image files in the bucket
-    const filePromises = imageFileNames.map((imageFileName) =>
-      storage.bucket(bucketName).file(imageFileName).exists()
-    );
+    // Create an array to store signed URLs for images
+    const signedUrls = [];
 
-    // Check if the files exist in the bucket
-    const existsArray = await Promise.all(filePromises);
-    const fileExists = existsArray.every((exists) => exists[0]);
+    // Iterate over each furniture product name
+    for (const furnitureProductName of furnitureProductNamesArray) {
+      // Append indexes to the furniture product name to create image filenames
+      const imageFileNames = [];
+      for (let i = 1; i <= 3; i++) { // Assuming 3 images per product
+        imageFileNames.push(`${furnitureProductName}-${i}.jpg`);
+      }
 
-    if (!fileExists) {
-      console.log('Image(s) not found in storage');
-      res.status(404).json({ error: 'Image(s) not found' });
-      return;
+      // Create an array of promises to check if the files exist in the bucket
+      const filePromises = imageFileNames.map((imageFileName) =>
+        storage.bucket(bucketName).file(imageFileName).exists()
+      );
+
+      // Check if the files exist in the bucket
+      const existsArray = await Promise.all(filePromises);
+      const fileExists = existsArray.every((exists) => exists[0]);
+
+      if (!fileExists) {
+        console.log(`Images for product ${furnitureProductName} not found in storage`);
+        res.status(404).json({ error: `Images for product ${furnitureProductName} not found` });
+        return;
+      }
+
+      // Get signed URLs for the images to make them publicly accessible
+      const productSignedUrls = await Promise.all(
+        imageFileNames.map((imageFileName) =>
+          storage.bucket(bucketName).file(imageFileName).getSignedUrl({
+            action: 'read',
+            expires: '01-01-3000', // Adjust the expiration as needed
+          })
+        )
+      );
+
+      // Push the signed URLs for the current product to the array
+      signedUrls.push(...productSignedUrls);
     }
-
-    // Get signed URLs for the images to make them publicly accessible
-    const signedUrls = await Promise.all(
-      imageFileNames.map((imageFileName) =>
-        storage.bucket(bucketName).file(imageFileName).getSignedUrl({
-          action: 'read',
-          expires: '01-01-3000', // Adjust the expiration as needed
-        })
-      )
-    );
 
     // Log the signedUrls array
     console.log('Retrieved signed URLs:', signedUrls);
 
-    // Redirect the client to the signed URLs to fetch the images
+    // Respond with the signed URLs to the client
     res.status(200).json({ signedUrls });
   } catch (error) {
     console.error('Error:', error);

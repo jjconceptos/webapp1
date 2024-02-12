@@ -40,11 +40,10 @@ export default async function handler(req, res) {
     }
 
     console.log('Received a POST request to /api/products/furniture/productImage');
-    console.log('Request body:', req.body);
-    console.log('Request files:', req.files);
+    
 
     // Use the "upload" Multer middleware to handle file uploads
-    upload.array('photos', 3)(req, res, async function (err) {
+    upload.array('photos')(req, res, async function (err) {
       if (err) {
         // Handle any Multer errors here
         console.error('Multer error:', err);
