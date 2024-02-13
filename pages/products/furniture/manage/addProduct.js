@@ -48,6 +48,22 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
 
     // Log the length of the images array before submission
     console.log('Length of images array:', photos.length);
+
+    //send photos to getImage.js
+    const queryParams = new URLSearchParams();
+    
+    queryParams.append('photos', photos); // Pass the length of the photos array
+
+    // Make the GET request to the backend API
+    const response = await fetch(`/api/products/furniture/getImage?${queryParams}`);
+
+      // Handle the response from the backend
+    if (response.ok) {
+      const data = await response.json();
+      // Process the data (signed URLs) returned by the backend
+    } else {
+      console.error('Error:', response.statusText);
+    }
   
     //console.log('Selected photos:', photos);
     console.log('Form data before submission:', {
@@ -75,6 +91,8 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
     });
 
     console.log('formData:', formData);
+
+    
   
     try {
       // Send the form data to the local image upload endpoint
@@ -97,7 +115,7 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
           price,
           timestamp,
           images: `${name}-${timestamp}`,
-          photos, // Include the formatted image name
+          photos, 
         };
 
         console.log('Text data: ', textData);
@@ -116,9 +134,13 @@ const FurnitureProductForm = ({ onSubmit, onFurnitureProductAdded, furnitureProd
   
          
          // Send the product name to the API immediately after adding it
-        const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
+         const furnitureProductNamesResponse = await fetch('/api/products/furniture/productNames', {
           method: 'POST',
-          body: JSON.stringify({ furnitureProductNames: [nameWithTimestamp] }), // Send name with timestamp
+          body: JSON.stringify({ 
+            productNames: {
+              [nameWithTimestamp]: photos.length // Assuming 'photos' is an array of file objects
+            }
+          }),
           headers: {
             'Content-Type': 'application/json',
           },
