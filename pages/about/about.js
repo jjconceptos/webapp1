@@ -263,14 +263,14 @@ const About = () => {
       }
       
       .big-title {
-        font-size: 5vw;
+        font-size: 3.3vw;
         text-align: center;
         color: #000;
         margin-bottom: 2vh;
       }
       
       .sub-title {
-        font-size: 3vw;
+        font-size: 2.1vw;
         text-align: center;
         color: #000;
         cursor: pointer;

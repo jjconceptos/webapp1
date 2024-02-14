@@ -23,15 +23,12 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Extract the project names from the query parameters
-    const { furnitureProductNames, photos } = req.query;
-    
+    // Extract the furniture product names and their corresponding photo counts from the query parameters
+    const furnitureProductNamesData = req.query.furnitureProductNames;
+    console.log('Received request for furniture product names data (getImage.js):', furnitureProductNamesData);
 
-    // Log the received project names
-    console.log('Received request for product names list (getImage.js):', furnitureProductNames, photos);
-    console.log('Photos length', photos.length);
-    // Split the comma-separated project names into an array
-    const furnitureProductNamesArray = Array.isArray(furnitureProductNames) ? furnitureProductNames : furnitureProductNames.split(',');
+    // Convert the furniture product names data into an array of objects [{ name: 'productName', photos: numPhotos }, ...]
+    const furnitureProducts = Object.entries(furnitureProductNamesData).map(([name, photos]) => ({ name, photos }));
 
     // Specify the Google Cloud Storage bucket
     const bucketName = 'jj-webapp1';
@@ -42,11 +39,11 @@ export default async function handler(req, res) {
     // Create an array to store signed URLs for images
     const signedUrls = [];
 
-    // Iterate over each furniture product name
-    for (const furnitureProductName of furnitureProductNamesArray) {
+    // Iterate over each furniture product name and its corresponding number of photos
+    for (const { name: furnitureProductName, photos: numPhotos } of furnitureProducts) {
       // Append indexes to the furniture product name to create image filenames
       const imageFileNames = [];
-      for (let i = 1; i <= photos.length; i++) { // Assuming 3 images per product
+      for (let i = 1; i <= numPhotos; i++) {
         imageFileNames.push(`${furnitureProductName}-${i}.jpg`);
       }
 

@@ -33,7 +33,7 @@ const Team = () => {
             right: 5vh;
             width: 40%;
             height: 25%;
-            background-image: url('/cop.jpeg');
+            background-image: url('/cop.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 100%;
@@ -160,7 +160,7 @@ const Team = () => {
                   right: 5vh;
                   width: 40%;
                   height: 75%;
-                  background-image: url('/cop.jpeg');
+                  background-image: url('/cop.jpg');
                   background-size: cover;
                   background-position: center;
                   border-radius: 0%;
@@ -199,14 +199,14 @@ const Team = () => {
               }
               
               .big-title {
-                font-size: 5vw;
+                font-size: 3.3vw;
                 text-align: center;
                 color: #000;
                 margin-bottom: 2vh;
               }
               
               .sub-title {
-                font-size: 3vw;
+                font-size: 2.1vw;
                 text-align: center;
                 color: #000;
                 cursor: pointer;
