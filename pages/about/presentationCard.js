@@ -19,10 +19,6 @@ const PresentationCard = () => {
         body {
             margin: 0;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            
             height: auto;
         }
 
@@ -49,38 +45,35 @@ const PresentationCard = () => {
         
         .images-container {
             position: absolute;
-            margin-top: 40vh;
-            
+            display: flex;
+            justify-content: center;
+            top: 100vh;
+            left: 0;
+            right: 0;
+            margin: auto;
             z-index: 1;
-        }
-
-        .small-image {
-        position: absolute;
-        top: 50vh; /* Adjust the top position as needed */
-        width: 60vw;
-        height: 35vh;
-        display: flex;
-        left: 50%;
-        
-        background-image: url('/jamie.jpg'); /* Update the path to point directly to the image */
-        background-size: cover;
-        z-index: 15;
-        }
-
-        
-    
-        .large-image {
-            position: absolute;
-            top: 100vh; /* Adjust the top position as needed */
-            left: 50%;
-            transform: translateX(50%);
-            width: 60vw;
+            
+          }
+          
+          .small-image {
+            width: 50vw;
             height: 35vh;
-            background-image: url('/cop.jpg'); /* Update the path to point directly to the image */
+            background-image: url('/jamie.jpg'); /* Update the path to point directly to the image */
             background-size: cover;
             z-index: 15;
-            }
-            
+          }
+
+          .large-image {
+            width: 80vw;
+            height: 35vh;
+            background-image: url('/jamie.jpg'); /* Update the path to point directly to the image */
+            background-size: cover;
+            z-index: 15;
+          }
+          
+          
+          
+         
         
         .title {
             font-size: 4vw;
@@ -97,100 +90,52 @@ const PresentationCard = () => {
             cursor: pointer;
             z-index: 2;
             }
+
+            .image-title {
+                position: absolute;
+                top: 0vh; /* Adjust as needed */
+                right: 8vw; /* Adjust as needed */
+                font-size: 4vw;
+                color: #000;
+                cursor: pointer;
+                z-index: 2;
+              }
+              
+              .image-sub-title {
+                position: absolute;
+                top: 3vh; /* Adjust as needed */
+                right: 5vw; /* Adjust as needed */
+                font-size: 3vw;
+                color: #000;
+                cursor: pointer;
+                z-index: 2;
+              }
+
+              .image-title-leftie {
+                position: absolute;
+                top: 0vh; /* Adjust as needed */
+                left: 8vw; /* Adjust as needed */
+                font-size: 4vw;
+                color: #000;
+                cursor: pointer;
+                z-index: 2;
+              }
+              
+              .image-sub-title-leftie {
+                position: absolute;
+                top: 3vh; /* Adjust as needed */
+                left: 5vw; /* Adjust as needed */
+                font-size: 3vw;
+                color: #000;
+                cursor: pointer;
+                z-index: 2;
+              }
+
+           
     
 
           
 
-          
-          @media screen and (min-width: 800px) and (min-height: 600px) {
-      
-            body {
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                height: auto;
-              }
-              
-
-              .presentation-card-container {
-                width: 80%;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: column;
-                padding-top: 10vh;
-                
-              }
-
-              .main-title-section-container {
-                position: absolute;
-                margin-top: 40vh;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                margin-bottom: 10vh; /* Adjusted margin for better separation from the next section */
-              }
-                
-                  
-              .images-container {
-                position: relative;
-                margin-top: 40vh;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                background-position: center;
-                
-                z-index: 1;
-              }
-          
-                  .small-image {
-                    position: absolute;
-                    top: 148vh;
-                    left: 5vh;
-                    width: 40%;
-                    height: 25%;
-                    background-image: url('/jamie.jpg');
-                    background-size: cover;
-                    background-position: center;
-                    
-                    margin-bottom: 555px;
-                    z-index: 1;
-                  }
-        
-                  .large-image {
-                    position: absolute;
-                    top: 148vh;
-                    left: 5vh;
-                    width: 40%;
-                    height: 25%;
-                    background-image: url('/cop.jpg');
-                    background-size: cover;
-                    background-position: center;
-                    
-                    margin-bottom: 555px;
-                    z-index: 1;
-                  }
-                  
-                
-                .title {
-                  font-size: 3.3vw;
-                  text-align: center;
-                  color: #000;
-                  cursor: pointer;
-                  z-index: 2;
-                }
-        
-                .sub-title {
-                    font-size: 2.1vw;
-                    text-align: center;
-                    color: #000;
-                    cursor: pointer;
-                    z-index: 2;
-                  }
-                
-      
-          }
         
        
       `}</style>
@@ -206,15 +151,45 @@ const PresentationCard = () => {
       </div>
       </div>
       <div className="images-container">
-      
+      <div className="image-title">Title</div>
+      <div className="image-sub-title">Subtitle</div>
       <div className="small-image"></div>
-      <div className="large-image"></div>
 
-      
+      <div className="images-container" style={{ marginTop: "-40vh" }}>
+      <div className="image-title-leftie">Title</div>
+      <div className="image-sub-title-leftie">Subtitle</div>
+      <div className="large-image"></div>
       </div>
       
+      <div className="images-container" style={{ marginTop: "20vh" }}>
+      <div className="image-title">Title</div>
+      <div className="image-sub-title">Subtitle</div>
+      <div className="small-image"></div>
+      </div>
+
+      <div className="images-container" style={{ marginTop: "80vh" }}>
+      <div className="image-title-leftie">Title</div>
+      <div className="image-sub-title-leftie">Subtitle</div>
+      <div className="small-image"></div>
+      </div>
+
+      <div className="images-container" style={{ marginTop: "140vh" }}>
+      <div className="image-title">Title</div>
+      <div className="image-sub-title">Subtitle</div>
+      <div className="small-image"></div>
+      </div>
+
+      <div className="images-container" style={{ marginTop: "80vh" }}>
+      <div className="image-title-leftie">Title</div>
+      <div className="image-sub-title-leftie">Subtitle</div>
+      <div className="small-image"></div>
+      </div>
 
       
+      
+
+    
+      </div>
     </div>
     </Layout>
   );
