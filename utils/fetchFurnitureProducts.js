@@ -15,8 +15,11 @@ export async function fetchFurnitureProductsData() {
     const furnitureProductNamesData = await furnitureProductNamesResponse.json();
     console.log('Received Product Names (fetchProducts.js): ', furnitureProductNamesData);
 
+      // Extract product names from the array of objects
+    const productNamesArray = furnitureProductNamesData.map(product => Object.keys(product)[0]);
+
     // Construct the URL for fetching product text
-    const textURL = `${apiBaseUrl}/api/products/furniture/getText?furnitureProductNames=${encodeURIComponent(JSON.stringify(furnitureProductNamesData))}`;
+    const textURL = `${apiBaseUrl}/api/products/furniture/getText?furnitureProductNames=${encodeURIComponent(JSON.stringify(productNamesArray))}`;
     console.log('Fetching response for getText.js (fetchProducts.js): ', textURL);
     const textResponse = await fetch(textURL);
 
