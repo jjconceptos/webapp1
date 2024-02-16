@@ -15,13 +15,14 @@ export async function fetchFurnitureProductsData() {
     const furnitureProductNamesData = await furnitureProductNamesResponse.json();
     console.log('Received Product Names (fetchProducts.js): ', furnitureProductNamesData);
 
-    // Construct the URL for fetching project text
+    // Construct the URL for fetching product text
     const textURL = `${apiBaseUrl}/api/products/furniture/getText?furnitureProductNames=${encodeURIComponent(JSON.stringify(furnitureProductNamesData))}`;
     console.log('Fetching response for getText.js (fetchProducts.js): ', textURL);
     const textResponse = await fetch(textURL);
 
-    // Construct the URL for fetching project image
-    const imageURL = `${apiBaseUrl}/api/products/furniture/getImage?furnitureProductNames=${encodeURIComponent(furnitureProductNamesData)}`;
+    // Construct the URL for fetching product image
+    console.log('furnitureProductNames sent to getImage.js (fetchProducts.js): ', furnitureProductNamesData);
+    const imageURL = `${apiBaseUrl}/api/products/furniture/getImage?furnitureProductNames=${encodeURIComponent(JSON.stringify(furnitureProductNamesData))}`;
     console.log('Fetching response for getImage.js (fetchProducts.js): ', imageURL);
     const imageResponse = await fetch(imageURL);
 

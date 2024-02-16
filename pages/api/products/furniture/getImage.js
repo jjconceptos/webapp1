@@ -24,11 +24,8 @@ export default async function handler(req, res) {
     }
 
     // Extract the furniture product names and their corresponding photo counts from the query parameters
-    const furnitureProductNamesData = req.query.furnitureProductNames;
+    const furnitureProductNamesData = JSON.parse(req.query.furnitureProductNames);
     console.log('Received request for furniture product names data (getImage.js):', furnitureProductNamesData);
-
-    // Convert the furniture product names data into an array of objects [{ name: 'productName', photos: numPhotos }, ...]
-    const furnitureProducts = Object.entries(furnitureProductNamesData).map(([name, photos]) => ({ name, photos }));
 
     // Specify the Google Cloud Storage bucket
     const bucketName = 'jj-webapp1';
@@ -39,8 +36,16 @@ export default async function handler(req, res) {
     // Create an array to store signed URLs for images
     const signedUrls = [];
 
+    console.log('furnitureProductNamesData:', furnitureProductNamesData);
+
     // Iterate over each furniture product name and its corresponding number of photos
-    for (const { name: furnitureProductName, photos: numPhotos } of furnitureProducts) {
+    for (const product of furnitureProductNamesData) {
+      // Extract the product name and number of photos
+      const furnitureProductName = Object.keys(product)[0];
+      console.log("(getImage.js) furnitureProductName: ", furnitureProductName)
+      const numPhotos = Object.values(product)[0];
+      console.log("(getImage.js) numPhotos: ", numPhotos)
+
       // Append indexes to the furniture product name to create image filenames
       const imageFileNames = [];
       for (let i = 1; i <= numPhotos; i++) {
@@ -55,6 +60,8 @@ export default async function handler(req, res) {
       // Check if the files exist in the bucket
       const existsArray = await Promise.all(filePromises);
       const fileExists = existsArray.every((exists) => exists[0]);
+
+      console.log('furnitureProductName:', furnitureProductName);
 
       if (!fileExists) {
         console.log(`Images for product ${furnitureProductName} not found in storage`);
@@ -86,3 +93,4 @@ export default async function handler(req, res) {
     res.status(500).json('Image fetch error: ' + error.message);
   }
 }
+
