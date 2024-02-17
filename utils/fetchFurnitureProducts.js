@@ -67,8 +67,8 @@ function combineTextAndImage(textData, imageData, furnitureProductNamesData) {
     // Log the product name for debugging
     console.log('Processing product:', productName);
 
-    // Find the matching image URL for the current product
-const matchingImageUrl = imageUrls.find(url => {
+    // Find all matching image URLs for the current product
+const matchingImageUrls = imageUrls.filter(url => {
   // Extract the product name from the URL
   const urlParts = url.split('/');
   const fileName = urlParts[urlParts.length - 1];
@@ -84,14 +84,14 @@ const matchingImageUrl = imageUrls.find(url => {
   return false;
 });
 
-// Log the matching image URL for debugging
-console.log('Matching Image URL for', productName, ':', matchingImageUrl);
+// Log the matching image URLs for debugging
+console.log('Matching Image URLs for', productName, ':', matchingImageUrls);
 
-    return {
-      ...textData[productName],
-      // Set imageUrl to the matching URL
-      imageUrl: matchingImageUrl || null,
-    };
+return {
+  ...textData[productName],
+  // Set imageUrl to the matching URLs
+  imageUrl: matchingImageUrls.length > 0 ? matchingImageUrls : null,
+};
   });
 
   // Log the combined data before returning
