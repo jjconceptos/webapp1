@@ -21,6 +21,7 @@ function FurnitureProducts() {
   const fetchData = async () => {
     try {
       const furnitureProductsData = await fetchFurnitureProductsData();
+      console.log('Fetched furniture products data (products.js):', furnitureProductsData); // Log fetched data
       const updatedFurnitureProducts = furnitureProductsData.map((furnitureProduct) => ({
         ...furnitureProduct,
         name: furnitureProduct.name.replace(/-/g, ' '), // Transform hyphens to spaces

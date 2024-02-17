@@ -58,6 +58,7 @@ function combineTextAndImage(textData, imageData, furnitureProjectNamesData) {
     const matchingImageFurnitureProject = imageFurnitureProjectsArray.find((imageFurnitureProject) =>
       imageFurnitureProject[0].toLowerCase().includes(`${textFurnitureProject.name.toLowerCase()}.jpg`)
     );
+    console.log("matchingImageFurnitureProject (fetchFurnitureProjects.js: ", matchingImageFurnitureProject)
     return {
       ...textFurnitureProject,
       // Set imageUrl to the matching URL

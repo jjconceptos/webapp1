@@ -26,8 +26,9 @@ export async function fetchFurnitureProductsData() {
     // Construct the URL for fetching product image
     console.log('furnitureProductNames sent to getImage.js (fetchProducts.js): ', furnitureProductNamesData);
     const imageURL = `${apiBaseUrl}/api/products/furniture/getImage?furnitureProductNames=${encodeURIComponent(JSON.stringify(furnitureProductNamesData))}`;
-    console.log('Fetching response for getImage.js (fetchProducts.js): ', imageURL);
+    console.log('imageUrl (fetchProducts.js): ', imageURL);
     const imageResponse = await fetch(imageURL);
+    console.log('Response (fetchProducts.js): ', imageResponse);
 
     // Check if the responses are successful
     if (!textResponse.ok || !imageResponse.ok) {
@@ -37,8 +38,7 @@ export async function fetchFurnitureProductsData() {
     const textData = await textResponse.json();
     const imageData = await imageResponse.json();
 
-    console.log('Text Data:', textData);
-    console.log('Image Data:', imageData);
+   
 
     // Combine text and image data
     const combinedFurnitureProducts = combineTextAndImage(textData, imageData, furnitureProductNamesData);
@@ -50,24 +50,51 @@ export async function fetchFurnitureProductsData() {
   }
 }
 
+
 function combineTextAndImage(textData, imageData, furnitureProductNamesData) {
-  // Convert imageData to an array of project objects
-  const imageFurnitureProductsArray = imageData.signedUrls;
+  console.log('imageData (fetchFurnitureProducts):', imageData);
+  console.log('textData (fetchFurnitureProducts):', textData);
+  console.log('furnitureProductNamesData (fetchFurnitureProducts):', furnitureProductNamesData);
 
-  // Convert textData to an array of project objects
-  const textFurnitureProductsArray = Object.values(textData);
+  // Extract product names from the furnitureProductNamesData
+  const productNames = Object.keys(textData);
 
-  // Combine the filtered data
-  const combinedFurnitureProducts = textFurnitureProductsArray.map((textFurnitureProduct) => {
-    const matchingImageFurnitureProduct = imageFurnitureProductsArray.find((imageFurnitureProduct) =>
-      imageFurnitureProduct[0].toLowerCase().includes(`${textFurnitureProduct.name.toLowerCase()}.jpg`)
-    );
+  // Flatten the array of arrays into a single array of image URLs
+  const imageUrls = imageData.signedUrls.flat();
+
+  // Combine text and image data
+  const combinedFurnitureProducts = productNames.map((productName) => {
+    // Log the product name for debugging
+    console.log('Processing product:', productName);
+
+    // Find the matching image URL for the current product
+const matchingImageUrl = imageUrls.find(url => {
+  // Extract the product name from the URL
+  const urlParts = url.split('/');
+  const fileName = urlParts[urlParts.length - 1];
+  const productNameIndex = fileName.indexOf(productName.toLowerCase());
+  
+  // Check if the URL contains the product name followed by a hyphen and index
+  if (productNameIndex !== -1) {
+      const indexStart = productNameIndex + productName.length;
+      const index = fileName.substring(indexStart, fileName.indexOf('.jpg', indexStart));
+      return !isNaN(index); // Check if the index is a valid number
+  }
+  
+  return false;
+});
+
+// Log the matching image URL for debugging
+console.log('Matching Image URL for', productName, ':', matchingImageUrl);
+
     return {
-      ...textFurnitureProduct,
+      ...textData[productName],
       // Set imageUrl to the matching URL
-      imageUrl: matchingImageFurnitureProduct ? matchingImageFurnitureProduct[0] : null,
+      imageUrl: matchingImageUrl || null,
     };
   });
 
+  // Log the combined data before returning
+  console.log('Combined Furniture Products:', combinedFurnitureProducts);
   return combinedFurnitureProducts;
 }

@@ -84,7 +84,7 @@ export default async function handler(req, res) {
     }
 
     // Log the signedUrls array
-    console.log('Retrieved signed URLs:', signedUrls);
+    console.log('Retrieved signed URLs (getImage.js):', signedUrls);
 
     // Respond with the signed URLs to the client
     res.status(200).json({ signedUrls });
