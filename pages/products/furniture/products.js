@@ -405,7 +405,7 @@ function FurnitureProducts() {
                )}
                {isButtonVisible && (
                  <DelFurnitureProductButton
-                  FurnitureProductName={furnitureProduct.name}
+                  furnitureProductName={furnitureProduct.name}
                   onDeleteFurnitureProduct={handleDeleteFurnitureProduct}
                  />
                )}

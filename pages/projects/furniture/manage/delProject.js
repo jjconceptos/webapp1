@@ -4,6 +4,9 @@ const DelFurnitureProjectButton = ({ furnitureProjectName, onDeleteFurnitureProj
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
 
+  console.log("furnitureProjectName (delProject.js): ", furnitureProjectName)
+
+
   const handleDelete = async () => {
     if (window.confirm(`Are you sure you want to delete the project "${furnitureProjectName}"?`)) {
       setShowDeleteInput(true); // Show the delete input when the delete button is clicked
