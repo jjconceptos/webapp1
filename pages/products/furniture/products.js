@@ -220,8 +220,8 @@ function FurnitureProducts() {
         
         .close-button {
           position: absolute;
-          top: 1vh;
-          right: 1vw;
+          top: 3vh;
+          right: 7vw;
           background: none;
           border: none;
           font-size: 2.4vw;
@@ -432,22 +432,22 @@ function FurnitureProducts() {
        </div>
 
        {enlargedView && selectedFurnitureProduct && (
-         <div className="enlarged-view">
-           <div className="enlarged-container">
-             <div className="enlarged-product">
-               <button className="close-button" onClick={() => setEnlargedView(false)}>X</button>
-               <Carousel images={selectedFurnitureProduct.images} />
-
-             </div>
-           </div>
-           <div className="product-info">
-             <h2 className="enlarged-product-name">{selectedFurnitureProduct.name}</h2>
-             <p className="enlarged-product-description">
-               {fullDescriptions[selectedFurnitureProduct.name] || selectedFurnitureProduct.description}
-             </p>
-           </div>
-         </div>
-       )}
+  <div className="enlarged-view">
+    <div className="enlarged-container">
+      <div className="enlarged-product">
+        <button className="close-button" onClick={() => setEnlargedView(false)}>X</button>
+        {/* Render the Carousel component with the images */}
+        <Carousel images={selectedFurnitureProduct.imageUrl} />
+      </div>
+    </div>
+    <div className="product-info">
+      <h2 className="enlarged-product-name">{selectedFurnitureProduct.name}</h2>
+      <p className="enlarged-product-description">
+        {fullDescriptions[selectedFurnitureProduct.name] || selectedFurnitureProduct.description}
+      </p>
+    </div>
+  </div>
+)}
      </div>
      </div>
     </Layout>
