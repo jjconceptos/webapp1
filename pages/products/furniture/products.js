@@ -207,7 +207,7 @@ function FurnitureProducts() {
         .enlarged-product-name {
           font-size: 3vw;
           color: #f3f0e9;
-          margin-top: 10vh;
+          margin-top: 50vh;
         }
         
         .enlarged-product-description {
