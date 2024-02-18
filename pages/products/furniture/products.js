@@ -19,14 +19,14 @@ function FurnitureProducts() {
   const [fullDescriptions, setFullDescriptions] = useState({});
 
  // Fetch products when the component mounts
- useEffect(() => {
+useEffect(() => {
   const fetchData = async () => {
     try {
       const furnitureProductsData = await fetchFurnitureProductsData();
       console.log('Fetched furniture products data (products.js):', furnitureProductsData); // Log fetched data
       const updatedFurnitureProducts = furnitureProductsData.map((furnitureProduct) => ({
         ...furnitureProduct,
-        name: furnitureProduct.name.replace(/-/g, ' '), // Transform hyphens to spaces
+        nameWithImagesLength: `${furnitureProduct.name}-${furnitureProduct.imagesLength}`,
         // Limit the description only if the product is not expanded
         description:
           expandedFurnitureProduct === null
@@ -34,12 +34,10 @@ function FurnitureProducts() {
               ? furnitureProduct.description.slice(0, 8) + '...'
               : furnitureProduct.description
             : furnitureProduct.description,
-
-        
       }));
       setFurnitureProducts(updatedFurnitureProducts);
 
-      
+      console.log("furnitureProduct (products.js): ", furnitureProductsData)
       // Store the full descriptions separately
       const fullDescs = furnitureProductsData.reduce(
         (acc, furnitureProduct) => ({
@@ -57,6 +55,7 @@ function FurnitureProducts() {
 
   fetchData();
 }, [expandedFurnitureProduct]);
+
 
   const handleFurnitureProductAddClick = () => {
     setShowFurnitureProductForm(true);
@@ -405,7 +404,7 @@ function FurnitureProducts() {
                )}
                {isButtonVisible && (
                  <DelFurnitureProductButton
-                  furnitureProductName={furnitureProduct.name}
+                  furnitureProductName={furnitureProduct.nameWithImagesLength}
                   onDeleteFurnitureProduct={handleDeleteFurnitureProduct}
                  />
                )}
