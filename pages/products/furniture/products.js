@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
 import BuyButton from 'layouts/buyButton.js';
+import Layout from '/layouts/layout';
+import Carousel from '/layouts/Carousel'; 
 import FurnitureProductForm from '/pages/products/furniture/manage/addProduct';
 import DelFurnitureProductButton from 'pages/products/furniture/manage/delProduct';
-import Layout from '/layouts/layout';
 import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
+
 
 
 function FurnitureProducts() {
@@ -32,6 +34,8 @@ function FurnitureProducts() {
               ? furnitureProduct.description.slice(0, 8) + '...'
               : furnitureProduct.description
             : furnitureProduct.description,
+
+        
       }));
       setFurnitureProducts(updatedFurnitureProducts);
 
@@ -97,6 +101,8 @@ function FurnitureProducts() {
     } else {
       console.log('Validation failed: Missing name or description');
     }
+    
+    
   };
 
   const handleDeleteFurnitureProduct = async (furnitureProductName) => {
@@ -115,6 +121,8 @@ function FurnitureProducts() {
   const isButtonVisible = state.clearanceLevel == 1 || state.clearanceLevel == 2;
 
   
+  
+                   
 
   return (
     <Layout>
@@ -387,7 +395,7 @@ function FurnitureProducts() {
                </p>
                {furnitureProduct.imageUrl && (
                  <img
-                   src={furnitureProduct.imageUrl}
+                   src={furnitureProduct.imageUrl[0]}
                    alt={furnitureProduct.name}
                    className={`product-image ${
                      expandedFurnitureProduct === index ? 'expanded' : ''
@@ -428,11 +436,8 @@ function FurnitureProducts() {
            <div className="enlarged-container">
              <div className="enlarged-product">
                <button className="close-button" onClick={() => setEnlargedView(false)}>X</button>
-               <img
-                 className="enlarged-product-img"
-                 src={selectedFurnitureProduct.imageUrl}
-                 alt={selectedFurnitureProduct.name}
-               />
+               <Carousel images={selectedFurnitureProduct.images} />
+
              </div>
            </div>
            <div className="product-info">
