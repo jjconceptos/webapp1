@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '/auth/authContext';
 import BuyButton from 'layouts/buyButton.js';
 import Layout from '/layouts/layout';
-import Carousel from '/layouts/Carousel'; 
+import Carousel from '/layouts/carousel'; 
 import FurnitureProductForm from '/pages/products/furniture/manage/addProduct';
 import DelFurnitureProductButton from 'pages/products/furniture/manage/delProduct';
 import { fetchFurnitureProductsData } from '/utils/fetchFurnitureProducts';
