@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   if (req.method === "DELETE") { // Update the method check to DELETE
     try {
       const { furnitureProductName } = req.body;
+      console.log("furnitureProductName (delText.js): ")
 
       if (!furnitureProductName) {
         res.status(400).json({ message: "Invalid request: Provide a project name" });

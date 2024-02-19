@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const DelFurnitureProductButton = ({ furnitureProductName, onDeleteFurnitureProduct }) => {
   const [showDeleteInput, setShowDeleteInput] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
+  
 
   // Check if furnitureProductName is defined before attempting to split it
   const matches = furnitureProductName ? furnitureProductName.match(/^(.+?)-(\d+)$/) : null;
@@ -21,28 +22,7 @@ const DelFurnitureProductButton = ({ furnitureProductName, onDeleteFurnitureProd
   const handleConfirmDelete = async () => {
     try {
       if (deleteInput === name) {
-        // Send a request to delete the project text data
-        const responseText = await fetch('/api/products/furniture/delText', {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            furnitureProductName: name, // Use the name for deletion
-          }),
-        });
-  
-        // Send a request to delete the project name
-        const responseNames = await fetch('/api/products/furniture/delProductNames', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            furnitureProductName: name, // Use the name for deletion
-          }),
-        });
-  
+
         // Send a request to delete the project images
         const deleteImageRequests = Array.from({ length: parseInt(imagesLength, 10) }, (_, index) => {
           const imageUrl = `${name}-${index + 1}.jpg`; // Generate the image filename
@@ -58,6 +38,32 @@ const DelFurnitureProductButton = ({ furnitureProductName, onDeleteFurnitureProd
         });
         
         const responseImages = await Promise.all(deleteImageRequests);
+
+        // Send a request to delete the project text data
+        const responseText = await fetch('/api/products/furniture/delText', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            furnitureProductName: name, // Use the name for deletion
+          }),
+        });
+
+        const furnitureProductNameObject = {
+          [name]: parseInt(imagesLength, 10)
+        };
+  
+        // Send a request to delete the project name
+        const responseNames = await fetch('/api/products/furniture/delProductNames', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(furnitureProductNameObject),
+        });
+  
+        
         
         console.log(responseText);
         console.log(responseNames);

@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     // Create an array to store signed URLs for images
     const signedUrls = [];
 
-    console.log('furnitureProductNamesData:', furnitureProductNamesData);
+    console.log('furnitureProductNamesData (getImage.js):', furnitureProductNamesData);
 
     // Iterate over each furniture product name and its corresponding number of photos
     for (const product of furnitureProductNamesData) {

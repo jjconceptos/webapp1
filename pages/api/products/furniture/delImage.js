@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     }
 
     console.log('Received a POST request to /api/products/delImage');
-    console.log('Request body:', req.body);
+    console.log('Request body (delImage.js):', req.body);
 
     // Extract image URL from the request
     const imageUrl = req.body.imageUrl;
