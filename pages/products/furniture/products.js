@@ -18,6 +18,15 @@ function FurnitureProducts() {
   const [enlargedView, setEnlargedView] = useState(false);
   const [fullDescriptions, setFullDescriptions] = useState({});
 
+const extractCleanName = (originalName) => {
+  // Split the original name by hyphens
+  const parts = originalName.split('-');
+  // Remove the last part (timestamp)
+  parts.pop();
+  // Join the remaining parts with spaces
+  return parts.join(' ');
+};
+
  // Fetch products when the component mounts
 useEffect(() => {
   const fetchData = async () => {
@@ -34,6 +43,7 @@ useEffect(() => {
               ? furnitureProduct.description.slice(0, 8) + '...'
               : furnitureProduct.description
             : furnitureProduct.description,
+          cleanName: extractCleanName(furnitureProduct.name), // Set the clean name
       }));
       setFurnitureProducts(updatedFurnitureProducts);
 
@@ -383,7 +393,7 @@ useEffect(() => {
                    )
                  }
                >
-                 {furnitureProduct.name}
+                 {furnitureProduct.cleanName}
                </h3>
                <p
                  className={`product-description ${
@@ -440,7 +450,7 @@ useEffect(() => {
       </div>
     </div>
     <div className="product-info">
-      <h2 className="enlarged-product-name">{selectedFurnitureProduct.name}</h2>
+      <h2 className="enlarged-product-name">{selectedFurnitureProduct.cleanName}</h2>
       <p className="enlarged-product-description">
         {fullDescriptions[selectedFurnitureProduct.name] || selectedFurnitureProduct.description}
       </p>
