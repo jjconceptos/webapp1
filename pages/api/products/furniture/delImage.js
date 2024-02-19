@@ -26,18 +26,23 @@ export default async function handler(req, res) {
     console.log('Received a POST request to /api/products/delImage');
     console.log('Request body:', req.body);
 
-    // Extract project name from the request
-    const furnitureProductName = req.body.furnitureProductName;
+    // Extract image URL from the request
+    const imageUrl = req.body.imageUrl;
+    console.log("Image URL (delImage.js): ", imageUrl);
 
-    // Check if product name is missing
-    if (!furnitureProductName) {
-      console.log('Validation failed: Missing furniture project name');
-      return res.status(400).json({ error: 'Product name is required' });
+    // Check if image URL is missing
+    if (!imageUrl) {
+      console.log('Validation failed: Missing image URL');
+      return res.status(400).json({ error: 'Image URL is required' });
     }
+
+    // Extract furniture product name from the image URL
+    const furnitureProductName = imageUrl.split('-').slice(0, -1).join('-');
+    console.log("Furniture Product Name (delImage.js): ", furnitureProductName);
 
     // Specify the Google Cloud Storage bucket and image filename
     const bucketName = 'jj-webapp1';
-    const imageFileName = `${furnitureProductName}.jpg`; 
+    const imageFileName = `${imageUrl}`; 
 
     console.log('Deleting image from Google Cloud Storage:', imageFileName);
 
@@ -67,4 +72,3 @@ export default async function handler(req, res) {
     res.status(500).json('Image deletion error: ' + error.message);
   }
 }
-
