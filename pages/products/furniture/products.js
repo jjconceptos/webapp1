@@ -17,6 +17,7 @@ function FurnitureProducts() {
   const [selectedFurnitureProduct, setSelectedFurnitureProduct] = useState(null);
   const [enlargedView, setEnlargedView] = useState(false);
   const [fullDescriptions, setFullDescriptions] = useState({});
+  const [productChangeFlag, setProductChangeFlag] = useState(false);
 
 const extractCleanName = (originalName) => {
   // Split the original name by hyphens
@@ -64,7 +65,7 @@ useEffect(() => {
   };
 
   fetchData();
-}, [expandedFurnitureProduct]);
+}, [expandedFurnitureProduct, productChangeFlag]);
 
 
   const handleFurnitureProductAddClick = () => {
@@ -98,6 +99,7 @@ useEffect(() => {
         }))
       );
       console.log('Updated furnitureProducts:', updatedFurnitureProducts);
+      setProductChangeFlag(true);
     } catch (error) {
       console.error('Error handling added furnitureProduct:', error);
     }
@@ -122,6 +124,7 @@ useEffect(() => {
       if (expandedFurnitureProduct === furnitureProductName) {
         setExpandedFurnitureProduct(null);
       }
+      setProductChangeFlag(true);
     } catch (error) {
       console.error(error);
     }
